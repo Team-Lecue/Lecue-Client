@@ -116,8 +116,8 @@ const gStyle = css`
     touch-action: manipulation;
     line-height: 1;
 
-    width: 375px;
-    height: 667px;
+    width: 32rem;
+    height: 56.8rem;
     /* height: 100vh; */
     /* border:1px solid transparent; */
   }
@@ -154,6 +154,9 @@ const gStyle = css`
     scroll-behavior: smooth;
 
     user-select: none;
+
+    display: flex;
+    justify-content: center;
 
     /* 미디어쿼리 적용 예정 */
     /* font-size: 62.5%; */
