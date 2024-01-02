@@ -1,5 +1,7 @@
 import { Global } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
+import Router from './Router';
 import gStyle from './styles/GlobalStyles';
 
 const queryClient = new QueryClient();
