@@ -1,4 +1,5 @@
 import { Global, ThemeProvider } from '@emotion/react';
+import styled from '@emotion/styled';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Router from './Router';
@@ -13,9 +14,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <Global styles={gStyle} />
         <Router />
+        <Test>TEST</Test>
       </ThemeProvider>
     </QueryClientProvider>
   );
 }
 
 export default App;
+
+const Test = styled.div`
+  ${({ theme }) => theme.fonts.Orange};
+`;
