@@ -263,7 +263,7 @@ const gStyle = css`
 
   @font-face {
     font-family: 'Sequel Sans';
-    src: url('fonts/SequelSansMediumOblBody.woff') format('woff');
+    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
   }
 `;
 
