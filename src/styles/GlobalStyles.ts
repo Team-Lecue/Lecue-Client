@@ -260,6 +260,11 @@ const gStyle = css`
       outline: none;
     }
   }
+
+  @font-face {
+    font-family: 'Sequel Sans';
+    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
+  }
 `;
 
 export default gStyle;
