@@ -56,7 +56,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.6rem',
-    lineHeight: '150% ',
+    lineHeight: '150%',
     letterSpacing: '-0.4px',
   },
   Body2_M_14: {
@@ -64,7 +64,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 500,
     fontSize: '1.4rem',
-    lineHeight: '145% ',
+    lineHeight: '145%',
     letterSpacing: '-0.35px',
   },
   Body3_R_14: {
@@ -72,7 +72,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.4rem',
-    lineHeight: '145% ',
+    lineHeight: '145%',
     letterSpacing: '-0.35px',
   },
   Body4_SB_14: {
@@ -80,7 +80,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.4rem',
-    lineHeight: '145% ',
+    lineHeight: '145%',
     letterSpacing: '-0.35px',
   },
   Caption1_R_12: {
@@ -88,7 +88,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.2rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '-0.3px',
   },
   Caption2_SB_12: {
@@ -96,7 +96,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.2rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '-0.3px',
   },
   E_Title1_SB_18: {
@@ -104,7 +104,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.8rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '0px',
   },
   E_Title2_SB_16: {
@@ -112,7 +112,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.6rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '0px',
   },
   E_Body1_SB_14: {
@@ -120,7 +120,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.4rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '0px',
   },
   E_Body2_R_14: {
@@ -128,7 +128,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.4rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '0px',
   },
   E_Caption_R_12: {
@@ -136,7 +136,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.2rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '0px',
   },
   Orange: {
@@ -144,7 +144,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 317,
     fontSize: '2.2rem',
-    lineHeight: 'auto ',
+    lineHeight: 'auto',
     letterSpacing: '-0.66px',
   },
 };
