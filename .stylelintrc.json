@@ -15,22 +15,30 @@
       }
     ],
     "order/order": ["custom-properties", "declarations"],
-
     "order/properties-order": [
       {
         "groupName": "Layout",
+        "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
         "properties": [
           "display",
-          "visibility",
-          "overflow",
-          "float",
-          "clear",
+          "justify-content",
+          "align-items",
+          "flex-direction",
+          "flex-wrap",
+          "flex-flow",
+          "flex-grow",
+          "flex-shrink",
+          "flex-basis",
           "position",
           "top",
           "right",
           "bottom",
           "left",
+          "float",
+          "clear",
+          "visibility",
+          "overflow",
           "z-index"
         ]
       },
@@ -41,30 +49,34 @@
         "properties": [
           "width",
           "height",
-          "margin",
-          "margin-top",
-          "margin-right",
-          "margin-bottom",
-          "margin-left",
           "padding",
           "padding-top",
           "padding-right",
           "padding-bottom",
           "padding-left",
-          "border"
+          "margin",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left"
         ]
       },
       {
         "groupName": "Background",
         "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
-        "properties": ["background-color"]
-      },
-      {
-        "groupName": "Font",
-        "emptyLineBefore": "always",
-        "noEmptyLineBetween": true,
         "properties": [
+          "border",
+          "border-radius",
+          "border-top",
+          "border-right",
+          "border-bottom",
+          "border-left",
+          "border-color",
+          "border-width",
+          "border-style",
+          "background",
+          "background-color",
           "color",
           "font-style",
           "font-weight",
@@ -73,15 +85,20 @@
           "letter-spacing",
           "text-align",
           "text-indent",
-          "vertical-align",
-          "white-space"
+          "vertical-align"
         ]
       },
       {
-        "groupName": "Animation",
+        "groupName": "Text",
         "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
-        "properties": ["animation"]
+        "properties": ["text-decoration", "text-align", "vertical-align"]
+      },
+      {
+        "groupName": "ETC",
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
+        "properties": ["white-space"]
       }
     ]
   }
