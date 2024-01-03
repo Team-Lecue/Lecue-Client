@@ -8,8 +8,12 @@ import IcBtnFloatingWrite from './ic_btn_floating_write.svg?react';
 import IcCrown from './ic_crown.svg?react';
 import IcDate from './ic_date.svg?react';
 import IcHome from './ic_home.svg?react';
+import IcLe from './ic_le.svg?react';
+import IcLogoLecue from './ic_logo_lecue.svg?react';
 import IcNotice from './ic_notice.svg?react';
 import IcSharing from './ic_sharing.svg?react';
+import IcStar from './ic_star.svg?react';
+import IcSticker from './ic_sticker.svg?react';
 
 export {
   IcArrowLeft,
@@ -20,6 +24,10 @@ export {
   IcCrown,
   IcDate,
   IcHome,
+  IcLe,
+  IcLogoLecue,
   IcNotice,
   IcSharing,
+  IcStar,
+  IcSticker,
 };
