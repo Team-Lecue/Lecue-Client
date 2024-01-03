@@ -1,5 +1,5 @@
+import { IcHome, IcSharing } from '../../../assets/icon/svgs';
 import * as S from './Header.style';
-import { IcHome, IcSharing } from '../../assets/icon/svgs';
 
 interface HeaderProps {
   headerTitle: string;
