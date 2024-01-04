@@ -140,12 +140,12 @@ const fonts = {
     letterSpacing: '0px',
   },
   Orange: {
-    fontFamily: 'Sequel Sans',
+    fontFamily: 'Pretendard',
     fontStyle: 'normal',
-    fontWeight: 317,
+    fontWeight: 500,
     fontSize: '2.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.66px',
+    letterSpacing: '0px',
   },
 };
 
