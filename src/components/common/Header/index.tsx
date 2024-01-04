@@ -9,12 +9,12 @@ import {
 
 interface HeaderProps {
   headerTitle: string;
-  isDarkMode: boolean;
+  isDarkMode?: boolean;
   isDetailPage?: boolean;
 }
 
 interface HeaderButtonProps {
-  isDarkMode: boolean;
+  isDarkMode?: boolean;
 }
 
 function Header({ headerTitle, isDarkMode, isDetailPage }: HeaderProps) {

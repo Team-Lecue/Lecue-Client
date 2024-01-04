@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const HeaderWrapper = styled.header<{ isDarkMode: boolean }>`
+export const HeaderWrapper = styled.header<{ isDarkMode?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ export const HeaderWrapper = styled.header<{ isDarkMode: boolean }>`
     isDarkMode ? theme.colors.BG : theme.colors.white};
 `;
 
-export const HeaderTitle = styled.p<{ isDarkMode: boolean }>`
+export const HeaderTitle = styled.p<{ isDarkMode?: boolean }>`
   color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.white : theme.colors.BG};
   ${({ theme }) => theme.fonts.E_Title1_SB_18};
