@@ -25,7 +25,7 @@ const fonts = {
     fontWeight: 700,
     fontSize: '2rem',
     lineHeight: '140%',
-    letterSpacing: '-0.2px',
+    letterSpacing: '-0.02rem',
   },
   Head2_SB_18: {
     fontFamily: 'Pretendard',
@@ -33,7 +33,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.8rem',
     lineHeight: '140%',
-    letterSpacing: '-0.18px',
+    letterSpacing: '-0.018rem',
   },
   Title1_SB_16: {
     fontFamily: 'Pretendard',
@@ -41,7 +41,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.6rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.16px',
+    letterSpacing: '-0.016rem',
   },
   Title2_M_16: {
     fontFamily: 'Pretendard',
@@ -49,7 +49,7 @@ const fonts = {
     fontWeight: 500,
     fontSize: '1.6rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.16px',
+    letterSpacing: '-0.016rem',
   },
   Body1_R_16: {
     fontFamily: 'Pretendard',
@@ -57,7 +57,7 @@ const fonts = {
     fontWeight: 400,
     fontSize: '1.6rem',
     lineHeight: '150%',
-    letterSpacing: '-0.4px',
+    letterSpacing: '-0.04rem',
   },
   Body2_M_14: {
     fontFamily: 'Pretendard',
@@ -65,7 +65,7 @@ const fonts = {
     fontWeight: 500,
     fontSize: '1.4rem',
     lineHeight: '145%',
-    letterSpacing: '-0.35px',
+    letterSpacing: '-0.035rem',
   },
   Body3_R_14: {
     fontFamily: 'Pretendard',
@@ -73,7 +73,7 @@ const fonts = {
     fontWeight: 400,
     fontSize: '1.4rem',
     lineHeight: '145%',
-    letterSpacing: '-0.35px',
+    letterSpacing: '-0.035rem',
   },
   Body4_SB_14: {
     fontFamily: 'Pretendard',
@@ -81,7 +81,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.4rem',
     lineHeight: '145%',
-    letterSpacing: '-0.35px',
+    letterSpacing: '-0.035rem',
   },
   Caption1_R_12: {
     fontFamily: 'Pretendard',
@@ -89,7 +89,7 @@ const fonts = {
     fontWeight: 400,
     fontSize: '1.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.3px',
+    letterSpacing: '-0.03rem',
   },
   Caption2_SB_12: {
     fontFamily: 'Pretendard',
@@ -97,7 +97,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.3px',
+    letterSpacing: '-0.03rem',
   },
   E_Title1_SB_18: {
     fontFamily: 'Pretendard',
@@ -105,7 +105,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.8rem',
     lineHeight: 'auto',
-    letterSpacing: '0px',
+    letterSpacing: '0',
   },
   E_Title2_SB_16: {
     fontFamily: 'Pretendard',
@@ -113,7 +113,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.6rem',
     lineHeight: 'auto',
-    letterSpacing: '0px',
+    letterSpacing: '0',
   },
   E_Body1_SB_14: {
     fontFamily: 'Pretendard',
@@ -121,7 +121,7 @@ const fonts = {
     fontWeight: 600,
     fontSize: '1.4rem',
     lineHeight: 'auto',
-    letterSpacing: '0px',
+    letterSpacing: '0',
   },
   E_Body2_R_14: {
     fontFamily: 'Pretendard',
@@ -129,7 +129,7 @@ const fonts = {
     fontWeight: 400,
     fontSize: '1.4rem',
     lineHeight: 'auto',
-    letterSpacing: '0px',
+    letterSpacing: '0',
   },
   E_Caption_R_12: {
     fontFamily: 'Pretendard',
@@ -137,7 +137,7 @@ const fonts = {
     fontWeight: 400,
     fontSize: '1.2rem',
     lineHeight: 'auto',
-    letterSpacing: '0px',
+    letterSpacing: '0',
   },
   Orange: {
     fontFamily: 'Sequel Sans',
@@ -145,7 +145,7 @@ const fonts = {
     fontWeight: 317,
     fontSize: '2.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.66px',
+    letterSpacing: '-0.066rem',
   },
 };
 
