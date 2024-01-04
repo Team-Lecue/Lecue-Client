@@ -121,6 +121,9 @@ const resetCss = css`
 
     line-height: 1;
     touch-action: manipulation;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   menu,
