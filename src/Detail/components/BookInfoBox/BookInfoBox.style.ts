@@ -46,24 +46,24 @@ export const BookInfoHeaderItem = styled.p<{ isDarkMode: boolean }>`
   height: 1.8rem;
   padding-top: 0.4rem;
 
-  ${({ theme }) => theme.fonts.E_Caption_R_12};
   color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.MG : 'rgba(255, 255, 255, 0.3)'};
+  ${({ theme }) => theme.fonts.E_Caption_R_12};
 `;
 
 export const BookInfoTitle = styled.p<{ isDarkMode: boolean }>`
   margin-top: 0.7rem;
 
-  ${({ theme }) => theme.fonts.Head2_SB_18};
   color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.BG : theme.colors.white};
+  ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
 export const BookInfoContent = styled.p<{ isDarkMode: boolean }>`
   height: 8.5rem;
   margin-top: 1rem;
 
-  ${({ theme }) => theme.fonts.Body3_R_14};
   color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.BG : 'rgba(255, 255, 255, 0.8)'};
+  ${({ theme }) => theme.fonts.Body3_R_14};
 `;

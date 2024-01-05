@@ -14,23 +14,26 @@ export const infiniteSlide = keyframes`
 export const SliderBannerWrapper = styled.div`
   width: 100%;
   height: 4.4rem;
-  background-color: ${({ theme }) => theme.colors.key};
-  overflow: hidden;
+
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.BG};
+  background-color: ${({ theme }) => theme.colors.key};
+
+  overflow: hidden;
 `;
 
 export const AnimationBox = styled.div`
-  height: 100%;
   display: flex;
+
+  height: 100%;
+
   animation: ${infiniteSlide};
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
 
 export const SlideBannerItemList = styled.div`
-  height: 100%;
   display: flex;
   align-items: center;
-  /* column-gap: 0.6rem; */
-  font-size: 24px;
+
+  height: 100%;
 `;

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 export const SliderBannerItemWrapper = styled.div`
-  margin-right: 0.6rem;
   display: flex;
-  width: auto;
   flex-shrink: 0;
+
+  width: auto;
+  margin-right: 0.6rem;
 `;
 
 export const Name = styled.p`
