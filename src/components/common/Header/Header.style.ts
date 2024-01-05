@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.header<{ isDarkMode?: boolean }>`
 
   border-bottom: 0.1rem solid
     ${({ isDarkMode, theme }) =>
-      isDarkMode ? theme.colors.white : theme.colors.BG};
+      isDarkMode ? theme.colors.DG : theme.colors.BG};
   background-color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.BG : theme.colors.white};
 `;
