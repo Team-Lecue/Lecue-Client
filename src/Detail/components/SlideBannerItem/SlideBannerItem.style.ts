@@ -8,7 +8,7 @@ export const SliderBannerItemWrapper = styled.div`
 `;
 
 export const Name = styled.p`
-  margin: 0 0.6rem;
+  margin: 0.3rem 0.6rem 0 0.6rem;
 
   ${({ theme }) => theme.fonts.Orange};
 `;
