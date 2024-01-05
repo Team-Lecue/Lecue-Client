@@ -16,6 +16,7 @@ export const SliderBannerWrapper = styled.div`
   height: 4.4rem;
   background-color: ${({ theme }) => theme.colors.key};
   overflow: hidden;
+  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.BG};
 `;
 
 export const AnimationBox = styled.div`
