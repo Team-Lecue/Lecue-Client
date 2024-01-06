@@ -18,12 +18,10 @@ export const Title = styled.header`
 
 export const StickerGridWrapper = styled.div`
   display: grid;
-
-  width: 100%;
-
+  gap: 2.15rem 1.6rem;
   grid-template-columns: repeat(3, 1fr);
 
-  gap: 2.15rem 1.6rem;
+  width: 100%;
 `;
 
 export const ImageComponent = styled.button<{
@@ -38,8 +36,6 @@ export const ImageComponent = styled.button<{
       isSelected ? theme.colors.key : theme.colors.BG};
   border-radius: 0.4rem;
   background: url(${({ url }) => url};);
-
-  background-size: 10rem 10rem;
-
   background-position: center;
+  background-size: 10rem 10rem;
 `;
