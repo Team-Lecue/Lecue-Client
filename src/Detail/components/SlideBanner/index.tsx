@@ -17,6 +17,12 @@ function SlideBanner({ name }: SlideBannerProps) {
   const [animationListWidth, setAnimationListWidth] = useState(0);
   const [animationDuration, setAnimationDuration] = useState(10);
 
+  const renderSlideBannerItems = () => {
+    return Array.from({ length: 10 }, (_, index) => (
+      <SlideBannerItem key={index} ref={itemBoxRef} name={name} />
+    ));
+  };
+
   useEffect(() => {
     if (itemBoxRef.current) {
       const itemBoxWidth = itemBoxRef.current.offsetWidth;
@@ -31,12 +37,6 @@ function SlideBanner({ name }: SlideBannerProps) {
       setAnimationDuration(newAnimationDuration);
     }
   }, [name]);
-
-  const renderSlideBannerItems = () => {
-    return Array.from({ length: 10 }, (_, index) => (
-      <SlideBannerItem key={index} ref={itemBoxRef} name={name} />
-    ));
-  };
 
   return (
     <SliderBannerWrapper>
