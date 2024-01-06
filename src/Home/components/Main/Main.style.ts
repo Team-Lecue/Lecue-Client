@@ -35,6 +35,5 @@ export const Button = styled.button<{ variant: ButtonStyle }>`
     variant === 'making' ? theme.colors.white : theme.colors.BG};
   color: ${({ theme, variant }) =>
     variant === 'making' ? theme.colors.BG : theme.colors.white};
-
   ${({ theme }) => theme.fonts.Title1_SB_16}
 `;
