@@ -1,15 +1,5 @@
 import { IcCrown, IcDate } from '../../../assets';
-import {
-  BookInfoBoxWrapper,
-  BookInfoContent,
-  BookInfoHeader,
-  BookInfoHeaderItem,
-  BookInfoHeaderItemWrapper,
-  BookInfoTitle,
-  BookInfoWrapper,
-  ProfileImageWrapper,
-  ProfileImg,
-} from './BookInfoBox.style';
+import * as S from './BookInfoBox.style';
 
 interface BookInfoBoxProps {
   profileImg: string;
@@ -29,29 +19,29 @@ function BookInfoBox({
   isDarkMode,
 }: BookInfoBoxProps) {
   return (
-    <BookInfoBoxWrapper isDarkMode={isDarkMode}>
-      <ProfileImageWrapper>
-        <ProfileImg src={profileImg} />
-      </ProfileImageWrapper>
-      <BookInfoWrapper>
-        <BookInfoHeader>
-          <BookInfoHeaderItemWrapper>
+    <S.BookInfoBoxWrapper isDarkMode={isDarkMode}>
+      <S.ProfileImageWrapper>
+        <S.ProfileImg src={profileImg} />
+      </S.ProfileImageWrapper>
+      <S.BookInfoWrapper>
+        <S.BookInfoHeader>
+          <S.BookInfoHeaderItemWrapper>
             <IcDate />
-            <BookInfoHeaderItem isDarkMode={isDarkMode}>
+            <S.BookInfoHeaderItem isDarkMode={isDarkMode}>
               {date}
-            </BookInfoHeaderItem>
-          </BookInfoHeaderItemWrapper>
-          <BookInfoHeaderItemWrapper>
+            </S.BookInfoHeaderItem>
+          </S.BookInfoHeaderItemWrapper>
+          <S.BookInfoHeaderItemWrapper>
             <IcCrown />
-            <BookInfoHeaderItem isDarkMode={isDarkMode}>
+            <S.BookInfoHeaderItem isDarkMode={isDarkMode}>
               {nickname}
-            </BookInfoHeaderItem>
-          </BookInfoHeaderItemWrapper>
-        </BookInfoHeader>
-        <BookInfoTitle isDarkMode={isDarkMode}>{title}</BookInfoTitle>
-        <BookInfoContent isDarkMode={isDarkMode}>{content}</BookInfoContent>
-      </BookInfoWrapper>
-    </BookInfoBoxWrapper>
+            </S.BookInfoHeaderItem>
+          </S.BookInfoHeaderItemWrapper>
+        </S.BookInfoHeader>
+        <S.BookInfoTitle isDarkMode={isDarkMode}>{title}</S.BookInfoTitle>
+        <S.BookInfoContent isDarkMode={isDarkMode}>{content}</S.BookInfoContent>
+      </S.BookInfoWrapper>
+    </S.BookInfoBoxWrapper>
   );
 }
 

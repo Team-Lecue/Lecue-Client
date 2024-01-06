@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import SlideBannerItem from '../SlideBannerItem';
-import {
-  AnimationBox,
-  SlideBannerItemList,
-  SliderBannerWrapper,
-} from './SlideBanner.style';
+import * as S from './SlideBanner.style';
 
 interface SlideBannerProps {
   name: string;
@@ -39,19 +35,19 @@ function SlideBanner({ name }: SlideBannerProps) {
   }, [name]);
 
   return (
-    <SliderBannerWrapper>
-      <AnimationBox
+    <S.SliderBannerWrapper>
+      <S.AnimationBox
         width={animationListWidth}
         animationDuration={animationDuration}
       >
-        <SlideBannerItemList width={itemListWidth}>
+        <S.SlideBannerItemList width={itemListWidth}>
           {renderSlideBannerItems()}
-        </SlideBannerItemList>
-        <SlideBannerItemList width={itemListWidth}>
+        </S.SlideBannerItemList>
+        <S.SlideBannerItemList width={itemListWidth}>
           {renderSlideBannerItems()}
-        </SlideBannerItemList>
-      </AnimationBox>
-    </SliderBannerWrapper>
+        </S.SlideBannerItemList>
+      </S.AnimationBox>
+    </S.SliderBannerWrapper>
   );
 }
 
