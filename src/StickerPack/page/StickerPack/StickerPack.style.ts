@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Body = styled.div`
+export const Body = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;

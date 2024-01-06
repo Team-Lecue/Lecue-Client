@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
   align-items: start;
   flex-direction: column;
@@ -16,7 +16,7 @@ export const Title = styled.header`
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
-export const StickerGridWrapper = styled.div`
+export const StickerGridWrapper = styled.article`
   display: grid;
   gap: 2.15rem 1.6rem;
   grid-template-columns: repeat(3, 1fr);

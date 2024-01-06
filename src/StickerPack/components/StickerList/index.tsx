@@ -1,18 +1,14 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 
 import * as S from './StickerList.style';
 
 interface StickerListProps {
   isSelectedId: number | null;
-  setIsSelectedId: Dispatch<React.SetStateAction<number | null>>;
+  handleStickerClick: (stickerId: number) => void;
 }
 
 function StickerList(props: StickerListProps) {
-  const { isSelectedId, setIsSelectedId } = props;
-
-  const handleStickerClick = (stickerId: number) => {
-    setIsSelectedId(stickerId);
-  };
+  const { isSelectedId, handleStickerClick } = props;
 
   return (
     <S.Wrapper>

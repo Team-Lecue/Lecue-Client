@@ -9,16 +9,22 @@ import * as S from './StickerPack.style.ts';
 
 function StickerPack() {
   const [isSelectedId, setIsSelectedId] = useState<number | null>(null);
+
+  const handleStickerClick = (stickerId: number) => {
+    setIsSelectedId(stickerId);
+  };
+
   const handleClickDone = () => {
     alert(`${isSelectedId}`);
   };
+
   return (
     <>
       <Header headerTitle="스티커팩" isDarkMode />
       <S.Body>
         <StickerList
           isSelectedId={isSelectedId}
-          setIsSelectedId={setIsSelectedId}
+          handleStickerClick={handleStickerClick}
         />
         <Button
           variant="choose"
