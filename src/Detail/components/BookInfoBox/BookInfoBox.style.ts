@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const BookInfoBoxWrapper = styled.div<{ isDarkMode?: boolean }>`
+export const BookInfoBoxWrapper = styled.div<{ isDarkMode: boolean }>`
   display: flex;
 
   width: 100%;
