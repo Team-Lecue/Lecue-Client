@@ -21,19 +21,25 @@ export const SliderBannerWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const AnimationBox = styled.div`
+export const AnimationBox = styled.div<{
+  width: number;
+  animationDuration: number;
+}>`
   display: flex;
 
+  width: ${(props) => props.width}rem;
   height: 100%;
 
   animation: ${infiniteSlide};
+  animation-duration: ${(props) => props.animationDuration}s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
 
-export const SlideBannerItemList = styled.div`
+export const SlideBannerItemList = styled.div<{ width: number }>`
   display: flex;
   align-items: center;
 
+  width: ${(props) => props.width}rem;
   height: 100%;
 `;

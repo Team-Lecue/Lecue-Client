@@ -27,7 +27,7 @@ function SlideBanner({ name }: SlideBannerProps) {
     if (itemBoxRef.current) {
       const itemBoxWidth = itemBoxRef.current.offsetWidth;
 
-      const itemListWidth = itemBoxWidth * 10 + 57;
+      const itemListWidth = itemBoxWidth + 6;
 
       setItemListWidth(itemListWidth);
       setAnimationListWidth(itemListWidth * 2);
@@ -41,15 +41,13 @@ function SlideBanner({ name }: SlideBannerProps) {
   return (
     <SliderBannerWrapper>
       <AnimationBox
-        style={{
-          width: `${animationListWidth / 10}rem`,
-          animationDuration: `${animationDuration}s`,
-        }}
+        width={animationListWidth}
+        animationDuration={animationDuration}
       >
-        <SlideBannerItemList style={{ width: `${itemListWidth / 10}rem` }}>
+        <SlideBannerItemList width={itemListWidth}>
           {renderSlideBannerItems()}
         </SlideBannerItemList>
-        <SlideBannerItemList style={{ width: `${itemListWidth / 10}rem` }}>
+        <SlideBannerItemList width={itemListWidth}>
           {renderSlideBannerItems()}
         </SlideBannerItemList>
       </AnimationBox>
