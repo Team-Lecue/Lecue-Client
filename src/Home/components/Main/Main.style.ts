@@ -11,6 +11,7 @@ export const MainWrapper = styled.div`
 
 export const IconWrapper = styled.section`
   display: flex;
+  align-items: baseline;
 
   width: 100%;
   padding: 6rem 1.6rem 5rem;
