@@ -39,6 +39,8 @@ export const LecueBook = styled.li`
   width: 10rem;
   height: 14rem;
   gap: 1rem;
+
+  cursor: pointer;
 `;
 
 export const BookImage = styled.img`

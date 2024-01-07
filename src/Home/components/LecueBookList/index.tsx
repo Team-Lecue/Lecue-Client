@@ -1,12 +1,19 @@
 import * as S from './LecueBookList.style';
 
 function LecueBookList() {
+  const handleClickLecueBook = (bookName: string) => {
+    alert(`${bookName} 선택되었습니다.`);
+  };
+
   return (
     <S.LecueBookListWrapper>
       <S.Title>인기 레큐북 구경하기</S.Title>
       <S.LecueBookList>
         {BOOK_LIST.map((book) => (
-          <S.LecueBook key={book.bookId}>
+          <S.LecueBook
+            key={book.bookId}
+            onClick={() => handleClickLecueBook(book.favoriteName)}
+          >
             <S.BookImage src={book.favoriteImage} alt="레큐북-이미지" />
             <S.BookTitle>{book.favoriteName}</S.BookTitle>
           </S.LecueBook>
