@@ -120,7 +120,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '1.4rem',
-    lineHeight: 'auto',
+    lineHeight: '120%',
     letterSpacing: '0',
   },
   E_Body2_R_14: {
