@@ -1,9 +1,9 @@
 /// <reference types="vite-plugin-svgr/client" />
 
+import BtnFloatingList from './button/btn_floating_list.svg?react';
 import BtnFloatingPostit from './button/btn_floating_postit.svg?react';
 import BtnFloatingSticker from './button/btn_floating_sticker.svg?react';
 import BtnFloatingWrite from './button/btn_floating_write.svg?react';
-import BtnFloatingList from './button/btn_floating_list.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';

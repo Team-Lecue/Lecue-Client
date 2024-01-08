@@ -121,6 +121,9 @@ const resetCss = css`
 
     line-height: 1;
     touch-action: manipulation;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   menu,
@@ -201,11 +204,6 @@ const gStyle = css`
     &:focus {
       outline: none;
     }
-  }
-
-  @font-face {
-    font-family: 'Sequel Sans';
-    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
   }
 `;
 
