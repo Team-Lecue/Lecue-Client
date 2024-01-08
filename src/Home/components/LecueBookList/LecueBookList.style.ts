@@ -51,11 +51,11 @@ export const BookImage = styled.img`
 `;
 
 export const BookTitle = styled.p`
-  width: 80%;
+  width: 100%;
 
   ${({ theme }) => theme.fonts.E_Body1_SB_14};
 
   text-align: center;
   word-wrap: normal;
-  word-break: keep-all;
+  word-break: break-all;
 `;
