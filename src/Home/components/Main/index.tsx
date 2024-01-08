@@ -19,6 +19,7 @@ function Main() {
         <a
           href="https://rileybyeon.notion.site/TEAM-LECUE-b7801fe345544442938d3e54980032e4?pvs=4"
           target="_blank"
+          rel="noreferrer"
         >
           <IcNotice />
         </a>
