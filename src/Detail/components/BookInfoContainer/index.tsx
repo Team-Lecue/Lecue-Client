@@ -8,7 +8,7 @@ interface BookInfoContainerProps {
   nickname: string;
   title: string;
   content: string;
-  isDarkMode: boolean;
+  backgroundColor: number;
 }
 
 function BookInfoContainer({
@@ -18,7 +18,7 @@ function BookInfoContainer({
   nickname,
   title,
   content,
-  isDarkMode,
+  backgroundColor,
 }: BookInfoContainerProps) {
   return (
     <div>
@@ -29,7 +29,7 @@ function BookInfoContainer({
         nickname={nickname}
         title={title}
         content={content}
-        isDarkMode={isDarkMode}
+        backgroundColor={backgroundColor}
       />
     </div>
   );

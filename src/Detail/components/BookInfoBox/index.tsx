@@ -7,7 +7,7 @@ interface BookInfoBoxProps {
   nickname: string;
   title: string;
   content: string;
-  isDarkMode: boolean;
+  backgroundColor: number;
 }
 
 function BookInfoBox({
@@ -16,10 +16,10 @@ function BookInfoBox({
   nickname,
   title,
   content,
-  isDarkMode,
+  backgroundColor,
 }: BookInfoBoxProps) {
   return (
-    <S.BookInfoBoxWrapper isDarkMode={isDarkMode}>
+    <S.BookInfoBoxWrapper backgroundColor={backgroundColor}>
       <S.ProfileImageWrapper>
         <S.ProfileImg src={profileImg} />
       </S.ProfileImageWrapper>
@@ -27,19 +27,23 @@ function BookInfoBox({
         <S.BookInfoHeader>
           <S.BookInfoHeaderItemWrapper>
             <IcDate />
-            <S.BookInfoHeaderItem isDarkMode={isDarkMode}>
+            <S.BookInfoHeaderItem backgroundColor={backgroundColor}>
               {date}
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
           <S.BookInfoHeaderItemWrapper>
             <IcCrown />
-            <S.BookInfoHeaderItem isDarkMode={isDarkMode}>
+            <S.BookInfoHeaderItem backgroundColor={backgroundColor}>
               {nickname}
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
         </S.BookInfoHeader>
-        <S.BookInfoTitle isDarkMode={isDarkMode}>{title}</S.BookInfoTitle>
-        <S.BookInfoContent isDarkMode={isDarkMode}>{content}</S.BookInfoContent>
+        <S.BookInfoTitle backgroundColor={backgroundColor}>
+          {title}
+        </S.BookInfoTitle>
+        <S.BookInfoContent backgroundColor={backgroundColor}>
+          {content}
+        </S.BookInfoContent>
       </S.BookInfoWrapper>
     </S.BookInfoBoxWrapper>
   );

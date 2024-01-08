@@ -1,13 +1,19 @@
 import styled from '@emotion/styled';
 
-export const BookInfoBoxWrapper = styled.div<{ isDarkMode: boolean }>`
+export const BookInfoBoxWrapper = styled.div<{ backgroundColor: number }>`
   display: flex;
 
   width: 100%;
   height: 18.3em;
 
-  background-color: ${({ isDarkMode, theme }) =>
-    isDarkMode ? theme.colors.white : theme.colors.BG};
+  background-color: ${({ theme, backgroundColor }) => {
+    switch (backgroundColor) {
+      case 0:
+        return theme.colors.BG;
+      case 1:
+        return theme.colors.white;
+    }
+  }};
 `;
 
 export const ProfileImageWrapper = styled.div`
@@ -42,28 +48,46 @@ export const BookInfoHeaderItemWrapper = styled.div`
   column-gap: 0.3rem;
 `;
 
-export const BookInfoHeaderItem = styled.p<{ isDarkMode: boolean }>`
+export const BookInfoHeaderItem = styled.p<{ backgroundColor: number }>`
   height: 1.8rem;
   padding-top: 0.4rem;
 
-  color: ${({ isDarkMode, theme }) =>
-    isDarkMode ? theme.colors.MG : 'rgba(255, 255, 255, 0.3)'};
+  color: ${({ theme, backgroundColor }) => {
+    switch (backgroundColor) {
+      case 0:
+        return 'rgba(255, 255, 255, 0.3)';
+      case 1:
+        return theme.colors.MG;
+    }
+  }};
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 `;
 
-export const BookInfoTitle = styled.p<{ isDarkMode: boolean }>`
+export const BookInfoTitle = styled.p<{ backgroundColor: number }>`
   margin-top: 0.7rem;
 
-  color: ${({ isDarkMode, theme }) =>
-    isDarkMode ? theme.colors.BG : theme.colors.white};
+  color: ${({ theme, backgroundColor }) => {
+    switch (backgroundColor) {
+      case 0:
+        return theme.colors.white;
+      case 1:
+        return theme.colors.BG;
+    }
+  }};
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
-export const BookInfoContent = styled.p<{ isDarkMode: boolean }>`
+export const BookInfoContent = styled.p<{ backgroundColor: number }>`
   height: 8.5rem;
   margin-top: 1rem;
 
-  color: ${({ isDarkMode, theme }) =>
-    isDarkMode ? theme.colors.BG : 'rgba(255, 255, 255, 0.8)'};
+  color: ${({ theme, backgroundColor }) => {
+    switch (backgroundColor) {
+      case 0:
+        return 'rgba(255, 255, 255, 0.8)';
+      case 1:
+        return theme.colors.BG;
+    }
+  }};
   ${({ theme }) => theme.fonts.Body3_R_14};
 `;
