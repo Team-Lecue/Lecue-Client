@@ -18,7 +18,6 @@ function LecueBookList() {
             <S.BookTitle>{book.favoriteName}</S.BookTitle>
           </S.LecueBook>
         ))}
-        ;
       </S.LecueBookList>
     </S.LecueBookListWrapper>
   );
