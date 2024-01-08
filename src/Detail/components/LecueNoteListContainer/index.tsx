@@ -15,7 +15,7 @@ function LecueNoteListContainer({
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
 
   return (
-    <S.LecueNoteListContainerWrapper>
+    <S.LecueNoteListContainerWrapper backgroundColor={backgroundColor}>
       <LecueNoteListHeader
         noteNum={noteNum}
         backgroundColor={backgroundColor}
