@@ -1,5 +1,6 @@
 import Header from '../../../components/common/Header';
 import BookInfoContainer from '../../components/BookInfoContainer';
+import LecueNoteListContainer from '../../components/LecueNoteListContainer';
 
 // test
 
@@ -12,6 +13,7 @@ const testProp = {
   title: '첫 예능 라디오스타 축하해!',
   content:
     '우리만의 스타 레오제이 !! 3년만에 첫 예능이자 라디오스타 출연 넘 축하해~!! 앞으로 계속 이렇게 우리 옆에 있어줘! 항상 응원할게! 어그래그래어엉',
+  noteNum: 30,
   backgroundColor: 0,
 };
 
@@ -20,6 +22,10 @@ function DetailPage() {
     <div>
       <Header headerTitle={'레큐북'} isDetailPage />
       <BookInfoContainer {...testProp} />
+      <LecueNoteListContainer
+        noteNum={testProp.noteNum}
+        backgroundColor={testProp.backgroundColor}
+      />
     </div>
   );
 }
