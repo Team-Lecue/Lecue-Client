@@ -2,16 +2,13 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.section`
   display: flex;
-  align-items: start;
   flex-direction: column;
-
-  width: 100%;
 `;
 
 export const Title = styled.header`
   margin: 1.4rem 0;
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.BG};
 
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
@@ -21,21 +18,24 @@ export const StickerGridWrapper = styled.article`
   gap: 2.15rem 1.6rem;
   grid-template-columns: repeat(3, 1fr);
 
-  width: 100%;
+  margin-bottom: 5rem;
 `;
 
-export const ImageComponent = styled.button<{
+export const ImageWrapper = styled.button<{
   isSelected: boolean;
-  url: string;
 }>`
   width: 10rem;
   height: 10rem;
 
   border: solid 0.1rem
     ${({ theme, isSelected }) =>
-      isSelected ? theme.colors.key : theme.colors.BG};
+      isSelected ? theme.colors.key : theme.colors.background};
   border-radius: 0.4rem;
-  background: url(${({ url }) => url};);
-  background-position: center;
-  background-size: 10rem 10rem;
+`;
+
+export const ImageComponent = styled.img`
+  width: 10rem;
+  height: 10rem;
+
+  object-fit: contain;
 `;
