@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.header<{ isDarkMode?: boolean }>`
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 
   height: 5.4rem;
   padding: 0 1.6rem;
