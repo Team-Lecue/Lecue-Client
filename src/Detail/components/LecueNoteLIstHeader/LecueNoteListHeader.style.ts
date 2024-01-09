@@ -1,10 +1,17 @@
 import styled from '@emotion/styled';
 
-export const LecueNoteListHeaderWrapper = styled.div`
+export const LecueNoteListHeaderWrapper = styled.div<{
+  backgroundColor: number;
+}>`
   display: flex;
   column-gap: 1rem;
+  position: sticky;
+  z-index: 2;
+  top: 9.8rem;
 
-  padding-top: 1.2rem;
+  padding: 1.2rem 1.65rem 0 1.65rem;
+
+  background-color: transparent;
 `;
 
 export const LecueNoteCountBox = styled.div<{ backgroundColor: number }>`
@@ -35,6 +42,9 @@ export const LecueNoteCountBox = styled.div<{ backgroundColor: number }>`
 `;
 
 export const LecueNoteRenderModeButton = styled.button`
+  position: relative;
+  z-index: 2;
+
   width: 3.8rem;
   height: 3.8rem;
 `;

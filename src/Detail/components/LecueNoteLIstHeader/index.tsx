@@ -15,7 +15,7 @@ function LecueNoteListHeader({
   buttonOnClick,
 }: LecueNoteListHeaderProps) {
   return (
-    <S.LecueNoteListHeaderWrapper>
+    <S.LecueNoteListHeaderWrapper backgroundColor={backgroundColor}>
       <S.LecueNoteCountBox
         backgroundColor={backgroundColor}
       >{`${noteNum}개`}</S.LecueNoteCountBox>

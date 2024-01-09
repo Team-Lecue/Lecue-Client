@@ -5,7 +5,7 @@ export const ZigZagViewWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
 
   width: 100%;
-  margin-top: 0.4rem;
+  padding-top: 0.4rem;
 `;
 
 export const LecueNoteContainer = styled.div`

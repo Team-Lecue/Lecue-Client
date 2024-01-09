@@ -1,6 +1,7 @@
 import Header from '../../../components/common/Header';
 import BookInfoContainer from '../../components/BookInfoContainer';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
+import SlideBanner from '../../components/SlideBanner';
 
 // test
 
@@ -14,7 +15,7 @@ const testProp = {
   content:
     '우리만의 스타 레오제이 !! 3년만에 첫 예능이자 라디오스타 출연 넘 축하해~!! 앞으로 계속 이렇게 우리 옆에 있어줘! 항상 응원할게! 어그래그래어엉',
   noteNum: 123123243,
-  backgroundColor: 1,
+  backgroundColor: 0,
   noteList: [
     {
       noteId: 1,
@@ -82,12 +83,25 @@ function DetailPage() {
           marginTop: '5.4rem',
         }}
       >
-        <BookInfoContainer {...testProp} />
-        <LecueNoteListContainer
-          noteNum={testProp.noteNum}
-          backgroundColor={testProp.backgroundColor}
-          noteList={testProp.noteList}
-        />
+        <SlideBanner name={testProp.name} />
+        <div
+          style={{
+            marginTop: '4.4rem',
+          }}
+        >
+          <BookInfoContainer {...testProp} />
+          {/* <LecueNoteListHeader
+            noteNum={testProp.noteNum}
+            backgroundColor={testProp.backgroundColor}
+            isZigZagView={isZigZagView}
+            buttonOnClick={() => setIsZigZagView(!isZigZagView)}
+          /> */}
+          <LecueNoteListContainer
+            noteNum={testProp.noteNum}
+            backgroundColor={testProp.backgroundColor}
+            noteList={testProp.noteList}
+          />
+        </div>
       </div>
     </div>
   );

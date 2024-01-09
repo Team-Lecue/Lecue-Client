@@ -1,5 +1,4 @@
 import BookInfoBox from '../BookInfoBox';
-import SlideBanner from '../SlideBanner';
 
 interface BookInfoContainerProps {
   name: string;
@@ -12,7 +11,6 @@ interface BookInfoContainerProps {
 }
 
 function BookInfoContainer({
-  name,
   profileImg,
   date,
   nickname,
@@ -22,7 +20,6 @@ function BookInfoContainer({
 }: BookInfoContainerProps) {
   return (
     <div>
-      <SlideBanner name={name} />
       <BookInfoBox
         profileImg={profileImg}
         date={date}

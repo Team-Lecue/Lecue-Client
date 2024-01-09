@@ -12,6 +12,9 @@ export const infiniteSlide = keyframes`
 `;
 
 export const SliderBannerWrapper = styled.div`
+  position: fixed;
+  z-index: 1;
+
   width: 100%;
   height: 4.4rem;
 
