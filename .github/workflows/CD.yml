@@ -1,0 +1,27 @@
+name: CD
+
+on:
+  push:
+    branches: [ "develop" ]
+
+env:
+  HOST:     ${{ secrets.HOST }}
+  USERNAME: ${{ secrets.USERNAME }}
+  KEY:      ${{ secrets.SSH_KEY }}
+  PORT:     ${{ secrets.PORT }}
+
+jobs:
+  deploy-ci:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./deploy/Dockerfile
+          push: true
+          tags: lequu/lequu-client:latest
