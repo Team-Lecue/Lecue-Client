@@ -26,18 +26,10 @@ function Main() {
       </S.IconWrapper>
 
       <S.ButtonWrapper>
-        <S.Button
-          type="button"
-          variant={'making'}
-          onClick={handleClickMakingBtn}
-        >
+        <S.Button type="button" variant onClick={handleClickMakingBtn}>
           레큐북 만들기
         </S.Button>
-        <S.Button
-          type="button"
-          variant={'mypage'}
-          onClick={handleClickMypageBtn}
-        >
+        <S.Button type="button" onClick={handleClickMypageBtn}>
           내 기록 보러가기
         </S.Button>
       </S.ButtonWrapper>
