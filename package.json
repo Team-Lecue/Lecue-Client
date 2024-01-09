@@ -12,7 +12,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "axios": "^1.6.5",
     "eslint-plugin-react": "^7.33.2",
+    "postcss": "^8.4.33",
     "postcss-styled-syntax": "^0.6.3",
     "prettier": "^3.1.1",
     "react": "^18.2.0",
