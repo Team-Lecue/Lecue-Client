@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
-import * as S from './Header.style';
 import {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcHome,
   IcSharing,
 } from '../../../assets';
+import * as S from './Header.style';
 
 interface HeaderProps {
   headerTitle: string;
