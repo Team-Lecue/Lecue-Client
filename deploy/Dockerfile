@@ -14,7 +14,7 @@ COPY yarn.lock .
 COPY . .
 
 # Run the build command using Yarn
-RUN yarn build
+# RUN yarn build
 
 EXPOSE 5173/tcp
 
