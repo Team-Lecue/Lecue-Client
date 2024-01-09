@@ -16,13 +16,17 @@ function StickerList(props: StickerListProps) {
         <React.Fragment key={data.stickerCategory}>
           <S.Title>{data.stickerCategory}</S.Title>
           <S.StickerGridWrapper>
-            {data.stickerInfoList.map((sticker) => (
-              <S.ImageComponent
+            {data.stickerList.map((sticker) => (
+              <S.ImageWrapper
                 key={sticker.stickerId}
                 onClick={() => handleStickerClick(sticker.stickerId)}
                 isSelected={sticker.stickerId === isSelectedId}
-                url={sticker.stickerImage}
+              >
+                <S.ImageComponent
+                  src={sticker.stickerImage}
+                  alt="스티커 이미지"
               />
+              </S.ImageWrapper>
             ))}
           </S.StickerGridWrapper>
         </React.Fragment>
