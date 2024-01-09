@@ -13,7 +13,9 @@ RUN yarn install --legacy-peer-deps
 COPY . .
 
 # Run the build command using Yarn
-RUN vite build
+RUN yarn build
+
+EXPOSE 5173
 
 # Set the command to start the server
 CMD ["yarn", "serve", "-s", "build"]
