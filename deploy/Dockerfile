@@ -2,14 +2,11 @@ FROM node:18.17.0-slim
 
 WORKDIR /app
 
-RUN npm install -g serve
+COPY package.json .
+COPY yarn.lock .
 
-COPY package*.json .
-
-RUN npm install --legacy-peer-deps
+RUN yarn
 
 COPY . .
 
-RUN npm run build
-
-CMD ["serve", "-s", "build"]
+CMD ["yarn", "dev"]
