@@ -13,6 +13,14 @@ import IcHome from './icon/ic_home.svg?react';
 import IcNotice from './icon/ic_notice.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
 import ImgBook from './img/img_book.svg?react';
+import ImgKakao01 from './img/img_kakao_01.svg?react';
+import ImgKakao02 from './img/img_kakao_02.svg?react';
+import ImgKakao03 from './img/img_kakao_03.svg?react';
+import ImgKakaoBook from './img/img_kakao_book.svg?react';
+import ImgKakaoLine from './img/img_kakao_line.svg?react';
+import ImgKakaoLogo from './img/img_kakao_logo.svg?react';
+import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
+import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
@@ -33,9 +41,17 @@ export {
   IcNotice,
   IcSharing,
   ImgBook,
+  ImgKakao01,
+  ImgKakao02,
+  ImgKakao03,
+  ImgKakaoBook,
+  ImgKakaoLine,
+  ImgKakaoLogo,
+  ImgKakaoStarOrange,
+  ImgKakaoStarWhite,
   ImgLe,
   ImgLogoLecue,
-  ImgStarPosit,
   ImgStarOrangeLine,
+  ImgStarPosit,
   ImgSticker,
 };
