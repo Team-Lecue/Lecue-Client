@@ -16,6 +16,15 @@ const colors = {
   sub_green: '#85CEAF',
   sub_blue: '#B3CBE8',
   sub_purple: '#929DD9',
+  white90: '#FFFFFFE5',
+  white80: '#FFFFFFCC',
+  white70: '#FFFFFFB2',
+  white60: '#FFFFFF99',
+  white50: '#FFFFFF80',
+  white40: '#FFFFFF66',
+  white30: '#FFFFFF4D',
+  white20: '#FFFFFF33',
+  white10: '#FFFFFF1A',
 };
 
 const fonts = {
@@ -35,6 +44,14 @@ const fonts = {
     lineHeight: '140%',
     letterSpacing: '-0.018rem',
   },
+  Head3_B_18: {
+    fontFamily: 'Pretendard',
+    fontStyle: 'normal',
+    fontWeight: 700,
+    fontSize: '1.8rem',
+    lineHeight: '140%',
+    letterSpacing: '-0.018rem',
+  },
   Title1_SB_16: {
     fontFamily: 'Pretendard',
     fontStyle: 'normal',
@@ -48,7 +65,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 500,
     fontSize: '1.6rem',
-    lineHeight: 'auto',
+    lineHeight: '145%',
     letterSpacing: '-0.016rem',
   },
   Body1_R_16: {
@@ -72,7 +89,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.4rem',
-    lineHeight: '145%',
+    lineHeight: '150%',
     letterSpacing: '-0.035rem',
   },
   Body4_SB_14: {

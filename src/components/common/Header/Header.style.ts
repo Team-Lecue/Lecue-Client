@@ -4,14 +4,17 @@ export const HeaderWrapper = styled.header<{ isDarkMode?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 1;
 
+  width: 100%;
   height: 5.4rem;
   padding: 0 1.6rem;
 
   border-bottom: 0.1rem solid
     ${({ isDarkMode, theme }) =>
-      isDarkMode ? theme.colors.white : theme.colors.BG};
+      isDarkMode ? theme.colors.DG : theme.colors.BG};
   background-color: ${({ isDarkMode, theme }) =>
     isDarkMode ? theme.colors.BG : theme.colors.white};
 `;

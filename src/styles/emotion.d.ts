@@ -15,11 +15,21 @@ type colors =
   | 'sub_yellow'
   | 'sub_green'
   | 'sub_blue'
-  | 'sub_purple';
+  | 'sub_purple'
+  | 'white90'
+  | 'white80'
+  | 'white70'
+  | 'white60'
+  | 'white50'
+  | 'white40'
+  | 'white30'
+  | 'white20'
+  | 'white10';
 
 type fonts =
   | 'Head1_B_20'
   | 'Head2_SB_18'
+  | 'Head3_B_18'
   | 'Title1_SB_16'
   | 'Title2_M_16'
   | 'Body1_R_16'
