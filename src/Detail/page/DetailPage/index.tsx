@@ -2,6 +2,7 @@ import Header from '../../../components/common/Header';
 import BookInfoContainer from '../../components/BookInfoContainer';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
 import SlideBanner from '../../components/SlideBanner';
+import * as S from './DetailPage.style';
 
 // test
 
@@ -76,34 +77,20 @@ const testProp = {
 
 function DetailPage() {
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <S.DetailPageWrapper>
       <Header headerTitle={'레큐북'} isDetailPage />
-      <div
-        style={{
-          marginTop: '5.4rem',
-        }}
-      >
+      <S.DetailPageBody>
         <SlideBanner name={testProp.name} />
-        <div
-          style={{
-            marginTop: '4.4rem',
-          }}
-        >
+        <S.LecueBookContainer>
           <BookInfoContainer {...testProp} />
-          {/* <LecueNoteListHeader
-            noteNum={testProp.noteNum}
-            backgroundColor={testProp.backgroundColor}
-            isZigZagView={isZigZagView}
-            buttonOnClick={() => setIsZigZagView(!isZigZagView)}
-          /> */}
           <LecueNoteListContainer
             noteNum={testProp.noteNum}
             backgroundColor={testProp.backgroundColor}
             noteList={testProp.noteList}
           />
-        </div>
-      </div>
-    </div>
+        </S.LecueBookContainer>
+      </S.DetailPageBody>
+    </S.DetailPageWrapper>
   );
 }
 
