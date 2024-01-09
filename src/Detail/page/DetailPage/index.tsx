@@ -1,5 +1,5 @@
 import Header from '../../../components/common/Header';
-import BookInfoContainer from '../../components/BookInfoContainer';
+import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
 import SlideBanner from '../../components/SlideBanner';
 import * as S from './DetailPage.style';
@@ -82,7 +82,7 @@ function DetailPage() {
       <S.DetailPageBody>
         <SlideBanner name={testProp.name} />
         <S.LecueBookContainer>
-          <BookInfoContainer {...testProp} />
+          <BookInfoBox {...testProp} />
           <LecueNoteListContainer
             noteNum={testProp.noteNum}
             backgroundColor={testProp.backgroundColor}
