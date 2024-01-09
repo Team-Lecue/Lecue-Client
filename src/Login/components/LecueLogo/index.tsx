@@ -1,7 +1,7 @@
 import { ImgKakaoLogo } from '../../../assets';
-import * as S from './LequeLogo.style';
+import * as S from './LecueLogo.style';
 
-function LequeLogo() {
+function LecueLogo() {
   return (
     <S.LogoWrapper>
       <S.Line />
@@ -12,4 +12,4 @@ function LequeLogo() {
   );
 }
 
-export default LequeLogo;
+export default LecueLogo;
