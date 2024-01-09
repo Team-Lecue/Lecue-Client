@@ -1,4 +1,5 @@
 import { Global, ThemeProvider } from '@emotion/react';
+import styled from '@emotion/styled';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Router from './Router';
@@ -9,13 +10,21 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <Global styles={gStyle} />
-        <Router />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <Wrapper>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Global styles={gStyle} />
+          <Router />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  border: none;
+  background-color: '#F5F5F5';
+  min-height: calc(var(--vh, 1vh) * 100);
+`;
 
 export default App;
