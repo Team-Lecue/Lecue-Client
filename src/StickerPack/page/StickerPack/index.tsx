@@ -20,7 +20,7 @@ function StickerPack() {
 
   return (
     <>
-      <Header headerTitle="스티커팩" isDarkMode />
+      <Header headerTitle="스티커팩" />
       <S.Body>
         <StickerList
           isSelectedId={isSelectedId}
