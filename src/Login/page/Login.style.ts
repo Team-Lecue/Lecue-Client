@@ -7,6 +7,6 @@ export const LoginWrapper = styled.section`
   background: linear-gradient(
     180deg,
     ${({ theme }) => theme.colors.key} 1%,
-    ${({ theme }) => theme.colors.background} 50%
+    ${({ theme }) => theme.colors.background} 55%
   );
 `;
