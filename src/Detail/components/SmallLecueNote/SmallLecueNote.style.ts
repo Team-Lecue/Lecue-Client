@@ -6,7 +6,7 @@ export const SmallLecueNoteWrapper = styled.div<{
 }>`
   width: 15.2rem;
   height: 16.6rem;
-  padding: 1.4rem 1rem 0.9rem 1rem;
+  padding: 1.4rem 1rem 0.9rem;
   margin: ${({ renderType }) => {
     switch (renderType) {
       case 1:
@@ -68,6 +68,7 @@ export const SmallLecueNoteNickName = styled.p`
 export const SmallLecueNoteContent = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
+
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 5;
@@ -83,7 +84,7 @@ export const SmallLecueNoteDate = styled.p`
   width: 100%;
   margin-top: 0.8rem;
 
-  color: rgba(75, 75, 75, 0.5);
+  color: rgb(75 75 75 / 50%);
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 
   text-align: right;

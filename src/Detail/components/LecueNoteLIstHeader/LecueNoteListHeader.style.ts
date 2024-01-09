@@ -4,14 +4,14 @@ export const LecueNoteListHeaderWrapper = styled.div<{
   backgroundColor: number;
 }>`
   display: flex;
-  column-gap: 1rem;
   position: sticky;
-  z-index: 2;
   top: 9.8rem;
+  z-index: 2;
 
-  padding: 1.2rem 1.65rem 0 1.65rem;
+  padding: 1.2rem 1.65rem 0;
 
   background-color: transparent;
+  column-gap: 1rem;
 `;
 
 export const LecueNoteCountBox = styled.div<{ backgroundColor: number }>`

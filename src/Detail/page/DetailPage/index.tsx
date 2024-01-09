@@ -16,7 +16,7 @@ const testProp = {
   content:
     '우리만의 스타 레오제이 !! 3년만에 첫 예능이자 라디오스타 출연 넘 축하해~!! 앞으로 계속 이렇게 우리 옆에 있어줘! 항상 응원할게! 어그래그래어엉',
   noteNum: 123123243,
-  backgroundColor: 0,
+  backgroundColor: 1,
   noteList: [
     {
       noteId: 1,
