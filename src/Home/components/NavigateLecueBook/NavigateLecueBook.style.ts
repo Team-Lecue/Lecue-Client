@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const MainWrapper = styled.div`
   width: 100%;
-  height: 34.7rem;
 
   background-color: ${({ theme }) => theme.colors.background};
 `;
@@ -19,6 +18,8 @@ export const IconWrapper = styled.section`
 export const ButtonWrapper = styled.section`
   display: flex;
   flex-direction: column;
+
+  padding: 0 9.5rem 4.9rem 0;
 
   gap: 1rem;
 `;

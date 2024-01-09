@@ -1,12 +1,12 @@
 import React from 'react';
 
 import LecueBookList from '../components/LecueBookList';
-import Main from '../components/Main';
+import NavigateLecueBook from '../components/NavigateLecueBook';
 
 function Home() {
   return (
     <React.Fragment>
-      <Main />
+      <NavigateLecueBook />
       <LecueBookList />
     </React.Fragment>
   );

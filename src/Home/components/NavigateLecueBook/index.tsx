@@ -1,7 +1,7 @@
 import { IcNotice, ImgLogoLecue } from '../../../assets';
-import * as S from './Main.style';
+import * as S from './NavigateLecueBook.style';
 
-function Main() {
+function NavigateLecueBook() {
   const handleClickMakingBtn = () => {
     // 로그인 여부 판별 후 레큐북 생성으로 이동
     alert('레큐북 만들기 버튼 클릭');
@@ -37,4 +37,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default NavigateLecueBook;
