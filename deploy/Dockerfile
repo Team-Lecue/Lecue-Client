@@ -6,8 +6,9 @@ WORKDIR /app
 RUN yarn install
 
 # Copy package files and install dependencies
-COPY package*.json ./
-RUN yarn install --legacy-peer-deps
+COPY package.json .
+COPY yarn.lock .
+
 
 # Copy the rest of the application code
 COPY . .
@@ -15,7 +16,7 @@ COPY . .
 # Run the build command using Yarn
 RUN yarn build
 
-EXPOSE 5173
+EXPOSE 5173/tcp
 
 # Set the command to start the server
-CMD ["yarn", "serve", "-s", "build"]
+CMD ["yarn", “dev”]
