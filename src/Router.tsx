@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import HomePage from './Home/page/HomePage';
+import SplashPage from './Splash/page/SplashPage';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<SplashPage />} />
       </Routes>
     </BrowserRouter>
   );
