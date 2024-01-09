@@ -77,12 +77,18 @@ function DetailPage() {
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header headerTitle={'레큐북'} isDetailPage />
-      <BookInfoContainer {...testProp} />
-      <LecueNoteListContainer
-        noteNum={testProp.noteNum}
-        backgroundColor={testProp.backgroundColor}
-        noteList={testProp.noteList}
-      />
+      <div
+        style={{
+          marginTop: '5.4rem',
+        }}
+      >
+        <BookInfoContainer {...testProp} />
+        <LecueNoteListContainer
+          noteNum={testProp.noteNum}
+          backgroundColor={testProp.backgroundColor}
+          noteList={testProp.noteList}
+        />
+      </div>
     </div>
   );
 }
