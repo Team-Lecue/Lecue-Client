@@ -153,10 +153,18 @@ const gStyle = css`
 
   #root, body, html {
     max-width: 43rem;
+
     margin: 0 auto;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+
+  #root::-webkit-scrollbar {
+    display: none; /* 크롬, 사파리, 오페라, 엣지 */
   }
 
   * {
+    max-width: 43rem;
     box-sizing: border-box;
   }
 
@@ -214,7 +222,7 @@ const gStyle = css`
   }
 
   @font-face {
-    font-family: 'Pretendard';
+    font-family: Pretendard;
     src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
   }
 `;
