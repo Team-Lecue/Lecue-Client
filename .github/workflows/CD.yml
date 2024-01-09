@@ -8,7 +8,6 @@ env:
   HOST:     ${{ secrets.HOST }}
   USERNAME: ${{ secrets.USERNAME }}
   KEY:      ${{ secrets.SSH_KEY }}
-  PORT:     ${{ secrets.PORT }}
 
 jobs:
   deploy-ci:
