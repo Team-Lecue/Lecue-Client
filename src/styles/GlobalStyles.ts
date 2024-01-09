@@ -116,9 +116,6 @@ const resetCss = css`
   }
 
   body {
-    width: 37.5rem;
-    height: 66.7rem;
-
     line-height: 1;
     touch-action: manipulation;
 
@@ -153,6 +150,11 @@ const resetCss = css`
 
 const gStyle = css`
   ${resetCss}
+
+  #root, body, html {
+    max-width: 43rem;
+    margin: 0 auto;
+  }
 
   * {
     box-sizing: border-box;
