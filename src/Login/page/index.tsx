@@ -1,12 +1,12 @@
 import Header from '../components/Header';
+import LecueExplain from '../components/LecueExplain';
 import * as S from './Login.style';
 
 function Login() {
   return (
     <S.LoginWrapper>
-      <S.Gradient>
-        <Header />
-      </S.Gradient>
+      <Header />
+      <LecueExplain />
     </S.LoginWrapper>
   );
 }
