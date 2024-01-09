@@ -1,16 +1,15 @@
-import React from 'react';
-
 import Body from '../../component/Body';
 import Bottom from '../../component/Bottom';
 import Header from '../../component/Header';
+import * as S from './SplashPage.style'
 
 function SplashPage() {
   return (
-    <React.Fragment>
+    <S.Wrapper>
       <Header />
       <Body />
       <Bottom />
-    </React.Fragment>
+    </S.Wrapper>
   );
 }
 
