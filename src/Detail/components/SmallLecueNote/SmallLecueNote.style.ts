@@ -7,7 +7,6 @@ export const SmallLecueNoteWrapper = styled.div<{
   width: 15.2rem;
   height: 16.6rem;
   padding: 1.4rem 1rem 0.9rem 1rem;
-
   margin: ${({ renderType }) => {
     switch (renderType) {
       case 1:
@@ -22,23 +21,6 @@ export const SmallLecueNoteWrapper = styled.div<{
         return '3rem 0 0 0.991rem';
       case 6:
         return '1rem 0 0 0.926rem';
-    }
-  }};
-
-  transform: ${({ renderType }) => {
-    switch (renderType) {
-      case 1:
-        return 'rotate(4deg)';
-      case 2:
-        return 'rotate(-4deg)';
-      case 3:
-        return 'rotate(-4deg)';
-      case 4:
-        return 'rotate(4deg)';
-      case 5:
-        return 'rotate(6deg)';
-      case 6:
-        return 'rotate(-6deg)';
     }
   }};
 
@@ -59,6 +41,23 @@ export const SmallLecueNoteWrapper = styled.div<{
         return theme.colors.sub_ivory;
     }
   }};
+
+  transform: ${({ renderType }) => {
+    switch (renderType) {
+      case 1:
+        return 'rotate(4deg)';
+      case 2:
+        return 'rotate(-4deg)';
+      case 3:
+        return 'rotate(-4deg)';
+      case 4:
+        return 'rotate(4deg)';
+      case 5:
+        return 'rotate(6deg)';
+      case 6:
+        return 'rotate(-6deg)';
+    }
+  }};
 `;
 
 export const SmallLecueNoteNickName = styled.p`
@@ -71,7 +70,6 @@ export const SmallLecueNoteContent = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
   -webkit-line-clamp: 5;
 
   height: 10rem;
@@ -82,10 +80,11 @@ export const SmallLecueNoteContent = styled.p`
 `;
 
 export const SmallLecueNoteDate = styled.p`
-  margin-top: 0.8rem;
   width: 100%;
-  text-align: right;
+  margin-top: 0.8rem;
 
   color: rgba(75, 75, 75, 0.5);
   ${({ theme }) => theme.fonts.E_Caption_R_12};
+
+  text-align: right;
 `;
