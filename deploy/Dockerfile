@@ -16,7 +16,5 @@ COPY . .
 # Run the build command using Yarn
 # RUN yarn build
 
-EXPOSE 5173/tcp
-
 # Set the command to start the server
 CMD ["yarn", "dev"]
