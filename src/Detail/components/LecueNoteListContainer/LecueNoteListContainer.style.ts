@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const LecueNoteListContainerWrapper = styled.div<{
   backgroundColor: number;
 }>`
-  height: 100vh;
+  flex: 1;
 
   background-color: ${({ theme, backgroundColor }) => {
     switch (backgroundColor) {
