@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   gap: 0.4rem;
 `;
 
-export const LecueNote = styled.article`
+export const LecueNote = styled.article<{ $bgColor: string }>`
   width: 100%;
   height: calc(100dvh - 32.5rem);
 
   border-radius: 0.6rem;
-  background-color: ${({ theme }) => theme.colors.sub_pink};
+  background-color: ${({ $bgColor }) => $bgColor};
 `;
 
 export const Notice = styled.p`
