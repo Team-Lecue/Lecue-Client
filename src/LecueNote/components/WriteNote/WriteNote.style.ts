@@ -8,14 +8,15 @@ export const Wrapper = styled.div`
 `;
 
 export const LecueNote = styled.article`
-  width: 34.2rem;
-  height: 34.2rem;
-  border-radius: 0.6rem;
+  width: 100%;
+  height: calc(100dvh - 32.5rem);
 
+  border-radius: 0.6rem;
   background-color: ${({ theme }) => theme.colors.sub_pink};
 `;
 
 export const Notice = styled.p`
   color: ${({ theme }) => theme.colors.key};
+
   ${({ theme }) => theme.fonts.Caption1_R_12};
 `;
