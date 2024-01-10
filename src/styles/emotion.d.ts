@@ -24,7 +24,8 @@ type colors =
   | 'white40'
   | 'white30'
   | 'white20'
-  | 'white10';
+  | 'white10'
+  | 'DG50';
 
 type fonts =
   | 'Head1_B_20'

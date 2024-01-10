@@ -25,6 +25,7 @@ const colors = {
   white30: '#FFFFFF4D',
   white20: '#FFFFFF33',
   white10: '#FFFFFF1A',
+  DG50: '#49494980',
 };
 
 const fonts = {
