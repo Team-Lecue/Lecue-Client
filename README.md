@@ -1,7 +1,7 @@
 <div align="center">
 <h1> 💌 Lecue 💌 </h1>
 
-<img alt="로고 대문 이미지" src="https://private-user-images.githubusercontent.com/67463603/294701719-77faaad4-1dc0-49ff-a19c-71f07e52b9ac.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQ4NTc4MjEsIm5iZiI6MTcwNDg1NzUyMSwicGF0aCI6Ii82NzQ2MzYwMy8yOTQ3MDE3MTktNzdmYWFhZDQtMWRjMC00OWZmLWExOWMtNzFmMDdlNTJiOWFjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTEwVDAzMzIwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBkOTYxY2U3Y2E1Mjg5YzVjOTg0MTNkODA2ZWY3ZTI3N2MzN2I2NmUxNjkwNDA1OGVjNzljMGE3NzAwMjg5YjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.rFdpID458vCvpq31f0EFZxZ1bT8OSHCf_XAIDs5SH-s">
+<img alt="로고 대문 이미지" width="257" alt="image" src="https://github.com/Team-Lecue/Lecue-Client/assets/65286685/f5211974-831b-4743-9948-345ec16fc196">
 </div>
 
 <br/>
@@ -20,7 +20,7 @@
 | <img src="https://avatars.githubusercontent.com/u/80264647?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/65286685?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/60962533?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg" width="200" height="200" alt="프로필사진"> |
 | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
 |                            <div align = "center"><b>[짱리드]아름</b></div>                            |                            <div align = "center"><b>은빈</b></div>                            |                            <div align = "center"><b>정우</b></div>                            |                            <div align = "center"><b>도윤</b></div>                            |
-|                            [@Arooming](https://github.com/Arooming)                             |                        [@eunbeann](https://github.com/eunbeann/300x300)                         |                       [@jungwoo3490](https://github.com/jungwoo3490)                        |                       [@binllionaire](https://github.com/binllionaire)                        |
+|                            [@Arooming](https://github.com/Arooming)                             |                        [@eunbeann](https://github.com/eunbeann)                         |                       [@jungwoo3490](https://github.com/jungwoo3490)                        |                       [@binllionaire](https://github.com/binllionaire)                        |
 
 
 <br/>
