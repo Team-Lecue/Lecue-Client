@@ -79,7 +79,7 @@ function DetailPage() {
   return (
     <S.DetailPageWrapper>
       <Header headerTitle={'레큐북'} isDetailPage />
-      <S.DetailPageBody>
+      <S.DetailPageBodyWrapper>
         <SlideBanner name={testProp.name} />
         <S.LecueBookContainer>
           <BookInfoBox {...testProp} />
@@ -89,7 +89,7 @@ function DetailPage() {
             noteList={testProp.noteList}
           />
         </S.LecueBookContainer>
-      </S.DetailPageBody>
+      </S.DetailPageBodyWrapper>
     </S.DetailPageWrapper>
   );
 }

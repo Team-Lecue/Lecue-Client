@@ -9,7 +9,7 @@ export const DetailPageWrapper = styled.div`
   height: 100dvh;
 `;
 
-export const DetailPageBody = styled.div`
+export const DetailPageBodyWrapper = styled.div`
   margin-top: 5.4rem;
 `;
 
