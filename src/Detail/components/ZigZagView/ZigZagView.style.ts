@@ -4,8 +4,8 @@ export const ZigZagViewWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  width: 100%;
-  padding-top: 0.4rem;
+  width: 34.2rem;
+  padding: 0.4rem 0 2rem 0;
 `;
 
 export const LecueNoteContainer = styled.div`
