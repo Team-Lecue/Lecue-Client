@@ -1,3 +1,9 @@
+import {
+  BtnFloatingSticker,
+  BtnFloatingStickerOrange,
+  BtnFloatingWrite,
+  BtnFloatingWriteOrange,
+} from '../../../assets';
 import Header from '../../../components/common/Header';
 import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
@@ -16,7 +22,7 @@ const testProp = {
   content:
     '우리만의 스타 레오제이 !! 3년만에 첫 예능이자 라디오스타 출연 넘 축하해~!! 앞으로 계속 이렇게 우리 옆에 있어줘! 항상 응원할게! 어그래그래어엉',
   noteNum: 123123243,
-  backgroundColor: 1,
+  backgroundColor: 0,
   noteList: [
     {
       noteId: 1,
@@ -75,6 +81,14 @@ const testProp = {
 };
 
 function DetailPage() {
+  const handleClickStickerButton = () => {
+    // 스티커 페이지 이동
+  };
+
+  const handleClickWriteButton = () => {
+    // 레큐노트 작성 페이지 이동
+  };
+
   return (
     <S.DetailPageWrapper>
       <Header headerTitle={'레큐북'} isDetailPage />
@@ -89,6 +103,20 @@ function DetailPage() {
           />
         </S.LecueBookContainer>
       </S.DetailPageBodyWrapper>
+      <S.StickerButton type="button" onClick={handleClickStickerButton}>
+        {testProp.backgroundColor === 0 ? (
+          <BtnFloatingSticker />
+        ) : (
+          <BtnFloatingStickerOrange />
+        )}
+      </S.StickerButton>
+      <S.WriteButton type="button" onClick={handleClickWriteButton}>
+        {testProp.backgroundColor === 0 ? (
+          <BtnFloatingWrite />
+        ) : (
+          <BtnFloatingWriteOrange />
+        )}
+      </S.WriteButton>
     </S.DetailPageWrapper>
   );
 }
