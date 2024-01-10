@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TEXT_COLOR_CHART } from '../../constants/ColorChart';
-import * as S from './TextColor.style';
+import * as S from '../ColorChart.style';
 
 function TextColor() {
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
