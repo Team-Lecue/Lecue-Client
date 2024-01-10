@@ -15,6 +15,8 @@ function StickerList(props: StickerListProps) {
 
   return (
     <S.Wrapper>
+      {stickerPack?.length > 0 &&
+        stickerPack.map((data: stickerPackType) => (
           <Fragment key={data.stickerCategory}>
           <S.Title>{data.stickerCategory}</S.Title>
           <S.StickerGridWrapper>
