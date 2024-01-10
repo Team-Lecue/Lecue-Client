@@ -65,6 +65,18 @@ export const SmallLecueNoteNickName = styled.p`
   ${({ theme }) => theme.fonts.Title1_SB_16};
 `;
 
+export const SmallLecueNoteContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 10rem;
+  margin-top: 0.6rem;
+
+  color: ${({ theme }) => theme.colors.BG};
+  ${({ theme }) => theme.fonts.Body2_M_14};
+`;
+
 export const SmallLecueNoteContent = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -73,8 +85,7 @@ export const SmallLecueNoteContent = styled.p`
   text-overflow: ellipsis;
   -webkit-line-clamp: 5;
 
-  height: 10rem;
-  margin-top: 0.6rem;
+  max-height: 100%;
 
   color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Body2_M_14};

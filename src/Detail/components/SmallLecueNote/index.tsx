@@ -21,7 +21,9 @@ function SmallLecueNote({
       noteBackgroundColor={noteBackgroundColor}
     >
       <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
-      <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
+      <S.SmallLecueNoteContentWrapper>
+        <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
+      </S.SmallLecueNoteContentWrapper>
       <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
     </S.SmallLecueNoteWrapper>
   );
