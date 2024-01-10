@@ -23,6 +23,7 @@ function StickerList(props: StickerListProps) {
             <S.StickerGridWrapper>
               {data.stickerList.map((sticker) => (
                 <S.ImageWrapper
+                  type="button"
                   key={sticker.stickerId}
                   onClick={() => handleStickerClick(sticker.stickerId)}
                   isSelected={sticker.stickerId === isSelectedId}
