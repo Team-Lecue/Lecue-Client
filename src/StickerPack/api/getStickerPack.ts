@@ -1,4 +1,4 @@
-import { api } from '../api';
+import { api } from '../../libs/api';
 
 export async function getStickerPack(bookId: number) {
   const data = await api.get(`/api/stickers/${bookId}`, {

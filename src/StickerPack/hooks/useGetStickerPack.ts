@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { getStickerPack } from '../../libs/hooks/getStickerPack';
+import { getStickerPack } from '../api/getStickerPack';
 
 export default function useGetStickerPack(bookId: number) {
   const { data: stickerPack } = useQuery(
