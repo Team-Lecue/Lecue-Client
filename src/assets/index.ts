@@ -18,7 +18,6 @@ import ImgKakao01 from './img/img_kakao_01.svg?react';
 import ImgKakao02 from './img/img_kakao_02.svg?react';
 import ImgKakao03 from './img/img_kakao_03.svg?react';
 import ImgKakaoBook from './img/img_kakao_book.svg?react';
-import ImgKakaoLine from './img/img_kakao_line.svg?react';
 import ImgKakaoLogo from './img/img_kakao_logo.svg?react';
 import ImgKakaoSpring from './img/img_kakao_spring.svg?react';
 import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
@@ -48,7 +47,6 @@ export {
   ImgKakao02,
   ImgKakao03,
   ImgKakaoBook,
-  ImgKakaoLine,
   ImgKakaoLogo,
   ImgKakaoSpring,
   ImgKakaoStarOrange,
