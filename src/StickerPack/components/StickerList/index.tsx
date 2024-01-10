@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 
 import useGetStickerPack from '../../hooks/useGetStickerPack';
 import { stickerPackType } from '../../type/stickerPackType';
@@ -15,8 +15,7 @@ function StickerList(props: StickerListProps) {
 
   return (
     <S.Wrapper>
-      {stickerPack.map((data: stickerPackType) => (
-        <React.Fragment key={data.stickerCategory}>
+          <Fragment key={data.stickerCategory}>
           <S.Title>{data.stickerCategory}</S.Title>
           <S.StickerGridWrapper>
             {data.stickerList.map((sticker) => (
@@ -32,7 +31,7 @@ function StickerList(props: StickerListProps) {
               </S.ImageWrapper>
             ))}
           </S.StickerGridWrapper>
-        </React.Fragment>
+          </Fragment>
       ))}
     </S.Wrapper>
   );
