@@ -1,28 +1,28 @@
-import { useState } from 'react';
-import { BG_COLOR_CHART, TEXT_COLOR_CHART } from '../../constants/ColorChart';
+import {
+  BG_COLOR_CHART,
+  CATEGORY,
+  TEXT_COLOR_CHART,
+} from '../../constants/ColorChart';
 import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
-function SelectColor() {
-  const CATEGORY = ['텍스트색', '배경색'];
-  const [clickedCategory, setclickedCategory] = useState('텍스트색');
-  const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-  const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
-
-  const handleClickCategory = (
+interface SelectColorProps {
+  clickedCategory: string;
+  clickedTextColor: string;
+  clickedBgColor: string;
+  handleCategoryFn: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    setclickedCategory(e.currentTarget.innerHTML);
-  };
+  ) => void;
+  handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
-  const handleClickedColorBtn = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    clickedCategory === '텍스트색'
-      ? setClickedTextColor(e.currentTarget.id)
-      : setclickedBgColor(e.currentTarget.id);
-  };
-
+function SelectColor({
+  clickedCategory,
+  clickedTextColor,
+  clickedBgColor,
+  handleCategoryFn,
+  handleColorFn,
+}: SelectColorProps) {
   return (
     <S.Wrapper>
       <S.CategoryWrapper>
@@ -31,7 +31,7 @@ function SelectColor() {
             <S.Category
               type="button"
               variant={clickedCategory === it}
-              onClick={handleClickCategory}
+              onClick={handleCategoryFn}
             >
               {it}
             </S.Category>
@@ -43,13 +43,13 @@ function SelectColor() {
         <ShowColorChart
           colorChart={TEXT_COLOR_CHART}
           state={clickedTextColor}
-          handleFn={handleClickedColorBtn}
+          handleFn={handleColorFn}
         />
       ) : (
         <ShowColorChart
           colorChart={BG_COLOR_CHART}
           state={clickedBgColor}
-          handleFn={handleClickedColorBtn}
+          handleFn={handleColorFn}
         />
       )}
     </S.Wrapper>
