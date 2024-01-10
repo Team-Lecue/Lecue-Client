@@ -116,6 +116,8 @@ const resetCss = css`
   }
 
   body {
+    position: relative;
+
     line-height: 1;
     touch-action: manipulation;
 
