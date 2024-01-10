@@ -19,7 +19,7 @@ function LecueNoteListHeader({
       <S.LecueNoteCountBox
         backgroundColor={backgroundColor}
       >{`${noteNum}개`}</S.LecueNoteCountBox>
-      <S.LecueNoteRenderModeButton onClick={buttonOnClick}>
+      <S.LecueNoteRenderModeButton type="button" onClick={buttonOnClick}>
         {isZigZagView ? <BtnFloatingList /> : <BtnFloatingPostit />}
       </S.LecueNoteRenderModeButton>
     </S.LecueNoteListHeaderWrapper>
