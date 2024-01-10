@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.article`
   display: flex;
@@ -25,6 +25,5 @@ export const Category = styled.button<{ variant: boolean }>`
           ${theme.fonts.Title2_M_16}
           color: ${theme.colors.MG}
         `}
-
   background-color: none;
 `;
