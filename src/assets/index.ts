@@ -3,7 +3,9 @@
 import BtnFloatingList from './button/btn_floating_list.svg?react';
 import BtnFloatingPostit from './button/btn_floating_postit.svg?react';
 import BtnFloatingSticker from './button/btn_floating_sticker.svg?react';
+import BtnFloatingStickerOrange from './button/btn_floating_sticker_orange.svg?react';
 import BtnFloatingWrite from './button/btn_floating_write.svg?react';
+import BtnFloatingWriteOrange from './button/btn_floating_write_orange.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
@@ -23,7 +25,9 @@ export {
   BtnFloatingList,
   BtnFloatingPostit,
   BtnFloatingSticker,
+  BtnFloatingStickerOrange,
   BtnFloatingWrite,
+  BtnFloatingWriteOrange,
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcCamera,
@@ -35,7 +39,7 @@ export {
   ImgBook,
   ImgLe,
   ImgLogoLecue,
-  ImgStarPosit,
   ImgStarOrangeLine,
+  ImgStarPosit,
   ImgSticker,
 };
