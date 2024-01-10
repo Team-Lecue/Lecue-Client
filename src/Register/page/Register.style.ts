@@ -7,6 +7,7 @@ export const Wrapper = styled.article`
 
   width: 100vw;
   height: 100dvh;
+  padding: 0 1.6rem;
 
   background-color: ${({ theme }) => theme.colors.background};
 `;
