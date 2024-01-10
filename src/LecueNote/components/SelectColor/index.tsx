@@ -1,12 +1,33 @@
-import BgColor from '../BgColor';
-import TextColor from '../TextColor';
+import { useState } from 'react';
 import * as S from './SelectColor.style';
 
 function SelectColor() {
+  const [isClicked, setIsClicked] = useState('텍스트색');
+
+  const handleClickCategory = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    setIsClicked(e.currentTarget.innerHTML);
+  };
+
   return (
     <S.Wrapper>
-      <TextColor />
-      <BgColor />
+      <S.CategoryWrapper>
+        <S.Category
+          type="button"
+          variant={isClicked === '텍스트색'}
+          onClick={(e) => handleClickCategory(e)}
+        >
+          텍스트색
+        </S.Category>
+        <S.Category
+          type="button"
+          variant={isClicked === '배경색'}
+          onClick={handleClickCategory}
+        >
+          배경색
+        </S.Category>
+      </S.CategoryWrapper>
     </S.Wrapper>
   );
 }
