@@ -1,3 +1,5 @@
+export const CATEGORY = ['텍스트색', '배경색'];
+
 export const TEXT_COLOR_CHART = ['#191919', '#FFF'];
 
 export const BG_COLOR_CHART = [
