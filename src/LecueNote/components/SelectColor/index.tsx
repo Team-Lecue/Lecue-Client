@@ -5,16 +5,7 @@ import {
 } from '../../constants/ColorChart';
 import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
-
-interface SelectColorProps {
-  clickedCategory: string;
-  clickedTextColor: string;
-  clickedBgColor: string;
-  handleCategoryFn: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
-  handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+import { SelectColorProps } from '../../type/lecueNoteType';
 
 function SelectColor({
   clickedCategory,

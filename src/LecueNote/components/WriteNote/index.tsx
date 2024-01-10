@@ -1,8 +1,5 @@
+import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
-
-interface WriteNoteProps {
-  clickedBgColor: string;
-}
 
 function WriteNote({ clickedBgColor }: WriteNoteProps) {
   return (

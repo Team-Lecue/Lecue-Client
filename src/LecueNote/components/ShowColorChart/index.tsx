@@ -1,10 +1,5 @@
+import { ShowColorChartProps } from '../../type/lecueNoteType';
 import * as S from './ShowColorChart.style';
-
-interface ShowColorChartProps {
-  colorChart: string[];
-  state: string;
-  handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}
 
 function ShowColorChart({ colorChart, state, handleFn }: ShowColorChartProps) {
   return (
