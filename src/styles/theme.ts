@@ -157,12 +157,12 @@ const fonts = {
     letterSpacing: '0',
   },
   Orange: {
-    fontFamily: 'Sequel Sans',
+    fontFamily: 'Pretendard',
     fontStyle: 'normal',
-    fontWeight: 317,
+    fontWeight: 500,
     fontSize: '2.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.066rem',
+    letterSpacing: '0',
   },
 };
 
