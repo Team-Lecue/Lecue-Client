@@ -14,6 +14,7 @@ import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
 import IcNotice from './icon/ic_notice.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
+import IcX from './icon/ic_x.svg?react';
 import ImgBook from './img/img_book.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
@@ -36,6 +37,7 @@ export {
   IcHome,
   IcNotice,
   IcSharing,
+  IcX,
   ImgBook,
   ImgLe,
   ImgLogoLecue,
