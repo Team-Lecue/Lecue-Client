@@ -1,16 +1,12 @@
-FROM node:18.17.0-slim as builder
+FROM node:18.17.0-slim
 
 WORKDIR /app
 
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn install
+RUN yarn
 
 COPY . .
 
-RUN yarn run build
-
-RUN npm install -g serve
-
-CMD ["serve", "-s", "build"]
+CMD ["yarn", "dev"]
