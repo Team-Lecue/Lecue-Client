@@ -7,6 +7,7 @@ interface Note {
   content: string;
   noteDate: string;
   noteNickname: string;
+  noteTextColor: number;
   noteBackgroundColor: number;
   noteBackgroundImage: string;
 }
