@@ -6,7 +6,7 @@ export const Wrapper = styled.section`
 
   width: 100vw;
   padding: 0 1.7rem;
-  margin: 2.4rem 4rem;
+  margin: 7.8rem 4rem;
 
   gap: 3.2rem;
 `;
