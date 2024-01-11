@@ -12,7 +12,9 @@ interface Note {
   content: string;
   noteDate: string;
   noteNickname: string;
+  noteTextColor: number;
   noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
 
 interface LecueNoteModalProps {
@@ -24,6 +26,8 @@ function LecueNoteModal({ selectedNote }: LecueNoteModalProps) {
     <S.BlurryContainer>
       <S.LecueNoteModalWrapper
         noteBackgroundColor={selectedNote?.noteBackgroundColor || 0}
+        noteBackgroundImage={selectedNote?.noteBackgroundImage || ''}
+        noteTextColor={selectedNote?.noteTextColor || 0}
       >
         <S.CloseButton>
           <IcX />

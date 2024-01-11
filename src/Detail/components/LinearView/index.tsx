@@ -8,6 +8,7 @@ interface Note {
   noteDate: string;
   noteNickname: string;
   noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
 
 interface LinearViewProps {

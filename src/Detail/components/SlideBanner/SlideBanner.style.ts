@@ -31,6 +31,7 @@ export const AnimationBox = styled.div<{
 
   width: ${(props) => props.width}rem;
   max-width: none;
+
   height: 100%;
 
   animation: ${infiniteSlide};
@@ -45,5 +46,6 @@ export const SlideBannerItemList = styled.div<{ width: number }>`
 
   width: ${(props) => props.width}rem;
   max-width: none;
+
   height: 100%;
 `;
