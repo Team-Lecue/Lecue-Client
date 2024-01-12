@@ -27,6 +27,7 @@ import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
 import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
+import ImgSplashLogo from './img/img_splash_logo.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
 import ImgStarPosit from './img/img_star_postit.svg?react';
 import ImgSticker from './img/img_sticker.svg?react';
@@ -62,4 +63,5 @@ export {
   ImgStarOrangeLine,
   ImgStarPosit,
   ImgSticker,
+  ImgSplashLogo,
 };
