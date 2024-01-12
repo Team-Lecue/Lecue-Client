@@ -41,7 +41,7 @@ function SmallLecueNote({
 
   const getClickedNote = () => noteList.find((note) => note.noteId === noteId);
 
-  const handleClick = () => {
+  const handleClickSmallLecueNote = () => {
     const clickedNote = getClickedNote();
     if (clickedNote) {
       setModalShow((prevModalShow) => !prevModalShow);
@@ -54,7 +54,7 @@ function SmallLecueNote({
       noteTextColor={noteTextColor}
       noteBackgroundColor={noteBackgroundColor}
       noteBackgroundImage={noteBackgroundImage}
-      onClick={handleClick}
+      onClick={handleClickSmallLecueNote}
     >
       <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
       <S.SmallLecueNoteContentWrapper>
