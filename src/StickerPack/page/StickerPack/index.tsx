@@ -37,6 +37,8 @@ function StickerPack() {
           selectedStickerData={selectedStickerData}
           handleStickerClick={handleStickerClick}
         />
+      </S.Body>
+      <S.ButtonWrapper>
         <Button
           variant="choose"
           disabled={selectedStickerData.stickerImage === ''}
@@ -44,7 +46,7 @@ function StickerPack() {
         >
           선택 완료
         </Button>
-      </S.Body>
+      </S.ButtonWrapper>
     </S.Wrapper>
   );
 }

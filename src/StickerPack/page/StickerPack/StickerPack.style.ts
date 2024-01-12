@@ -16,3 +16,11 @@ export const Wrapper = styled.section`
   width: 100vw;
   height: 100dvh;
 `;
+
+export const ButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 2rem;
+
+  width: 100%;
+  padding: 0 2.5rem;
+`;
