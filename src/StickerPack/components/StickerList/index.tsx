@@ -24,8 +24,12 @@ function StickerList(props: StickerListProps) {
                 <S.ImageWrapper
                   type="button"
                   key={sticker.stickerId}
-                  onClick={() => handleStickerClick(sticker.stickerId)}
-                  isSelected={sticker.stickerId === isSelectedId}
+                  onClick={() =>
+                    handleStickerClick(sticker.stickerId, sticker.stickerImage)
+                  }
+                  isSelected={
+                    sticker.stickerId === selectedStickerData.stickerId
+                  }
                 >
                   <S.ImageComponent
                     src={sticker.stickerImage}

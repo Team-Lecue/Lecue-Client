@@ -15,9 +15,14 @@ function StickerPack() {
     stickerImage: '',
   });
 
-  const handleStickerClick = (stickerId: number) => {
-    setIsSelectedId(stickerId);
+  const handleStickerClick = (newId: number, newImage: string) => {
+    setSelectedStickerData((prevState) => ({
+      ...prevState,
+      stickerId: newId,
+      stickerImage: newImage,
+    }));
   };
+
 
   const handleClickDone = () => {
     alert(`${isSelectedId}`);
