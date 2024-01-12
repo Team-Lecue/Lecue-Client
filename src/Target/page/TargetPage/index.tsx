@@ -8,7 +8,7 @@ import * as S from './TargetPage.style';
 
 function TargetPage() {
   const [imgFile, setImgFile] = useState('');
-  const [wordCnt, setWordCnt] = useState(0);
+  const [name, setName] = useState('');
 
   const handleClickCompleteButton = () => {
     // API 쏘기...
@@ -21,10 +21,7 @@ function TargetPage() {
         <S.InputSectionWrapper>
           <S.NameInputWrapper>
             <S.SectionTitle>누구를 위한 레큐북인가요?</S.SectionTitle>
-            <NameInput
-              wordCnt={wordCnt}
-              changeWordLength={(wordCnt) => setWordCnt(wordCnt)}
-            />
+            <NameInput name={name} changeName={(name) => setName(name)} />
           </S.NameInputWrapper>
           <S.FavoriteInputWrapper>
             <S.SectionTitle>최애의 사진 업로드</S.SectionTitle>
@@ -35,7 +32,7 @@ function TargetPage() {
           </S.FavoriteInputWrapper>
         </S.InputSectionWrapper>
         <CompleteButton
-          isActive={imgFile !== '' && wordCnt !== 0}
+          isActive={imgFile !== '' && name.length !== 0}
           onClick={handleClickCompleteButton}
         />
       </S.TargetPageBodyWrapper>

@@ -1,19 +1,14 @@
-import { useState } from 'react';
-
 import * as S from './NameInput.style';
 
 interface NameInputProps {
-  wordCnt: number;
-  changeWordLength: (wordCnt: number) => void;
+  name: string;
+  changeName: (name: string) => void;
 }
 
-function NameInput({ wordCnt, changeWordLength }: NameInputProps) {
-  const [name, setName] = useState('');
-
+function NameInput({ name, changeName }: NameInputProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length <= 8) {
-      setName(e.target.value);
-      changeWordLength(e.target.value.length);
+      changeName(e.target.value);
     }
   };
   return (
@@ -25,7 +20,7 @@ function NameInput({ wordCnt, changeWordLength }: NameInputProps) {
           value={name}
           onChange={handleChangeInput}
         />
-        <S.WordCount>({wordCnt}/8)</S.WordCount>
+        <S.WordCount>({name.length}/8)</S.WordCount>
       </S.InputContainer>
     </S.NameWrapper>
   );
