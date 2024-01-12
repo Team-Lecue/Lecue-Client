@@ -30,7 +30,7 @@ function StickerPack() {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <Header headerTitle="스티커팩" />
       <S.Body>
         <StickerList
@@ -45,7 +45,7 @@ function StickerPack() {
           선택 완료
         </Button>
       </S.Body>
-    </>
+    </S.Wrapper>
   );
 }
 
