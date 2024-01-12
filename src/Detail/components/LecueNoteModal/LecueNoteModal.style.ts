@@ -12,7 +12,7 @@ export const BlurryContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: rgb(0 0 0 / 75%);
+  background-color: ${({ theme }) => theme.colors.Modal};
 `;
 
 export const LecueNoteModalWrapper = styled.div<{

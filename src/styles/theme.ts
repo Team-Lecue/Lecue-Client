@@ -26,6 +26,7 @@ const colors = {
   white20: '#FFFFFF33',
   white10: '#FFFFFF1A',
   DG50: '#49494980',
+  Modal: '#000000BF',
 };
 
 const fonts = {
