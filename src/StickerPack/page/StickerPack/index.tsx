@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Button from '../../../components/common/Button/index.tsx';
 import Header from '../../../components/common/Header/index.tsx';
 import StickerList from '../../components/StickerList/index.tsx';
+// type
+import { stickerType } from '../../type/stickerPackType.ts';
 // style
 import * as S from './StickerPack.style.ts';
 
