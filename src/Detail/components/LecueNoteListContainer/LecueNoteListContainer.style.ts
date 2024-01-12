@@ -15,3 +15,10 @@ export const LecueNoteListContainerWrapper = styled.div<{
   }};
   flex: 1;
 `;
+
+export const LecueNoteListViewWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+`;
