@@ -16,3 +16,21 @@ export const DetailPageBodyWrapper = styled.div`
 export const LecueBookContainer = styled.div`
   margin-top: 4.4rem;
 `;
+
+export const StickerButton = styled.button`
+  position: fixed;
+  right: 2.057rem;
+  bottom: 9.8rem;
+
+  width: 6.8rem;
+  height: 6.8rem;
+`;
+
+export const WriteButton = styled.button`
+  position: fixed;
+  right: 2.057rem;
+  bottom: 2rem;
+
+  width: 6.8rem;
+  height: 6.8rem;
+`;

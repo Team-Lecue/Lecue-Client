@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 
 export const SmallLecueNoteWrapper = styled.div<{
   renderType: number;
+  noteTextColor: number;
   noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }>`
   width: 15.2rem;
   height: 16.6rem;
@@ -25,20 +27,35 @@ export const SmallLecueNoteWrapper = styled.div<{
   }};
 
   border-radius: 0.4rem;
-  background-color: ${({ theme, noteBackgroundColor }) => {
-    switch (noteBackgroundColor) {
+  background: ${({ theme, noteBackgroundColor, noteBackgroundImage }) => {
+    if (noteBackgroundColor === -1 && noteBackgroundImage) {
+      return `url(${noteBackgroundImage})`;
+    } else {
+      switch (noteBackgroundColor) {
+        case 1:
+          return theme.colors.sub_pink;
+        case 2:
+          return theme.colors.sub_blue;
+        case 3:
+          return theme.colors.sub_green;
+        case 4:
+          return theme.colors.sub_purple;
+        case 5:
+          return theme.colors.sub_yellow;
+        case 6:
+          return theme.colors.sub_ivory;
+        default:
+          return 'transparent';
+      }
+    }
+  }};
+  background-size: cover;
+  color: ${({ theme, noteTextColor }) => {
+    switch (noteTextColor) {
+      case 0:
+        return theme.colors.white;
       case 1:
-        return theme.colors.sub_pink;
-      case 2:
-        return theme.colors.sub_blue;
-      case 3:
-        return theme.colors.sub_green;
-      case 4:
-        return theme.colors.sub_purple;
-      case 5:
-        return theme.colors.sub_yellow;
-      case 6:
-        return theme.colors.sub_ivory;
+        return theme.colors.BG;
     }
   }};
 
@@ -61,8 +78,18 @@ export const SmallLecueNoteWrapper = styled.div<{
 `;
 
 export const SmallLecueNoteNickName = styled.p`
-  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.Title1_SB_16};
+`;
+
+export const SmallLecueNoteContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 10rem;
+  margin-top: 0.6rem;
+
+  ${({ theme }) => theme.fonts.Body2_M_14};
 `;
 
 export const SmallLecueNoteContent = styled.p`
@@ -73,10 +100,8 @@ export const SmallLecueNoteContent = styled.p`
   text-overflow: ellipsis;
   -webkit-line-clamp: 5;
 
-  height: 10rem;
-  margin-top: 0.6rem;
+  max-height: 100%;
 
-  color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Body2_M_14};
 `;
 
@@ -84,7 +109,7 @@ export const SmallLecueNoteDate = styled.p`
   width: 100%;
   margin-top: 0.8rem;
 
-  color: rgb(75 75 75 / 50%);
+  color: ${({ theme }) => theme.colors.DG50};
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 
   text-align: right;
