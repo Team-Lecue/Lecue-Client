@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const LecueNote = styled.article<{ $bgColor: string }>`
   width: 100%;
-  height: calc(100dvh - 32.5rem);
+  height: calc(100dvh - 33rem);
 
   border-radius: 0.6rem;
   background-color: ${({ $bgColor }) => $bgColor};
