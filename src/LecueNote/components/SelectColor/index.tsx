@@ -2,10 +2,10 @@ import {
   BG_COLOR_CHART,
   CATEGORY,
   TEXT_COLOR_CHART,
-} from '../../constants/ColorChart';
+} from '../../constants/colorChart';
+import { SelectColorProps } from '../../type/lecueNoteType';
 import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
-import { SelectColorProps } from '../../type/lecueNoteType';
 
 function SelectColor({
   clickedCategory,
@@ -20,6 +20,7 @@ function SelectColor({
         {CATEGORY.map((it) => {
           return (
             <S.Category
+              key={it}
               type="button"
               variant={clickedCategory === it}
               onClick={handleCategoryFn}

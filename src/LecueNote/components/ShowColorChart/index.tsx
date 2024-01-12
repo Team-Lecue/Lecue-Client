@@ -5,7 +5,7 @@ function ShowColorChart({ colorChart, state, handleFn }: ShowColorChartProps) {
   return (
     <S.Wrapper>
       {colorChart.map((colorCode) => (
-        <S.ColorWrapper>
+        <S.ColorWrapper key={colorCode}>
           <S.Color
             type="button"
             id={colorCode}

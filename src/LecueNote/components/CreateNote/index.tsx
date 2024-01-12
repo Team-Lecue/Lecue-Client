@@ -3,7 +3,7 @@ import {
   BG_COLOR_CHART,
   CATEGORY,
   TEXT_COLOR_CHART,
-} from '../../constants/ColorChart';
+} from '../../constants/colorChart';
 import SelectColor from '../SelectColor';
 import WriteNote from '../WriteNote';
 import * as S from './CreateNote.style';
