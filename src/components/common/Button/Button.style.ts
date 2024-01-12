@@ -3,7 +3,10 @@ import styled from '@emotion/styled';
 export type ButtonStyle = 'choose' | 'complete';
 
 export const CustomButton = styled.button<{ variant: ButtonStyle }>`
-  width: 34.4rem;
+  position: fixed;
+  bottom: 2rem;
+
+  width: 100%;
   height: 6rem;
 
   border-radius: 0.625rem;
