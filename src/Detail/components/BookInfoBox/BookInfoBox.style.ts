@@ -55,7 +55,7 @@ export const BookInfoHeaderItem = styled.p<{ backgroundColor: number }>`
   color: ${({ theme, backgroundColor }) => {
     switch (backgroundColor) {
       case 0:
-        return 'rgba(255, 255, 255, 0.3)';
+        return theme.colors.white30;
       case 1:
         return theme.colors.MG;
     }
@@ -84,7 +84,7 @@ export const BookInfoContent = styled.p<{ backgroundColor: number }>`
   color: ${({ theme, backgroundColor }) => {
     switch (backgroundColor) {
       case 0:
-        return 'rgba(255, 255, 255, 0.8)';
+        return theme.colors.white80;
       case 1:
         return theme.colors.BG;
     }
