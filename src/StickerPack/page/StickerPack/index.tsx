@@ -10,7 +10,10 @@ import { stickerType } from '../../type/stickerPackType.ts';
 import * as S from './StickerPack.style.ts';
 
 function StickerPack() {
-  const [isSelectedId, setIsSelectedId] = useState<number | null>(null);
+  const [selectedStickerData, setSelectedStickerData] = useState<stickerType>({
+    stickerId: 0,
+    stickerImage: '',
+  });
 
   const handleStickerClick = (stickerId: number) => {
     setIsSelectedId(stickerId);
@@ -25,12 +28,12 @@ function StickerPack() {
       <Header headerTitle="스티커팩" />
       <S.Body>
         <StickerList
-          isSelectedId={isSelectedId}
+          selectedStickerData={selectedStickerData}
           handleStickerClick={handleStickerClick}
         />
         <Button
           variant="choose"
-          disabled={isSelectedId == null}
+          disabled={selectedStickerData.stickerImage === ''}
           onClick={handleClickDone}
         >
           선택 완료

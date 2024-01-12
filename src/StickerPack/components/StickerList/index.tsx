@@ -5,13 +5,12 @@ import { stickerPackType, stickerType } from '../../type/stickerPackType';
 import * as S from './StickerList.style';
 
 interface StickerListProps {
-  isSelectedId: number | null;
-  handleStickerClick: (stickerId: number) => void;
+  selectedStickerData: stickerType;
+  handleStickerClick: (newId: number, newImage: string) => void;
 }
 
 function StickerList(props: StickerListProps) {
-  const { isSelectedId, handleStickerClick } = props;
-  //TODO 임시 값 수정
+  const { selectedStickerData, handleStickerClick } = props;
   const { stickerPack } = useGetStickerPack(1);
 
   return (
