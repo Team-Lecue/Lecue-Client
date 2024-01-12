@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // component
 import Button from '../../../components/common/Button/index.tsx';
@@ -10,6 +11,7 @@ import { stickerType } from '../../type/stickerPackType.ts';
 import * as S from './StickerPack.style.ts';
 
 function StickerPack() {
+  const navigate = useNavigate();
   const [selectedStickerData, setSelectedStickerData] = useState<stickerType>({
     stickerId: 0,
     stickerImage: '',
@@ -23,9 +25,8 @@ function StickerPack() {
     }));
   };
 
-
   const handleClickDone = () => {
-    alert(`${isSelectedId}`);
+    navigate('/sticker-attach', { state: { sticker: selectedStickerData } });
   };
 
   return (
