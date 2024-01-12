@@ -109,7 +109,7 @@ export const SmallLecueNoteDate = styled.p`
   width: 100%;
   margin-top: 0.8rem;
 
-  color: rgb(75 75 75 / 50%);
+  color: ${({ theme }) => theme.colors.DG50};
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 
   text-align: right;
