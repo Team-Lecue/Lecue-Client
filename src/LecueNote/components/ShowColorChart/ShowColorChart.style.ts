@@ -3,14 +3,13 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   display: flex;
+  gap: 1.4rem;
   justify-content: flex-start;
   align-items: center;
 
   padding: 0.5rem 0.1rem 0.7rem 0.3rem;
 
   overflow-x: scroll;
-
-  gap: 1.4rem;
 `;
 
 export const ColorWrapper = styled.div`
