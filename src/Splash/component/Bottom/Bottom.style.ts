@@ -1,33 +1,11 @@
 import styled from '@emotion/styled';
 
-export const BottomWrapper = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  margin: 2.3rem 1.5rem 2rem;
-
-  gap: 4.7rem;
-`;
-
-export const TextWrapper = styled.article`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-export const Text = styled.p`
-  ${({ theme }) => theme.fonts.Title2_M_16};
-`;
-
-export const StartBtn = styled.button`
+export const BottomWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 100%;
+  width: calc(100% - 3rem);
   padding: 1.7rem 0;
 
   border-radius: 1rem;
