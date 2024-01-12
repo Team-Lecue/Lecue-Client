@@ -29,7 +29,7 @@ function LecueNoteModal({ selectedNote }: LecueNoteModalProps) {
         noteBackgroundImage={selectedNote?.noteBackgroundImage || ''}
         noteTextColor={selectedNote?.noteTextColor || 0}
       >
-        <S.CloseButton>
+        <S.CloseButton type="button">
           <IcX />
         </S.CloseButton>
         <S.LecueNoteModalNickname>
