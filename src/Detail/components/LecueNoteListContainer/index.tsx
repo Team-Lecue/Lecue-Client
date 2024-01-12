@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
+import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
 import * as S from './LecueNoteListContainer.style';
 
@@ -10,7 +11,9 @@ interface Note {
   content: string;
   noteDate: string;
   noteNickname: string;
+  noteTextColor: number;
   noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
 
 interface LecueNoteListContainerProps {
@@ -33,11 +36,13 @@ function LecueNoteListContainer({
         isZigZagView={isZigZagView}
         buttonOnClick={() => setIsZigZagView(!isZigZagView)}
       />
-      {isZigZagView ? (
-        <ZigZagView noteList={noteList} />
-      ) : (
-        <ZigZagView noteList={noteList} />
-      )}
+      <S.LecueNoteListViewWrapper>
+        {isZigZagView ? (
+          <ZigZagView noteList={noteList} />
+        ) : (
+          <LinearView noteList={noteList} />
+        )}
+      </S.LecueNoteListViewWrapper>
     </S.LecueNoteListContainerWrapper>
   );
 }

@@ -6,7 +6,7 @@ export const CustomButton = styled.button<{ variant: ButtonStyle }>`
   position: fixed;
   bottom: 2rem;
 
-  width: 34.4rem;
+  width: 100%;
   height: 6rem;
 
   border-radius: 0.625rem;

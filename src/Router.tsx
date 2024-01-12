@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import DetailPage from './Detail/page/DetailPage';
+import HealthTest from './HealthTest';
 import HomePage from './Home/page/HomePage';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import Login from './Login/page';
@@ -15,6 +16,7 @@ function Router() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/sticker-pack" element={<StickerPack />} />
         <Route path="/detail" element={<DetailPage />} />
+        <Route path="/test" element={<HealthTest />} />
       </Routes>
     </BrowserRouter>
   );

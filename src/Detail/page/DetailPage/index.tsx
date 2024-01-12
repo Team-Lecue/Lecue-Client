@@ -1,3 +1,9 @@
+import {
+  BtnFloatingSticker,
+  BtnFloatingStickerOrange,
+  BtnFloatingWrite,
+  BtnFloatingWriteOrange,
+} from '../../../assets';
 import Header from '../../../components/common/Header';
 import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
@@ -22,19 +28,24 @@ const testProp = {
       noteId: 1,
       renderType: 1,
       content:
-        '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
+        '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
-      noteBackgroundColor: 1,
+      noteTextColor: 0,
+      noteBackgroundColor: -1,
+      noteBackgroundImage:
+        'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/469456ec-5894-4014-8b90-332d453217ba.jpg',
     },
     {
       noteId: 2,
       renderType: 2,
-      content:
-        '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
+      content: '야야야양야야야양야양 다음에 웨비고?',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
-      noteBackgroundColor: 2,
+      noteTextColor: 1,
+      noteBackgroundColor: -1,
+      noteBackgroundImage:
+        'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/912ac7e2-672a-4f26-b115-b90cda4d7cc3.jpg',
     },
     {
       noteId: 3,
@@ -43,7 +54,10 @@ const testProp = {
         '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
-      noteBackgroundColor: 3,
+      noteTextColor: 0,
+      noteBackgroundColor: -1,
+      noteBackgroundImage:
+        'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/676c2ca3-f868-423f-8000-a0bcb67dc797.jpg',
     },
     {
       noteId: 4,
@@ -52,7 +66,9 @@ const testProp = {
         '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
+      noteTextColor: 1,
       noteBackgroundColor: 4,
+      noteBackgroundImage: '',
     },
     {
       noteId: 5,
@@ -61,7 +77,10 @@ const testProp = {
         '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
-      noteBackgroundColor: 5,
+      noteTextColor: 0,
+      noteBackgroundColor: -1,
+      noteBackgroundImage:
+        'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/676c2ca3-f868-423f-8000-a0bcb67dc797.jpg',
     },
     {
       noteId: 6,
@@ -70,12 +89,23 @@ const testProp = {
         '야야야양야야야양야양 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에 웨비고? 다음에',
       noteDate: '2024. 01. 09',
       noteNickname: '웹팟이미래다크크',
-      noteBackgroundColor: 6,
+      noteTextColor: 1,
+      noteBackgroundColor: -1,
+      noteBackgroundImage:
+        'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/469456ec-5894-4014-8b90-332d453217ba.jpg',
     },
   ],
 };
 
 function DetailPage() {
+  const handleClickStickerButton = () => {
+    // 스티커 페이지 이동
+  };
+
+  const handleClickWriteButton = () => {
+    // 레큐노트 작성 페이지 이동
+  };
+
   return (
     <S.DetailPageWrapper>
       <Header headerTitle={'레큐북'} isDetailPage />
@@ -90,6 +120,20 @@ function DetailPage() {
           />
         </S.LecueBookContainer>
       </S.DetailPageBodyWrapper>
+      <S.StickerButton type="button" onClick={handleClickStickerButton}>
+        {testProp.backgroundColor === 0 ? (
+          <BtnFloatingSticker />
+        ) : (
+          <BtnFloatingStickerOrange />
+        )}
+      </S.StickerButton>
+      <S.WriteButton type="button" onClick={handleClickWriteButton}>
+        {testProp.backgroundColor === 0 ? (
+          <BtnFloatingWrite />
+        ) : (
+          <BtnFloatingWriteOrange />
+        )}
+      </S.WriteButton>
     </S.DetailPageWrapper>
   );
 }

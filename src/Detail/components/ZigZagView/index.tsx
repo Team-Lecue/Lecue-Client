@@ -8,6 +8,7 @@ interface Note {
   noteDate: string;
   noteNickname: string;
   noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
 
 interface ZigZagViewProps {
@@ -19,7 +20,7 @@ function ZigZagView({ noteList }: ZigZagViewProps) {
     <S.ZigZagViewWrapper>
       {noteList.map((note) => (
         <S.LecueNoteContainer key={note.noteId}>
-          <SmallLecueNote {...note} />
+          <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
     </S.ZigZagViewWrapper>
