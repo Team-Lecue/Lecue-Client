@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { postedStickerType } from '../LecueNoteListContainer';
+import { postedStickerType } from '../../type/lecueBookType';
 
 export const ZigZagViewWrapper = styled.div`
   display: grid;

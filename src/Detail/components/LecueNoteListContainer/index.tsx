@@ -9,6 +9,7 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
+import { postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
@@ -29,13 +30,6 @@ interface LecueNoteListContainerProps {
   noteNum: number;
   backgroundColor: number;
   noteList: Note[];
-}
-
-export interface postedStickerType {
-  postedStickerId: number;
-  stickerImage: string;
-  positionX: number;
-  positionY: number;
 }
 
 function LecueNoteListContainer({
@@ -74,7 +68,7 @@ function LecueNoteListContainer({
     }
   }, [state]);
 
-  const handleDrag = (e: DraggableEvent, ui: DraggableData) => {
+  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
     const { positionX, positionY } = stickerState;
     setStickerState((prev) => ({
       ...prev,

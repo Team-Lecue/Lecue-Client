@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
-import { postedStickerType } from '../LecueNoteListContainer';
+import { postedStickerType } from '../../type/lecueBookType';
 import SmallLecueNote from '../SmallLecueNote';
 import * as S from './ZigZagView.style';
 
