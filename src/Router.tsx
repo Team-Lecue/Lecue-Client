@@ -4,6 +4,7 @@ import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import HomePage from './Home/page/HomePage';
 import Login from './Login/page';
+import SelectBookPage from './SelectBook/page/SelectBookPage';
 import StickerPack from './StickerPack/page/StickerPack';
 
 function Router() {
@@ -15,6 +16,7 @@ function Router() {
         <Route path="/sticker-pack" element={<StickerPack />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/test" element={<HealthTest />} />
+        <Route path="/select-book" element={<SelectBookPage />} />
       </Routes>
     </BrowserRouter>
   );
