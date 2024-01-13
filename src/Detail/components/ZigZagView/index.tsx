@@ -1,3 +1,6 @@
+import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
+
+import { postedStickerType } from '../LecueNoteListContainer';
 import SmallLecueNote from '../SmallLecueNote';
 import * as S from './ZigZagView.style';
 
@@ -13,9 +16,16 @@ interface Note {
 
 interface ZigZagViewProps {
   noteList: Note[];
+  handleDrag: (e: DraggableEvent, ui: DraggableData) => void;
+  stickerState: postedStickerType;
 }
 
-function ZigZagView({ noteList }: ZigZagViewProps) {
+function ZigZagView({
+  noteList,
+  handleDrag,
+  stickerState,
+}: ZigZagViewProps) {
+
   return (
     <S.ZigZagViewWrapper>
       {noteList.map((note) => (
@@ -23,6 +33,20 @@ function ZigZagView({ noteList }: ZigZagViewProps) {
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
+        <S.StickerContainer>
+          <Draggable
+            defaultPosition={{
+              x: stickerState.positionX,
+              y: stickerState.positionY,
+            }}
+            onDrag={handleDrag}
+            bounds="parent"
+            nodeRef={nodeRef}
+          >
+            <S.Sticker ref={nodeRef} stickerState={stickerState} />
+          </Draggable>
+        </S.StickerContainer>
+      )}
     </S.ZigZagViewWrapper>
   );
 }

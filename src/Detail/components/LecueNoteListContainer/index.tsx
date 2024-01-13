@@ -22,12 +22,46 @@ interface LecueNoteListContainerProps {
   noteList: Note[];
 }
 
+export interface postedStickerType {
+  postedStickerId: number;
+  stickerImage: string;
+  positionX: number;
+  positionY: number;
+}
+
 function LecueNoteListContainer({
   noteNum,
   backgroundColor,
   noteList,
 }: LecueNoteListContainerProps) {
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
+  const [stickerState, setStickerState] = useState<postedStickerType>({
+    postedStickerId: 0,
+    stickerImage: '',
+    positionX: 0,
+    positionY: savedScrollPosition,
+  });
+
+  const { state } = location;
+  useEffect(() => {
+    if (state) {
+      const { stickerId, stickerImage } = state.sticker;
+      setStickerState((prev) => ({
+        ...prev,
+        postedStickerId: stickerId,
+        stickerImage: stickerImage,
+      }));
+  }, [state]);
+
+  const handleDrag = (e: DraggableEvent, ui: DraggableData) => {
+    const { positionX, positionY } = stickerState;
+    setStickerState((prev) => ({
+      ...prev,
+      positionX: positionX + ui.deltaX,
+      positionY: positionY + ui.deltaY,
+    }));
+  };
+
   return (
     <S.LecueNoteListContainerWrapper backgroundColor={backgroundColor}>
       <LecueNoteListHeader
@@ -38,7 +72,9 @@ function LecueNoteListContainer({
       />
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
-          <ZigZagView noteList={noteList} />
+            handleDrag={handleDrag}
+            stickerState={stickerState}
+          />
         ) : (
           <LinearView noteList={noteList} />
         )}

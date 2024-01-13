@@ -12,3 +12,22 @@ export const LecueNoteContainer = styled.div`
   width: 100%;
   height: 20.6rem;
 `;
+
+export const StickerContainer = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+`;
+
+export const Sticker = styled.div<{ stickerState: postedStickerType }>`
+  background-image: ${({ stickerState }) =>
+    `url(${stickerState.stickerImage})`};
+
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+
+  background-position: center;
+  object-fit: cover;
+`;
