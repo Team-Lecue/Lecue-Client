@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -6,7 +7,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const LecueNote = styled.article<{ $bgColor: string }>`
+export const LecueNote = styled.article<{
+  $bgColor: string;
+  $isIconClicked: boolean;
+}>`
   display: flex;
   flex-direction: column;
 
@@ -14,7 +18,20 @@ export const LecueNote = styled.article<{ $bgColor: string }>`
   height: calc(100dvh - 33.2rem);
 
   border-radius: 0.6rem;
-  background-color: ${({ $bgColor }) => $bgColor};
+
+  ${({ $isIconClicked, $bgColor }) =>
+    $isIconClicked
+      ? css`
+          width: 100%;
+          height: calc(100dvh - 33.2rem);
+
+          background-size: contain;
+
+          background-image: url('https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg');
+        `
+      : css`
+          background-color: ${$bgColor};
+        `};
 `;
 
 export const Nickname = styled.p`
