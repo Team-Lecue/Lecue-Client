@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.li`
   width: 16.3rem;
   height: 16.3rem;
   padding: 1.5rem 0.95rem 0.6rem;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.article`
+export const Wrapper = styled.li`
   display: flex;
   gap: 0.8rem;
   flex-direction: column;
