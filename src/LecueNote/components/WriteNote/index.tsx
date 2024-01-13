@@ -1,8 +1,16 @@
+import { useEffect, useState } from 'react';
+
 import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
 
 function WriteNote({ clickedBgColor, clickedTextColor }: WriteNoteProps) {
   const nickname = '와라라라랄라';
+  const today = new Date();
+  const [dateArr, setDateArr] = useState([0, 0, 0]);
+
+  useEffect(() => {
+    setDateArr([today.getFullYear(), today.getMonth() + 1, today.getDate()]);
+  }, [today.getDate()]);
 
   return (
     <S.Wrapper>
@@ -10,7 +18,9 @@ function WriteNote({ clickedBgColor, clickedTextColor }: WriteNoteProps) {
         <S.Nickname>{nickname}</S.Nickname>
         <S.Contents $textColor={clickedTextColor} />
         <S.BottomContentsWrapper>
-          <S.Date>2020.10.23</S.Date>
+          <S.Date>
+            {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
+          </S.Date>
           <S.Counter>(1/1000)</S.Counter>
         </S.BottomContentsWrapper>
       </S.LecueNote>
