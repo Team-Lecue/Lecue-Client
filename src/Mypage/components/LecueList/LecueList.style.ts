@@ -31,7 +31,8 @@ export const Button = styled.button<{ clickedBtn?: boolean }>`
 
 export const ListWrapper = styled.section<{ clickedBtn: boolean }>`
   display: flex;
-  gap: 0.8rem;
+  gap: ${({ clickedBtn }) => (clickedBtn ? 1 : 0.8)}rem;
+  justify-content: center;
   flex-wrap: wrap;
   overflow: scroll;
 

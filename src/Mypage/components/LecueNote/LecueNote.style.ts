@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.li`
-  width: 16.3rem;
-  height: 16.3rem;
+  width: 48%;
+  height: auto;
   padding: 1.5rem 0.95rem 0.6rem;
 
   border-radius: 0.4rem;
@@ -13,13 +13,18 @@ export const TextWrapper = styled.div`
   display: flex;
   gap: 0.4rem;
   flex-direction: column;
+
+  width: 100%;
 `;
 export const Name = styled.p`
+  width: 100%;
+
   ${({ theme }) => theme.fonts.Title2_M_16};
-  color: ${({ theme }) => theme.colors.BG};
 `;
 
 export const Title = styled.p`
+  width: 100%;
+
   ${({ theme }) => theme.fonts.Body4_SB_14};
 `;
 
@@ -31,7 +36,7 @@ export const Content = styled.p`
 
   overflow: hidden;
 
-  width: 14.4rem;
+  width: 100%;
 
   ${({ theme }) => theme.fonts.Caption1_R_12};
 
