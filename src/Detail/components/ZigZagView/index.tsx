@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 import { postedStickerType } from '../LecueNoteListContainer';
@@ -28,6 +29,7 @@ function ZigZagView({
   stickerState,
   isEditable,
 }: ZigZagViewProps) {
+  const nodeRef = useRef(null);
 
   return (
     <S.ZigZagViewWrapper>

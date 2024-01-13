@@ -45,6 +45,9 @@ function LecueNoteListContainer({
 }: LecueNoteListContainerProps) {
   const location = useLocation();
   const navigate = useNavigate();
+  const storedValue = sessionStorage.getItem('scrollPosition');
+  const savedScrollPosition =
+    storedValue !== null ? parseInt(storedValue, 10) : 0;
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [isEditable, setIsEditable] = useState(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
@@ -58,6 +61,7 @@ function LecueNoteListContainer({
 
   useEffect(() => {
     if (state) {
+      window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
       setStickerState((prev) => ({
         ...prev,
@@ -80,6 +84,7 @@ function LecueNoteListContainer({
   };
 
   const handleClickStickerButton = () => {
+    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 
     setIsEditable(true);
 
@@ -92,6 +97,7 @@ function LecueNoteListContainer({
 
   const handleClickDone = () => {
     setIsEditable(true);
+    sessionStorage.removeItem('scrollPosition');
     navigate('/detail');
   };
 
