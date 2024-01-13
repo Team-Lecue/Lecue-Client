@@ -22,3 +22,10 @@ export const LecueNoteListViewWrapper = styled.div`
 
   width: 100%;
 `;
+export const ButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 2rem;
+
+  width: 100%;
+  padding: 0 2.5rem;
+`;

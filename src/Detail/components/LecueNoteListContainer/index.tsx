@@ -43,6 +43,11 @@ function LecueNoteListContainer({
           <LinearView noteList={noteList} />
         )}
       </S.LecueNoteListViewWrapper>
+        <S.ButtonWrapper>
+          <Button variant="choose" onClick={handleClickDone}>
+            부착 완료
+          </Button>
+        </S.ButtonWrapper>
     </S.LecueNoteListContainerWrapper>
   );
 }
