@@ -4,6 +4,7 @@ import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
 
 function WriteNote({
+  isIconClicked,
   clickedBgColor,
   clickedTextColor,
   contents,
@@ -20,7 +21,7 @@ function WriteNote({
 
   return (
     <S.Wrapper>
-      <S.LecueNote $bgColor={clickedBgColor}>
+      <S.LecueNote $bgColor={isIconClicked ? 'white' : clickedBgColor}>
         <S.Nickname>{nickname}</S.Nickname>
         <S.Contents $textColor={clickedTextColor} onChange={handleChangeFn} />
         <S.BottomContentsWrapper>

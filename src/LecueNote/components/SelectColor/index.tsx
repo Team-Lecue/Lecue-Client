@@ -8,11 +8,13 @@ import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
 function SelectColor({
+  isIconClicked,
   clickedCategory,
   clickedTextColor,
   clickedBgColor,
   handleCategoryFn,
   handleColorFn,
+  handleIconFn,
 }: SelectColorProps) {
   return (
     <S.Wrapper>
@@ -33,15 +35,19 @@ function SelectColor({
 
       {clickedCategory === '텍스트색' ? (
         <ShowColorChart
+        isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={clickedTextColor}
           handleFn={handleColorFn}
+          handleIconFn={handleIconFn}
         />
       ) : (
         <ShowColorChart
+        isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={clickedBgColor}
           handleFn={handleColorFn}
+          handleIconFn={handleIconFn}
         />
       )}
     </S.Wrapper>
