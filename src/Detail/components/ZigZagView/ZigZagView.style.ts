@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 
+import { postedStickerType } from '../LecueNoteListContainer';
+
 export const ZigZagViewWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
 
   width: 34.2rem;
   padding: 0.4rem 0 2rem;

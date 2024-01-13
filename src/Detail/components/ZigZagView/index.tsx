@@ -12,6 +12,7 @@ interface Note {
   noteNickname: string;
   noteBackgroundColor: number;
   noteBackgroundImage: string;
+  noteTextColor: number;
 }
 
 interface ZigZagViewProps {

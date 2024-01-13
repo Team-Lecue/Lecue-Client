@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { DraggableData, DraggableEvent } from 'react-draggable';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -78,12 +80,14 @@ function LecueNoteListContainer({
   };
 
   const handleClickStickerButton = () => {
+
     setIsEditable(true);
 
     navigate('/sticker-pack');
   };
 
   const handleClickWriteButton = () => {
+    alert('WriteBtn');
   };
 
   const handleClickDone = () => {
