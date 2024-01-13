@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.li`
-  width: 48%;
+  width: 48.5%;
   height: auto;
   padding: 1.5rem 0.95rem 0.6rem;
 
