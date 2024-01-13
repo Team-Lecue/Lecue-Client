@@ -1,3 +1,8 @@
+export interface CreateNoteProps {
+  contents: string;
+  handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
 export interface SelectColorProps {
   clickedCategory: string;
   clickedTextColor: string;
@@ -14,7 +19,11 @@ export interface ShowColorChartProps {
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export interface WriteNoteProps {
+export interface WriteNoteProps extends CreateNoteProps {
   clickedBgColor: string;
   clickedTextColor: string;
+}
+
+export interface FooterProps {
+  contents: string;
 }
