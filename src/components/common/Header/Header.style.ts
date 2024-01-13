@@ -4,8 +4,11 @@ export const HeaderWrapper = styled.header<{ isDarkMode?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 1;
 
+  width: 100%;
   height: 5.4rem;
   padding: 0 1.6rem;
 

@@ -1,8 +1,9 @@
+import Header from '../../components/common/Header';
+
 function HomePage() {
   return (
     <div>
-      <h1>HomePage</h1>
-      <p>HomeHome</p>
+      <Header headerTitle={'테스트'} isDarkMode={false} isDetailPage={true} />
     </div>
   );
 }
