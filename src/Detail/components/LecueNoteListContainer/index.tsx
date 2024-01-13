@@ -1,5 +1,11 @@
-import { useState } from 'react';
 
+import {
+  BtnFloatingSticker,
+  BtnFloatingStickerOrange,
+  BtnFloatingWrite,
+  BtnFloatingWriteOrange,
+} from '../../../assets';
+import Button from '../../../components/common/Button';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
@@ -62,6 +68,12 @@ function LecueNoteListContainer({
     }));
   };
 
+  const handleClickStickerButton = () => {
+  const handleClickWriteButton = () => {
+  };
+  const handleClickDone = () => {
+  };
+
   return (
     <S.LecueNoteListContainerWrapper backgroundColor={backgroundColor}>
       <LecueNoteListHeader
@@ -79,6 +91,20 @@ function LecueNoteListContainer({
           <LinearView noteList={noteList} />
         )}
       </S.LecueNoteListViewWrapper>
+          <S.StickerButton type="button" onClick={handleClickStickerButton}>
+            {backgroundColor === 0 ? (
+              <BtnFloatingSticker />
+            ) : (
+              <BtnFloatingStickerOrange />
+            )}
+          </S.StickerButton>
+          <S.WriteButton type="button" onClick={handleClickWriteButton}>
+            {backgroundColor === 0 ? (
+              <BtnFloatingWrite />
+            ) : (
+              <BtnFloatingWriteOrange />
+            )}
+          </S.WriteButton>
         <S.ButtonWrapper>
           <Button variant="choose" onClick={handleClickDone}>
             부착 완료

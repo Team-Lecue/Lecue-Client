@@ -1,9 +1,3 @@
-import {
-  BtnFloatingSticker,
-  BtnFloatingStickerOrange,
-  BtnFloatingWrite,
-  BtnFloatingWriteOrange,
-} from '../../../assets';
 import Header from '../../../components/common/Header';
 import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
@@ -98,14 +92,6 @@ const testProp = {
 };
 
 function DetailPage() {
-  const handleClickStickerButton = () => {
-    // 스티커 페이지 이동
-  };
-
-  const handleClickWriteButton = () => {
-    // 레큐노트 작성 페이지 이동
-  };
-
   return (
     <S.DetailPageWrapper>
       <Header headerTitle={'레큐북'} isDetailPage />
@@ -120,20 +106,6 @@ function DetailPage() {
           />
         </S.LecueBookContainer>
       </S.DetailPageBodyWrapper>
-      <S.StickerButton type="button" onClick={handleClickStickerButton}>
-        {testProp.backgroundColor === 0 ? (
-          <BtnFloatingSticker />
-        ) : (
-          <BtnFloatingStickerOrange />
-        )}
-      </S.StickerButton>
-      <S.WriteButton type="button" onClick={handleClickWriteButton}>
-        {testProp.backgroundColor === 0 ? (
-          <BtnFloatingWrite />
-        ) : (
-          <BtnFloatingWriteOrange />
-        )}
-      </S.WriteButton>
     </S.DetailPageWrapper>
   );
 }
