@@ -6,7 +6,7 @@ import * as S from './LecueNotePage.style';
 function LecueNotePage() {
   return (
     <S.Wrapper>
-      <Header headerTitle='레큐 노트'/>
+      <Header headerTitle="레큐 노트" />
       <CreateNote />
       <Footer />
     </S.Wrapper>
