@@ -30,9 +30,14 @@ export const Button = styled.button<{ clickedBtn?: boolean }>`
 `;
 
 export const ListWrapper = styled.section<{ clickedBtn: boolean }>`
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  overflow: scroll;
+
   width: 100%;
   height: calc(100dvh - 19.3rem);
-  padding: 1rem;
+  padding: 1.2rem 1rem 1rem;
 
   border-radius: ${({ clickedBtn }) => (clickedBtn ? 0 : 0.4)}rem
     ${({ clickedBtn }) => (clickedBtn ? 0.4 : 0)}rem 0.4rem 0.4rem;
