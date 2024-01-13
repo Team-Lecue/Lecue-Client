@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   BtnFloatingSticker,
@@ -40,6 +41,8 @@ function LecueNoteListContainer({
   backgroundColor,
   noteList,
 }: LecueNoteListContainerProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [isEditable, setIsEditable] = useState(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
@@ -50,6 +53,7 @@ function LecueNoteListContainer({
   });
 
   const { state } = location;
+
   useEffect(() => {
     if (state) {
       const { stickerId, stickerImage } = state.sticker;
@@ -60,6 +64,7 @@ function LecueNoteListContainer({
       }));
     } else {
       setIsEditable(false);
+      navigate('/detail');
     }
   }, [state]);
 
@@ -74,12 +79,16 @@ function LecueNoteListContainer({
 
   const handleClickStickerButton = () => {
     setIsEditable(true);
+
+    navigate('/sticker-pack');
   };
 
   const handleClickWriteButton = () => {
   };
+
   const handleClickDone = () => {
     setIsEditable(true);
+    navigate('/detail');
   };
 
   return (
