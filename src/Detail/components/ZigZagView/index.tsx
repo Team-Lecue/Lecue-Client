@@ -18,12 +18,14 @@ interface ZigZagViewProps {
   noteList: Note[];
   handleDrag: (e: DraggableEvent, ui: DraggableData) => void;
   stickerState: postedStickerType;
+  isEditable: boolean;
 }
 
 function ZigZagView({
   noteList,
   handleDrag,
   stickerState,
+  isEditable,
 }: ZigZagViewProps) {
 
   return (
@@ -33,6 +35,7 @@ function ZigZagView({
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
+      {isEditable && (
         <S.StickerContainer>
           <Draggable
             defaultPosition={{

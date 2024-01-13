@@ -41,6 +41,7 @@ function LecueNoteListContainer({
   noteList,
 }: LecueNoteListContainerProps) {
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
+  const [isEditable, setIsEditable] = useState(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
     stickerImage: '',
@@ -57,6 +58,9 @@ function LecueNoteListContainer({
         postedStickerId: stickerId,
         stickerImage: stickerImage,
       }));
+    } else {
+      setIsEditable(false);
+    }
   }, [state]);
 
   const handleDrag = (e: DraggableEvent, ui: DraggableData) => {
@@ -69,9 +73,13 @@ function LecueNoteListContainer({
   };
 
   const handleClickStickerButton = () => {
+    setIsEditable(true);
+  };
+
   const handleClickWriteButton = () => {
   };
   const handleClickDone = () => {
+    setIsEditable(true);
   };
 
   return (
@@ -84,6 +92,9 @@ function LecueNoteListContainer({
       />
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
+          <ZigZagView
+            noteList={noteList}
+            isEditable={isEditable}
             handleDrag={handleDrag}
             stickerState={stickerState}
           />
@@ -91,6 +102,9 @@ function LecueNoteListContainer({
           <LinearView noteList={noteList} />
         )}
       </S.LecueNoteListViewWrapper>
+
+      {!isEditable && (
+        <>
           <S.StickerButton type="button" onClick={handleClickStickerButton}>
             {backgroundColor === 0 ? (
               <BtnFloatingSticker />
@@ -105,11 +119,16 @@ function LecueNoteListContainer({
               <BtnFloatingWriteOrange />
             )}
           </S.WriteButton>
+        </>
+      )}
+
+      {isEditable && (
         <S.ButtonWrapper>
           <Button variant="choose" onClick={handleClickDone}>
             부착 완료
           </Button>
         </S.ButtonWrapper>
+      )}
     </S.LecueNoteListContainerWrapper>
   );
 }
