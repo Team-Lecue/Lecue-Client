@@ -32,7 +32,10 @@ function CreateNote() {
 
   return (
     <S.Wrapper>
-      <WriteNote clickedBgColor={clickedBgColor} />
+      <WriteNote
+        clickedBgColor={clickedBgColor}
+        clickedTextColor={clickedTextColor}
+      />
       <SelectColor
         clickedCategory={clickedCategory}
         clickedTextColor={clickedTextColor}

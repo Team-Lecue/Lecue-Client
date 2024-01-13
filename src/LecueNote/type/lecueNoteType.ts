@@ -16,4 +16,5 @@ export interface ShowColorChartProps {
 
 export interface WriteNoteProps {
   clickedBgColor: string;
+  clickedTextColor: string;
 }
