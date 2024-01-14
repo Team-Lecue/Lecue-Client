@@ -1,21 +1,27 @@
+import { useRef } from 'react';
+import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
+
+import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import SmallLecueNote from '../SmallLecueNote';
 import * as S from './ZigZagView.style';
 
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
-
 interface ZigZagViewProps {
-  noteList: Note[];
+  noteList: NoteType[];
+  handleDrag: (e: DraggableEvent, ui: DraggableData) => void;
+  stickerState: postedStickerType;
+  isEditable: boolean;
+  postedStickerList: postedStickerType[];
 }
 
-function ZigZagView({ noteList }: ZigZagViewProps) {
+function ZigZagView({
+  noteList,
+  handleDrag,
+  stickerState,
+  isEditable,
+  postedStickerList,
+}: ZigZagViewProps) {
+  const nodeRef = useRef(null);
+
   return (
     <S.ZigZagViewWrapper>
       {noteList.map((note) => (
@@ -23,6 +29,34 @@ function ZigZagView({ noteList }: ZigZagViewProps) {
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
+      {isEditable ? (
+        <S.StickerContainer>
+          <Draggable
+            defaultPosition={{
+              x: stickerState.positionX,
+              y: stickerState.positionY,
+            }}
+            onDrag={handleDrag}
+            bounds="parent"
+            nodeRef={nodeRef}
+          >
+            <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
+          </Draggable>
+        </S.StickerContainer>
+      ) : (
+        <S.StickerContainer>
+          {postedStickerList.map((data) => (
+            <Draggable
+              nodeRef={nodeRef}
+              key={data.postedStickerId}
+              positionOffset={{ x: data.positionX, y: data.positionY }}
+              onStart={() => false}
+            >
+              <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+            </Draggable>
+          ))}
+        </S.StickerContainer>
+      )}
     </S.ZigZagViewWrapper>
   );
 }
