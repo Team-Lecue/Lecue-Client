@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   overflow-x: scroll;
 `;
 
+export const Input = styled.input`
+  display: none;
+`;
+
 export const IconWrapper = styled.button<{ $isIconClicked: boolean }>`
   ${({ theme, $isIconClicked }) =>
     $isIconClicked &&
