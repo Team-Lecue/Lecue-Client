@@ -1,7 +1,14 @@
+import Button from '../../components/common/Button';
+import Header from '../../components/common/Header';
 import * as S from './CreateBook.style';
 
 function CreateBook() {
   const [isActive, setIsActive] = useState([false, false]);
+
+  const handleClickConfirm = () => {
+    alert('버튼 클릭');
+  };
+
   const handleSetActive = (num: number, t: boolean) => {
     const updatedArray = [...isActive];
     updatedArray[num] = t;
@@ -16,6 +23,13 @@ function CreateBook() {
           isTitle
         />
         <BookInput handleSetActive={(num, t) => handleSetActive(num, t)} />
+        <Button
+          variant="complete"
+          disabled={!isActive}
+          onClick={handleClickConfirm}
+        >
+          완료
+        </Button>
     </S.Wrapper>
   );
 }
