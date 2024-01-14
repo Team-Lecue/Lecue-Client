@@ -4,3 +4,14 @@ export interface postedStickerType {
   positionX: number;
   positionY: number;
 }
+
+export interface NoteType {
+  noteId: number;
+  renderType: number;
+  content: string;
+  noteDate: string;
+  noteNickname: string;
+  noteTextColor: number;
+  noteBackgroundColor: number;
+  noteBackgroundImage: string;
+}

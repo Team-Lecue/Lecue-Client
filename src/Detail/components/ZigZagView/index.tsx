@@ -1,23 +1,12 @@
 import { useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
-import { postedStickerType } from '../../type/lecueBookType';
+import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import SmallLecueNote from '../SmallLecueNote';
 import * as S from './ZigZagView.style';
 
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-  noteTextColor: number;
-}
-
 interface ZigZagViewProps {
-  noteList: Note[];
+  noteList: NoteType[];
   handleDrag: (e: DraggableEvent, ui: DraggableData) => void;
   stickerState: postedStickerType;
   isEditable: boolean;

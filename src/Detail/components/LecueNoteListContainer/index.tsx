@@ -9,27 +9,16 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
-import { postedStickerType } from '../../type/lecueBookType';
+import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
 import * as S from './LecueNoteListContainer.style';
 
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
-
 interface LecueNoteListContainerProps {
   noteNum: number;
   backgroundColor: number;
-  noteList: Note[];
+  noteList: NoteType[];
 }
 
 function LecueNoteListContainer({
