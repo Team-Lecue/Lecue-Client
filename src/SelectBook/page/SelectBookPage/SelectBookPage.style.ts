@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { ImgEvent } from '../../../assets';
+
 export const SelectBookPageWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -10,7 +12,12 @@ export const SelectBookPageWrapper = styled.div`
 `;
 
 export const SelectBookPageBodyWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
   width: 100%;
+  height: calc(100vh - 5.4rem);
   padding: 0 1.6rem;
   margin-top: 5.4rem;
 `;
@@ -25,11 +32,27 @@ export const SectionTitle = styled.p`
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
+export const BookTypeContainerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  margin-top: 4rem;
+`;
+
 export const BookTypeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
 
   width: 34.3rem;
-  margin-top: 4rem;
+`;
+
+export const StyledImgEvent = styled(ImgEvent)`
+  position: absolute;
+  top: -3.5rem;
+  right: 1.1rem;
+  z-index: 5;
+
+  transition: width 0.5s ease;
 `;

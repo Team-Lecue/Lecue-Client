@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { ImgBookOrangeBig, ImgSaleprice } from '../../../assets';
 import BookTypeBoxOption from '../BookTypeBoxOption';
 import * as S from './BookTypeBox.style';
 
@@ -35,17 +36,37 @@ function BookTypeBox({
       selectedBox={selectedBox}
       isClickedSelectButton={isClickedSelectButton}
     >
-      <S.BookTypeBoxTitle bookType={bookType} selectedBox={selectedBox}>
+      <S.BookTypeBoxTitle
+        bookType={bookType}
+        selectedBox={selectedBox}
+        isClickedSelectButton={isClickedSelectButton}
+      >
         {bookTypeBoxTitle}
       </S.BookTypeBoxTitle>
-      {bookTypeBoxImg}
+      {bookType === 2 && isClickedSelectButton ? (
+        <ImgBookOrangeBig />
+      ) : (
+        bookTypeBoxImg
+      )}
+
+      {bookType === 2 && isClickedSelectButton ? <ImgSaleprice /> : <></>}
       <S.BookTypeBoxPriceWrapper>
         <S.BookTypeBoxPrice bookType={bookType} selectedBox={selectedBox}>
-          {bookTypeBoxPrice}원
+          {bookType === 2 && isClickedSelectButton
+            ? '0원'
+            : `${bookTypeBoxPrice}원`}
         </S.BookTypeBoxPrice>
-        {bookType == 2 ? <S.OneBookText>/1권</S.OneBookText> : <></>}
+        {bookType === 2 && !isClickedSelectButton ? (
+          <S.OneBookText>/1권</S.OneBookText>
+        ) : (
+          <></>
+        )}
       </S.BookTypeBoxPriceWrapper>
-      <S.BookTypeBoxOptionList bookType={bookType} selectedBox={selectedBox}>
+      <S.BookTypeBoxOptionList
+        bookType={bookType}
+        selectedBox={selectedBox}
+        isClickedSelectButton={isClickedSelectButton}
+      >
         {bookTypeBoxOptionList.map((option, idx) => (
           <BookTypeBoxOption key={idx + option} bookTypeBoxOption={option} />
         ))}
