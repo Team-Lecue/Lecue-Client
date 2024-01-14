@@ -20,7 +20,7 @@ function TargetPage() {
       <S.TargetPageBodyWrapper>
         <S.InputSectionWrapper>
           <S.NameInputWrapper>
-            <S.SectionTitle>누구를 위한 레큐북인가요?</S.SectionTitle>
+            <S.SectionTitle>최애의 이름</S.SectionTitle>
             <NameInput name={name} changeName={(name) => setName(name)} />
           </S.NameInputWrapper>
           <S.FavoriteInputWrapper>

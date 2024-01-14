@@ -7,7 +7,7 @@ interface NameInputProps {
 
 function NameInput({ name, changeName }: NameInputProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 8) {
+    if (e.target.value.length <= 15) {
       changeName(e.target.value);
     }
   };
@@ -16,11 +16,11 @@ function NameInput({ name, changeName }: NameInputProps) {
       <S.InputContainer isEmpty={name.length === 0}>
         <S.Input
           type="text"
-          placeholder="이름을 입력해주세요."
+          placeholder="마음을 전하고 싶은 최애는 누구인가요?"
           value={name}
           onChange={handleChangeInput}
         />
-        <S.WordCount>({name.length}/8)</S.WordCount>
+        <S.WordCount>({name.length}/15)</S.WordCount>
       </S.InputContainer>
     </S.NameWrapper>
   );
