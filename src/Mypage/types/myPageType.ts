@@ -12,9 +12,9 @@ export interface LecueNoteProps {
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor?: number;
-  noteBackgroundColor?: number;
-  noteBackgroundImage?: string;
+  noteTextColor: number;
+  noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
 
 export interface LecueBookType {
@@ -31,7 +31,7 @@ export interface LecueNoteType {
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor?: number;
-  noteBackgroundColor?: number;
-  noteBackgroundImage?: string;
+  noteTextColor: number;
+  noteBackgroundColor: number;
+  noteBackgroundImage: string;
 }
