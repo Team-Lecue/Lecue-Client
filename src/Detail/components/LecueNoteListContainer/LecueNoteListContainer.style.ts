@@ -2,7 +2,10 @@ import styled from '@emotion/styled';
 
 export const LecueNoteListContainerWrapper = styled.div<{
   backgroundColor: number;
+  isEditable: boolean;
 }>`
+  width: 100vw;
+  padding: 0 1.6rem;
   padding-bottom: ${({ isEditable }) => isEditable && '12rem'};
 
   background-color: ${({ theme, backgroundColor }) => {
