@@ -9,6 +9,7 @@ import BtnKakaologin from './button/btn_kakaologin.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
+import IcCheck from './icon/ic_check.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';
 import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
@@ -16,6 +17,10 @@ import IcNotice from './icon/ic_notice.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
 import IcX from './icon/ic_x.svg?react';
 import ImgBook from './img/img_book.svg?react';
+import ImgBookBackgray from './img/img_book_backgray.svg?react';
+import ImgBookOrange from './img/img_book_orange.svg?react';
+import ImgBookOrangeBig from './img/img_book_orange_big.svg?react';
+import ImgEvent from './img/img_event.svg?react';
 import ImgKakao01 from './img/img_kakao_01.svg?react';
 import ImgKakao02 from './img/img_kakao_02.svg?react';
 import ImgKakao03 from './img/img_kakao_03.svg?react';
@@ -27,6 +32,7 @@ import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
 import ImgModalEx from './img/img_modal_ex.svg?react';
+import ImgSaleprice from './img/img_saleprice.svg?react';
 import ImgSplashLogo from './img/img_splash_logo.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
 import ImgStarPosit from './img/img_star_postit.svg?react';
@@ -43,6 +49,7 @@ export {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcCamera,
+  IcCheck,
   IcCrown,
   IcDate,
   IcHome,
@@ -50,6 +57,10 @@ export {
   IcSharing,
   IcX,
   ImgBook,
+  ImgBookBackgray,
+  ImgBookOrange,
+  ImgBookOrangeBig,
+  ImgEvent,
   ImgKakao01,
   ImgKakao02,
   ImgKakao03,
@@ -61,6 +72,7 @@ export {
   ImgLe,
   ImgLogoLecue,
   ImgModalEx,
+  ImgSaleprice,
   ImgSplashLogo,
   ImgStarOrangeLine,
   ImgStarPosit,
