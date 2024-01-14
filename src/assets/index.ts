@@ -1,5 +1,4 @@
 /// <reference types="vite-plugin-svgr/client" />
-
 import BtnFloatingList from './button/btn_floating_list.svg?react';
 import BtnFloatingPostit from './button/btn_floating_postit.svg?react';
 import BtnFloatingSticker from './button/btn_floating_sticker.svg?react';
@@ -27,6 +26,7 @@ import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
 import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
+import ImgModalEx from './img/img_modal_ex.svg?react';
 import ImgSplashLogo from './img/img_splash_logo.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
 import ImgStarPosit from './img/img_star_postit.svg?react';
@@ -60,8 +60,9 @@ export {
   ImgKakaoStarWhite,
   ImgLe,
   ImgLogoLecue,
+  ImgModalEx,
+  ImgSplashLogo,
   ImgStarOrangeLine,
   ImgStarPosit,
   ImgSticker,
-  ImgSplashLogo,
 };
