@@ -34,9 +34,10 @@ export const LecueNote = styled.article<{
         `};
 `;
 
-export const Nickname = styled.p`
+export const Nickname = styled.p<{ $textColor: string }>`
   margin: 2rem 0 1rem 2rem;
 
+  color: ${({ $textColor }) => $textColor};
   ${({ theme }) => theme.fonts.Head1_B_20}
 `;
 

@@ -22,7 +22,7 @@ function WriteNote({
   return (
     <S.Wrapper>
       <S.LecueNote $bgColor={clickedBgColor} $isIconClicked={isIconClicked}>
-        <S.Nickname>{nickname}</S.Nickname>
+        <S.Nickname $textColor={clickedTextColor}>{nickname}</S.Nickname>
         <S.Contents $textColor={clickedTextColor} onChange={handleChangeFn} />
         <S.BottomContentsWrapper>
           <S.Date>
