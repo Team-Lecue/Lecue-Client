@@ -116,6 +116,8 @@ const resetCss = css`
   }
 
   body {
+    position: relative;
+
     line-height: 1;
     touch-action: manipulation;
 
@@ -152,9 +154,10 @@ const gStyle = css`
   ${resetCss}
 
   #root, body, html {
-    max-width: 43rem;
-
     margin: 0 auto;
+
+    background-color: #f5f5f5;
+    max-width: 43rem;
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
   }
@@ -217,13 +220,9 @@ const gStyle = css`
   }
 
   @font-face {
-    font-family: 'Sequel Sans';
-    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
-  }
-
-  @font-face {
     font-family: Pretendard;
-    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
+    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css')
+      format ('woff');
   }
 `;
 

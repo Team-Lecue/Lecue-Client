@@ -1,9 +1,9 @@
 export interface stickerPackType {
   stickerCategory: string;
-  stickerList: [
-    {
-      stickerId: number;
-      stickerImage: string;
-    },
-  ];
+  stickerList: stickerType[];
+}
+
+export interface stickerType {
+  stickerId: number;
+  stickerImage: string;
 }

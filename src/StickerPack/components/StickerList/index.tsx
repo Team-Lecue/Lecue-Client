@@ -1,17 +1,16 @@
 import { Fragment } from 'react';
 
 import useGetStickerPack from '../../hooks/useGetStickerPack';
-import { stickerPackType } from '../../type/stickerPackType';
+import { stickerPackType, stickerType } from '../../type/stickerPackType';
 import * as S from './StickerList.style';
 
 interface StickerListProps {
-  isSelectedId: number | null;
-  handleStickerClick: (stickerId: number) => void;
+  selectedStickerData: stickerType;
+  handleStickerClick: (newId: number, newImage: string) => void;
 }
 
 function StickerList(props: StickerListProps) {
-  const { isSelectedId, handleStickerClick } = props;
-  //TODO 임시 값 수정
+  const { selectedStickerData, handleStickerClick } = props;
   const { stickerPack } = useGetStickerPack(1);
 
   return (
@@ -25,8 +24,12 @@ function StickerList(props: StickerListProps) {
                 <S.ImageWrapper
                   type="button"
                   key={sticker.stickerId}
-                  onClick={() => handleStickerClick(sticker.stickerId)}
-                  isSelected={sticker.stickerId === isSelectedId}
+                  onClick={() =>
+                    handleStickerClick(sticker.stickerId, sticker.stickerImage)
+                  }
+                  isSelected={
+                    sticker.stickerId === selectedStickerData.stickerId
+                  }
                 >
                   <S.ImageComponent
                     src={sticker.stickerImage}
