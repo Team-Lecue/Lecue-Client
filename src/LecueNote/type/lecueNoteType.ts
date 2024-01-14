@@ -1,7 +1,18 @@
 export interface CreateNoteProps {
+  clickedCategory: string;
+  clickedTextColor: string;
+  clickedBgColor: string;
+  isIconClicked: boolean;
   imgFile: string;
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleClickCategory: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
+  handleClickedColorBtn: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
+  handleClickedIcon: () => void;
   uploadImage: (file: string) => void;
 }
 
@@ -38,4 +49,5 @@ export interface WriteNoteProps {
 
 export interface FooterProps {
   contents: string;
+  imgFile: string;
 }
