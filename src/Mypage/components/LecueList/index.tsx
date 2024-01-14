@@ -18,8 +18,6 @@ function LecueList() {
     setClickedBtn('book');
   };
 
-  console.log(clickedBtn);
-
   const numberCount = (NOTE: LecueNoteType[], BOOK: LecueBookType[]) => {
     setCounter([NOTE.length, BOOK.length]);
   };
@@ -58,6 +56,9 @@ function LecueList() {
                   title={note.title}
                   noteDate={note.noteDate}
                   content={note.content}
+                  noteTextColor={note.noteTextColor}
+                  noteBackgroundColor={note.noteBackgroundColor}
+                  noteBackgroundImage={note.noteBackgroundImage}
                 />
               );
             })
