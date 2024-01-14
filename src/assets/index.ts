@@ -20,7 +20,8 @@ import IcX from './icon/ic_x.svg?react';
 import ImgBook from './img/img_book.svg?react';
 import ImgBookBackgray from './img/img_book_backgray.svg?react';
 import ImgBookOrange from './img/img_book_orange.svg?react';
-import ImgBookOrangeBig from './img/img_book_orange_big.svg';
+import ImgBookOrangeBig from './img/img_book_orange_big.svg?react';
+import ImgEvent from './img/img_event.svg?react';
 import ImgKakao01 from './img/img_kakao_01.svg?react';
 import ImgKakao02 from './img/img_kakao_02.svg?react';
 import ImgKakao03 from './img/img_kakao_03.svg?react';
@@ -31,6 +32,7 @@ import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
 import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
+import ImgSaleprice from './img/img_saleprice.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
 import ImgStarPosit from './img/img_star_postit.svg?react';
 import ImgSticker from './img/img_sticker.svg?react';
@@ -57,6 +59,7 @@ export {
   ImgBookBackgray,
   ImgBookOrange,
   ImgBookOrangeBig,
+  ImgEvent,
   ImgKakao01,
   ImgKakao02,
   ImgKakao03,
@@ -67,6 +70,7 @@ export {
   ImgKakaoStarWhite,
   ImgLe,
   ImgLogoLecue,
+  ImgSaleprice,
   ImgStarOrangeLine,
   ImgStarPosit,
   ImgSticker,
