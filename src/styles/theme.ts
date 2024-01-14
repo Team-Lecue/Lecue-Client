@@ -107,7 +107,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.2rem',
-    lineHeight: 'auto',
+    lineHeight: '140%',
     letterSpacing: '-0.03rem',
   },
   Caption2_SB_12: {

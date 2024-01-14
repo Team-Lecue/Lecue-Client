@@ -8,6 +8,7 @@ import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';
 import SplashPage from './Splash/page/SplashPage';
+import StickerAttach from './StickerAttach/page';
 import StickerPack from './StickerPack/page/StickerPack';
 import TargetPage from './Target/page/TargetPage';
 
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/lecue-book" element={<DetailPage />} />
         <Route path="/target" element={<TargetPage />} />
         <Route path="/test" element={<HealthTest />} />
+        <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
       </Routes>
     </BrowserRouter>

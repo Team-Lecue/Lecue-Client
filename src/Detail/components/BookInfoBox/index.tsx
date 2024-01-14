@@ -2,47 +2,47 @@ import { IcCrown, IcDate } from '../../../assets';
 import * as S from './BookInfoBox.style';
 
 interface BookInfoBoxProps {
-  profileImg: string;
-  date: string;
-  nickname: string;
+  favoriteImage: string;
+  bookDate: string;
+  bookNickname: string;
   title: string;
-  content: string;
-  backgroundColor: number;
+  description: string;
+  bookBackgroundColor: number;
 }
 
 function BookInfoBox({
-  profileImg,
-  date,
-  nickname,
+  favoriteImage,
+  bookDate,
+  bookNickname,
   title,
-  content,
-  backgroundColor,
+  description,
+  bookBackgroundColor,
 }: BookInfoBoxProps) {
   return (
-    <S.BookInfoBoxWrapper backgroundColor={backgroundColor}>
+    <S.BookInfoBoxWrapper backgroundColor={bookBackgroundColor}>
       <S.ProfileImageWrapper>
-        <S.ProfileImg src={profileImg} />
+        <S.ProfileImg src={favoriteImage} />
       </S.ProfileImageWrapper>
       <S.BookInfoWrapper>
         <S.BookInfoHeader>
           <S.BookInfoHeaderItemWrapper>
             <IcDate />
-            <S.BookInfoHeaderItem backgroundColor={backgroundColor}>
-              {date}
+            <S.BookInfoHeaderItem backgroundColor={bookBackgroundColor}>
+              {bookDate}
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
           <S.BookInfoHeaderItemWrapper>
             <IcCrown />
-            <S.BookInfoHeaderItem backgroundColor={backgroundColor}>
-              {nickname}
+            <S.BookInfoHeaderItem backgroundColor={bookBackgroundColor}>
+              {bookNickname}
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
         </S.BookInfoHeader>
-        <S.BookInfoTitle backgroundColor={backgroundColor}>
+        <S.BookInfoTitle backgroundColor={bookBackgroundColor}>
           {title}
         </S.BookInfoTitle>
-        <S.BookInfoContent backgroundColor={backgroundColor}>
-          {content}
+        <S.BookInfoContent backgroundColor={bookBackgroundColor}>
+          {description}
         </S.BookInfoContent>
       </S.BookInfoWrapper>
     </S.BookInfoBoxWrapper>
