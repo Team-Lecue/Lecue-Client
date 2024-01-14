@@ -8,20 +8,20 @@ import * as S from './LecueList.style';
 
 function LecueList() {
   const [clickedBtn, setClickedBtn] = useState(true);
-  const [noteCount, setNoteCount] = useState(0);
-  const [bookCount, setBookCount] = useState(0);
+  const [counter, setCounter] = useState([0, 0]);
 
   const handleClickNoteBtn = () => {
+    window.scrollTo(0, 0);
     setClickedBtn(true);
   };
 
   const handleClickBookBtn = () => {
+    window.scrollTo(0, 0);
     setClickedBtn(false);
   };
 
   const numberCount = (NOTE: LecueNoteType[], BOOK: LecueBookType[]) => {
-    setNoteCount(NOTE.length);
-    setBookCount(BOOK.length);
+    setCounter([NOTE.length, BOOK.length]);
   };
 
   useEffect(() => {
@@ -37,14 +37,14 @@ function LecueList() {
           clickedBtn={clickedBtn}
           onClick={handleClickNoteBtn}
         >
-          레큐노트 ({noteCount}개)
+          레큐노트 ({counter[0]}개)
         </S.Button>
         <S.Button
           type="button"
           clickedBtn={!clickedBtn}
           onClick={handleClickBookBtn}
         >
-          레큐북 ({bookCount}개)
+          레큐북 ({counter[1]}개)
         </S.Button>
       </S.ButtonWrapper>
 
