@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-type ButtonStyle = 'note' | 'book';
-
 export const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
