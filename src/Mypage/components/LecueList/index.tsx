@@ -54,6 +54,7 @@ function LecueList() {
               return (
                 <LecueNote
                   key={note.noteId}
+                  noteId={note.noteId}
                   favoriteName={note.favoriteName}
                   title={note.title}
                   noteDate={note.noteDate}
@@ -68,6 +69,7 @@ function LecueList() {
               return (
                 <LecueBook
                   key={book.bookId}
+                  bookId={book.bookId}
                   favoriteName={book.favoriteName}
                   title={book.title}
                   bookDate={book.bookDate}
