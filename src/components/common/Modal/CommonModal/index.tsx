@@ -1,10 +1,16 @@
-import * as S from './CommonModal.style';
+import CommonModalForm from '../CommonModalForm';
+import ModalPortal from '../ModalPortal';
 
-function CommonModal() {
+interface CommonModal {
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
+  category: string;
+}
+
+function CommonModal({ setModalOn, category }: CommonModal) {
   return (
-    <S.Wrapper>
-      <S.Contents>CommonModal</S.Contents>
-    </S.Wrapper>
+    <ModalPortal>
+      <CommonModalForm onClose={() => setModalOn(false)} category={category} />
+    </ModalPortal>
   );
 }
 
