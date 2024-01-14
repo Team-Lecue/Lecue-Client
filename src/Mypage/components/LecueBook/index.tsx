@@ -5,7 +5,7 @@ import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
 function LecueBook(props: LecueBookProps) {
-  const { favoriteName, title, bookDate, noteNum } = props;
+  const { bookId, favoriteName, title, bookDate, noteNum } = props;
 
   const [noteCount, setNoteCount] = useState('');
 
@@ -13,15 +13,31 @@ function LecueBook(props: LecueBookProps) {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
   };
 
+  const handleClickBook = (bookId: number) => {
+    alert(`${bookId}가 선택되었습니다.`);
+  };
+
+  const handleClickDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    bookId: number,
+  ) => {
+    event.stopPropagation();
+    alert(`${bookId}를 삭제하시겠습니까?`);
+  };
+
   useEffect(() => {
     convertNoteCount(noteNum);
   });
 
   return (
-    <S.Wrapper>
+    <S.Wrapper
+      onClick={() => {
+        handleClickBook(bookId);
+      }}
+    >
       <S.Header>
         <S.Name>{favoriteName}</S.Name>
-        <S.TrashBtn>
+        <S.TrashBtn onClick={(event) => handleClickDelete(event, bookId)}>
           <IcWaste />
         </S.TrashBtn>
       </S.Header>
