@@ -10,6 +10,7 @@ import BtnKakaologin from './button/btn_kakaologin.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
+import IcCaution from './icon/ic_caution.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';
 import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
@@ -43,6 +44,7 @@ export {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcCamera,
+  IcCaution,
   IcCrown,
   IcDate,
   IcHome,
