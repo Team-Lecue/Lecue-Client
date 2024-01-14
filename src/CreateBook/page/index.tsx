@@ -1,5 +1,13 @@
+import { useState } from 'react';
+
 import Button from '../../components/common/Button';
 import Header from '../../components/common/Header';
+import {
+  CATEGORY,
+  TEXT_COLOR_CHART,
+} from '../../LecueNote/constants/colorChart';
+import BookInput from '../components/BookInput';
+import SelectColor from '../components/SelectColor';
 import * as S from './CreateBook.style';
 
 function CreateBook() {
