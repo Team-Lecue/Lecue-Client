@@ -17,7 +17,7 @@ function LecueBook(props: LecueBookProps) {
     alert(`${bookId}가 선택되었습니다.`);
   };
 
-  const handleClickDelete = (
+  const handleClickTrashBtn = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     bookId: number,
   ) => {
@@ -37,7 +37,7 @@ function LecueBook(props: LecueBookProps) {
     >
       <S.Header>
         <S.Name>{favoriteName}</S.Name>
-        <S.TrashBtn onClick={(event) => handleClickDelete(event, bookId)}>
+        <S.TrashBtn onClick={(event) => handleClickTrashBtn(event, bookId)}>
           <IcWaste />
         </S.TrashBtn>
       </S.Header>
