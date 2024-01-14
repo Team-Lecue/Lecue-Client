@@ -53,14 +53,8 @@ export const TextWrapper = styled.div<{ noteTextColor: number }>`
 
   width: 100%;
 
-  color: ${({ theme, noteTextColor }) => {
-    switch (noteTextColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
-        return theme.colors.BG;
-    }
-  }};
+  color: ${({ theme, noteTextColor }) =>
+    noteTextColor === 0 ? theme.colors.white : theme.colors.BG};
 `;
 
 export const Name = styled.p`
