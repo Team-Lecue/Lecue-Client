@@ -1,3 +1,5 @@
+import * as S from './CreateBook.style';
+
 function CreateBook() {
   const [isActive, setIsActive] = useState([false, false]);
   const handleSetActive = (num: number, t: boolean) => {
