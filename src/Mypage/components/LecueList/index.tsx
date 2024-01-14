@@ -7,18 +7,18 @@ import LecueNote from '../LecueNote';
 import * as S from './LecueList.style';
 
 function LecueList() {
-  const [clickedBtn, setClickedBtn] = useState(true);
+  const [clickedBtn, setClickedBtn] = useState('note');
   const [counter, setCounter] = useState([0, 0]);
 
   const handleClickNoteBtn = () => {
-    window.scrollTo(0, 0);
-    setClickedBtn(true);
+    setClickedBtn('note');
   };
 
   const handleClickBookBtn = () => {
-    window.scrollTo(0, 0);
-    setClickedBtn(false);
+    setClickedBtn('book');
   };
+
+  console.log(clickedBtn);
 
   const numberCount = (NOTE: LecueNoteType[], BOOK: LecueBookType[]) => {
     setCounter([NOTE.length, BOOK.length]);
@@ -34,22 +34,22 @@ function LecueList() {
         {/* clickedBtn이 true이면 note false이면 book */}
         <S.Button
           type="button"
-          clickedBtn={clickedBtn}
+          variant={clickedBtn === 'note'}
           onClick={handleClickNoteBtn}
         >
           레큐노트 ({counter[0]}개)
         </S.Button>
         <S.Button
           type="button"
-          clickedBtn={!clickedBtn}
+          variant={clickedBtn === 'book'}
           onClick={handleClickBookBtn}
         >
           레큐북 ({counter[1]}개)
         </S.Button>
       </S.ButtonWrapper>
 
-      <S.ListWrapper clickedBtn={clickedBtn}>
-        {clickedBtn
+      <S.ListWrapper variant={clickedBtn}>
+        {clickedBtn === 'note'
           ? NOTE_LIST.map((note) => {
               return (
                 <LecueNote
