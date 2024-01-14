@@ -4,6 +4,7 @@ import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import Login from './Login/page';
+import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SplashPage from './Splash/page/SplashPage';
 import StickerPack from './StickerPack/page/StickerPack';
@@ -17,6 +18,8 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="create-note" element={<LecueNotePage />} />
         <Route path="/sticker-pack" element={<StickerPack />} />
+        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/lecue-book" element={<DetailPage />} />
         <Route path="/test" element={<HealthTest />} />
       </Routes>

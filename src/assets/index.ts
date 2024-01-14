@@ -14,6 +14,7 @@ import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
 import IcNotice from './icon/ic_notice.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
+import IcWaste from './icon/ic_waste.svg?react';
 import IcX from './icon/ic_x.svg?react';
 import ImgBook from './img/img_book.svg?react';
 import ImgKakao01 from './img/img_kakao_01.svg?react';
@@ -48,6 +49,7 @@ export {
   IcHome,
   IcNotice,
   IcSharing,
+  IcWaste,
   IcX,
   ImgBook,
   ImgKakao01,
