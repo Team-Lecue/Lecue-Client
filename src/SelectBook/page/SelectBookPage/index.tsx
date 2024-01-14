@@ -46,7 +46,9 @@ function SelectBookPage() {
             <S.BookTypeContainer>
               {isClickedSelectButton && <S.StyledImgEvent />}
               <BookTypeBox
-                onClick={() => setSelectedBox(selectedBox === 1 ? 0 : 1)}
+                handleClickBookTypeBox={() =>
+                  setSelectedBox(selectedBox === 1 ? 0 : 1)
+                }
                 bookType={1}
                 bookTypeBoxTitle="베이직 레큐북"
                 bookTypeBoxImg={<ImgBookBackgray />}
@@ -56,7 +58,9 @@ function SelectBookPage() {
                 bookTypeBoxOptionList={basicLecueBookOptions}
               />
               <BookTypeBox
-                onClick={() => setSelectedBox(selectedBox === 2 ? 0 : 2)}
+                handleClickBookTypeBox={() =>
+                  setSelectedBox(selectedBox === 2 ? 0 : 2)
+                }
                 bookType={2}
                 bookTypeBoxTitle="프리미엄 레큐북"
                 bookTypeBoxImg={<ImgBookOrange />}

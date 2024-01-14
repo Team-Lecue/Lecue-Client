@@ -5,7 +5,7 @@ import BookTypeBoxOption from '../BookTypeBoxOption';
 import * as S from './BookTypeBox.style';
 
 interface BookTypeBoxProps {
-  onClick: () => void;
+  handleClickBookTypeBox: () => void;
   selectedBox: number;
   bookType: number;
   bookTypeBoxTitle: string;
@@ -16,7 +16,7 @@ interface BookTypeBoxProps {
 }
 
 function BookTypeBox({
-  onClick,
+  handleClickBookTypeBox,
   bookType,
   bookTypeBoxTitle,
   bookTypeBoxImg,
@@ -29,7 +29,7 @@ function BookTypeBox({
     <S.BookTypeBoxWrapper
       onClick={() => {
         if (isClickedSelectButton === false) {
-          onClick();
+          handleClickBookTypeBox();
         }
       }}
       bookType={bookType}
