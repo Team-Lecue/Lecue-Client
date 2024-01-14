@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 export const LecueNoteListContainerWrapper = styled.div<{
   backgroundColor: number;
 }>`
+  padding: 0 1.65rem;
+
   background-color: ${({ theme, backgroundColor }) => {
     switch (backgroundColor) {
       case 0:
@@ -11,6 +13,7 @@ export const LecueNoteListContainerWrapper = styled.div<{
         return theme.colors.BG;
     }
   }};
+
   flex: 1;
 `;
 
@@ -47,14 +50,15 @@ export const ButtonWrapper = styled.div`
   position: fixed;
   bottom: 2rem;
 
-  width: 100%;
-  padding: 0 2.5rem;
+  width: 92%;
 `;
 
 export const AlertBanner = styled.div`
   display: flex;
   gap: 0.4rem;
+  justify-content: center;
 
+  width: 90%;
   padding: 1.1rem 2.35rem;
   margin-bottom: 1rem;
 
