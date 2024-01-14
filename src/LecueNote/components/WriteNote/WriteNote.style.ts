@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 export const LecueNote = styled.article<{
   $bgColor: string;
   $isIconClicked: boolean;
+  $imgFile: string;
 }>`
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ export const LecueNote = styled.article<{
 
   border-radius: 0.6rem;
 
-  ${({ $isIconClicked, $bgColor }) =>
+  ${({ $isIconClicked, $bgColor, $imgFile }) =>
     $isIconClicked
       ? css`
           width: 100%;
@@ -27,7 +28,7 @@ export const LecueNote = styled.article<{
 
           background-size: contain;
 
-          background-image: url('https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg');
+          background-image: url(${$imgFile});
         `
       : css`
           background-color: ${$bgColor};
