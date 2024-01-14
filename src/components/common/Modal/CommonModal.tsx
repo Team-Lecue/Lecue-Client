@@ -1,5 +1,5 @@
-import CommonModalForm from '../CommonModalForm';
-import ModalPortal from '../ModalPortal';
+import CommonModalForm from './CommonModalForm';
+import ModalPortal from './ModalPortal';
 
 interface CommonModal {
   setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
