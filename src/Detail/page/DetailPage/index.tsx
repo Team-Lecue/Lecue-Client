@@ -16,6 +16,7 @@ function DetailPage() {
             noteNum={testProp.noteNum}
             backgroundColor={testProp.bookBackgroundColor}
             noteList={testProp.noteList}
+            postedStickerList={testProp.postedStickerList}
           />
         </S.LecueBookContainer>
       </S.DetailPageBodyWrapper>

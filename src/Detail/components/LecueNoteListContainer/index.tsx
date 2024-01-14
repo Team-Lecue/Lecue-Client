@@ -20,12 +20,14 @@ interface LecueNoteListContainerProps {
   noteNum: number;
   backgroundColor: number;
   noteList: NoteType[];
+  postedStickerList: postedStickerType[];
 }
 
 function LecueNoteListContainer({
   noteNum,
   backgroundColor,
   noteList,
+  postedStickerList,
 }: LecueNoteListContainerProps) {
   //hooks
   const location = useLocation();
@@ -106,6 +108,7 @@ function LecueNoteListContainer({
             isEditable={isEditable}
             handleDrag={handleDrag}
             stickerState={stickerState}
+            postedStickerList={postedStickerList}
           />
         ) : (
           <LinearView noteList={noteList} />

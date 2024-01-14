@@ -10,6 +10,7 @@ interface ZigZagViewProps {
   handleDrag: (e: DraggableEvent, ui: DraggableData) => void;
   stickerState: postedStickerType;
   isEditable: boolean;
+  postedStickerList: postedStickerType[];
 }
 
 function ZigZagView({
@@ -17,6 +18,7 @@ function ZigZagView({
   handleDrag,
   stickerState,
   isEditable,
+  postedStickerList,
 }: ZigZagViewProps) {
   const nodeRef = useRef(null);
 
@@ -38,7 +40,7 @@ function ZigZagView({
             bounds="parent"
             nodeRef={nodeRef}
           >
-            <S.Sticker ref={nodeRef} stickerState={stickerState} />
+            <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
           </Draggable>
         </S.StickerContainer>
       )}

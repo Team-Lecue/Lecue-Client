@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-import { postedStickerType } from '../../type/lecueBookType';
-
 export const ZigZagViewWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -23,9 +21,8 @@ export const StickerContainer = styled.div`
   height: 100%;
 `;
 
-export const Sticker = styled.div<{ stickerState: postedStickerType }>`
-  background-image: ${({ stickerState }) =>
-    `url(${stickerState.stickerImage})`};
+export const Sticker = styled.div<{ stickerImage: string }>`
+  background-image: ${({ stickerImage }) => `url(${stickerImage})`};
 
   width: 10rem;
   height: 10rem;
