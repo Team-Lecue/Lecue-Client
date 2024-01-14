@@ -1,5 +1,6 @@
 export interface LecueBookProps {
   key: number;
+  bookId: number;
   favoriteName: string;
   title: string;
   bookDate: string;
@@ -8,6 +9,7 @@ export interface LecueBookProps {
 
 export interface LecueNoteProps {
   key: number;
+  noteId: number;
   favoriteName: string;
   title: string;
   noteDate: string;
