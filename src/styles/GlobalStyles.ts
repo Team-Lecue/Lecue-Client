@@ -220,13 +220,9 @@ const gStyle = css`
   }
 
   @font-face {
-    font-family: 'Sequel Sans';
-    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
-  }
-
-  @font-face {
     font-family: Pretendard;
-    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
+    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css')
+      format ('woff');
   }
 `;
 
