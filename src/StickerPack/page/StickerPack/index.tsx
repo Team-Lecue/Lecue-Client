@@ -26,7 +26,9 @@ function StickerPack() {
   };
 
   const handleClickDone = () => {
-    navigate('/sticker-attach', { state: { sticker: selectedStickerData } });
+    navigate('/sticker-attach', {
+      state: { sticker: selectedStickerData },
+    });
   };
 
   return (
