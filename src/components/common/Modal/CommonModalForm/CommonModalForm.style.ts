@@ -11,14 +11,13 @@ export const Wrapper = styled.section`
   z-index: 9;
 
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
 
   background: ${({ theme }) => theme.colors.Modal};
 `;
 
 export const Contents = styled.article`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 10;
