@@ -4,9 +4,13 @@ export const Wrapper = styled.li<{
   noteBackgroundColor: number;
   noteBackgroundImage: string;
 }>`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
   width: 48.5%;
-  height: auto;
-  padding: 1.5rem 0.95rem 0.6rem;
+  height: 16.3rem;
+  padding: 1.5rem 0.95rem 1rem;
 
   border-radius: 0.4rem;
   background: ${({ theme, noteBackgroundColor, noteBackgroundImage }) => {
@@ -52,6 +56,7 @@ export const TextWrapper = styled.div<{ noteTextColor: number }>`
   flex-direction: column;
 
   width: 100%;
+  margin-bottom: 1.8rem;
 
   color: ${({ theme, noteTextColor }) =>
     noteTextColor === 0 ? theme.colors.white : theme.colors.BG};
@@ -60,11 +65,12 @@ export const TextWrapper = styled.div<{ noteTextColor: number }>`
 export const Name = styled.p`
   width: 100%;
 
-  ${({ theme }) => theme.fonts.Title2_M_16};
+  ${({ theme }) => theme.fonts.Title1_SB_16};
 `;
 
 export const Title = styled.p`
   width: 100%;
+  margin-bottom: 0.5rem;
 
   ${({ theme }) => theme.fonts.Body4_SB_14};
 `;
@@ -79,14 +85,16 @@ export const Content = styled.p`
 
   width: 100%;
 
-  ${({ theme }) => theme.fonts.Caption1_R_12};
+  ${({ theme }) => theme.fonts.Body3_R_14};
 
   text-overflow: ellipsis;
 `;
 
 export const Date = styled.p`
   width: 100%;
-  padding-top: calc(100% - 11rem);
+
+  ${({ theme }) => theme.fonts.E_Caption_R_12};
+  color: ${({ theme }) => theme.colors.Modal};
 
   text-align: right;
 `;
