@@ -26,7 +26,7 @@ export const LecueNote = styled.article<{
           width: 100%;
           height: calc(100dvh - 33.2rem);
 
-          background-size: contain;
+          background-size: 100% calc(100dvh - 33.2rem);
 
           background-image: url(${$imgFile});
         `
