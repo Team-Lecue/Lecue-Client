@@ -43,9 +43,9 @@ export const Nickname = styled.p<{ $textColor: string }>`
 `;
 
 export const Contents = styled.textarea<{ $textColor: string }>`
-  width: calc(100% - 4rem);
+  width: calc(100% - 3rem);
   height: 100%;
-  margin: 0 2rem 2rem;
+  margin: 0 1.5rem 2rem;
 
   border: none;
   ${({ theme }) => theme.fonts.Body1_R_16};
