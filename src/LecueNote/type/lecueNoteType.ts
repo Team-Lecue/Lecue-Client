@@ -1,6 +1,8 @@
 export interface CreateNoteProps {
+  imgFile: string;
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  uploadImage: (file: string) => void;
 }
 
 export interface SelectColorProps {
@@ -25,11 +27,13 @@ export interface ShowColorChartProps {
   handleIconFn: () => void;
 }
 
-export interface WriteNoteProps extends CreateNoteProps {
+export interface WriteNoteProps {
   imgFile: string;
   isIconClicked: boolean;
   clickedBgColor: string;
   clickedTextColor: string;
+  contents: string;
+  handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface FooterProps {

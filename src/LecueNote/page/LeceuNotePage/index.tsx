@@ -8,6 +8,7 @@ import * as S from './LecueNotePage.style';
 function LecueNotePage() {
   const MAX_LENGTH = 1000;
   const [contents, setContents] = useState('');
+  const [imgFile, setImgFile] = useState('');
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContents(e.target.value);
@@ -20,7 +21,12 @@ function LecueNotePage() {
   return (
     <S.Wrapper>
       <Header headerTitle="레큐노트 작성" />
-      <CreateNote contents={contents} handleChangeFn={handleChangeContents} />
+      <CreateNote
+        contents={contents}
+        handleChangeFn={handleChangeContents}
+        imgFile={imgFile}
+        uploadImage={(file) => setImgFile(file)}
+      />
       <Footer contents={contents} />
     </S.Wrapper>
   );
