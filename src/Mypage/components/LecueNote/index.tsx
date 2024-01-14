@@ -13,8 +13,11 @@ function LecueNote(props: LecueNoteProps) {
   } = props;
 
   return (
-    <S.Wrapper>
-      <S.TextWrapper>
+    <S.Wrapper
+      noteBackgroundColor={noteBackgroundColor}
+      noteBackgroundImage={noteBackgroundImage}
+    >
+      <S.TextWrapper noteTextColor={noteTextColor}>
         <S.Name>{favoriteName}</S.Name>
         <S.Title>{title}</S.Title>
         <S.Content>{content}</S.Content>

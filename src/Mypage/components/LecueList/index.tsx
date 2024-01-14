@@ -11,14 +11,14 @@ function LecueList() {
   const [counter, setCounter] = useState([0, 0]);
 
   const handleClickNoteBtn = () => {
+    document.getElementById('list-wrapper')!.scrollTo(0, 0);
     setClickedBtn('note');
   };
 
   const handleClickBookBtn = () => {
+    document.getElementById('list-wrapper')!.scrollTo(0, 0);
     setClickedBtn('book');
   };
-
-  console.log(clickedBtn);
 
   const numberCount = (NOTE: LecueNoteType[], BOOK: LecueBookType[]) => {
     setCounter([NOTE.length, BOOK.length]);
@@ -48,7 +48,7 @@ function LecueList() {
         </S.Button>
       </S.ButtonWrapper>
 
-      <S.ListWrapper variant={clickedBtn}>
+      <S.ListWrapper variant={clickedBtn} id="list-wrapper">
         {clickedBtn === 'note'
           ? NOTE_LIST.map((note) => {
               return (
@@ -58,6 +58,9 @@ function LecueList() {
                   title={note.title}
                   noteDate={note.noteDate}
                   content={note.content}
+                  noteTextColor={note.noteTextColor}
+                  noteBackgroundColor={note.noteBackgroundColor}
+                  noteBackgroundImage={note.noteBackgroundImage}
                 />
               );
             })
