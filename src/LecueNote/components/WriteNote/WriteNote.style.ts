@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 export const LecueNote = styled.article<{
   $bgColor: string;
   $isIconClicked: boolean;
+  $imgFile: string;
 }>`
   display: flex;
   flex-direction: column;
@@ -19,31 +20,32 @@ export const LecueNote = styled.article<{
 
   border-radius: 0.6rem;
 
-  ${({ $isIconClicked, $bgColor }) =>
+  ${({ $isIconClicked, $bgColor, $imgFile }) =>
     $isIconClicked
       ? css`
           width: 100%;
           height: calc(100dvh - 33.2rem);
 
-          background-size: contain;
+          background-size: 100% calc(100dvh - 33.2rem);
 
-          background-image: url('https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg');
+          background-image: url(${$imgFile});
         `
       : css`
           background-color: ${$bgColor};
         `};
 `;
 
-export const Nickname = styled.p`
+export const Nickname = styled.p<{ $textColor: string }>`
   margin: 2rem 0 1rem 2rem;
 
+  color: ${({ $textColor }) => $textColor};
   ${({ theme }) => theme.fonts.Head1_B_20}
 `;
 
 export const Contents = styled.textarea<{ $textColor: string }>`
-  width: calc(100% - 4rem);
+  width: calc(100% - 3rem);
   height: 100%;
-  margin: 0 2rem 2rem;
+  margin: 0 1.5rem 2rem;
 
   border: none;
   ${({ theme }) => theme.fonts.Body1_R_16};

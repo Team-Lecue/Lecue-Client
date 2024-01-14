@@ -10,7 +10,12 @@ import SelectColor from '../SelectColor';
 import WriteNote from '../WriteNote';
 import * as S from './CreateNote.style';
 
-function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
+function CreateNote({
+  contents,
+  handleChangeFn,
+  imgFile,
+  uploadImage,
+}: CreateNoteProps) {
   const [clickedCategory, setclickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
   const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
@@ -40,6 +45,7 @@ function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
   return (
     <S.Wrapper>
       <WriteNote
+        imgFile={imgFile}
         isIconClicked={isIconClicked}
         clickedBgColor={clickedBgColor}
         clickedTextColor={clickedTextColor}
@@ -54,6 +60,7 @@ function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
         handleCategoryFn={handleClickCategory}
         handleColorFn={handleClickedColorBtn}
         handleIconFn={handleClickedIcon}
+        uploadImage={uploadImage}
       />
     </S.Wrapper>
   );

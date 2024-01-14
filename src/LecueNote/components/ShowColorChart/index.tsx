@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
@@ -7,15 +9,50 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  uploadImage,
   handleFn,
   handleIconFn,
 }: ShowColorChartProps) {
+  const imgRef = useRef<HTMLInputElement | null>(null);
+
+  const handleImageUpload = () => {
+    const fileInput = imgRef.current;
+
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onloadend = () => {
+        if (reader.result !== null) {
+          uploadImage(reader.result as string);
+        }
+      };
+    }
+  };
+
   return (
     <S.Wrapper>
       {colorChart === BG_COLOR_CHART && (
-        <S.IconWrapper onClick={handleIconFn} $isIconClicked={isIconClicked}>
-          <IcCameraSmall />
-        </S.IconWrapper>
+        <>
+          <S.Input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            ref={imgRef}
+          />
+
+          <S.IconWrapper
+            onClick={() => {
+              handleIconFn();
+              imgRef.current?.click();
+            }}
+            $isIconClicked={isIconClicked}
+          >
+            <IcCameraSmall />
+          </S.IconWrapper>
+        </>
       )}
       {colorChart.map((colorCode) => (
         <S.ColorWrapper key={colorCode}>
