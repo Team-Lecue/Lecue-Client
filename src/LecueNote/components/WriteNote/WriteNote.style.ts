@@ -1,18 +1,73 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   display: flex;
+  gap: 0.6rem;
   flex-direction: column;
-
-  gap: 0.4rem;
 `;
 
-export const LecueNote = styled.article<{ $bgColor: string }>`
+export const LecueNote = styled.article<{
+  $bgColor: string;
+  $isIconClicked: boolean;
+}>`
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
-  height: calc(100dvh - 33rem);
+  height: calc(100dvh - 33.2rem);
 
   border-radius: 0.6rem;
-  background-color: ${({ $bgColor }) => $bgColor};
+
+  ${({ $isIconClicked, $bgColor }) =>
+    $isIconClicked
+      ? css`
+          width: 100%;
+          height: calc(100dvh - 33.2rem);
+
+          background-size: contain;
+
+          background-image: url('https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg');
+        `
+      : css`
+          background-color: ${$bgColor};
+        `};
+`;
+
+export const Nickname = styled.p`
+  margin: 2rem 0 1rem 2rem;
+
+  ${({ theme }) => theme.fonts.Head1_B_20}
+`;
+
+export const Contents = styled.textarea<{ $textColor: string }>`
+  width: calc(100% - 4rem);
+  height: 100%;
+  margin: 0 2rem 2rem;
+
+  border: none;
+  ${({ theme }) => theme.fonts.Body1_R_16};
+  background-color: transparent;
+  color: ${({ $textColor }) => $textColor};
+`;
+
+export const BottomContentsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: calc(100% - 4rem);
+  height: 1.7rem;
+  margin: 0 2rem 2rem;
+`;
+
+export const Date = styled.p`
+  ${({ theme }) => theme.fonts.E_Body2_R_14};
+  color: ${({ theme }) => theme.colors.DG50};
+`;
+
+export const Counter = styled.p`
+  ${({ theme }) => theme.fonts.E_Body2_R_14};
+  color: ${({ theme }) => theme.colors.DG};
 `;
 
 export const Notice = styled.p`
