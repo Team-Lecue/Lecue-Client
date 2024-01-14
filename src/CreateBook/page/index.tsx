@@ -3,6 +3,11 @@ function CreateBook() {
   return (
     <S.Wrapper>
       <Header headerTitle="레큐북 만들기" />
+        <BookInput
+          handleSetActive={(num, t) => handleSetActive(num, t)}
+          isTitle
+        />
+        <BookInput handleSetActive={(num, t) => handleSetActive(num, t)} />
     </S.Wrapper>
   );
 }
