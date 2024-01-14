@@ -94,7 +94,10 @@ function LecueNoteListContainer({
   };
 
   return (
-    <S.LecueNoteListContainerWrapper backgroundColor={backgroundColor}>
+    <S.LecueNoteListContainerWrapper
+      isEditable={isEditable}
+      backgroundColor={backgroundColor}
+    >
       <LecueNoteListHeader
         noteNum={noteNum}
         backgroundColor={backgroundColor}
