@@ -13,6 +13,7 @@ function LecueNotePage() {
     setContents(e.target.value);
     if (e.target.value.length > MAX_LENGTH) {
       setContents((e.target.value = e.target.value.substring(0, MAX_LENGTH)));
+      alert('1000자 내로 작성해주세요.');
     }
   };
 
