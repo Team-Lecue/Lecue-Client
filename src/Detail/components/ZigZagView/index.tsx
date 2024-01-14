@@ -29,7 +29,19 @@ function ZigZagView({
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      {isEditable ? (
+      <S.StickerContainer>
+        {postedStickerList.map((data) => (
+          <Draggable
+            nodeRef={nodeRef}
+            key={data.postedStickerId}
+            positionOffset={{ x: data.positionX, y: data.positionY }}
+            onStart={() => false}
+          >
+            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+          </Draggable>
+        ))}
+      </S.StickerContainer>
+      {isEditable && (
         <S.StickerContainer>
           <Draggable
             defaultPosition={{
@@ -42,19 +54,6 @@ function ZigZagView({
           >
             <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
           </Draggable>
-        </S.StickerContainer>
-      ) : (
-        <S.StickerContainer>
-          {postedStickerList.map((data) => (
-            <Draggable
-              nodeRef={nodeRef}
-              key={data.postedStickerId}
-              positionOffset={{ x: data.positionX, y: data.positionY }}
-              onStart={() => false}
-            >
-              <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-            </Draggable>
-          ))}
         </S.StickerContainer>
       )}
     </S.ZigZagViewWrapper>
