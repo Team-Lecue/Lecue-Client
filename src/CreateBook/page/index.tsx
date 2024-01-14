@@ -1,4 +1,10 @@
 function CreateBook() {
+  const [isActive, setIsActive] = useState([false, false]);
+  const handleSetActive = (num: number, t: boolean) => {
+    const updatedArray = [...isActive];
+    updatedArray[num] = t;
+    setIsActive(updatedArray);
+  };
 
   return (
     <S.Wrapper>
