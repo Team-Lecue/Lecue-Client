@@ -15,6 +15,7 @@ function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
   const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
+  const [imgFile, setImgFile] = useState('');
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -40,6 +41,7 @@ function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
   return (
     <S.Wrapper>
       <WriteNote
+        imgFile={imgFile}
         isIconClicked={isIconClicked}
         clickedBgColor={clickedBgColor}
         clickedTextColor={clickedTextColor}
@@ -54,6 +56,7 @@ function CreateNote({ contents, handleChangeFn }: CreateNoteProps) {
         handleCategoryFn={handleClickCategory}
         handleColorFn={handleClickedColorBtn}
         handleIconFn={handleClickedIcon}
+        uploadImage={(file) => setImgFile(file)}
       />
     </S.Wrapper>
   );

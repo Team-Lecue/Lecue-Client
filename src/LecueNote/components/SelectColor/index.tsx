@@ -15,6 +15,7 @@ function SelectColor({
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
+  uploadImage,
 }: SelectColorProps) {
   return (
     <S.Wrapper>
@@ -35,17 +36,19 @@ function SelectColor({
 
       {clickedCategory === '텍스트색' ? (
         <ShowColorChart
-        isIconClicked={isIconClicked}
+          isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={clickedTextColor}
+          uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />
       ) : (
         <ShowColorChart
-        isIconClicked={isIconClicked}
+          isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={clickedBgColor}
+          uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />
