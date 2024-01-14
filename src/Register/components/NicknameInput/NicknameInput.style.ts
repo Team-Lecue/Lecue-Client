@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 
 export const NicknameWrapper = styled.section`
   display: flex;
+  gap: 1.7rem;
   align-items: center;
   flex-direction: column;
 
   width: 100%;
-  gap: 1.7rem;
 `;
 
 export const Question = styled.p`
@@ -24,6 +24,7 @@ export const InputContainer = styled.div<{ isEmpty: boolean }>`
 
   width: 100%;
   padding: 1.9rem 2rem;
+
   gap: 1.6rem;
 
   ${({ theme }) => theme.fonts.Body3_R_14};
