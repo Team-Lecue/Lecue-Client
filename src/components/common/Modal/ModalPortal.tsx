@@ -5,7 +5,7 @@ interface ModalPortalProps {
 }
 
 const ModalPortal = ({ children }: ModalPortalProps) => {
-  const el: HTMLElement | null = document.getElementById('modal');
+  const el: HTMLElement | null = document.getElementById('lecuenote-modal');
   return ReactDOM.createPortal(children, el as Element | DocumentFragment);
 };
 
