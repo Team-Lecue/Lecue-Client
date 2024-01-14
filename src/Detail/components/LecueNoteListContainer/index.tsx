@@ -7,6 +7,7 @@ import {
   BtnFloatingStickerOrange,
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
+  IcCaution,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
@@ -131,11 +132,17 @@ function LecueNoteListContainer({
       )}
 
       {isEditable && (
-        <S.ButtonWrapper>
-          <Button variant="choose" onClick={handleClickDone}>
-            부착 완료
-          </Button>
-        </S.ButtonWrapper>
+        <>
+          <S.ButtonWrapper>
+            <S.AlertBanner>
+              <IcCaution />
+              스티커는 한 번 붙이면 수정/삭제할 수 없습니다
+            </S.AlertBanner>
+            <Button variant="choose" onClick={handleClickDone}>
+              부착 완료
+            </Button>
+          </S.ButtonWrapper>
+        </>
       )}
     </S.LecueNoteListContainerWrapper>
   );
