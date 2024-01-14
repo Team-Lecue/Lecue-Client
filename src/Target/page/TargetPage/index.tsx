@@ -14,7 +14,9 @@ function TargetPage() {
   const navigate = useNavigate();
 
   const handleClickCompleteButton = () => {
-    navigate('/selectBtn');
+    navigate('/select-book', {
+      state: { presignedFileName: presignedFileName, name: name },
+    });
   };
 
   return (
