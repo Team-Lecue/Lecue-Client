@@ -31,6 +31,11 @@ function CreateBook() {
           isTitle
         />
         <BookInput handleSetActive={(num, t) => handleSetActive(num, t)} />
+        <SelectColor
+          clickedTextColor={clickedTextColor}
+          handleCategoryFn={handleClickCategory}
+          handleColorFn={handleClickedColorBtn}
+        />
         <Button
           variant="complete"
           disabled={!isActive}
