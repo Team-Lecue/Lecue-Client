@@ -44,7 +44,7 @@ function SelectBookPage() {
             isClickedSelectButton={isClickedSelectButton}
           >
             <S.BookTypeContainer>
-              {isClickedSelectButton ? <S.StyledImgEvent /> : <></>}
+              {isClickedSelectButton && <S.StyledImgEvent />}
               <BookTypeBox
                 onClick={() => setSelectedBox(selectedBox === 1 ? 0 : 1)}
                 bookType={1}

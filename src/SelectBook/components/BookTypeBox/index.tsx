@@ -49,7 +49,7 @@ function BookTypeBox({
         bookTypeBoxImg
       )}
 
-      {bookType === 2 && isClickedSelectButton ? <ImgSaleprice /> : <></>}
+      {bookType === 2 && isClickedSelectButton && <ImgSaleprice />}
       <S.BookTypeBoxPriceWrapper>
         <S.BookTypeBoxPrice bookType={bookType} selectedBox={selectedBox}>
           {bookType === 2 && isClickedSelectButton
