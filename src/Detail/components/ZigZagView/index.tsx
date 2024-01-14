@@ -47,6 +47,7 @@ function ZigZagView({
         <S.StickerContainer>
           {postedStickerList.map((data) => (
             <Draggable
+              nodeRef={nodeRef}
               key={data.postedStickerId}
               positionOffset={{ x: data.positionX, y: data.positionY }}
               onStart={() => false}
