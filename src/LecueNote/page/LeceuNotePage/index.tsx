@@ -12,7 +12,7 @@ function LecueNotePage() {
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContents(e.target.value);
     if (e.target.value.length > MAX_LENGTH) {
-      setContents((e.target.value = e.target.value.substring(0, 1000)));
+      setContents((e.target.value = e.target.value.substring(0, MAX_LENGTH)));
     }
   };
 
