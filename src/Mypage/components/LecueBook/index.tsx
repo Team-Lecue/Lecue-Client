@@ -5,8 +5,9 @@ import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
 function LecueBook(props: LecueBookProps) {
-  const [noteCount, setNoteCount] = useState('');
   const { favoriteName, title, bookDate, noteNum } = props;
+
+  const [noteCount, setNoteCount] = useState('');
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
