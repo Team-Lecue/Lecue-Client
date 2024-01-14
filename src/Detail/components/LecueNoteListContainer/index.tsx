@@ -61,7 +61,7 @@ function LecueNoteListContainer({
     } else {
       // editable 상태 변경
       setIsEditable(false);
-      navigate('/detail');
+      navigate('/lecue-book');
     }
   }, [state]);
 
@@ -90,7 +90,7 @@ function LecueNoteListContainer({
   const handleClickDone = () => {
     setIsEditable(true);
     sessionStorage.removeItem('scrollPosition');
-    navigate('/detail');
+    navigate('/lecue-book');
   };
 
   return (
