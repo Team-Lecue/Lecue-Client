@@ -31,9 +31,18 @@ function SelectBookPage() {
     <S.SelectBookPageWrapper>
       <Header headerTitle="레큐북 만들기" />
       <S.SelectBookPageBodyWrapper>
-        <S.SelectBookContainer>
-          <S.SectionTitle>레큐북 타입 선택</S.SectionTitle>
-          <S.BookTypeContainerWrapper>
+        <S.SelectBookContainer isClickedSelectButton={isClickedSelectButton}>
+          {isClickedSelectButton ? (
+            <S.SectionTitle>
+              <S.SectionOrangeTitle>레큐는 이벤트 중!</S.SectionOrangeTitle>
+              무료로 프로그램 레큐북을 만들어요!
+            </S.SectionTitle>
+          ) : (
+            <S.SectionTitle>레큐북 타입 선택</S.SectionTitle>
+          )}
+          <S.BookTypeContainerWrapper
+            isClickedSelectButton={isClickedSelectButton}
+          >
             <S.BookTypeContainer>
               {isClickedSelectButton ? <S.StyledImgEvent /> : <></>}
               <BookTypeBox

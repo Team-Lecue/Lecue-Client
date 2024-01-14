@@ -22,9 +22,12 @@ export const SelectBookPageBodyWrapper = styled.div`
   margin-top: 5.4rem;
 `;
 
-export const SelectBookContainer = styled.div`
+export const SelectBookContainer = styled.div<{
+  isClickedSelectButton: boolean;
+}>`
   width: 100%;
-  margin-top: 5.4rem;
+  margin-top: ${({ isClickedSelectButton }) =>
+    isClickedSelectButton ? '3.6rem' : '5.4rem'};
 `;
 
 export const SectionTitle = styled.p`
@@ -32,12 +35,20 @@ export const SectionTitle = styled.p`
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
-export const BookTypeContainerWrapper = styled.div`
+export const SectionOrangeTitle = styled.p`
+  color: ${({ theme }) => theme.colors.key};
+  ${({ theme }) => theme.fonts.Head2_SB_18};
+`;
+
+export const BookTypeContainerWrapper = styled.div<{
+  isClickedSelectButton: boolean;
+}>`
   display: flex;
   justify-content: center;
 
   width: 100%;
-  margin-top: 4rem;
+  margin-top: ${({ isClickedSelectButton }) =>
+    isClickedSelectButton ? '3.3rem' : '4rem'};
 `;
 
 export const BookTypeContainer = styled.div`
