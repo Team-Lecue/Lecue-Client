@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
+import { api } from '../../../libs/api';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
 import * as S from './ShowColorChart.style';
@@ -9,6 +10,7 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  setFileName,
   uploadImage,
   handleFn,
   handleIconFn,
@@ -21,12 +23,28 @@ function ShowColorChart({
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
+      // reader1: 파일을 base64로 읽어서 업로드
+      const reader1 = new FileReader();
+      reader1.readAsDataURL(file);
+      reader1.onloadend = () => {
+        if (reader1.result !== null) {
+          uploadImage(reader1.result as string);
+        }
+      };
 
-      reader.onloadend = () => {
-        if (reader.result !== null) {
-          uploadImage(reader.result as string);
+      // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
+      const reader2 = new FileReader();
+      reader2.readAsArrayBuffer(file);
+      reader2.onloadend = () => {
+        if (reader2.result !== null) {
+          api.get('/api/images/note').then((res) => {
+            setFileName(res.data.data.fileName);
+            api.put(res.data.data.url, reader2.result, {
+              headers: {
+                'Content-Type': file.type,
+              },
+            });
+          });
         }
       };
     }

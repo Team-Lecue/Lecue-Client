@@ -5,6 +5,7 @@ export interface CreateNoteProps {
   isIconClicked: boolean;
   imgFile: string;
   contents: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleClickCategory: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -21,6 +22,7 @@ export interface SelectColorProps {
   clickedCategory: string;
   clickedTextColor: string;
   clickedBgColor: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
   handleCategoryFn: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
@@ -33,6 +35,7 @@ export interface ShowColorChartProps {
   isIconClicked: boolean;
   colorChart: string[];
   state: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
   uploadImage: (file: string) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
@@ -49,5 +52,7 @@ export interface WriteNoteProps {
 
 export interface FooterProps {
   contents: string;
-  imgFile: string;
+  fileName: string;
+  textColor: string;
+  bgColor: string;
 }

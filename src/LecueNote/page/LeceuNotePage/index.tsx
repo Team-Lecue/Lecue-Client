@@ -18,6 +18,7 @@ function LecueNotePage() {
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
   const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
+  const [fileName, setFileName] = useState('');
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -59,12 +60,18 @@ function LecueNotePage() {
         contents={contents}
         imgFile={imgFile}
         uploadImage={(file) => setImgFile(file)}
+        setFileName={setFileName}
         handleChangeFn={handleChangeContents}
         handleClickCategory={handleClickCategory}
         handleClickedColorBtn={handleClickedColorBtn}
         handleClickedIcon={handleClickedIcon}
       />
-      <Footer contents={contents} imgFile={imgFile} />
+      <Footer
+        contents={contents}
+        fileName={fileName}
+        textColor={clickedTextColor}
+        bgColor={clickedBgColor}
+      />
     </S.Wrapper>
   );
 }

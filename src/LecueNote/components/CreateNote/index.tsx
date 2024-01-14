@@ -9,6 +9,7 @@ function CreateNote({
   clickedTextColor,
   isIconClicked,
   contents,
+  setFileName,
   handleChangeFn,
   handleClickCategory,
   handleClickedColorBtn,
@@ -31,6 +32,7 @@ function CreateNote({
         clickedCategory={clickedCategory}
         clickedTextColor={clickedTextColor}
         clickedBgColor={clickedBgColor}
+        setFileName={setFileName}
         handleCategoryFn={handleClickCategory}
         handleColorFn={handleClickedColorBtn}
         handleIconFn={handleClickedIcon}
