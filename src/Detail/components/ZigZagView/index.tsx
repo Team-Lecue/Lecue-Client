@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
@@ -13,14 +13,21 @@ interface ZigZagViewProps {
   postedStickerList: postedStickerType[];
 }
 
-function ZigZagView({
-  noteList,
-  handleDrag,
-  stickerState,
-  isEditable,
-  postedStickerList,
-}: ZigZagViewProps) {
+const ZigZagView = forwardRef(function ZigZagView(
+  {
+    noteList,
+    handleDrag,
+    stickerState,
+    isEditable,
+    postedStickerList,
+  }: ZigZagViewProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const nodeRef = useRef(null);
+
+  const handleOnStopMovingSticker = () => {
+    console.log('stop');
+  };
 
   return (
     <S.ZigZagViewWrapper>
@@ -29,9 +36,10 @@ function ZigZagView({
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      <S.StickerContainer>
+      <S.StickerContainer ref={ref}>
         {postedStickerList.map((data) => (
           <Draggable
+            onStop={() => handleOnStopMovingSticker()}
             nodeRef={nodeRef}
             key={data.postedStickerId}
             positionOffset={{ x: data.positionX, y: data.positionY }}
@@ -58,6 +66,5 @@ function ZigZagView({
       )}
     </S.ZigZagViewWrapper>
   );
-}
-
+});
 export default ZigZagView;

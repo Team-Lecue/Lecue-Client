@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DraggableData, DraggableEvent } from 'react-draggable';
+import { useQueryClient } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -10,6 +11,7 @@ import {
   IcCaution,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
+import { postStickerState } from '../../../StickerAttach/api/postStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
@@ -18,7 +20,7 @@ import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
   noteNum: number;
-  backgroundColor: number;
+  backgroundColor: string;
   noteList: NoteType[];
   postedStickerList: postedStickerType[];
 }
@@ -32,6 +34,8 @@ function LecueNoteListContainer({
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
+  const scrollRef = useRef(document.createElement('div'));
+  const queryClient = useQueryClient();
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
@@ -47,6 +51,16 @@ function LecueNoteListContainer({
   });
 
   const { state } = location;
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      const CalcYPosition =
+        scrollRef.current.scrollHeight - stickerState.positionY;
+      const FullHeight = scrollRef.current.scrollHeight;
+      console.log(CalcYPosition);
+      console.log(FullHeight);
+    }
+  }, [scrollRef.current, stickerState]);
 
   useEffect(() => {
     // editable 상태 변경
@@ -70,8 +84,8 @@ function LecueNoteListContainer({
     const { positionX, positionY } = stickerState;
     setStickerState((prev) => ({
       ...prev,
-      positionX: positionX + ui.deltaX,
-      positionY: positionY + ui.deltaY,
+      positionX: Math.ceil(positionX + ui.deltaX),
+      positionY: Math.ceil(positionY + ui.deltaY),
     }));
   };
 
@@ -88,10 +102,23 @@ function LecueNoteListContainer({
   };
 
   const handleClickDone = () => {
+    const { postedStickerId, positionX, positionY } = stickerState;
+    const bookId = 1;
+    postStickerState({ postedStickerId, bookId, positionX, positionY });
+
     setIsEditable(true);
+
     sessionStorage.removeItem('scrollPosition');
+
     navigate('/lecue-book');
   };
+
+  // const { mutate: postSticker } = useMutation(postStickerState, {
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries('stickerState');
+  //   },
+  //   onError: () => {},
+  // });
 
   return (
     <S.LecueNoteListContainerWrapper
@@ -112,6 +139,7 @@ function LecueNoteListContainer({
             handleDrag={handleDrag}
             stickerState={stickerState}
             postedStickerList={postedStickerList}
+            ref={scrollRef}
           />
         ) : (
           <LinearView noteList={noteList} />
@@ -121,14 +149,14 @@ function LecueNoteListContainer({
       {!isEditable && (
         <>
           <S.StickerButton type="button" onClick={handleClickStickerButton}>
-            {backgroundColor === 0 ? (
+            {backgroundColor === '#F5F5F5' ? (
               <BtnFloatingSticker />
             ) : (
               <BtnFloatingStickerOrange />
             )}
           </S.StickerButton>
           <S.WriteButton type="button" onClick={handleClickWriteButton}>
-            {backgroundColor === 0 ? (
+            {backgroundColor === '#F5F5F5' ? (
               <BtnFloatingWrite />
             ) : (
               <BtnFloatingWriteOrange />
