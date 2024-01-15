@@ -18,7 +18,7 @@ function BookInfoTextarea({
     <S.BookInfoWrapper>
       <S.TextareaContainer isEmpty={description.length === 0}>
         <S.Textarea
-          placeholder="레큐북의 제목을 입력해주세요"
+          placeholder="무엇에 대한 레큐북인가요?"
           value={description}
           onChange={handleChangeInput}
         />

@@ -30,6 +30,9 @@ export const Textarea = styled.textarea`
   color: ${({ theme }) => theme.colors.BG};
 
   ${({ theme }) => theme.fonts.Body2_M_14};
+
+  resize: none;
+
   &:focus {
     outline: none;
   }
