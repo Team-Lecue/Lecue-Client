@@ -11,7 +11,7 @@ const postLecueNote = ({
 }: postLecueNoteProps) => {
   //   const navigate = useNavigate();
 
-  api
+  const response = api
     .post(
       '/api/notes',
       {
@@ -31,6 +31,8 @@ const postLecueNote = ({
       // 나중에 주석코드를 활성화시킬 예정!
       // navigate(`lecue-book/${res.data.data.bookUuid}`);
     });
+
+  return response;
 };
 
 export default postLecueNote;
