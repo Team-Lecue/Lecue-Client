@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Loading from './components/common/Loading/Loading';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
+import Loading from './Login/components/Loading';
 import Login from './Login/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';

@@ -1,37 +1,34 @@
-import axios from 'axios';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import {
-  KAKAO_BASE_URL,
-  KAKAO_REDIRECT_URI,
-  KAKAO_REST_API_KEY,
-} from '../../../Login/api/oAuth';
+import { getLoginToken } from '../../../Login/api/getLoginToken';
+import { postLoginToken } from '../../../Login/api/postLoginToken';
 
 function Loading() {
-  const AUTHORIZE_CODE = new URL(window.location.href).searchParams.get('code');
-  const GRANT_TYPE = 'authorization_code';
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (AUTHORIZE_CODE) {
-      axios
-        .post(
-          `${KAKAO_BASE_URL}/token?grant_type=${GRANT_TYPE}&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&code=${AUTHORIZE_CODE}`,
-          {},
-          {
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-            },
-          },
-        )
-        .then((res) => {
-          console.log(res.data);
-        });
-    }
+    const fetchData = async () => {
+      try {
+        const tokenRes = await getLoginToken();
+
+        const { nickname, tokenDto } = await postLoginToken(tokenRes);
+
+        if (nickname === null) {
+          navigate('/register');
+        } else {
+          window.localStorage.setItem('token', tokenDto.accessToken);
+          window.localStorage.setItem('nickname', nickname);
+        }
+      } catch (error) {
+        console.error('로딩-fetchData() 에러 발생:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  return <div>로딩중.....ㅋ</div>;
+  return <div>로딩중.....</div>;
 }
 
 export default Loading;
