@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
-import getPresignedUrl from '../../api/getPresignedUrl';
 import handleImageUpload from '../../api/handleImageUpload';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
+import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
 import * as S from './ShowColorChart.style';
 
@@ -18,13 +18,14 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [presignedUrl, setPresignedUrl] = useState('');
+  const { data } = useGetPresignedUrl();
 
   useEffect(() => {
-    getPresignedUrl({
-      setPresignedUrl: setPresignedUrl,
-      setFileName: setFileName,
-    });
-  }, []);
+    if (data !== undefined) {
+      setPresignedUrl(data.data.url);
+      setFileName(data.data.fileName);
+    }
+  }, [data]);
 
   return (
     <S.Wrapper>
