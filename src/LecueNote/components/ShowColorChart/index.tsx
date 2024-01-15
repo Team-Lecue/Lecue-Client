@@ -20,7 +20,10 @@ function ShowColorChart({
   const [presignedUrl, setPresignedUrl] = useState('');
 
   useEffect(() => {
-    getPresignedUrl(setPresignedUrl, setFileName);
+    getPresignedUrl({
+      setPresignedUrl: setPresignedUrl,
+      setFileName: setFileName,
+    });
   }, []);
 
   return (

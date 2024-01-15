@@ -56,3 +56,21 @@ export interface FooterProps {
   textColor: string;
   bgColor: string;
 }
+
+export interface getPresignedUrlPrps {
+  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface putPresignedUrlProps {
+  presignedUrl: string;
+  binaryFile: string | ArrayBuffer;
+  fileType: string;
+}
+
+export interface postLecueNoteProps {
+  contents: string;
+  color: number;
+  fileName: string;
+  bgColor: string;
+}

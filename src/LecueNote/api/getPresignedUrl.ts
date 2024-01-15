@@ -1,9 +1,10 @@
 import { api } from '../../libs/api';
+import { getPresignedUrlPrps } from '../type/lecueNoteType';
 
-const getPresignedUrl = (
-  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>,
-  setFileName: React.Dispatch<React.SetStateAction<string>>,
-) => {
+const getPresignedUrl = ({
+  setPresignedUrl,
+  setFileName,
+}: getPresignedUrlPrps) => {
   api.get('/api/images/note').then((res) => {
     setPresignedUrl(res.data.data.url);
     setFileName(res.data.data.fileName);

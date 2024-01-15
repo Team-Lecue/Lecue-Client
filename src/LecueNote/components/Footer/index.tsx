@@ -7,7 +7,12 @@ function Footer({ contents, fileName, textColor, bgColor }: FooterProps) {
   const color = textColor === '#FFF' ? 1 : 0;
 
   const handleClickBtn = () => {
-    postLecueNote(contents, color, fileName, bgColor);
+    postLecueNote({
+      contents: contents,
+      color: color,
+      fileName: fileName,
+      bgColor: bgColor,
+    });
   };
 
   return (

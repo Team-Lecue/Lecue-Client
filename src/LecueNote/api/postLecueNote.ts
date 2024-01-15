@@ -1,14 +1,15 @@
 // import { useNavigate } from 'react-router-dom';
 
 import { api } from '../../libs/api';
+import { postLecueNoteProps } from '../type/lecueNoteType';
 
-const postLecueNote = (
-  contents: string,
-  color: number,
-  fileName: string,
-  bgColor: string,
-) => {
-//   const navigate = useNavigate();
+const postLecueNote = ({
+  contents,
+  color,
+  fileName,
+  bgColor,
+}: postLecueNoteProps) => {
+  //   const navigate = useNavigate();
 
   api
     .post(

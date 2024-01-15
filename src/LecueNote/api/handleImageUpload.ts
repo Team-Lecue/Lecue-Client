@@ -24,7 +24,11 @@ const handleImageUpload = (
     reader2.readAsArrayBuffer(file);
     reader2.onloadend = () => {
       if (reader2.result !== null && presignedUrl) {
-        putPresignedUrl(presignedUrl, reader2.result, file.type);
+        putPresignedUrl({
+          presignedUrl: presignedUrl,
+          binaryFile: reader2.result,
+          fileType: file.type,
+        });
       }
     };
   }

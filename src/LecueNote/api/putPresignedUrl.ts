@@ -1,10 +1,11 @@
 import { api } from '../../libs/api';
+import { putPresignedUrlProps } from '../type/lecueNoteType';
 
-const putPresignedUrl = (
-  presignedUrl: string,
-  binaryFile: string | ArrayBuffer,
-  fileType: string,
-) => {
+const putPresignedUrl = ({
+  presignedUrl,
+  binaryFile,
+  fileType,
+}: putPresignedUrlProps) => {
   api.put(presignedUrl, binaryFile, {
     headers: {
       'Content-Type': fileType,
