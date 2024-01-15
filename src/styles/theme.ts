@@ -25,6 +25,8 @@ const colors = {
   white30: '#FFFFFF4D',
   white20: '#FFFFFF33',
   white10: '#FFFFFF1A',
+  DG50: '#49494980',
+  Modal: '#000000BF',
 };
 
 const fonts = {
@@ -105,7 +107,7 @@ const fonts = {
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.2rem',
-    lineHeight: 'auto',
+    lineHeight: '140%',
     letterSpacing: '-0.03rem',
   },
   Caption2_SB_12: {
@@ -157,12 +159,12 @@ const fonts = {
     letterSpacing: '0',
   },
   Orange: {
-    fontFamily: 'Sequel Sans',
+    fontFamily: 'Pretendard',
     fontStyle: 'normal',
-    fontWeight: 317,
+    fontWeight: 500,
     fontSize: '2.2rem',
     lineHeight: 'auto',
-    letterSpacing: '-0.066rem',
+    letterSpacing: '0',
   },
 };
 
