@@ -41,6 +41,7 @@ function SelectBookPage() {
           {isClickedSelectButton ? (
             <S.SectionTitle>
               <S.SectionOrangeTitle>레큐는 이벤트 중!</S.SectionOrangeTitle>
+              <br />
               무료로 프리미엄 레큐북을 만들어요!
             </S.SectionTitle>
           ) : (

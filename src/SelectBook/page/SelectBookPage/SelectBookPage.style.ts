@@ -35,7 +35,7 @@ export const SectionTitle = styled.p`
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
-export const SectionOrangeTitle = styled.p`
+export const SectionOrangeTitle = styled.span`
   color: ${({ theme }) => theme.colors.key};
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
