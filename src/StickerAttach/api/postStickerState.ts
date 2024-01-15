@@ -30,6 +30,5 @@ export async function postStickerState({
       },
     },
   );
-  console.log(data.data.data);
   return data?.data?.data;
 }
