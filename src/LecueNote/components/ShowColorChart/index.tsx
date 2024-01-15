@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
 import { api } from '../../../libs/api';
@@ -16,6 +16,14 @@ function ShowColorChart({
   handleIconFn,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
+  const [presignedUrl, setPresignedUrl] = useState('');
+
+  const getPresignedUrl = () => {
+    api.get('/api/images/note').then((res) => {
+      setPresignedUrl(res.data.data.url);
+      setFileName(res.data.data.fileName);
+    });
+  };
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -36,19 +44,20 @@ function ShowColorChart({
       const reader2 = new FileReader();
       reader2.readAsArrayBuffer(file);
       reader2.onloadend = () => {
-        if (reader2.result !== null) {
-          api.get('/api/images/note').then((res) => {
-            setFileName(res.data.data.fileName);
-            api.put(res.data.data.url, reader2.result, {
-              headers: {
-                'Content-Type': file.type,
-              },
-            });
+        if (reader2.result !== null && presignedUrl) {
+          api.put(presignedUrl, reader2.result, {
+            headers: {
+              'Content-Type': file.type,
+            },
           });
         }
       };
     }
   };
+
+  useEffect(() => {
+    getPresignedUrl();
+  }, []);
 
   return (
     <S.Wrapper>
