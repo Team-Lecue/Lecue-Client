@@ -6,11 +6,13 @@ const putPresignedUrl = ({
   binaryFile,
   fileType,
 }: putPresignedUrlProps) => {
-  api.put(presignedUrl, binaryFile, {
+  const response = api.put(presignedUrl, binaryFile, {
     headers: {
       'Content-Type': fileType,
     },
   });
+
+  return response;
 };
 
 export default putPresignedUrl;
