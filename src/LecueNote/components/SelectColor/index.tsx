@@ -12,6 +12,7 @@ function SelectColor({
   clickedCategory,
   clickedTextColor,
   clickedBgColor,
+  setFileName,
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
@@ -39,6 +40,7 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={clickedTextColor}
+          setFileName={setFileName}
           uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
@@ -48,6 +50,7 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={clickedBgColor}
+          setFileName={setFileName}
           uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
