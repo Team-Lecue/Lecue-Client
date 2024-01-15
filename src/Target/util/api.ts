@@ -13,7 +13,6 @@ const getPresignedUrl = async (
   endpoint: string,
 ): Promise<{ url: string; fileName: string }> => {
   const response: AxiosResponse<PresignedUrlResponse> = await api.get(endpoint);
-  console.log(response);
   return {
     url: response.data.data.url,
     fileName: response.data.data.fileName,
@@ -25,15 +24,11 @@ const uploadFile = async (
   data: ArrayBuffer,
   contentType: string,
 ): Promise<void> => {
-  await api
-    .put(url, data, {
-      headers: {
-        'Content-Type': contentType,
-      },
-    })
-    .then((res) => {
-      console.log(res);
-    });
+  await api.put(url, data, {
+    headers: {
+      'Content-Type': contentType,
+    },
+  });
 };
 
 export { getPresignedUrl, uploadFile };

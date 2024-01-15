@@ -24,7 +24,6 @@ function FavoriteImageInput({
   useEffect(() => {
     const fetchPresignedData = async () => {
       const { url, fileName } = await getPresignedUrl('/api/images/book');
-      console.log(url, fileName);
       setPresignedData({ url, fileName });
       changePresignedFileName(fileName);
     };
