@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const BigLecueNoteWrapper = styled.div<{
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteBackground: string;
   noteTextColor: number;
 }>`
   width: 100%;
@@ -10,36 +9,16 @@ export const BigLecueNoteWrapper = styled.div<{
   padding: 2rem 1.1rem 1.7rem 1.9rem;
 
   border-radius: 0.6rem;
-  background: ${({ theme, noteBackgroundColor, noteBackgroundImage }) => {
-    if (noteBackgroundColor === -1) {
-      return `url(${noteBackgroundImage})`;
+  ${({ noteBackground }) => {
+    if (noteBackground.substring(0, 1) === '#') {
+      return `background-color: ${noteBackground}`;
     } else {
-      switch (noteBackgroundColor) {
-        case 1:
-          return theme.colors.sub_pink;
-        case 2:
-          return theme.colors.sub_blue;
-        case 3:
-          return theme.colors.sub_green;
-        case 4:
-          return theme.colors.sub_purple;
-        case 5:
-          return theme.colors.sub_yellow;
-        case 6:
-          return theme.colors.sub_ivory;
-        default:
-          return 'transparent';
-      }
+      return `background: url(${noteBackground})`;
     }
   }};
   background-size: cover;
-  color: ${({ theme, noteTextColor }) => {
-    switch (noteTextColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
-        return theme.colors.BG;
-    }
+  color: ${({ noteTextColor }) => {
+    return noteTextColor;
   }};
 `;
 

@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
 
-export const BookInfoBoxWrapper = styled.div<{ backgroundColor: number }>`
+export const BookInfoBoxWrapper = styled.div<{ backgroundColor: string }>`
   display: flex;
 
   width: 100%;
   height: 18.3em;
 
   background-color: ${({ theme, backgroundColor }) => {
+    backgroundColor;
     switch (backgroundColor) {
-      case 0:
+      case '#F5F5F5':
         return theme.colors.BG;
-      case 1:
-        return theme.colors.white;
+      case '#191919':
+        return theme.colors.background;
     }
   }};
 `;
@@ -48,44 +49,48 @@ export const BookInfoHeaderItemWrapper = styled.div`
   column-gap: 0.3rem;
 `;
 
-export const BookInfoHeaderItem = styled.p<{ backgroundColor: number }>`
+export const BookInfoHeaderItem = styled.p<{ backgroundColor: string }>`
   height: 1.8rem;
   padding-top: 0.4rem;
 
   color: ${({ theme, backgroundColor }) => {
+    backgroundColor;
     switch (backgroundColor) {
-      case 0:
+      case '#F5F5F5':
         return theme.colors.white30;
-      case 1:
+      case '#191919':
         return theme.colors.MG;
     }
   }};
+
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 `;
 
-export const BookInfoTitle = styled.p<{ backgroundColor: number }>`
+export const BookInfoTitle = styled.p<{ backgroundColor: string }>`
   margin-top: 0.7rem;
 
   color: ${({ theme, backgroundColor }) => {
+    backgroundColor;
     switch (backgroundColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
+      case '#F5F5F5':
+        return theme.colors.background;
+      case '#191919':
         return theme.colors.BG;
     }
   }};
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
 
-export const BookInfoContent = styled.p<{ backgroundColor: number }>`
+export const BookInfoContent = styled.p<{ backgroundColor: string }>`
   height: 8.5rem;
   margin-top: 1rem;
 
   color: ${({ theme, backgroundColor }) => {
+    backgroundColor;
     switch (backgroundColor) {
-      case 0:
+      case '#F5F5F5':
         return theme.colors.white80;
-      case 1:
+      case '#191919':
         return theme.colors.BG;
     }
   }};
