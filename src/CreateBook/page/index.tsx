@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
 import Header from '../../components/common/Header';
-import {
-  CATEGORY,
-  TEXT_COLOR_CHART,
-} from '../../LecueNote/constants/colorChart';
 import BookInfoTextarea from '../components/BookInfoTextarea';
 import BookInput from '../components/BookInput';
 import CompleteButton from '../components/CompleteButton';
@@ -14,31 +10,7 @@ import * as S from './CreateBook.style';
 function CreateBook() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-
-  const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
-  const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-
-  const handleClickCategory = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    setClickedCategory(e.currentTarget.innerHTML);
-  };
-
-  const handleClickedColorBtn = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    if (clickedCategory === '텍스트색') {
-      setClickedTextColor(e.currentTarget.id);
-    } else {
-      setClickedCategory(e.currentTarget.id);
-    }
-  };
-
-  // const handleSetActive = (num: number, t: boolean) => {
-  //   const updatedArray = [...isActive];
-  //   updatedArray[num] = t;
-  //   setIsActive(updatedArray);
-  // };
+  const [backgroundColor, setBackgroundColor] = useState('#191919');
 
   const handleClickCompleteButton = () => {};
 
@@ -59,9 +31,10 @@ function CreateBook() {
             />
           </S.BookInfoTextareaWrapper>
           <SelectColor
-            clickedTextColor={clickedTextColor}
-            handleCategoryFn={handleClickCategory}
-            handleColorFn={handleClickedColorBtn}
+            clickBackgroundColor={(backgroundColor: string) =>
+              setBackgroundColor(backgroundColor)
+            }
+            backgroundColor={backgroundColor}
           />
         </S.InputWrapper>
         <CompleteButton
