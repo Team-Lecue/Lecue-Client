@@ -1,11 +1,13 @@
 import Button from '../../../components/common/Button';
-import postLecueNote from '../../api/postLecueNote';
+import usePostLecueNote from '../../hooks/usePostLecueNote';
 import { FooterProps } from '../../type/lecueNoteType';
 import * as S from './Footer.style';
 
 function Footer({ contents, fileName, textColor, bgColor }: FooterProps) {
+  const postMutation = usePostLecueNote();
+
   const handleClickBtn = () => {
-    postLecueNote({
+    postMutation.mutate({
       contents: contents,
       color: textColor,
       fileName: fileName,
