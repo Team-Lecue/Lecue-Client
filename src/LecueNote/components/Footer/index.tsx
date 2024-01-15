@@ -4,12 +4,10 @@ import { FooterProps } from '../../type/lecueNoteType';
 import * as S from './Footer.style';
 
 function Footer({ contents, fileName, textColor, bgColor }: FooterProps) {
-  const color = textColor === '#FFF' ? 1 : 0;
-
   const handleClickBtn = () => {
     postLecueNote({
       contents: contents,
-      color: color,
+      color: textColor,
       fileName: fileName,
       bgColor: bgColor,
     });

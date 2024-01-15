@@ -70,7 +70,7 @@ export interface putPresignedUrlProps {
 
 export interface postLecueNoteProps {
   contents: string;
-  color: number;
+  color: string;
   fileName: string;
   bgColor: string;
 }
