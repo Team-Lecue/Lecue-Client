@@ -1,19 +1,9 @@
+import { NoteType } from '../../type/lecueBookType';
 import BigLecueNote from '../BigLecueNote';
 import * as S from './LinearView.style';
 
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
-
 interface LinearViewProps {
-  noteList: Note[];
+  noteList: NoteType[];
 }
 
 function LinearView({ noteList }: LinearViewProps) {
