@@ -10,6 +10,7 @@ import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
 import IcCameraSmall from './icon/ic_camera_small.svg?react';
+import IcCaution from './icon/ic_caution.svg?react';
 import IcCheck from './icon/ic_check.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';
 import IcDate from './icon/ic_date.svg?react';
@@ -51,6 +52,7 @@ export {
   IcArrowLeftWhite,
   IcCamera,
   IcCameraSmall,
+  IcCaution,
   IcCheck,
   IcCrown,
   IcDate,
