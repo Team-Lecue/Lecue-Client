@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
 import CompleteButton from '../../components/CompleteButton';
@@ -8,10 +9,14 @@ import * as S from './TargetPage.style';
 
 function TargetPage() {
   const [imgFile, setImgFile] = useState('');
+  const [presignedFileName, setPresignedFileName] = useState('');
   const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   const handleClickCompleteButton = () => {
-    // API 쏘기...
+    navigate('/select-book', {
+      state: { presignedFileName: presignedFileName, name: name },
+    });
   };
 
   return (
@@ -28,6 +33,9 @@ function TargetPage() {
             <FavoriteImageInput
               imgFile={imgFile}
               uploadImage={(file) => setImgFile(file)}
+              changePresignedFileName={(filename) =>
+                setPresignedFileName(filename)
+              }
             />
           </S.FavoriteInputWrapper>
         </S.InputSectionWrapper>
