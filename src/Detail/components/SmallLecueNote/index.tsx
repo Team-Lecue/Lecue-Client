@@ -1,18 +1,8 @@
 import { useState } from 'react';
 
+import { NoteType } from '../../type/lecueBookType';
 import LecueNoteModal from '../LecueNoteModal';
 import * as S from './SmallLecueNote.style';
-
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
 
 interface SmallLecueNoteProps {
   renderType: number;
@@ -22,7 +12,7 @@ interface SmallLecueNoteProps {
   noteTextColor: number;
   noteBackground: string;
   noteId: number;
-  noteList: Note[];
+  noteList: NoteType[];
 }
 
 function SmallLecueNote({

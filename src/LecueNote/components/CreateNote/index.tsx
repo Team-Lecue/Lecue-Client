@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import {
   BG_COLOR_CHART,
   CATEGORY,
@@ -31,7 +32,7 @@ function CreateNote() {
 
   return (
     <S.Wrapper>
-      <WriteNote clickedBgColor={clickedBgColor}/>
+      <WriteNote clickedBgColor={clickedBgColor} />
       <SelectColor
         clickedCategory={clickedCategory}
         clickedTextColor={clickedTextColor}
