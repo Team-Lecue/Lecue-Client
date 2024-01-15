@@ -1,18 +1,34 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/common/Header';
 import BookInfoTextarea from '../components/BookInfoTextarea';
 import BookInput from '../components/BookInput';
 import CompleteButton from '../components/CompleteButton';
 import SelectColor from '../components/SelectColor';
+import { postBook } from '../utils/api';
 import * as S from './CreateBook.style';
 
 function CreateBook() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('#191919');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { presignedFileName, name } = location.state || {};
 
-  const handleClickCompleteButton = () => {};
+  const handleClickCompleteButton = async () => {
+    const postData = {
+      favoriteName: name,
+      favoriteImage: presignedFileName,
+      title: title,
+      description: description,
+      backgroundColor: backgroundColor,
+    };
+
+    const { bookUuid } = await postBook(postData);
+    navigate(`/lecue-book/${bookUuid}`);
+  };
 
   return (
     <S.CreateBookWrapper>
