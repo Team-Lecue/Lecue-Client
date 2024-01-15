@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const NicknameWrapper = styled.section`
+export const BookNameWrapper = styled.section`
   display: flex;
   gap: 1.7rem;
   align-items: center;
@@ -19,13 +19,10 @@ export const Question = styled.p`
 
 export const InputContainer = styled.div<{ isEmpty: boolean }>`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 1.6rem;
 
   width: 100%;
   padding: 1.9rem 2rem;
-
-  gap: 1.6rem;
 
   ${({ theme }) => theme.fonts.Body3_R_14};
 
@@ -35,14 +32,26 @@ export const InputContainer = styled.div<{ isEmpty: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
+export const InputWrapper = styled.div<{ isTitle?: boolean }>`
+  width: 100%;
+  height: ${({ isTitle }) => !isTitle && '15rem'};
+`;
+
 export const Input = styled.input`
   width: 100%;
 
   color: ${({ theme }) => theme.colors.BG};
+
   ${({ theme }) => theme.fonts.Body2_M_14};
+  text-align: start;
 `;
 
 export const WordCount = styled.p`
+  display: inline-block;
+
   color: ${({ theme }) => theme.colors.WG};
+
   ${({ theme }) => theme.fonts.E_Body2_R_14};
+
+  align-self: flex-end;
 `;
