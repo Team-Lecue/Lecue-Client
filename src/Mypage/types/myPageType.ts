@@ -17,6 +17,7 @@ export interface LecueNoteProps {
   noteTextColor: number;
   noteBackgroundColor: number;
   noteBackgroundImage: string;
+  noteList: LecueNoteType[];
 }
 
 export interface LecueBookType {

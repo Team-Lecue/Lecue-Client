@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import { LecueNoteProps } from '../../types/myPageType';
+import NoteModal from '../NoteModal';
 import * as S from './LecueNote.style';
 
 function LecueNote(props: LecueNoteProps) {
@@ -11,10 +14,18 @@ function LecueNote(props: LecueNoteProps) {
     noteTextColor,
     noteBackgroundColor,
     noteBackgroundImage,
+    noteList,
   } = props;
 
-  const handleClickNote = (noteId: number) => {
-    alert(`${noteId}가 선택되었습니다.`);
+  const [isModalShow, setIsModalShow] = useState(false);
+
+  const getClickedNote = () => noteList.find((note) => note.noteId === noteId);
+
+  const handleClickNote = () => {
+    const clickedNote = getClickedNote();
+    if (clickedNote) {
+      setIsModalShow((prev) => !prev);
+    }
   };
 
   return (
@@ -22,7 +33,7 @@ function LecueNote(props: LecueNoteProps) {
       noteBackgroundColor={noteBackgroundColor}
       noteBackgroundImage={noteBackgroundImage}
       onClick={() => {
-        handleClickNote(noteId);
+        handleClickNote();
       }}
     >
       <S.TextWrapper noteTextColor={noteTextColor}>
@@ -31,6 +42,7 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
+      {isModalShow && <NoteModal selectedNote={getClickedNote() || null} />}
     </S.Wrapper>
   );
 }
