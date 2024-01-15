@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
-import handleImageUpload from '../../api/handleImageUpload';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
 import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
+import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
 import * as S from './ShowColorChart.style';
 
@@ -18,7 +18,39 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [presignedUrl, setPresignedUrl] = useState('');
+  // 함수 컴포넌트 내에서 커스텀 훅 호출 시, 에러발생
+  const putMutation = usePutPresignedUrl();
   const { data } = useGetPresignedUrl();
+
+  const handleImageUpload = () => {
+    const fileInput = imgRef.current;
+
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      // reader1: 파일을 base64로 읽어서 업로드
+      const reader1 = new FileReader();
+      reader1.readAsDataURL(file);
+      reader1.onloadend = () => {
+        if (reader1.result !== null) {
+          uploadImage(reader1.result as string);
+        }
+      };
+
+      // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
+      const reader2 = new FileReader();
+      reader2.readAsArrayBuffer(file);
+      reader2.onloadend = () => {
+        if (reader2.result !== null && presignedUrl) {
+          putMutation.mutate({
+            presignedUrl: presignedUrl,
+            binaryFile: reader2.result,
+            fileType: file.type,
+          });
+        }
+      };
+    }
+  };
 
   useEffect(() => {
     if (data !== undefined) {
@@ -34,9 +66,7 @@ function ShowColorChart({
           <S.Input
             type="file"
             accept="image/*"
-            onChange={() =>
-              handleImageUpload(imgRef, uploadImage, presignedUrl)
-            }
+            onChange={handleImageUpload}
             ref={imgRef}
           />
 
