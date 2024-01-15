@@ -5,18 +5,18 @@ import { api } from '../../libs/api';
 interface PresignedUrlResponse {
   data: {
     url: string;
-    filename: string;
+    fileName: string;
   };
 }
 
 const getPresignedUrl = async (
   endpoint: string,
-): Promise<{ url: string; filename: string }> => {
+): Promise<{ url: string; fileName: string }> => {
   const response: AxiosResponse<PresignedUrlResponse> = await api.get(endpoint);
   console.log(response);
   return {
     url: response.data.data.url,
-    filename: response.data.data.filename,
+    fileName: response.data.data.fileName,
   };
 };
 

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
 import { getPresignedUrl, uploadFile } from '../../util/api';
@@ -7,7 +7,7 @@ import * as S from './FavoriteImageInput.style';
 interface FavoriteImageInputProps {
   imgFile: string;
   uploadImage: (file: string) => void;
-  changePresignedFileName: (filename: string) => void;
+  changePresignedFileName: (fileName: string) => void;
 }
 
 function FavoriteImageInput({
@@ -16,6 +16,21 @@ function FavoriteImageInput({
   changePresignedFileName,
 }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
+  const [presignedData, setPresignedData] = useState({
+    url: '',
+    fileName: '',
+  });
+
+  useEffect(() => {
+    const fetchPresignedData = async () => {
+      const { url, fileName } = await getPresignedUrl('/api/images/book');
+      console.log(url, fileName);
+      setPresignedData({ url, fileName });
+      changePresignedFileName(fileName);
+    };
+
+    fetchPresignedData();
+  }, []);
 
   const handleImageUpload = async (): Promise<void> => {
     const fileInput = imgRef.current;
@@ -23,23 +38,23 @@ function FavoriteImageInput({
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      // reader1: 파일을 base64로 읽어서 업로드
-      const reader1 = new FileReader();
-      reader1.readAsDataURL(file);
-      reader1.onloadend = () => {
-        if (reader1.result !== null) {
-          uploadImage(reader1.result as string);
+      const base64Reader = new FileReader();
+      base64Reader.readAsDataURL(file);
+      base64Reader.onloadend = () => {
+        if (base64Reader.result !== null) {
+          uploadImage(base64Reader.result as string);
         }
       };
 
-      // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
-      const reader2 = new FileReader();
-      reader2.readAsArrayBuffer(file);
-      reader2.onloadend = async () => {
-        if (reader2.result !== null) {
-          const { url, filename } = await getPresignedUrl('/api/images/book');
-          await uploadFile(url, reader2.result as ArrayBuffer, file.type);
-          changePresignedFileName(filename);
+      const binaryReader = new FileReader();
+      binaryReader.readAsArrayBuffer(file);
+      binaryReader.onloadend = async () => {
+        if (binaryReader.result !== null) {
+          await uploadFile(
+            presignedData.url,
+            binaryReader.result as ArrayBuffer,
+            file.type,
+          );
         }
       };
     }
