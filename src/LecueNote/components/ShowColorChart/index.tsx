@@ -18,9 +18,9 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [presignedUrl, setPresignedUrl] = useState('');
+  const { data } = useGetPresignedUrl();
   // 함수 컴포넌트 내에서 커스텀 훅 호출 시, 에러발생
   const putMutation = usePutPresignedUrl();
-  const { data } = useGetPresignedUrl();
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
