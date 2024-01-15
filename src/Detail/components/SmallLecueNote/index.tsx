@@ -20,8 +20,7 @@ interface SmallLecueNoteProps {
   noteDate: string;
   noteNickname: string;
   noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteBackground: string;
   noteId: number;
   noteList: Note[];
 }
@@ -32,8 +31,7 @@ function SmallLecueNote({
   noteDate,
   noteNickname,
   noteTextColor,
-  noteBackgroundColor,
-  noteBackgroundImage,
+  noteBackground,
   noteId,
   noteList,
 }: SmallLecueNoteProps) {
@@ -52,8 +50,7 @@ function SmallLecueNote({
     <S.SmallLecueNoteWrapper
       renderType={renderType}
       noteTextColor={noteTextColor}
-      noteBackgroundColor={noteBackgroundColor}
-      noteBackgroundImage={noteBackgroundImage}
+      noteBackground={noteBackground}
       onClick={handleClickSmallLecueNote}
     >
       <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
