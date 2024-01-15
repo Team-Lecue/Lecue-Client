@@ -24,7 +24,7 @@ function LecueNote(props: LecueNoteProps) {
   const handleClickNote = () => {
     const clickedNote = getClickedNote();
     if (clickedNote) {
-      setIsModalShow((prev) => !prev);
+      setIsModalShow(true);
     }
   };
 
@@ -42,7 +42,12 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
-      {isModalShow && <NoteModal selectedNote={getClickedNote() || null} />}
+      {isModalShow ? (
+        <NoteModal
+          selectedNote={getClickedNote() || null}
+          onClose={() => setIsModalShow(false)}
+        />
+      ) : null}
     </S.Wrapper>
   );
 }

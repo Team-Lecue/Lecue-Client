@@ -5,9 +5,10 @@ import * as S from './NoteModal.style';
 
 interface ModalProps {
   selectedNote: LecueNoteType | null;
+  onClose: () => void;
 }
 
-function NoteModal({ selectedNote }: ModalProps) {
+function NoteModal({ selectedNote, onClose }: ModalProps) {
   const handleClickBtn = () => {
     alert(`${selectedNote?.noteId}로 가시겠습니까?`);
   };
@@ -25,7 +26,7 @@ function NoteModal({ selectedNote }: ModalProps) {
               <ImgStarPosit />
               <S.FavoriteName>{selectedNote?.favoriteName}</S.FavoriteName>
             </S.NameWrapper>
-            <S.CloseBtn>
+            <S.CloseBtn type="button" onClick={onClose}>
               <IcX />
             </S.CloseBtn>
           </S.Header>
