@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
-import Button from '../../components/common/Button';
 import Header from '../../components/common/Header';
 import {
   CATEGORY,
   TEXT_COLOR_CHART,
 } from '../../LecueNote/constants/colorChart';
+import BookInfoTextarea from '../components/BookInfoTextarea';
 import BookInput from '../components/BookInput';
+import CompleteButton from '../components/CompleteButton';
 import SelectColor from '../components/SelectColor';
 import * as S from './CreateBook.style';
 
 function CreateBook() {
-  const [isActive, setIsActive] = useState([false, false]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
@@ -32,39 +34,42 @@ function CreateBook() {
     }
   };
 
-  const handleClickConfirm = () => {
-    alert('버튼 클릭');
-  };
+  // const handleSetActive = (num: number, t: boolean) => {
+  //   const updatedArray = [...isActive];
+  //   updatedArray[num] = t;
+  //   setIsActive(updatedArray);
+  // };
 
-  const handleSetActive = (num: number, t: boolean) => {
-    const updatedArray = [...isActive];
-    updatedArray[num] = t;
-    setIsActive(updatedArray);
-  };
+  const handleClickCompleteButton = () => {};
 
   return (
-    <S.Wrapper>
+    <S.CreateBookWrapper>
       <Header headerTitle="레큐북 만들기" />
-      <S.ContentWrapper>
-        <BookInput
-          handleSetActive={(num, t) => handleSetActive(num, t)}
-          isTitle
+      <S.CreateBookBodyWrapper>
+        <S.InputWrapper>
+          <S.BookInputWrapper>
+            <S.SectionTitle>레큐북 제목</S.SectionTitle>
+            <BookInput title={title} changeTitle={(title) => setTitle(title)} />
+          </S.BookInputWrapper>
+          <S.BookInfoTextareaWrapper>
+            <S.SectionTitle>레큐북 소개</S.SectionTitle>
+            <BookInfoTextarea
+              description={description}
+              changeDescription={(description) => setDescription(description)}
+            />
+          </S.BookInfoTextareaWrapper>
+          <SelectColor
+            clickedTextColor={clickedTextColor}
+            handleCategoryFn={handleClickCategory}
+            handleColorFn={handleClickedColorBtn}
+          />
+        </S.InputWrapper>
+        <CompleteButton
+          isActive={title.length !== 0 && description.length !== 0}
+          onClick={handleClickCompleteButton}
         />
-        <BookInput handleSetActive={(num, t) => handleSetActive(num, t)} />
-        <SelectColor
-          clickedTextColor={clickedTextColor}
-          handleCategoryFn={handleClickCategory}
-          handleColorFn={handleClickedColorBtn}
-        />
-        <Button
-          variant="complete"
-          disabled={!isActive}
-          onClick={handleClickConfirm}
-        >
-          완료
-        </Button>
-      </S.ContentWrapper>
-    </S.Wrapper>
+      </S.CreateBookBodyWrapper>
+    </S.CreateBookWrapper>
   );
 }
 
