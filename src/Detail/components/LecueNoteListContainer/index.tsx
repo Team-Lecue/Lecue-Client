@@ -18,7 +18,7 @@ import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
   noteNum: number;
-  backgroundColor: number;
+  backgroundColor: string;
   noteList: NoteType[];
   postedStickerList: postedStickerType[];
 }
@@ -61,7 +61,7 @@ function LecueNoteListContainer({
     } else {
       // editable 상태 변경
       setIsEditable(false);
-      navigate('/detail');
+      navigate('/lecue-book');
     }
   }, [state]);
 
@@ -90,11 +90,14 @@ function LecueNoteListContainer({
   const handleClickDone = () => {
     setIsEditable(true);
     sessionStorage.removeItem('scrollPosition');
-    navigate('/detail');
+    navigate('/lecue-book');
   };
 
   return (
-    <S.LecueNoteListContainerWrapper backgroundColor={backgroundColor}>
+    <S.LecueNoteListContainerWrapper
+      isEditable={isEditable}
+      backgroundColor={backgroundColor}
+    >
       <LecueNoteListHeader
         noteNum={noteNum}
         backgroundColor={backgroundColor}
@@ -118,14 +121,14 @@ function LecueNoteListContainer({
       {!isEditable && (
         <>
           <S.StickerButton type="button" onClick={handleClickStickerButton}>
-            {backgroundColor === 0 ? (
+            {backgroundColor === '#F5F5F5' ? (
               <BtnFloatingSticker />
             ) : (
               <BtnFloatingStickerOrange />
             )}
           </S.StickerButton>
           <S.WriteButton type="button" onClick={handleClickWriteButton}>
-            {backgroundColor === 0 ? (
+            {backgroundColor === '#F5F5F5' ? (
               <BtnFloatingWrite />
             ) : (
               <BtnFloatingWriteOrange />

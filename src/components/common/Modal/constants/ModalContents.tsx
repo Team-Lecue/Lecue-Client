@@ -1,0 +1,55 @@
+import { ImgModalEx } from '../../../../assets';
+
+export const MODAL_CONTETNS = [
+  {
+    id: 'note_complete',
+    img: <ImgModalEx />,
+    title: '레큐노트 작성을 완료하셨나요?',
+    subTitle1: '완료 후 수정/삭제 할 수 없습니다.',
+    subTitle2: '신중하게 결정해주세요!',
+    leftBtn: '돌아가기',
+    rightBtn: '작성완료',
+  },
+  {
+    id: 'note_escape',
+    img: <ImgModalEx />,
+    title: '레큐노트 작성을 그만두시나요?',
+    subTitle1: '작성한 내용은 모두 사라집니다.',
+    subTitle2: '신중하게 결정해주세요!',
+    leftBtn: '그만두기',
+    rightBtn: '계속 작성',
+  },
+  {
+    id: 'book_escape',
+    img: <ImgModalEx />,
+    title: '레큐북 제작을 완료하셨나요?',
+    subTitle1: '작성한 내용은 모두 사라집니다.',
+    subTitle2: '신중하게 결정해주세요!',
+    leftBtn: '그만두기',
+    rightBtn: '계속 제작',
+  },
+  {
+    id: 'book_create',
+    img: <ImgModalEx />,
+    title: '레큐북을 제작할까요?',
+    subTitle1: '제작 후 수정/삭제할 수 없습니다.',
+    subTitle2: '신중하게 결정해주세요!',
+    leftBtn: '돌아가기',
+    rightBtn: '제작하기',
+  },
+  {
+    id: 'book_delete',
+    img: <ImgModalEx />,
+    title: '해당 레큐북을 삭제하시겠어요?',
+    subTitle1: '삭제 후 되돌릴 수 없습니다.',
+    subTitle2: '신중하게 결정해주세요!',
+    leftBtn: '돌아가기',
+    rightBtn: '삭제하기',
+  },
+  {
+    id: 'login',
+    img: <ImgModalEx />,
+    title: '로그인 후 이용해주세요',
+    rightBtn: '로그인하기',
+  },
+];
