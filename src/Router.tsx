@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import ErrorPage from './components/common/ErrorPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
@@ -49,6 +50,7 @@ function Router() {
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
         <Route path="/loading" element={<LoginCallback />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
