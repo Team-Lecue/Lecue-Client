@@ -45,7 +45,6 @@ const ZigZagView = forwardRef(function ZigZagView(
             <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
           </Draggable>
         ))}
-      </S.StickerContainer>
       {isEditable && (
           <Draggable
             positionOffset={{
@@ -58,10 +57,9 @@ const ZigZagView = forwardRef(function ZigZagView(
           >
             <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
           </Draggable>
+        )}
         </S.StickerContainer>
-      )}
     </S.ZigZagViewWrapper>
   );
-}
-
+});
 export default ZigZagView;

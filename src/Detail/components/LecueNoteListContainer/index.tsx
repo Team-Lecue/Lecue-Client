@@ -75,8 +75,8 @@ function LecueNoteListContainer({
     const { positionX, positionY } = stickerState;
     setStickerState((prev) => ({
       ...prev,
-      positionX: positionX + ui.deltaX,
-      positionY: positionY + ui.deltaY,
+      positionX: Math.ceil(positionX + ui.deltaX),
+      positionY: Math.ceil(positionY + ui.deltaY),
     }));
   };
 
