@@ -3,7 +3,7 @@ import usePostLecueNote from '../../hooks/usePostLecueNote';
 import { FooterProps } from '../../type/lecueNoteType';
 import * as S from './Footer.style';
 
-function Footer({ contents, fileName, textColor, bgColor }: FooterProps) {
+function Footer({ contents, fileName, textColor, bgColor, setModalOn }: FooterProps) {
   const postMutation = usePostLecueNote();
 
   const handleClickBtn = () => {
@@ -12,6 +12,7 @@ function Footer({ contents, fileName, textColor, bgColor }: FooterProps) {
       color: textColor,
       fileName: fileName,
       bgColor: bgColor,
+      setModalOn: setModalOn
     });
   };
 

@@ -55,6 +55,7 @@ export interface FooterProps {
   fileName: string;
   textColor: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface getPresignedUrlPrps {
@@ -73,4 +74,5 @@ export interface postLecueNoteProps {
   color: string;
   fileName: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
 }
