@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
@@ -11,15 +11,20 @@ interface ZigZagViewProps {
   stickerState: postedStickerType;
   isEditable: boolean;
   postedStickerList: postedStickerType[];
+  savedScrollPosition: number;
 }
 
-function ZigZagView({
-  noteList,
-  handleDrag,
-  stickerState,
-  isEditable,
-  postedStickerList,
-}: ZigZagViewProps) {
+const ZigZagView = forwardRef(function ZigZagView(
+  {
+    noteList,
+    handleDrag,
+    stickerState,
+    isEditable,
+    postedStickerList,
+    savedScrollPosition,
+  }: ZigZagViewProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const nodeRef = useRef(null);
 
   return (
@@ -29,35 +34,36 @@ function ZigZagView({
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      <S.StickerContainer>
-        {postedStickerList.map((data) => (
-          <Draggable
-            nodeRef={nodeRef}
-            key={data.postedStickerId}
-            positionOffset={{ x: data.positionX, y: data.positionY }}
-            onStart={() => false}
-          >
-            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-          </Draggable>
-        ))}
-      </S.StickerContainer>
-      {isEditable && (
-        <S.StickerContainer>
+      <S.StickerContainer ref={ref}>
+        {isEditable && (
           <Draggable
             defaultPosition={{
-              x: stickerState.positionX,
-              y: stickerState.positionY,
+              x: 0,
+              y: savedScrollPosition,
             }}
             onDrag={handleDrag}
             bounds="parent"
             nodeRef={nodeRef}
           >
-            <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
+            <S.Sticker
+              ref={nodeRef}
+              stickerImage={stickerState.stickerImage}
+              isEditable
+            />
           </Draggable>
-        </S.StickerContainer>
-      )}
+        )}
+        {postedStickerList.map((data) => (
+          <Draggable
+            onStart={() => false}
+            nodeRef={nodeRef}
+            key={data.postedStickerId}
+            defaultPosition={{ x: data.positionX, y: data.positionY }}
+          >
+            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+          </Draggable>
+        ))}
+      </S.StickerContainer>
     </S.ZigZagViewWrapper>
   );
-}
-
+});
 export default ZigZagView;
