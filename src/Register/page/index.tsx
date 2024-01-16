@@ -6,9 +6,13 @@ import RegisterLogo from '../components/RegisterLogo';
 import SubmitButton from '../components/SubmitButton';
 import * as S from './Register.style';
 
+export type isValidState = 'valid' | 'special' | 'duplicate';
+
 function Register() {
   const [isActive, setIsActive] = useState(false);
   const [nickname, setNickname] = useState('');
+  const [isValid, setIsValid] = useState<isValidState>('valid');
+
   const location = useLocation();
 
   const { token } = location.state && location.state;
@@ -20,8 +24,16 @@ function Register() {
         setIsActive={setIsActive}
         nickname={nickname}
         setNickname={setNickname}
+        isValid={isValid}
+        setIsValid={setIsValid}
       />
-      <SubmitButton isActive={isActive} nickname={nickname} token={token} />
+      <SubmitButton
+        isActive={isActive}
+        nickname={nickname}
+        token={token}
+        setIsValid={setIsValid}
+      />
+      {/* <SubmitButton isActive={isActive} nickname={nickname} /> */}
     </S.Wrapper>
   );
 }

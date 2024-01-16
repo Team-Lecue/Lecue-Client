@@ -1,20 +1,31 @@
 import Button from '../../../components/common/Button';
 import { patchNickname } from '../../api/patchNickname';
+import { isValidState } from '../../page';
 import * as S from './SubmitButton.style';
 
 type SubmitButtonProps = {
   isActive: boolean;
   token: string;
   nickname: string;
+  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function SubmitButton({ isActive, token, nickname }: SubmitButtonProps) {
+function SubmitButton({
+  isActive,
+  token,
+  nickname,
+  setIsValid,
+  setIsActive,
+}: SubmitButtonProps) {
   const fetchData = async (token: string, nickname: string) => {
     try {
       const { code } = await patchNickname(token, nickname);
 
       if (code === 409) {
         // 중복 닉네임 처리
+        setIsValid('duplicate');
+        setIsActive(false);
       } else if (code === 200) {
         window.localStorage.setItem('token', token);
         window.localStorage.setItem('nickname', nickname);
@@ -26,7 +37,7 @@ function SubmitButton({ isActive, token, nickname }: SubmitButtonProps) {
   };
 
   const handelClickSubmitBtn = (token: string, nickname: string) => {
-    fetchData(token, nickname);
+    fetchData(token, nickname.trim());
   };
 
   return (
