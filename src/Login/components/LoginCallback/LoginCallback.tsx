@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getLoginToken } from '../api/getLoginToken';
-import { postLoginToken } from '../api/postLoginToken';
+import { getLoginToken } from '../../api/getLoginToken';
+import { postLoginToken } from '../../api/postLoginToken';
 
-function Loading() {
+function LoginCallback() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Loading() {
     fetchData();
   }, []);
 
-  return <div>로딩중.....</div>;
+  return <div>로딩중</div>;
 }
 
-export default Loading;
+export default LoginCallback;

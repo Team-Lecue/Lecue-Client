@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
-import Loading from './Login/components/Loading';
+import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
@@ -29,7 +29,7 @@ function Router() {
         <Route path="/test" element={<HealthTest />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
-        <Route path="/loading" element={<Loading />} />
+        <Route path="/loading" element={<LoginCallback />} />
       </Routes>
     </BrowserRouter>
   );
