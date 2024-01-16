@@ -22,6 +22,8 @@ interface LecueNoteListContainerProps {
   backgroundColor: string;
   noteList: NoteType[];
   postedStickerList: postedStickerType[];
+  isEditable: boolean;
+  setEditableStateFalse: () => void;
 }
 
 function LecueNoteListContainer({
@@ -29,6 +31,8 @@ function LecueNoteListContainer({
   backgroundColor,
   noteList,
   postedStickerList,
+  isEditable,
+  setEditableStateFalse,
 }: LecueNoteListContainerProps) {
   //hooks
   const location = useLocation();
@@ -40,7 +44,6 @@ function LecueNoteListContainer({
     storedValue !== null ? parseInt(storedValue, 10) : 0;
   //state
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
-  const [isEditable, setIsEditable] = useState(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
     stickerImage: '',
@@ -64,9 +67,9 @@ function LecueNoteListContainer({
       }));
     } else {
       // editable 상태 변경
-      setIsEditable(false);
+      setEditableStateFalse();
     }
-  }, [state]);
+  }, [state, isEditable]);
 
   // 스티커 위치 값 저장
   const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
@@ -102,7 +105,7 @@ function LecueNoteListContainer({
       positionY: positionY,
     });
 
-    setIsEditable(false);
+    setEditableStateFalse();
   };
 
   return (
