@@ -20,6 +20,8 @@ export const StickerContainer = styled.div`
   width: 34.2rem;
   height: 100%;
   padding: 0.4rem 0 2rem;
+
+  background: none;
 `;
 
 export const Sticker = styled.div<{
