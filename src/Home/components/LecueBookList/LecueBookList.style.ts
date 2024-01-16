@@ -22,8 +22,8 @@ export const Title = styled.header`
 
 export const LecueBookList = styled.section`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 2.2rem;
+  grid-template-columns: repeat(3, 1fr);
 
   width: 100%;
   padding: 3rem 1.6rem 2.2rem;
@@ -33,12 +33,12 @@ export const LecueBookList = styled.section`
 
 export const LecueBook = styled.li`
   display: flex;
+  gap: 1rem;
   align-items: center;
   flex-direction: column;
 
   width: 10rem;
   height: 14rem;
-  gap: 1rem;
 
   cursor: pointer;
 `;

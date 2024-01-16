@@ -3,7 +3,7 @@ import * as S from './LecueNoteListHeader.style';
 
 interface LecueNoteListHeaderProps {
   noteNum: number;
-  backgroundColor: number;
+  backgroundColor: string;
   isZigZagView: boolean;
   buttonOnClick: () => void;
 }

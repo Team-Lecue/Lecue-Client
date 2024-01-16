@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 import * as S from './NicknameInput.style';
 
-type setIsActiveProps = {
+interface NicknameInputProps {
+  nickname: string;
+  setNickname: React.Dispatch<React.SetStateAction<string>>;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
-function NicknameInput({ setIsActive }: setIsActiveProps) {
+function NicknameInput(props: NicknameInputProps) {
+  const { nickname, setNickname, setIsActive } = props;
+
   const [wordCnt, setWordCnt] = useState(0);
-  const [nickname, setNickname] = useState('');
 
   /** 영어, 숫자, 문자, 공백인지 체크하는 정규식 함수 */
   const checkInputRange = (str: string) => {
