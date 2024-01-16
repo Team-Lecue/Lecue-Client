@@ -111,15 +111,17 @@ function LecueNoteListContainer({
 
   const handleClickDone = () => {
     // 다 붙였을 때 post 실행
-    const { postedStickerId, positionX, positionY } = stickerState;
+    const { postedStickerId, positionX } = stickerState;
     const bookId = 1;
 
-    postMutation.mutate({
-      postedStickerId: postedStickerId,
-      bookId: bookId,
-      positionX: positionX,
-      positionY: positionY,
-    });
+    if (heightFromBottom !== null) {
+      postMutation.mutate({
+        postedStickerId: postedStickerId,
+        bookId: bookId,
+        positionX: positionX,
+        positionY: heightFromBottom,
+      });
+    }
 
     setEditableStateFalse();
   };
