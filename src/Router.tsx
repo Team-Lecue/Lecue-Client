@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import Home from './Home/page';
@@ -43,6 +44,7 @@ function Router() {
         <Route path="/lecue-book" element={<DetailPage />} />
         <Route path="/target" element={<TargetPage />} />
         <Route path="/test" element={<HealthTest />} />
+        <Route path="/create-book" element={<CreateBook />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
       </Routes>

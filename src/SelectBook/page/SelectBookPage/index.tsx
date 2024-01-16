@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ImgBookBackgray, ImgBookOrange } from '../../../assets';
 import Header from '../../../components/common/Header';
@@ -17,6 +18,9 @@ const premiumLecueBookOptions = [
 function SelectBookPage() {
   const [selectedBox, setSelectedBox] = useState(0);
   const [isClickedSelectButton, setIsClickedSelectButton] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { presignedFileName, name } = location.state || {};
 
   const handleClickCompleteButton = () => {
     setIsClickedSelectButton(true);
@@ -24,7 +28,9 @@ function SelectBookPage() {
   };
 
   const handleClickMakeLecueBookButton = () => {
-    // API 쏘기...
+    navigate('/create-book', {
+      state: { presignedFileName: presignedFileName, name: name },
+    });
   };
 
   return (
@@ -35,6 +41,7 @@ function SelectBookPage() {
           {isClickedSelectButton ? (
             <S.SectionTitle>
               <S.SectionOrangeTitle>레큐는 이벤트 중!</S.SectionOrangeTitle>
+              <br />
               무료로 프리미엄 레큐북을 만들어요!
             </S.SectionTitle>
           ) : (
