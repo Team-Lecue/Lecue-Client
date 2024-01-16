@@ -36,7 +36,6 @@ const ZigZagView = forwardRef(function ZigZagView(
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      {/* <S.StickerContainer ref={ref}> */}
       {isEditable && (
         <Draggable
           defaultPosition={{
@@ -54,8 +53,22 @@ const ZigZagView = forwardRef(function ZigZagView(
           />
         </Draggable>
       )}
+      {postedStickerList.map(
+        (data) =>
           fullHeight !== null && (
+            <Draggable
+              onStart={() => false}
+              nodeRef={nodeRef}
+              key={data.postedStickerId}
+              defaultPosition={{
+                x: data.positionX,
                 y: fullHeight - data.positionY,
+              }}
+            >
+              <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+            </Draggable>
+          ),
+      )}
     </S.ZigZagViewWrapper>
   );
 });
