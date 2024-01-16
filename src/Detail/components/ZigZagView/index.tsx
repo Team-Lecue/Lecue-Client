@@ -28,41 +28,41 @@ const ZigZagView = forwardRef(function ZigZagView(
   const nodeRef = useRef(null);
 
   return (
-    <S.ZigZagViewWrapper>
+    <S.ZigZagViewWrapper ref={ref}>
       {noteList.map((note) => (
         <S.LecueNoteContainer key={note.noteId}>
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      <S.StickerContainer ref={ref}>
-        {isEditable && (
-          <Draggable
-            defaultPosition={{
-              x: 0,
-              y: savedScrollPosition,
-            }}
-            onDrag={handleDrag}
-            bounds="parent"
-            nodeRef={nodeRef}
-          >
-            <S.Sticker
-              ref={nodeRef}
-              stickerImage={stickerState.stickerImage}
-              isEditable
-            />
-          </Draggable>
-        )}
-        {postedStickerList.map((data) => (
-          <Draggable
-            onStart={() => false}
-            nodeRef={nodeRef}
-            key={data.postedStickerId}
-            defaultPosition={{ x: data.positionX, y: data.positionY }}
-          >
-            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-          </Draggable>
-        ))}
-      </S.StickerContainer>
+      {/* <S.StickerContainer ref={ref}> */}
+      {isEditable && (
+        <Draggable
+          defaultPosition={{
+            x: 0,
+            y: savedScrollPosition,
+          }}
+          onDrag={handleDrag}
+          bounds="parent"
+          nodeRef={nodeRef}
+        >
+          <S.Sticker
+            ref={nodeRef}
+            stickerImage={stickerState.stickerImage}
+            isEditable
+          />
+        </Draggable>
+      )}
+      {postedStickerList.map((data) => (
+        <Draggable
+          onStart={() => false}
+          nodeRef={nodeRef}
+          key={data.postedStickerId}
+          defaultPosition={{ x: data.positionX, y: data.positionY }}
+        >
+          <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+        </Draggable>
+      ))}
+      {/* </S.StickerContainer> */}
     </S.ZigZagViewWrapper>
   );
 });
