@@ -32,8 +32,8 @@ function Register() {
         nickname={nickname}
         token={token}
         setIsValid={setIsValid}
+        setIsActive={setIsActive}
       />
-      {/* <SubmitButton isActive={isActive} nickname={nickname} /> */}
     </S.Wrapper>
   );
 }
