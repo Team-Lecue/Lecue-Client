@@ -5,6 +5,7 @@ import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import Login from './Login/page';
+import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';
 import SplashPage from './Splash/page/SplashPage';
@@ -21,12 +22,15 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="create-note" element={<LecueNotePage />} />
         <Route path="/sticker-pack" element={<StickerPack />} />
+        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/lecue-book" element={<DetailPage />} />
         <Route path="/target" element={<TargetPage />} />
         <Route path="/test" element={<HealthTest />} />
         <Route path="/create-book" element={<CreateBook />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
+>>>>>>>>> Temporary merge branch 2
       </Routes>
     </BrowserRouter>
   );

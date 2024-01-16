@@ -1,28 +1,21 @@
 import styled from '@emotion/styled';
 
-export const BookNameWrapper = styled.section`
+export const TitleWrapper = styled.section`
   display: flex;
-  gap: 1.7rem;
   align-items: center;
   flex-direction: column;
 
   width: 100%;
-`;
-
-export const Question = styled.p`
-  width: 100%;
-
-  color: ${({ theme }) => theme.colors.BG};
-
-  ${({ theme }) => theme.fonts.Head2_SB_18};
+  margin-top: 1.2rem;
 `;
 
 export const InputContainer = styled.div<{ isEmpty: boolean }>`
   display: flex;
-  gap: 1.6rem;
+  justify-content: space-between;
+  align-items: center;
 
   width: 100%;
-  padding: 1.9rem 2rem;
+  padding: 1.55rem 2rem;
 
   ${({ theme }) => theme.fonts.Body3_R_14};
 
@@ -32,26 +25,14 @@ export const InputContainer = styled.div<{ isEmpty: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const InputWrapper = styled.div<{ isTitle?: boolean }>`
-  width: 100%;
-  height: ${({ isTitle }) => !isTitle && '15rem'};
-`;
-
 export const Input = styled.input`
   width: 100%;
 
   color: ${({ theme }) => theme.colors.BG};
-
   ${({ theme }) => theme.fonts.Body2_M_14};
-  text-align: start;
 `;
 
 export const WordCount = styled.p`
-  display: inline-block;
-
   color: ${({ theme }) => theme.colors.WG};
-
   ${({ theme }) => theme.fonts.E_Body2_R_14};
-
-  align-self: flex-end;
 `;

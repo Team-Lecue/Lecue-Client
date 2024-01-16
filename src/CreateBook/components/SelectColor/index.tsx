@@ -1,22 +1,23 @@
-import { BOOK_TEXT_COLOR } from '../../constants/colorChart';
-import { createBookType } from '../../type/createBookType';
 import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
+interface SelectColorProps {
+  backgroundColor: string;
+  clickBackgroundColor: (backgroundColor: string) => void;
+}
+
 function SelectColor({
-  clickedTextColor,
-  handleCategoryFn,
-  handleColorFn,
-}: createBookType) {
+  backgroundColor,
+  clickBackgroundColor,
+}: SelectColorProps) {
   return (
     <S.Wrapper>
-      <S.Category type="button" onClick={handleCategoryFn}>
-        레큐북 배경색
-      </S.Category>
+      <S.Category>레큐북 배경색</S.Category>
       <ShowColorChart
-        colorChart={BOOK_TEXT_COLOR}
-        state={clickedTextColor}
-        handleFn={handleColorFn}
+        backgroundColor={backgroundColor}
+        handleFn={(backgroundColor: string) =>
+          clickBackgroundColor(backgroundColor)
+        }
       />
     </S.Wrapper>
   );

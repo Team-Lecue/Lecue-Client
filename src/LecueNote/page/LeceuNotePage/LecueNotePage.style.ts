@@ -9,6 +9,5 @@ export const Wrapper = styled.div`
 
   width: 100vw;
   height: 100dvh;
-
   padding: 0 1.7rem;
 `;
