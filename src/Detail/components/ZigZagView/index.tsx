@@ -35,19 +35,9 @@ const ZigZagView = forwardRef(function ZigZagView(
         </S.LecueNoteContainer>
       ))}
       <S.StickerContainer ref={ref}>
-        {postedStickerList.map((data) => (
-          <Draggable
-            onStart={() => false}
-            nodeRef={nodeRef}
-            key={data.postedStickerId}
-            defaultPosition={{ x: data.positionX, y: data.positionY }}
-          >
-            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-          </Draggable>
-        ))}
         {isEditable && (
           <Draggable
-            positionOffset={{
+            defaultPosition={{
               x: 0,
               y: savedScrollPosition,
             }}
@@ -62,6 +52,16 @@ const ZigZagView = forwardRef(function ZigZagView(
             />
           </Draggable>
         )}
+        {postedStickerList.map((data) => (
+          <Draggable
+            onStart={() => false}
+            nodeRef={nodeRef}
+            key={data.postedStickerId}
+            defaultPosition={{ x: data.positionX, y: data.positionY }}
+          >
+            <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+          </Draggable>
+        ))}
       </S.StickerContainer>
     </S.ZigZagViewWrapper>
   );

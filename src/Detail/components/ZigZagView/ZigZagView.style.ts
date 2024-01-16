@@ -26,6 +26,8 @@ export const Sticker = styled.div<{
   stickerImage: string;
   isEditable?: boolean;
 }>`
+  position: absolute;
+
   width: 10rem;
   height: 10rem;
 
