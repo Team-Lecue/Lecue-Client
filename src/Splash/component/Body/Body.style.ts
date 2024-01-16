@@ -7,7 +7,7 @@ export const BodyWrapper = styled.section`
   flex-direction: column;
 
   width: 100vw;
-  height: calc(100dvh - 21.7rem);
+  height: calc(100dvh - 18.7rem);
 `;
 
 export const LottieWrapper = styled.article`
