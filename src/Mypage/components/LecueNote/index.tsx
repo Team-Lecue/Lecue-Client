@@ -12,8 +12,7 @@ function LecueNote(props: LecueNoteProps) {
     noteDate,
     content,
     noteTextColor,
-    noteBackgroundColor,
-    noteBackgroundImage,
+    noteBackground,
     noteList,
   } = props;
 
@@ -30,8 +29,7 @@ function LecueNote(props: LecueNoteProps) {
 
   return (
     <S.Wrapper
-      noteBackgroundColor={noteBackgroundColor}
-      noteBackgroundImage={noteBackgroundImage}
+      noteBackground={noteBackground}
       onClick={() => {
         handleClickNote();
       }}
@@ -42,9 +40,7 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
-      {isModalShow ? (
-        <NoteModal selectedNote={getClickedNote() || null} />
-      ) : null}
+      {isModalShow && <NoteModal selectedNote={getClickedNote() || null} />}
     </S.Wrapper>
   );
 }
