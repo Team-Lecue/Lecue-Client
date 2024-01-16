@@ -1,32 +1,21 @@
 import { createPortal } from 'react-dom';
 
 import { IcX } from '../../../assets';
+import { NoteType } from '../../type/lecueBookType';
 import * as S from './LecueNoteModal.style';
 const modalContainer = document.getElementById(
   'lecuenote-modal',
 ) as HTMLElement;
 
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
-
 interface LecueNoteModalProps {
-  selectedNote: Note | null;
+  selectedNote: NoteType | undefined;
 }
 
 function LecueNoteModal({ selectedNote }: LecueNoteModalProps) {
   return createPortal(
     <S.BlurryContainer>
       <S.LecueNoteModalWrapper
-        noteBackgroundColor={selectedNote?.noteBackgroundColor || 0}
-        noteBackgroundImage={selectedNote?.noteBackgroundImage || ''}
+        noteBackground={selectedNote?.noteBackground}
         noteTextColor={selectedNote?.noteTextColor || 0}
       >
         <S.CloseButton type="button">

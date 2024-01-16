@@ -48,7 +48,7 @@ function SmallLecueNote({
         <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
       </S.SmallLecueNoteContentWrapper>
       <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
-      {modalShow && <LecueNoteModal selectedNote={getClickedNote() || null} />}
+      {modalShow && <LecueNoteModal selectedNote={getClickedNote()} />}
     </S.SmallLecueNoteWrapper>
   );
 }
