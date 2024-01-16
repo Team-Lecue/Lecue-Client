@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
@@ -31,8 +33,9 @@ function Header({ headerTitle, isDarkMode, isDetailPage }: HeaderProps) {
 }
 
 export function HomeButton() {
+  const navigate = useNavigate();
   const handleClickHomeButton = () => {
-    // 홈으로 이동하는 로직 추후 구현 필요
+    navigate('/');
   };
 
   return (
@@ -43,9 +46,7 @@ export function HomeButton() {
 }
 
 export function ShareButton() {
-  const handleClickShareButton = () => {
-    // 공유(?) 페이지로 이동하는 로직 추후 구현 필요
-  };
+  const handleClickShareButton = () => {};
 
   return (
     <S.HeaderButton onClick={handleClickShareButton}>
@@ -55,9 +56,7 @@ export function ShareButton() {
 }
 
 export function BackButton({ isDarkMode }: HeaderButtonProps) {
-  const handleClickBackButton = () => {
-    // 뒤로 이동하는 로직 추후 구현 필요
-  };
+  const handleClickBackButton = () => {};
 
   return (
     <S.HeaderButton onClick={handleClickBackButton}>
