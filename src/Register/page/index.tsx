@@ -11,7 +11,7 @@ function Register() {
   const [nickname, setNickname] = useState('');
   const location = useLocation();
 
-  const { token } = location.state || null;
+  const { token } = location.state && location.state;
 
   return (
     <S.Wrapper>
