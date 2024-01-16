@@ -5,7 +5,7 @@ export const Wrapper = styled.article`
   gap: 1.6rem;
   flex-direction: column;
 `;
-export const Category = styled.button`
+export const Category = styled.p`
   display: flex;
 
   ${({ theme }) => theme.colors.BG};
