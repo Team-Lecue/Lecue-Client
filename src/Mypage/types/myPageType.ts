@@ -14,9 +14,8 @@ export interface LecueNoteProps {
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteTextColor: string;
+  noteBackground: string;
   noteList: LecueNoteType[];
 }
 
@@ -34,7 +33,6 @@ export interface LecueNoteType {
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteTextColor: string;
+  noteBackground: string;
 }
