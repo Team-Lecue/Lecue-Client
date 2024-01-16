@@ -23,7 +23,6 @@ const usePostStickerState = () => {
     },
     onSuccess: () => {
       navigate('/lecue-book');
-      sessionStorage.removeItem('scrollPosition');
     },
 
     onError: (err: AxiosError) => console.log(err),
