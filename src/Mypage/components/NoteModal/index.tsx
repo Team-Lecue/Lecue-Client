@@ -5,12 +5,24 @@ import * as S from './NoteModal.style';
 
 interface ModalProps {
   selectedNote: LecueNoteType;
+  clickedCloseBtn: boolean;
+  setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function NoteModal({ selectedNote }: ModalProps) {
+function NoteModal({
+  selectedNote,
+  clickedCloseBtn,
+  setClickedCloseBtn,
+}: ModalProps) {
   const handleClickBtn = () => {
     alert(`${selectedNote.noteId}로 가시겠습니까?`);
   };
+
+  const handleClickCloseBtn = () => {
+    setClickedCloseBtn((prev) => !prev);
+  };
+
+  console.log('clickedCloseBtn', clickedCloseBtn);
 
   return (
     <ModalPortal>
@@ -24,7 +36,7 @@ function NoteModal({ selectedNote }: ModalProps) {
               <ImgStarPosit />
               <S.FavoriteName>{selectedNote.favoriteName}</S.FavoriteName>
             </S.NameWrapper>
-            <S.CloseBtn type="button">
+            <S.CloseBtn type="button" onClick={handleClickCloseBtn}>
               <IcX />
             </S.CloseBtn>
           </S.Header>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LecueNoteProps } from '../../types/myPageType';
 import NoteModal from '../NoteModal';
@@ -17,6 +17,7 @@ function LecueNote(props: LecueNoteProps) {
   } = props;
 
   const [isModalShow, setIsModalShow] = useState(false);
+  const [clickedCloseBtn, setClickedCloseBtn] = useState(false);
 
   const getClickedNote = () =>
     noteList.filter((note) => note.noteId === noteId);
@@ -24,9 +25,17 @@ function LecueNote(props: LecueNoteProps) {
   const handleClickNote = () => {
     const clickedNote = getClickedNote();
     if (clickedNote) {
-      setIsModalShow((prev) => !prev);
+      setIsModalShow(true);
     }
   };
+
+  const handleClickedCloseBtn = () => {
+    setIsModalShow(false);
+  };
+
+  useEffect(() => {
+    handleClickedCloseBtn();
+  }, [clickedCloseBtn]);
 
   return (
     <S.Wrapper
@@ -41,7 +50,13 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
-      {isModalShow && <NoteModal selectedNote={getClickedNote()[0]} />}
+      {isModalShow && (
+        <NoteModal
+          selectedNote={getClickedNote()[0]}
+          setClickedCloseBtn={setClickedCloseBtn}
+          clickedCloseBtn={clickedCloseBtn}
+        />
+      )}
     </S.Wrapper>
   );
 }
