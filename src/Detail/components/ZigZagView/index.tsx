@@ -16,11 +16,11 @@ interface ZigZagViewProps {
 
 const ZigZagView = forwardRef(function ZigZagView(
   {
-  noteList,
-  handleDrag,
-  stickerState,
-  isEditable,
-  postedStickerList,
+    noteList,
+    handleDrag,
+    stickerState,
+    isEditable,
+    postedStickerList,
     savedScrollPosition,
   }: ZigZagViewProps,
   ref: React.Ref<HTMLDivElement>,
@@ -45,7 +45,7 @@ const ZigZagView = forwardRef(function ZigZagView(
             <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
           </Draggable>
         ))}
-      {isEditable && (
+        {isEditable && (
           <Draggable
             positionOffset={{
               x: 0,
@@ -62,7 +62,7 @@ const ZigZagView = forwardRef(function ZigZagView(
             />
           </Draggable>
         )}
-        </S.StickerContainer>
+      </S.StickerContainer>
     </S.ZigZagViewWrapper>
   );
 });
