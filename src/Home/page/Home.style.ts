@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
 
   width: 100vw;
   height: 100dvh;
+  overflow-x: hidden;
 `;
