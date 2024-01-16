@@ -5,8 +5,7 @@ interface BigLecueNoteProps {
   noteDate: string;
   noteNickname: string;
   noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteBackground: string;
 }
 
 function BigLecueNote({
@@ -14,13 +13,11 @@ function BigLecueNote({
   noteDate,
   noteNickname,
   noteTextColor,
-  noteBackgroundColor,
-  noteBackgroundImage,
+  noteBackground,
 }: BigLecueNoteProps) {
   return (
     <S.BigLecueNoteWrapper
-      noteBackgroundColor={noteBackgroundColor}
-      noteBackgroundImage={noteBackgroundImage}
+      noteBackground={noteBackground}
       noteTextColor={noteTextColor}
     >
       <S.BigLecueNoteNickname>{noteNickname}</S.BigLecueNoteNickname>
