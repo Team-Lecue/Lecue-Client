@@ -12,6 +12,7 @@ function Footer({
   imgFile2,
   presignedUrl,
   file,
+  setModalOn,
 }: FooterProps) {
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
@@ -31,6 +32,7 @@ function Footer({
       color: textColor,
       fileName: fileName,
       bgColor: bgColor,
+      setModalOn: setModalOn,
     });
   };
 

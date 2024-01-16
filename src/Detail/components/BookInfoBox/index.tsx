@@ -7,7 +7,7 @@ interface BookInfoBoxProps {
   bookNickname: string;
   title: string;
   description: string;
-  bookBackgroundColor: number;
+  bookBackgroundColor: string;
 }
 
 function BookInfoBox({

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Header from '../../../components/common/Header';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
 import Footer from '../../components/Footer';
 import {
@@ -22,6 +23,7 @@ function LecueNotePage() {
   const [fileName, setFileName] = useState('');
   const [presignedUrl, setPresignedUrl] = useState('');
   const [file, setFile] = useState<File>();
+  const [modalOn, setModalOn] = useState(false);
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -54,6 +56,9 @@ function LecueNotePage() {
 
   return (
     <S.Wrapper>
+      {modalOn && (
+        <CommonModal category="note_complete" setModalOn={setModalOn} />
+      )}
       <Header headerTitle="레큐노트 작성" />
       <CreateNote
         clickedCategory={clickedCategory}
@@ -80,6 +85,7 @@ function LecueNotePage() {
         bgColor={clickedBgColor}
         imgFile2={imgFile2}
         presignedUrl={presignedUrl}
+        setModalOn={setModalOn}
       />
     </S.Wrapper>
   );

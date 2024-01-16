@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 export const SmallLecueNoteWrapper = styled.div<{
   renderType: number;
   noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteBackground: string;
 }>`
   width: 15.2rem;
   height: 16.6rem;
@@ -27,36 +26,16 @@ export const SmallLecueNoteWrapper = styled.div<{
   }};
 
   border-radius: 0.4rem;
-  background: ${({ theme, noteBackgroundColor, noteBackgroundImage }) => {
-    if (noteBackgroundColor === -1 && noteBackgroundImage) {
-      return `url(${noteBackgroundImage})`;
+  ${({ noteBackground }) => {
+    if (noteBackground.substring(0, 1) === '#') {
+      return `background-color: ${noteBackground}`;
     } else {
-      switch (noteBackgroundColor) {
-        case 1:
-          return theme.colors.sub_pink;
-        case 2:
-          return theme.colors.sub_blue;
-        case 3:
-          return theme.colors.sub_green;
-        case 4:
-          return theme.colors.sub_purple;
-        case 5:
-          return theme.colors.sub_yellow;
-        case 6:
-          return theme.colors.sub_ivory;
-        default:
-          return 'transparent';
-      }
+      return `background: url(${noteBackground})`;
     }
   }};
   background-size: cover;
-  color: ${({ theme, noteTextColor }) => {
-    switch (noteTextColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
-        return theme.colors.BG;
-    }
+  color: ${({ noteTextColor }) => {
+    return noteTextColor;
   }};
 
   transform: ${({ renderType }) => {

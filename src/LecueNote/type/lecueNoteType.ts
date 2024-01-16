@@ -64,6 +64,7 @@ export interface FooterProps {
   fileName: string;
   textColor: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
   imgFile2?: FileReader;
   presignedUrl: string;
   file?: File;
@@ -85,4 +86,5 @@ export interface postLecueNoteProps {
   color: string;
   fileName: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
 }
