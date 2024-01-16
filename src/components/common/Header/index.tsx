@@ -56,7 +56,10 @@ export function ShareButton() {
 }
 
 export function BackButton({ isDarkMode }: HeaderButtonProps) {
-  const handleClickBackButton = () => {};
+  const navigate = useNavigate();
+  const handleClickBackButton = () => {
+    navigate(-1);
+  };
 
   return (
     <S.HeaderButton onClick={handleClickBackButton}>
