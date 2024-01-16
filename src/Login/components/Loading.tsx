@@ -15,7 +15,7 @@ function Loading() {
         const { nickname, tokenDto } = await postLoginToken(tokenRes);
 
         if (nickname === null) {
-          navigate('/register');
+          navigate('/register', { state: { token: tokenDto.accessToken } });
         } else {
           window.localStorage.setItem('token', tokenDto.accessToken);
           window.localStorage.setItem('nickname', nickname);
