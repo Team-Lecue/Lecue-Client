@@ -46,7 +46,20 @@ export function HomeButton() {
 }
 
 export function ShareButton() {
-  const handleClickShareButton = () => {};
+  const handleClickShareButton = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'Lecue',
+          url: window.location.href,
+        });
+      } else {
+        alert('이 브라우저에서는 내장 공유 기능을 지원하지 않습니다.');
+      }
+    } catch (error) {
+      console.error('내장 공유 기능을 실행하는 중 에러가 발생했습니다:', error);
+    }
+  };
 
   return (
     <S.HeaderButton onClick={handleClickShareButton}>
