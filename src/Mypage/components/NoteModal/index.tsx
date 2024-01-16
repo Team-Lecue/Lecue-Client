@@ -16,9 +16,8 @@ function NoteModal({ selectedNote }: ModalProps) {
     <ModalPortal>
       <S.BackgroundWrapper>
         <S.ModalWrapper
-          noteBackgroundColor={selectedNote?.noteBackgroundColor || 0}
-          noteTextColor={selectedNote?.noteTextColor || 0}
-          noteBackgroundImage={selectedNote?.noteBackgroundImage || ''}
+          noteBackground={selectedNote?.noteBackground}
+          noteTextColor={selectedNote?.noteTextColor}
         >
           <S.Header>
             <S.NameWrapper>

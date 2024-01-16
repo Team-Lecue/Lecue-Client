@@ -7,7 +7,7 @@ export const BackgroundWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 9;
 
   width: 100vw;
   height: 100dvh;
@@ -16,9 +16,8 @@ export const BackgroundWrapper = styled.div`
 `;
 
 export const ModalWrapper = styled.div<{
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-  noteTextColor: number;
+  noteBackground: string | undefined;
+  noteTextColor: string | undefined;
 }>`
   position: relative;
 
@@ -26,43 +25,19 @@ export const ModalWrapper = styled.div<{
   padding: 0.6rem 0.4rem 1.5rem 2rem;
 
   border-radius: 0.4rem;
-  background: ${({ theme, noteBackgroundColor, noteBackgroundImage }) => {
-    if (noteBackgroundColor === -1) {
-      return `url(${noteBackgroundImage})`;
-    } else {
-      switch (noteBackgroundColor) {
-        case 0:
-          return theme.colors.sub_pink;
-        case 1:
-          return theme.colors.sub_ivory;
-        case 2:
-          return theme.colors.sub_yellow;
-        case 3:
-          return theme.colors.sub_green;
-        case 4:
-          return theme.colors.sub_blue;
-        case 5:
-          return theme.colors.sub_purple;
-        case 6:
-          return '#FE394C';
-        case 7:
-          return '#9852F9';
-        case 8:
-          return '#FFD600';
-        case 9:
-          return '#98ED4D';
-        case 10:
-          return '#FF71B3';
-        case 11:
-          return '#CCCCCC';
-        default:
-          return 'transparent';
-      }
-    }
-  }};
   background-size: cover;
-  color: ${({ theme, noteTextColor }) =>
-    noteTextColor === 0 ? theme.colors.white : theme.colors.BG};
+  color: ${({ noteTextColor }) => {
+    return noteTextColor;
+  }};
+
+  ${({ noteBackground }) => {
+    if (noteBackground?.substring(0, 1) === '#') {
+      return `background-color: ${noteBackground}`;
+    } else {
+      return `background: url(${noteBackground});
+      background-size: cover;`;
+    }
+  }}
 `;
 
 export const Header = styled.header`
@@ -100,7 +75,7 @@ export const Title = styled.p`
 `;
 
 export const ContentWrapper = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
 
   width: 100%;
   height: 17.2rem;
