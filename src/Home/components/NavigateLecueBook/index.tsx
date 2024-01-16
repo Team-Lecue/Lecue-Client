@@ -1,18 +1,20 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { IcNotice, ImgLogoLecue } from '../../../assets';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import * as S from './NavigateLecueBook.style';
 
 function NavigateLecueBook() {
   const NAVIGATE_CATEGORY = ['레큐북 만들기', '내 기록 보기'];
   const navigate = useNavigate();
+  const [modalOn, setModalOn] = useState(false);
 
   const handleClickNavBtn = (idx: number) => {
     if (localStorage.getItem('token')) {
       idx === 0 ? navigate('create-book') : navigate('/mypage');
     } else {
-      alert('로그인이 필요한 페이지입니다!');
-      navigate('/login');
+      setModalOn(true);
     }
   };
 
@@ -43,6 +45,8 @@ function NavigateLecueBook() {
           );
         })}
       </S.ButtonWrapper>
+
+      {modalOn && <CommonModal category="login" setModalOn={setModalOn} />}
     </S.MainWrapper>
   );
 }
