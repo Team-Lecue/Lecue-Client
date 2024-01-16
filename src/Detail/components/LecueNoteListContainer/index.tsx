@@ -37,7 +37,8 @@ function LecueNoteListContainer({
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
-  const scrollRef = useRef(document.createElement('div'));
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
