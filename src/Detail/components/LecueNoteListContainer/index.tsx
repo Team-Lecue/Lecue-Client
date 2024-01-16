@@ -10,6 +10,7 @@ import {
   IcCaution,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
+import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
@@ -52,7 +53,7 @@ function LecueNoteListContainer({
   const postMutation = usePostStickerState();
 
   useEffect(() => {
-    // editable 상태 변경
+    // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면
     if (state) {
       window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
