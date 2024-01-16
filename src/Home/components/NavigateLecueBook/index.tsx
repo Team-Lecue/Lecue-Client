@@ -12,7 +12,7 @@ function NavigateLecueBook() {
 
   const handleClickNavBtn = (idx: number) => {
     if (localStorage.getItem('token')) {
-      idx === 0 ? navigate('/create-book') : navigate('/mypage');
+      idx === 0 ? navigate('/target') : navigate('/mypage');
     } else {
       setModalOn(true);
     }
