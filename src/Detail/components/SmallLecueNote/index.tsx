@@ -1,18 +1,8 @@
 import { useState } from 'react';
 
+import { NoteType } from '../../type/lecueBookType';
 import LecueNoteModal from '../LecueNoteModal';
 import * as S from './SmallLecueNote.style';
-
-interface Note {
-  noteId: number;
-  renderType: number;
-  content: string;
-  noteDate: string;
-  noteNickname: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
-}
 
 interface SmallLecueNoteProps {
   renderType: number;
@@ -20,10 +10,9 @@ interface SmallLecueNoteProps {
   noteDate: string;
   noteNickname: string;
   noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteBackground: string;
   noteId: number;
-  noteList: Note[];
+  noteList: NoteType[];
 }
 
 function SmallLecueNote({
@@ -32,8 +21,7 @@ function SmallLecueNote({
   noteDate,
   noteNickname,
   noteTextColor,
-  noteBackgroundColor,
-  noteBackgroundImage,
+  noteBackground,
   noteId,
   noteList,
 }: SmallLecueNoteProps) {
@@ -52,8 +40,7 @@ function SmallLecueNote({
     <S.SmallLecueNoteWrapper
       renderType={renderType}
       noteTextColor={noteTextColor}
-      noteBackgroundColor={noteBackgroundColor}
-      noteBackgroundImage={noteBackgroundImage}
+      noteBackground={noteBackground}
       onClick={handleClickSmallLecueNote}
     >
       <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
