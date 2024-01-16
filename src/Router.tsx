@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/test" element={<HealthTest />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
+        <Route path="/create-book" element={<CreateBook />} />
       </Routes>
     </BrowserRouter>
   );
