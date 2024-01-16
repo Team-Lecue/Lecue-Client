@@ -20,7 +20,7 @@ function StickerList(props: StickerListProps) {
           <Fragment key={data.stickerCategory}>
             <S.Title>{data.stickerCategory}</S.Title>
             <S.StickerGridWrapper>
-              {data.stickerList.map((sticker) => (
+              {data?.stickerList?.map((sticker) => (
                 <S.ImageWrapper
                   type="button"
                   key={sticker.stickerId}
