@@ -11,6 +11,7 @@ import {
 } from '../../../assets';
 import Button from '../../../components/common/Button';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
@@ -105,7 +106,9 @@ function LecueNoteListContainer({
         buttonOnClick={() => setIsZigZagView(!isZigZagView)}
       />
       <S.LecueNoteListViewWrapper>
-        {isZigZagView ? (
+        {noteList.length === 0 ? (
+          <EmptyView />
+        ) : isZigZagView ? (
           <ZigZagView
             noteList={noteList}
             isEditable={isEditable}
