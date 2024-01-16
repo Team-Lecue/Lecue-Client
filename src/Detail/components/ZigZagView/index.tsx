@@ -55,7 +55,11 @@ const ZigZagView = forwardRef(function ZigZagView(
             bounds="parent"
             nodeRef={nodeRef}
           >
-            <S.Sticker ref={nodeRef} stickerImage={stickerState.stickerImage} />
+            <S.Sticker
+              ref={nodeRef}
+              stickerImage={stickerState.stickerImage}
+              isEditable
+            />
           </Draggable>
         )}
         </S.StickerContainer>
