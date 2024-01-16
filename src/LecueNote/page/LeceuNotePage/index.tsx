@@ -14,11 +14,14 @@ function LecueNotePage() {
   const MAX_LENGTH = 1000;
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
+  const [imgFile2, setImgFile2] = useState<FileReader>();
   const [clickedCategory, setclickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
   const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
   const [fileName, setFileName] = useState('');
+  const [presignedUrl, setPresignedUrl] = useState('');
+  const [file, setFile] = useState<File>();
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -65,12 +68,18 @@ function LecueNotePage() {
         handleClickCategory={handleClickCategory}
         handleClickedColorBtn={handleClickedColorBtn}
         handleClickedIcon={handleClickedIcon}
+        setPresignedUrl={setPresignedUrl}
+        binaryImage={(file) => setImgFile2(file)}
+        selectedFile={(file) => setFile(file)}
       />
       <Footer
+        file={file}
         contents={contents}
         fileName={fileName}
         textColor={clickedTextColor}
         bgColor={clickedBgColor}
+        imgFile2={imgFile2}
+        presignedUrl={presignedUrl}
       />
     </S.Wrapper>
   );
