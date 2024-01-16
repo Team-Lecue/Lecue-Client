@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 
 export const BodyWrapper = styled.section`
   display: flex;
-  flex-direction: column;
+  gap: 1.5rem;
   justify-content: center;
-  width: 100vw;
-  height: calc(100dvh - 24.2rem);
-  margin-bottom: 5rem;
+  flex-direction: column;
 
-  gap: 2rem;
+  width: 100vw;
+  height: calc(100dvh - 18.7rem);
 `;
 
 export const LottieWrapper = styled.article`
@@ -21,6 +20,8 @@ export const TextWrapper = styled.article`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin-bottom: 3.2rem;
 `;
 
 export const Text = styled.p`
