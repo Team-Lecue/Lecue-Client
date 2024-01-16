@@ -6,7 +6,6 @@ export const BackgroundWrapper = styled.div`
   align-items: center;
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 9;
 
   width: 100vw;
