@@ -3,9 +3,7 @@ import { api } from '../../libs/api';
 export const patchNickname = async (token: string, nickname: string) => {
   const response = await api.patch(
     '/api/nickname',
-    {
-      nickname: { nickname },
-    },
+    { nickname: nickname },
     {
       headers: {
         'Content-Type': 'application/json',
@@ -13,5 +11,6 @@ export const patchNickname = async (token: string, nickname: string) => {
       },
     },
   );
-  return response;
+
+  return { code: response.data.code };
 };
