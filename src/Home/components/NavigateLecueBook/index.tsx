@@ -1,15 +1,21 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { IcNotice, ImgLogoLecue } from '../../../assets';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import * as S from './NavigateLecueBook.style';
 
 function NavigateLecueBook() {
-  const handleClickMakingBtn = () => {
-    // 로그인 여부 판별 후 레큐북 생성으로 이동
-    alert('레큐북 만들기 버튼 클릭');
-  };
+  const NAVIGATE_CATEGORY = ['레큐북 만들기', '내 기록 보기'];
+  const navigate = useNavigate();
+  const [modalOn, setModalOn] = useState(false);
 
-  const handleClickMypageBtn = () => {
-    // 로그인 여부 판별 후 마이페이지로 이동
-    alert('내 기록 보러가기 버튼 클릭');
+  const handleClickNavBtn = (idx: number) => {
+    if (localStorage.getItem('token')) {
+      idx === 0 ? navigate('create-book') : navigate('/mypage');
+    } else {
+      setModalOn(true);
+    }
   };
 
   return (
@@ -26,13 +32,21 @@ function NavigateLecueBook() {
       </S.IconWrapper>
 
       <S.ButtonWrapper>
-        <S.Button type="button" variant onClick={handleClickMakingBtn}>
-          레큐북 만들기
-        </S.Button>
-        <S.Button type="button" onClick={handleClickMypageBtn}>
-          내 기록 보러가기
-        </S.Button>
+        {NAVIGATE_CATEGORY.map((category, idx) => {
+          return (
+            <S.Button
+              type="button"
+              key={category}
+              variant={idx === 0}
+              onClick={() => handleClickNavBtn(idx)}
+            >
+              {category}
+            </S.Button>
+          );
+        })}
       </S.ButtonWrapper>
+
+      {modalOn && <CommonModal category="login" setModalOn={setModalOn} />}
     </S.MainWrapper>
   );
 }

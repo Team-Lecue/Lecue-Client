@@ -1,14 +1,20 @@
-import React from 'react';
+import { useEffect } from 'react';
 
+import { StepProps } from '../../Splash/page/SplashPage';
 import LecueBookList from '../components/LecueBookList';
 import NavigateLecueBook from '../components/NavigateLecueBook';
+import * as S from './Home.style';
 
-function Home() {
+function Home({ handleStep }: StepProps) {
+  useEffect(() => {
+    handleStep(1);
+  }, []);
+
   return (
-    <React.Fragment>
+    <S.Wrapper>
       <NavigateLecueBook />
       <LecueBookList />
-    </React.Fragment>
+    </S.Wrapper>
   );
 }
 
