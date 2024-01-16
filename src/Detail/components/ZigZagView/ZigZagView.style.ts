@@ -17,17 +17,25 @@ export const LecueNoteContainer = styled.div`
 export const StickerContainer = styled.div`
   position: absolute;
 
-  width: 100%;
+  width: 34.2rem;
   height: 100%;
+  padding: 0.4rem 0 2rem;
 `;
 
-export const Sticker = styled.div<{ stickerImage: string }>`
-  background-image: ${({ stickerImage }) => `url(${stickerImage})`};
+export const Sticker = styled.div<{
+  stickerImage: string;
+  isEditable?: boolean;
+}>`
+  position: absolute;
 
   width: 10rem;
   height: 10rem;
-  background-repeat: no-repeat;
 
+  ${({ isEditable, theme }) =>
+    isEditable && `border: solid 0.1rem ${theme.colors.key}`};
+  border-radius: 0.4rem;
   background-position: center;
+  background-image: ${({ stickerImage }) => `url(${stickerImage})`};
+  background-repeat: no-repeat;
   object-fit: cover;
 `;

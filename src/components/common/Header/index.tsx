@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
@@ -31,8 +33,9 @@ function Header({ headerTitle, isDarkMode, isDetailPage }: HeaderProps) {
 }
 
 export function HomeButton() {
+  const navigate = useNavigate();
   const handleClickHomeButton = () => {
-    // 홈으로 이동하는 로직 추후 구현 필요
+    navigate('/');
   };
 
   return (
@@ -43,8 +46,19 @@ export function HomeButton() {
 }
 
 export function ShareButton() {
-  const handleClickShareButton = () => {
-    // 공유(?) 페이지로 이동하는 로직 추후 구현 필요
+  const handleClickShareButton = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'Lecue',
+          url: window.location.href,
+        });
+      } else {
+        alert('이 브라우저에서는 내장 공유 기능을 지원하지 않습니다.');
+      }
+    } catch (error) {
+      console.error('내장 공유 기능을 실행하는 중 에러가 발생했습니다:', error);
+    }
   };
 
   return (
@@ -55,8 +69,9 @@ export function ShareButton() {
 }
 
 export function BackButton({ isDarkMode }: HeaderButtonProps) {
+  const navigate = useNavigate();
   const handleClickBackButton = () => {
-    // 뒤로 이동하는 로직 추후 구현 필요
+    navigate(-1);
   };
 
   return (
