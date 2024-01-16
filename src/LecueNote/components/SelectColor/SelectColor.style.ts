@@ -3,14 +3,12 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.article`
   display: flex;
-  flex-direction: column;
-
   gap: 1.8rem;
+  flex-direction: column;
 `;
 
 export const CategoryWrapper = styled.div`
   display: flex;
-
   gap: 1.4rem;
 `;
 

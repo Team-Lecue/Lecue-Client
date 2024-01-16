@@ -9,6 +9,7 @@ import BtnKakaologin from './button/btn_kakaologin.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
+import IcCameraSmall from './icon/ic_camera_small.svg?react';
 import IcCaution from './icon/ic_caution.svg?react';
 import IcCheck from './icon/ic_check.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';
@@ -16,6 +17,7 @@ import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
 import IcNotice from './icon/ic_notice.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
+import IcWaste from './icon/ic_waste.svg?react';
 import IcX from './icon/ic_x.svg?react';
 import ImgBook from './img/img_book.svg?react';
 import ImgBookBackgray from './img/img_book_backgray.svg?react';
@@ -50,6 +52,7 @@ export {
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcCamera,
+  IcCameraSmall,
   IcCaution,
   IcCheck,
   IcCrown,
@@ -57,6 +60,7 @@ export {
   IcHome,
   IcNotice,
   IcSharing,
+  IcWaste,
   IcX,
   ImgBook,
   ImgBookBackgray,
