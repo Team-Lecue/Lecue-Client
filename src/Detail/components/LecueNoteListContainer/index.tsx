@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DraggableData, DraggableEvent } from 'react-draggable';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -32,6 +32,7 @@ function LecueNoteListContainer({
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
+  const scrollRef = useRef(document.createElement('div'));
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
@@ -60,6 +61,7 @@ function LecueNoteListContainer({
         postedStickerId: stickerId,
         stickerImage: stickerImage,
       }));
+      sessionStorage.removeItem('scrollPosition');
     } else {
       // editable 상태 변경
       setIsEditable(false);
@@ -77,10 +79,10 @@ function LecueNoteListContainer({
     }));
   };
 
+  // 스티커 버튼 클릭시
   const handleClickStickerButton = () => {
+    // 현재 스크롤 위치 저장
     sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-
-    setIsEditable(true);
 
     navigate('/sticker-pack');
   };
@@ -120,11 +122,13 @@ function LecueNoteListContainer({
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
           <ZigZagView
+            savedScrollPosition={savedScrollPosition}
             noteList={noteList}
             isEditable={isEditable}
             handleDrag={handleDrag}
             stickerState={stickerState}
             postedStickerList={postedStickerList}
+            ref={scrollRef}
           />
         ) : (
           <LinearView noteList={noteList} />

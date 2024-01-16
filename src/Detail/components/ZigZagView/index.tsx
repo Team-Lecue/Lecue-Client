@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
@@ -11,15 +11,20 @@ interface ZigZagViewProps {
   stickerState: postedStickerType;
   isEditable: boolean;
   postedStickerList: postedStickerType[];
+  savedScrollPosition: number;
 }
 
-function ZigZagView({
+const ZigZagView = forwardRef(function ZigZagView(
+  {
   noteList,
   handleDrag,
   stickerState,
   isEditable,
   postedStickerList,
-}: ZigZagViewProps) {
+    savedScrollPosition,
+  }: ZigZagViewProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const nodeRef = useRef(null);
 
   return (
@@ -29,24 +34,23 @@ function ZigZagView({
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      <S.StickerContainer>
+      <S.StickerContainer ref={ref}>
         {postedStickerList.map((data) => (
           <Draggable
+            onStart={() => false}
             nodeRef={nodeRef}
             key={data.postedStickerId}
             positionOffset={{ x: data.positionX, y: data.positionY }}
-            onStart={() => false}
           >
             <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
           </Draggable>
         ))}
       </S.StickerContainer>
       {isEditable && (
-        <S.StickerContainer>
           <Draggable
-            defaultPosition={{
-              x: stickerState.positionX,
-              y: stickerState.positionY,
+            positionOffset={{
+              x: 0,
+              y: savedScrollPosition,
             }}
             onDrag={handleDrag}
             bounds="parent"
