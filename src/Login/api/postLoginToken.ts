@@ -13,7 +13,7 @@ export const postLoginToken = async (token: string) => {
       },
     },
   );
-  console.log(response.data);
+
   return {
     nickname: response.data.data.nickname,
     tokenDto: response.data.data.tokenDto,
