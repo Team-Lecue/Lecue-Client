@@ -8,6 +8,6 @@ export const Header = styled.header`
 `;
 
 export const Wrapper = styled.div`
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   margin-left: 1.8rem;
 `;

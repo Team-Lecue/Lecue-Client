@@ -1,11 +1,5 @@
 import { api } from '../../libs/api';
-
-interface postedStickerParams {
-  postedStickerId: number;
-  bookId: number;
-  positionX: number;
-  positionY: number;
-}
+import { postedStickerParams } from '../type/postStickerType';
 
 export async function postStickerState({
   postedStickerId,
