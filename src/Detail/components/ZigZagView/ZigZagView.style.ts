@@ -21,13 +21,18 @@ export const StickerContainer = styled.div`
   height: 100%;
 `;
 
-export const Sticker = styled.div<{ stickerImage: string }>`
-  background-image: ${({ stickerImage }) => `url(${stickerImage})`};
-
+export const Sticker = styled.div<{
+  stickerImage: string;
+  isEditable?: boolean;
+}>`
   width: 10rem;
   height: 10rem;
-  background-repeat: no-repeat;
+
+  ${({ isEditable, theme }) =>
+    isEditable && `border: solid 0.1rem ${theme.colors.key}`};
 
   background-position: center;
+  background-image: ${({ stickerImage }) => `url(${stickerImage})`};
+  background-repeat: no-repeat;
   object-fit: cover;
 `;
