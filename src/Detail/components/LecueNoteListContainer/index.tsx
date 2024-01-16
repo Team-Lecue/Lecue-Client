@@ -43,7 +43,10 @@ function LecueNoteListContainer({
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
     storedValue !== null ? parseInt(storedValue, 10) : 0;
+
   //state
+  const [fullHeight, setFullHeight] = useState<number | null>(null);
+  const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
@@ -55,6 +58,18 @@ function LecueNoteListContainer({
   const { state } = location;
 
   const postMutation = usePostStickerState();
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      if (scrollRef.current.offsetHeight) {
+        setFullHeight(scrollRef.current.offsetHeight);
+      }
+
+      if (fullHeight !== null) {
+        setHeightFromBottom(fullHeight - stickerState.positionY);
+      }
+    }
+  }, [fullHeight, stickerState.positionY]);
 
   useEffect(() => {
     // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면
