@@ -40,7 +40,7 @@ const ZigZagView = forwardRef(function ZigZagView(
             onStart={() => false}
             nodeRef={nodeRef}
             key={data.postedStickerId}
-            positionOffset={{ x: data.positionX, y: data.positionY }}
+            defaultPosition={{ x: data.positionX, y: data.positionY }}
           >
             <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
           </Draggable>
