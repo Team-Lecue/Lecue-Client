@@ -30,7 +30,6 @@ function Router() {
         <Route path="/create-book" element={<CreateBook />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
->>>>>>>>> Temporary merge branch 2
       </Routes>
     </BrowserRouter>
   );
