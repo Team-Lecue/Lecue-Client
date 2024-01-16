@@ -89,7 +89,7 @@ function LecueNoteListContainer({
   };
 
   const handleClickWriteButton = () => {
-    alert('WriteBtn');
+    navigate('/create-note');
   };
 
   const handleClickDone = () => {
