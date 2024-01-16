@@ -61,8 +61,7 @@ function LecueList() {
                     noteDate={note.noteDate}
                     content={note.content}
                     noteTextColor={note.noteTextColor}
-                    noteBackgroundColor={note.noteBackgroundColor}
-                    noteBackgroundImage={note.noteBackgroundImage}
+                    noteBackground={note.noteBackground}
                     noteList={NOTE_LIST}
                   />
                 );
