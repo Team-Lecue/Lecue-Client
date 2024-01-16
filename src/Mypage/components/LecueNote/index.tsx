@@ -18,7 +18,8 @@ function LecueNote(props: LecueNoteProps) {
 
   const [isModalShow, setIsModalShow] = useState(false);
 
-  const getClickedNote = () => noteList.find((note) => note.noteId === noteId);
+  const getClickedNote = () =>
+    noteList.filter((note) => note.noteId === noteId);
 
   const handleClickNote = () => {
     const clickedNote = getClickedNote();
@@ -40,7 +41,7 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
-      {isModalShow && <NoteModal selectedNote={getClickedNote() || null} />}
+      {isModalShow && <NoteModal selectedNote={getClickedNote()[0]} />}
     </S.Wrapper>
   );
 }
