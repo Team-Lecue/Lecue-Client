@@ -62,11 +62,9 @@ function LecueNoteListContainer({
         postedStickerId: stickerId,
         stickerImage: stickerImage,
       }));
-      sessionStorage.removeItem('scrollPosition');
     } else {
       // editable 상태 변경
       setIsEditable(false);
-      navigate('/lecue-book');
     }
   }, [state]);
 
@@ -105,8 +103,6 @@ function LecueNoteListContainer({
     });
 
     setIsEditable(false);
-
-    navigate('/lecue-book');
   };
 
   return (
