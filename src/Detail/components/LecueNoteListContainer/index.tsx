@@ -140,6 +140,7 @@ function LecueNoteListContainer({
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
           <ZigZagView
+            fullHeight={fullHeight}
             savedScrollPosition={savedScrollPosition}
             noteList={noteList}
             isEditable={isEditable}
