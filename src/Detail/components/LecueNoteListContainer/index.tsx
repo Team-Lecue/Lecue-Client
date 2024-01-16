@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DraggableData, DraggableEvent } from 'react-draggable';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import {
   IcCaution,
 } from '../../../assets';
 import Button from '../../../components/common/Button';
+import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
@@ -21,6 +22,8 @@ interface LecueNoteListContainerProps {
   backgroundColor: string;
   noteList: NoteType[];
   postedStickerList: postedStickerType[];
+  isEditable: boolean;
+  setEditableStateFalse: () => void;
 }
 
 function LecueNoteListContainer({
@@ -28,17 +31,19 @@ function LecueNoteListContainer({
   backgroundColor,
   noteList,
   postedStickerList,
+  isEditable,
+  setEditableStateFalse,
 }: LecueNoteListContainerProps) {
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
+  const scrollRef = useRef(document.createElement('div'));
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
     storedValue !== null ? parseInt(storedValue, 10) : 0;
   //state
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
-  const [isEditable, setIsEditable] = useState(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
     stickerImage: '',
@@ -51,7 +56,7 @@ function LecueNoteListContainer({
   const postMutation = usePostStickerState();
 
   useEffect(() => {
-    // editable 상태 변경
+    // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면
     if (state) {
       window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
@@ -62,10 +67,9 @@ function LecueNoteListContainer({
       }));
     } else {
       // editable 상태 변경
-      setIsEditable(false);
-      navigate('/lecue-book');
+      setEditableStateFalse();
     }
-  }, [state]);
+  }, [state, isEditable]);
 
   // 스티커 위치 값 저장
   const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
@@ -77,16 +81,16 @@ function LecueNoteListContainer({
     }));
   };
 
+  // 스티커 버튼 클릭시
   const handleClickStickerButton = () => {
+    // 현재 스크롤 위치 저장
     sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-
-    setIsEditable(true);
 
     navigate('/sticker-pack');
   };
 
   const handleClickWriteButton = () => {
-    alert('WriteBtn');
+    navigate('/create-note');
   };
 
   const handleClickDone = () => {
@@ -101,9 +105,7 @@ function LecueNoteListContainer({
       positionY: positionY,
     });
 
-    setIsEditable(false);
-
-    navigate('/lecue-book');
+    setEditableStateFalse();
   };
 
   return (
@@ -120,11 +122,13 @@ function LecueNoteListContainer({
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
           <ZigZagView
+            savedScrollPosition={savedScrollPosition}
             noteList={noteList}
             isEditable={isEditable}
             handleDrag={handleDrag}
             stickerState={stickerState}
             postedStickerList={postedStickerList}
+            ref={scrollRef}
           />
         ) : (
           <LinearView noteList={noteList} />
