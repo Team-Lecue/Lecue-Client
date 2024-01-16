@@ -48,6 +48,8 @@ function LecueNoteListContainer({
 
   const { state } = location;
 
+  const postMutation = usePostStickerState();
+
   useEffect(() => {
     // editable 상태 변경
     if (state) {
@@ -88,8 +90,19 @@ function LecueNoteListContainer({
   };
 
   const handleClickDone = () => {
-    setIsEditable(true);
-    sessionStorage.removeItem('scrollPosition');
+    // 다 붙였을 때 post 실행
+    const { postedStickerId, positionX, positionY } = stickerState;
+    const bookId = 1;
+
+    postMutation.mutate({
+      postedStickerId: postedStickerId,
+      bookId: bookId,
+      positionX: positionX,
+      positionY: positionY,
+    });
+
+    setIsEditable(false);
+
     navigate('/lecue-book');
   };
 
