@@ -27,6 +27,7 @@ const colors = {
   white10: '#FFFFFF1A',
   DG50: '#49494980',
   Modal: '#000000BF',
+  red: '#FF1D1D',
 };
 
 const fonts = {
