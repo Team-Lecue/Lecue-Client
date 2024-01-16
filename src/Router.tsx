@@ -6,6 +6,7 @@ import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
 import Home from './Home/page';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
+import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
@@ -47,6 +48,7 @@ function Router() {
         <Route path="/create-book" element={<CreateBook />} />
         <Route path="/sticker-attach" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
+        <Route path="/loading" element={<LoginCallback />} />
       </Routes>
     </BrowserRouter>
   );

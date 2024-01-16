@@ -1,10 +1,10 @@
 import { BtnKakaologin, ImgKakaoStarOrange } from '../../../assets';
+import { KAKAO_AUTH_URL } from '../../api/oAuth';
 import * as S from './LoginBtnContainer.style';
 
 function LoginBtnContainer() {
   const handleClickLoginBtn = () => {
-    //로그인 버튼 클릭 시 이벤트
-    alert('로그인 버튼 클릭');
+    window.location.href = KAKAO_AUTH_URL;
   };
 
   return (
