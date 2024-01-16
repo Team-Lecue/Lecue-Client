@@ -31,7 +31,7 @@ function SmallLecueNote({
 
   const handleClickSmallLecueNote = () => {
     const clickedNote = getClickedNote();
-    if (clickedNote && modalShow === false) {
+    if (clickedNote) {
       setModalShow(true);
     }
   };

@@ -13,13 +13,19 @@ interface LecueNoteModalProps {
 }
 
 function LecueNoteModal({ selectedNote, closeModal }: LecueNoteModalProps) {
+  const handleCloseButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation();
+    closeModal();
+  };
   return createPortal(
     <S.BlurryContainer>
       <S.LecueNoteModalWrapper
         noteBackground={selectedNote?.noteBackground}
         noteTextColor={selectedNote?.noteTextColor || 0}
       >
-        <S.CloseButton type="button" onClick={() => closeModal()}>
+        <S.CloseButton type="button" onClick={handleCloseButtonClick}>
           <IcX />
         </S.CloseButton>
         <S.LecueNoteModalNickname>
