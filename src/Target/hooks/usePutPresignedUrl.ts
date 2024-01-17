@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 
 import { putPresignedUrl } from '../util/api';
 
-interface usePutPresignedUrlProps {
+interface putPresignedUrlProps {
   url: string;
   data: ArrayBuffer;
   contentType: string;
@@ -11,7 +11,7 @@ interface usePutPresignedUrlProps {
 
 const usePutPresignedUrl = () => {
   const mutation = useMutation({
-    mutationFn: ({ url, data, contentType }: usePutPresignedUrlProps) => {
+    mutationFn: ({ url, data, contentType }: putPresignedUrlProps) => {
       return putPresignedUrl(url, data, contentType);
     },
     onError: (err: AxiosError) => console.log(err),
