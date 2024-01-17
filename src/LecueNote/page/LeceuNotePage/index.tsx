@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/common/Header';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
@@ -15,8 +16,7 @@ import * as S from './LecueNotePage.style';
 
 function LecueNotePage() {
   const MAX_LENGTH = 1000;
-  const putMutation = usePutPresignedUrl();
-  const postMutation = usePostLecueNote();
+  const navigate = useNavigate();
 
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
@@ -30,6 +30,9 @@ function LecueNotePage() {
   const [file, setFile] = useState<File>();
   const [modalOn, setModalOn] = useState(false);
   const [uuid, setUuid] = useState('');
+
+  const putMutation = usePutPresignedUrl();
+  const postMutation = usePostLecueNote();
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -76,9 +79,9 @@ function LecueNotePage() {
       fileName: fileName,
       bgColor: clickedBgColor,
       isIconClicked: isIconClicked,
-      uuid: uuid,
       setUuid: setUuid,
     });
+    navigate(`/lecue-book/${uuid}`);
   };
 
   return (

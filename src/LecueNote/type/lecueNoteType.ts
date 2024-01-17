@@ -81,6 +81,5 @@ export interface postLecueNoteProps {
   fileName: string;
   bgColor: string;
   isIconClicked: boolean;
-  uuid: string;
   setUuid: React.Dispatch<React.SetStateAction<string>>;
 }

@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { api } from '../../libs/api';
 import { postLecueNoteProps } from '../type/lecueNoteType';
 
@@ -8,10 +7,8 @@ const postLecueNote = ({
   fileName,
   bgColor,
   isIconClicked,
-  uuid,
   setUuid,
 }: postLecueNoteProps) => {
-  const navigate = useNavigate();
   const response = api
     .post(
       '/api/notes',
@@ -29,7 +26,6 @@ const postLecueNote = ({
     )
     .then((res) => {
       setUuid(res.data.data.bookUuid);
-      navigate(`/lecue-book/${uuid}`);
     });
 
   return response;
