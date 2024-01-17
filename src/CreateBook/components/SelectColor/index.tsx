@@ -12,7 +12,9 @@ function SelectColor({
 }: SelectColorProps) {
   return (
     <S.Wrapper>
-      <S.Category>레큐북 배경색</S.Category>
+      <S.Category variant={backgroundColor === '#191919'}>
+        레큐북 배경색
+      </S.Category>
       <ShowColorChart
         backgroundColor={backgroundColor}
         handleFn={(backgroundColor: string) =>

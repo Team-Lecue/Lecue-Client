@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 
-export const CreateBookWrapper = styled.section`
+export const CreateBookWrapper = styled.section<{ $backgroundColor: string }>`
   display: flex;
   flex-direction: column;
 
   width: 100vw;
   height: 100dvh;
+
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
 `;
 
 export const CreateBookBodyWrapper = styled.div`
@@ -23,8 +25,9 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
-export const SectionTitle = styled.p`
-  color: ${({ theme }) => theme.colors.BG};
+export const SectionTitle = styled.p<{ variant: boolean }>`
+  color: ${({ theme, variant }) =>
+    variant ? theme.colors.white : theme.colors.BG};
 
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
