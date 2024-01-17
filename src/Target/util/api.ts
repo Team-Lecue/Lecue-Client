@@ -7,13 +7,6 @@ interface PresignedUrlResponse {
     url: string;
     fileName: string;
   };
-
-  // const getPresignedUrl = async () => {
-  //   const { data } = await api.get('/api/images/note');
-  //   return data;
-  // };
-
-  // export default getPresignedUrl;
 }
 
 const getPresignedUrl = async (): Promise<{
@@ -22,7 +15,6 @@ const getPresignedUrl = async (): Promise<{
 }> => {
   const response: AxiosResponse<PresignedUrlResponse> =
     await api.get('/api/images/book');
-  console.log(response);
   return {
     url: response.data.data.url,
     fileName: response.data.data.fileName,
@@ -34,15 +26,11 @@ const putPresignedUrl = async (
   data: ArrayBuffer,
   contentType: string,
 ): Promise<void> => {
-  await api
-    .put(url, data, {
-      headers: {
-        'Content-Type': contentType,
-      },
-    })
-    .then((res) => {
-      console.log(res);
-    });
+  await api.put(url, data, {
+    headers: {
+      'Content-Type': contentType,
+    },
+  });
 };
 
 export { getPresignedUrl, putPresignedUrl };
