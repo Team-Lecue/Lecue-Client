@@ -1,5 +1,6 @@
 export interface LecueBookProps {
   key: number;
+  bookUuid: string;
   bookId: number;
   favoriteName: string;
   title: string;

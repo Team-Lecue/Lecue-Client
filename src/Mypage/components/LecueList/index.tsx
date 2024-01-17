@@ -83,6 +83,7 @@ function LecueList() {
                 return (
                   <LecueBook
                     key={book.bookId}
+                    bookUuid={book.bookUuid}
                     bookId={book.bookId}
                     favoriteName={book.favoriteName}
                     title={book.title}

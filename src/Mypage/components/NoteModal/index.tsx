@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { IcX, ImgStarPosit } from '../../../assets';
 import ModalPortal from '../../../components/common/Modal/ModalPortal';
 import { LecueNoteType } from '../../types/myPageType';
@@ -16,9 +18,9 @@ function NoteModal({
   clickedCloseBtn,
   setClickedCloseBtn,
 }: ModalProps) {
+  const navigate = useNavigate();
   const handleClickBtn = () => {
-    //TODO 라우트로 변경
-    alert(`${bookUuid}로 가시겠습니까?`);
+    navigate(`lecue-book/${bookUuid}`);
   };
 
   const handleClickCloseBtn = () => {
