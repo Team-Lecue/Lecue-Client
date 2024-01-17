@@ -23,6 +23,7 @@ import ImgBook from './img/img_book.svg?react';
 import ImgBookBackgray from './img/img_book_backgray.svg?react';
 import ImgBookOrange from './img/img_book_orange.svg?react';
 import ImgBookOrangeBig from './img/img_book_orange_big.svg?react';
+import ImgEmpty from './img/img_empty.svg?react';
 import ImgEvent from './img/img_event.svg?react';
 import ImgKakao01 from './img/img_kakao_01.svg?react';
 import ImgKakao02 from './img/img_kakao_02.svg?react';
@@ -66,6 +67,7 @@ export {
   ImgBookBackgray,
   ImgBookOrange,
   ImgBookOrangeBig,
+  ImgEmpty,
   ImgEvent,
   ImgKakao01,
   ImgKakao02,
