@@ -8,6 +8,7 @@ export const BottomWrapper = styled.footer`
   flex-direction: column;
 
   width: calc(100% - 3rem);
+  margin-bottom: 2rem;
 `;
 
 export const StartBtn = styled.button`
