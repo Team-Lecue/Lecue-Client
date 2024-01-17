@@ -17,6 +17,7 @@
     "@sentry/vite-plugin": "^2.10.2",
     "axios": "^1.6.5",
     "eslint-plugin-react": "^7.33.2",
+    "grapheme-splitter": "^1.0.4",
     "lottie-react": "^2.4.0",
     "postcss": "^8.4.33",
     "postcss-styled-syntax": "^0.6.3",

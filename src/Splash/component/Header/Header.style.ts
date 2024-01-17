@@ -5,9 +5,10 @@ export const Header = styled.header`
   justify-content: left;
 
   width: 100vw;
+  margin-top: 2rem;
 `;
 
 export const Wrapper = styled.div`
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   margin-left: 1.8rem;
 `;

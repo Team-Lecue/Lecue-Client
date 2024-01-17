@@ -8,20 +8,19 @@ export const MainWrapper = styled.div`
 
 export const IconWrapper = styled.section`
   display: flex;
+  gap: 15.7rem;
   align-items: baseline;
 
   width: 100%;
   padding: 6rem 1.6rem 5rem;
-  gap: 15.7rem;
 `;
 
 export const ButtonWrapper = styled.section`
   display: flex;
+  gap: 1rem;
   flex-direction: column;
 
   padding: 0 9.5rem 4.9rem 0;
-
-  gap: 1rem;
 `;
 
 export const Button = styled.button<{ variant?: boolean }>`

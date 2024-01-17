@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const LecueNoteListHeaderWrapper = styled.div<{
-  backgroundColor: number;
+  backgroundColor: string;
 }>`
   display: flex;
   position: sticky;
@@ -14,7 +14,7 @@ export const LecueNoteListHeaderWrapper = styled.div<{
   column-gap: 1rem;
 `;
 
-export const LecueNoteCountBox = styled.div<{ backgroundColor: number }>`
+export const LecueNoteCountBox = styled.div<{ backgroundColor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,18 +23,19 @@ export const LecueNoteCountBox = styled.div<{ backgroundColor: number }>`
 
   border-radius: 7rem;
   background-color: ${({ theme, backgroundColor }) => {
+    backgroundColor;
     switch (backgroundColor) {
-      case 0:
+      case '#F5F5F5':
         return theme.colors.BG;
-      case 1:
-        return theme.colors.white;
+      case '#191919':
+        return theme.colors.background;
     }
   }};
   color: ${({ theme, backgroundColor }) => {
     switch (backgroundColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
+      case '#F5F5F5':
+        return theme.colors.background;
+      case '#191919':
         return theme.colors.BG;
     }
   }};
