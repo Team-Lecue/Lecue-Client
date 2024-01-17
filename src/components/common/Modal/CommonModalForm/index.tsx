@@ -7,9 +7,10 @@ import * as S from './CommonModalForm.style';
 interface CommonModalFormProps {
   onClose: () => void;
   category: string;
+  uuid?: string;
 }
 
-function CommonModalForm({ onClose, category }: CommonModalFormProps) {
+function CommonModalForm({ onClose, category, uuid }: CommonModalFormProps) {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
 
@@ -17,6 +18,7 @@ function CommonModalForm({ onClose, category }: CommonModalFormProps) {
     onClose();
     switch (category) {
       case 'note_complete':
+        navigate(`/lecue-book/${uuid}`);
         break;
       case 'note_escape':
         break;

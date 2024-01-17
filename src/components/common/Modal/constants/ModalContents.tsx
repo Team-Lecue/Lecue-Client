@@ -16,8 +16,8 @@ export const MODAL_CONTETNS = [
     title: '레큐노트 작성을 그만두시나요?',
     subTitle1: '작성한 내용은 모두 사라집니다.',
     subTitle2: '신중하게 결정해주세요!',
-    leftBtn: '그만두기',
-    rightBtn: '계속 작성',
+    leftBtn: '계속 작성',
+    rightBtn: '그만두기',
   },
   {
     id: 'book_escape',
@@ -25,8 +25,8 @@ export const MODAL_CONTETNS = [
     title: '레큐북 제작을 완료하셨나요?',
     subTitle1: '작성한 내용은 모두 사라집니다.',
     subTitle2: '신중하게 결정해주세요!',
-    leftBtn: '그만두기',
-    rightBtn: '계속 제작',
+    leftBtn: '계속 제작',
+    rightBtn: '그만두기',
   },
   {
     id: 'book_create',
