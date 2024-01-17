@@ -10,10 +10,12 @@ interface patchNicknameProps {
 
 const usePatchNickname = () => {
   const mutation = useMutation({
-    mutationFn: ({ token, nickname }: patchNicknameProps) => {
-      return patchNickname(token, nickname);
+    mutationFn: async ({ token, nickname }: patchNicknameProps) => {
+      return await patchNickname(token, nickname);
     },
-    onError: (err: AxiosError) => console.log(err),
+    onError: (err: AxiosError) => {
+      console.error('usePatchNickname', err.response?.data);
+    },
   });
   return mutation;
 };

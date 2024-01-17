@@ -14,7 +14,7 @@ function LoginCallback() {
 
         const { nickname, tokenDto } = await postLoginToken(tokenRes);
 
-        if (nickname === null) {
+        if (nickname === null || nickname === '') {
           navigate('/register', { state: { token: tokenDto.accessToken } });
         } else {
           window.localStorage.setItem('token', tokenDto.accessToken);

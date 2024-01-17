@@ -20,36 +20,17 @@ function SubmitButton({
   isValid,
   setIsActive,
 }: SubmitButtonProps) {
-  // const fetchData = async (token: string, nickname: string) => {
-  //   try {
-  //     const { code } = await patchNickname(token, nickname);
-
-  //     if (code === 200) {
-  //       window.localStorage.setItem('token', token);
-  //       window.localStorage.setItem('nickname', nickname);
-  //       // 상황별 라우팅
-  //     }
-  //   } catch (error) {
-  //     console.log(error.response.data.code);
-  //     // if (error.response.data.code === 409) {
-  //     //   setIsValid('duplicate');
-  //     //   setIsActive(false);
-  //     // } else {
-  //     //   console.error('닉네임 patch 과정에서 에러 발생:', error);
-  //     // }
-  //   }
-  // };
-
   const patchMutation = usePatchNickname();
 
-  const handelClickSubmitBtn = (nickname: string, token: string) => {
-    // console.log(token, nickname);
+  const handelClickSubmitBtn = (token: string, nickname: string) => {
     const patchNickname = nickname.trim();
-    // console.log(`patchNickname: ${patchNickname}`);
-    patchMutation.mutate({
+
+    const res = patchMutation.mutate({
       nickname: patchNickname,
       token: token,
     });
+
+    console.log(res);
   };
 
   return (
