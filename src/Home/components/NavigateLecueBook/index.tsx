@@ -46,7 +46,13 @@ function NavigateLecueBook() {
         })}
       </S.ButtonWrapper>
 
-      {modalOn && <CommonModal category="login" setModalOn={setModalOn} />}
+      {modalOn && (
+        <CommonModal
+          category="login"
+          setModalOn={setModalOn}
+          handleFn={() => navigate('/login')}
+        />
+      )}
     </S.MainWrapper>
   );
 }
