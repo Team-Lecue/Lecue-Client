@@ -11,6 +11,7 @@ export const patchNickname = async (token: string, nickname: string) => {
       },
     },
   );
+  console.log(response.data);
 
   return { code: response.data.code };
 };

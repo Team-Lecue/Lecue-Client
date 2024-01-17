@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { patchNickname } from '../api/patchNickname';
 import { isValidState } from '../page';
@@ -17,7 +18,7 @@ interface usePatchNicknameProps {
 const usePatchNickname = (props: usePatchNicknameProps) => {
   const { setIsValid, setIsActive } = props;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: async ({ token, nickname }: patchNicknameProps) => {
@@ -26,7 +27,6 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
     onError: (err: AxiosError) => {
       const code = err.response?.status;
       if (code === 409) {
-        // 중복의 경우
         setIsValid('duplicate');
         setIsActive(false);
       } else {
@@ -34,7 +34,12 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
         // error페이지 띄우기
       }
     },
+    onSuccess: () => {
+      //어차피 200 리턴됨
+      navigate(-2);
+    },
   });
+
   return mutation;
 };
 
