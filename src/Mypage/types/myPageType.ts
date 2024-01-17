@@ -8,6 +8,7 @@ export interface LecueBookProps {
 }
 
 export interface LecueNoteProps {
+  bookUuid: string;
   key: number;
   noteId: number;
   favoriteName: string;
@@ -20,6 +21,7 @@ export interface LecueNoteProps {
 }
 
 export interface LecueBookType {
+  bookUuid: string;
   bookId: number;
   favoriteName: string;
   title: string;
@@ -28,6 +30,7 @@ export interface LecueBookType {
 }
 
 export interface LecueNoteType {
+  bookUuid: string;
   noteId: number;
   favoriteName: string;
   title: string;
