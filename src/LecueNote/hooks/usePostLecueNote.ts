@@ -11,8 +11,9 @@ const usePostLecueNote = () => {
       color,
       fileName,
       bgColor,
+      setModalOn
     }: postLecueNoteProps) => {
-      return postLecueNote({ contents, color, fileName, bgColor });
+      return postLecueNote({ contents, color, fileName, bgColor, setModalOn });
     },
     onError: (err: AxiosError) => console.log(err),
   });
