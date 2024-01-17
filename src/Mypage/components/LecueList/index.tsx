@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { BOOK_LIST, NOTE_LIST } from '../../constants/DATA';
-import { LecueBookType, LecueNoteType } from '../../types/myPageType';
+import useGetMyBookList from '../../hooks/useGetMyBookList';
+import useGetNoteList from '../../hooks/useGetMyNoteList';
+import {
+  LecueBookProps,
+  LecueBookType,
+  LecueNoteType,
+} from '../../types/myPageType';
 import LecueBook from '../LecueBook';
 import LecueNote from '../LecueNote';
 import * as S from './LecueList.style';
@@ -9,6 +14,9 @@ import * as S from './LecueList.style';
 function LecueList() {
   const [clickedBtn, setClickedBtn] = useState('note');
   const [counter, setCounter] = useState([0, 0]);
+
+  const { myBookList } = useGetMyBookList();
+  const { myNoteList } = useGetNoteList();
 
   const handleClickNoteBtn = () => {
     document.getElementById('list-wrapper')!.scrollTo(0, 0);
@@ -25,8 +33,10 @@ function LecueList() {
   };
 
   useEffect(() => {
-    numberCount(NOTE_LIST, BOOK_LIST);
-  }, []);
+    if (myNoteList && myBookList) {
+      numberCount(myNoteList, myBookList);
+    }
+  }, [myNoteList, myBookList]);
 
   return (
     <S.Wrapper>
@@ -51,9 +61,11 @@ function LecueList() {
       <S.ListWrapper variant={clickedBtn} id="list-wrapper">
         <S.ListContainer variant={clickedBtn}>
           {clickedBtn === 'note'
-            ? NOTE_LIST.map((note) => {
+            ? myNoteList &&
+              myNoteList.map((note: LecueNoteType) => {
                 return (
                   <LecueNote
+                    bookUuid={note.bookUuid}
                     key={note.noteId}
                     noteId={note.noteId}
                     favoriteName={note.favoriteName}
@@ -62,11 +74,12 @@ function LecueList() {
                     content={note.content}
                     noteTextColor={note.noteTextColor}
                     noteBackground={note.noteBackground}
-                    noteList={NOTE_LIST}
+                    noteList={myNoteList}
                   />
                 );
               })
-            : BOOK_LIST.map((book) => {
+            : myBookList &&
+              myBookList.map((book: LecueBookProps) => {
                 return (
                   <LecueBook
                     key={book.bookId}
