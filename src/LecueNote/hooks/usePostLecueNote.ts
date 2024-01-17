@@ -11,6 +11,7 @@ const usePostLecueNote = () => {
       color,
       fileName,
       bgColor,
+      isIconClicked,
       setModalOn,
       setUuid,
     }: postLecueNoteProps) => {
@@ -19,6 +20,7 @@ const usePostLecueNote = () => {
         color,
         fileName,
         bgColor,
+        isIconClicked,
         setModalOn,
         setUuid,
       });

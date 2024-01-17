@@ -34,7 +34,7 @@ function Footer({
       color: textColor,
       fileName: fileName,
       bgColor: bgColor,
-      isIconClicked,
+      isIconClicked: isIconClicked,
       setModalOn: setModalOn,
       setUuid: setUuid,
     });
