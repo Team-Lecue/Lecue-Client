@@ -17,7 +17,8 @@ function NoteModal({
   setClickedCloseBtn,
 }: ModalProps) {
   const handleClickBtn = () => {
-    alert(`${selectedNote.noteId}로 가시겠습니까?`);
+    //TODO 라우트로 변경
+    alert(`${bookUuid}로 가시겠습니까?`);
   };
 
   const handleClickCloseBtn = () => {
