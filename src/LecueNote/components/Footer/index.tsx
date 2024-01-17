@@ -12,7 +12,9 @@ function Footer({
   imgFile2,
   presignedUrl,
   file,
+  isIconClicked,
   setModalOn,
+  setUuid,
 }: FooterProps) {
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
@@ -32,7 +34,9 @@ function Footer({
       color: textColor,
       fileName: fileName,
       bgColor: bgColor,
+      isIconClicked,
       setModalOn: setModalOn,
+      setUuid: setUuid,
     });
   };
 

@@ -68,6 +68,8 @@ export interface FooterProps {
   imgFile2?: FileReader;
   presignedUrl: string;
   file?: File;
+  isIconClicked: boolean;
+  setUuid: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface getPresignedUrlPrps {
@@ -86,5 +88,7 @@ export interface postLecueNoteProps {
   color: string;
   fileName: string;
   bgColor: string;
+  isIconClicked: boolean;
   setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
+  setUuid: React.Dispatch<React.SetStateAction<string>>;
 }

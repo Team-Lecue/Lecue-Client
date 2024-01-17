@@ -20,10 +20,11 @@ function LecueNotePage() {
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
   const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
   const [file, setFile] = useState<File>();
   const [modalOn, setModalOn] = useState(false);
+  const [uuid, setUuid] = useState('');
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -57,7 +58,11 @@ function LecueNotePage() {
   return (
     <S.Wrapper>
       {modalOn && (
-        <CommonModal category="note_complete" setModalOn={setModalOn} />
+        <CommonModal
+          category="note_complete"
+          uuid={uuid}
+          setModalOn={setModalOn}
+        />
       )}
       <Header headerTitle="레큐노트 작성" />
       <CreateNote
@@ -85,7 +90,9 @@ function LecueNotePage() {
         bgColor={clickedBgColor}
         imgFile2={imgFile2}
         presignedUrl={presignedUrl}
+        isIconClicked={isIconClicked}
         setModalOn={setModalOn}
+        setUuid={setUuid}
       />
     </S.Wrapper>
   );
