@@ -49,34 +49,36 @@ function LecueList() {
       </S.ButtonWrapper>
 
       <S.ListWrapper variant={clickedBtn} id="list-wrapper">
-        {clickedBtn === 'note'
-          ? NOTE_LIST.map((note) => {
-              return (
-                <LecueNote
-                  key={note.noteId}
-                  noteId={note.noteId}
-                  favoriteName={note.favoriteName}
-                  title={note.title}
-                  noteDate={note.noteDate}
-                  content={note.content}
-                  noteTextColor={note.noteTextColor}
-                  noteBackgroundColor={note.noteBackgroundColor}
-                  noteBackgroundImage={note.noteBackgroundImage}
-                />
-              );
-            })
-          : BOOK_LIST.map((book) => {
-              return (
-                <LecueBook
-                  key={book.bookId}
-                  bookId={book.bookId}
-                  favoriteName={book.favoriteName}
-                  title={book.title}
-                  bookDate={book.bookDate}
-                  noteNum={book.noteNum}
-                />
-              );
-            })}
+        <S.ListContainer variant={clickedBtn}>
+          {clickedBtn === 'note'
+            ? NOTE_LIST.map((note) => {
+                return (
+                  <LecueNote
+                    key={note.noteId}
+                    noteId={note.noteId}
+                    favoriteName={note.favoriteName}
+                    title={note.title}
+                    noteDate={note.noteDate}
+                    content={note.content}
+                    noteTextColor={note.noteTextColor}
+                    noteBackground={note.noteBackground}
+                    noteList={NOTE_LIST}
+                  />
+                );
+              })
+            : BOOK_LIST.map((book) => {
+                return (
+                  <LecueBook
+                    key={book.bookId}
+                    bookId={book.bookId}
+                    favoriteName={book.favoriteName}
+                    title={book.title}
+                    bookDate={book.bookDate}
+                    noteNum={book.noteNum}
+                  />
+                );
+              })}
+        </S.ListContainer>
       </S.ListWrapper>
     </S.Wrapper>
   );

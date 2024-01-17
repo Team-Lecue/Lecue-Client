@@ -31,15 +31,23 @@ export const Button = styled.button<{ variant: boolean }>`
 
 export const ListWrapper = styled.section<{ variant: string }>`
   display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: calc(100dvh - 19.3rem);
+  padding: 1rem;
+
+  border-radius: ${({ variant }) => (variant === 'note' ? 0 : 0.4)}rem
+    ${({ variant }) => (variant === 'note' ? 0.4 : 0)}rem 0.4rem 0.4rem;
+  background-color: ${({ theme }) => theme.colors.black};
+`;
+
+export const ListContainer = styled.div<{ variant: string }>`
+  display: flex;
   gap: ${({ variant }) => (variant === 'note' ? 1 : 0.8)}rem;
   flex-wrap: wrap;
   overflow: scroll;
 
   width: 100%;
-  height: calc(100dvh - 19.3rem);
-  padding: 1.2rem 1rem 1rem;
-
-  border-radius: ${({ variant }) => (variant === 'note' ? 0 : 0.4)}rem
-    ${({ variant }) => (variant === 'note' ? 0.4 : 0)}rem 0.4rem 0.4rem;
-  background-color: ${({ theme }) => theme.colors.black};
+  height: 100%;
 `;
