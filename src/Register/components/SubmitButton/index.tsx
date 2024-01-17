@@ -17,20 +17,17 @@ function SubmitButton({
   token,
   nickname,
   setIsValid,
-  isValid,
   setIsActive,
 }: SubmitButtonProps) {
-  const patchMutation = usePatchNickname();
+  const patchMutation = usePatchNickname({ setIsValid, setIsActive });
 
   const handelClickSubmitBtn = (token: string, nickname: string) => {
     const patchNickname = nickname.trim();
 
-    const res = patchMutation.mutate({
+    patchMutation.mutate({
       nickname: patchNickname,
       token: token,
     });
-
-    console.log(res);
   };
 
   return (
