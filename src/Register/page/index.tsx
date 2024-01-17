@@ -32,6 +32,7 @@ function Register() {
         nickname={nickname}
         token={token}
         setIsValid={setIsValid}
+        isValid={isValid}
         setIsActive={setIsActive}
       />
     </S.Wrapper>
