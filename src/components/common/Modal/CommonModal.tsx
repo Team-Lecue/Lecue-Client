@@ -4,13 +4,17 @@ import ModalPortal from './ModalPortal';
 interface CommonModal {
   setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
   category: string;
-  uuid?: string;
+  handleFn: () => void;
 }
 
-function CommonModal({ setModalOn, category, uuid }: CommonModal) {
+function CommonModal({ setModalOn, category, handleFn }: CommonModal) {
   return (
     <ModalPortal>
-      <CommonModalForm onClose={() => setModalOn(false)} category={category} uuid={uuid}/>
+      <CommonModalForm
+        onClose={() => setModalOn(false)}
+        category={category}
+        handleFn={handleFn}
+      />
     </ModalPortal>
   );
 }
