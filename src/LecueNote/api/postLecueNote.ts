@@ -7,7 +7,6 @@ const postLecueNote = ({
   fileName,
   bgColor,
   isIconClicked,
-  setUuid,
 }: postLecueNoteProps) => {
   const response = api
     .post(
@@ -25,7 +24,7 @@ const postLecueNote = ({
       },
     )
     .then((res) => {
-      setUuid(res.data.data.bookUuid);
+      console.log(res);
     });
 
   return response;

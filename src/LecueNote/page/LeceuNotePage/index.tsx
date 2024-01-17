@@ -29,7 +29,6 @@ function LecueNotePage() {
   const [presignedUrl, setPresignedUrl] = useState('');
   const [file, setFile] = useState<File>();
   const [modalOn, setModalOn] = useState(false);
-  const [uuid, setUuid] = useState('');
 
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
@@ -63,7 +62,7 @@ function LecueNotePage() {
     setIsIconClicked(true);
   };
 
-  const handleFn = () => {
+  const handleFn = async () => {
     if (imgFile2) {
       if (imgFile2.result && file) {
         putMutation.mutate({
@@ -79,9 +78,9 @@ function LecueNotePage() {
       fileName: fileName,
       bgColor: clickedBgColor,
       isIconClicked: isIconClicked,
-      setUuid: setUuid,
     });
-    navigate(`/lecue-book/${uuid}`);
+    // 추후 수정 예정
+    navigate(`/lecue-book`);
   };
 
   return (

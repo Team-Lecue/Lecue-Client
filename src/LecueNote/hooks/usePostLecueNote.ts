@@ -12,7 +12,6 @@ const usePostLecueNote = () => {
       fileName,
       bgColor,
       isIconClicked,
-      setUuid,
     }: postLecueNoteProps) => {
       return postLecueNote({
         contents,
@@ -20,7 +19,6 @@ const usePostLecueNote = () => {
         fileName,
         bgColor,
         isIconClicked,
-        setUuid,
       });
     },
     onError: (err: AxiosError) => console.log(err),
