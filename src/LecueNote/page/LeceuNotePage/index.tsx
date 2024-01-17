@@ -9,10 +9,15 @@ import {
   CATEGORY,
   TEXT_COLOR_CHART,
 } from '../../constants/colorChart';
+import usePostLecueNote from '../../hooks/usePostLecueNote';
+import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import * as S from './LecueNotePage.style';
 
 function LecueNotePage() {
   const MAX_LENGTH = 1000;
+  const putMutation = usePutPresignedUrl();
+  const postMutation = usePostLecueNote();
+
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
@@ -55,12 +60,33 @@ function LecueNotePage() {
     setIsIconClicked(true);
   };
 
+  const handleFn = () => {
+    if (imgFile2) {
+      if (imgFile2.result && file) {
+        putMutation.mutate({
+          presignedUrl: presignedUrl,
+          binaryFile: imgFile2.result,
+          fileType: file.type,
+        });
+      }
+    }
+    postMutation.mutate({
+      contents: contents,
+      color: clickedTextColor,
+      fileName: fileName,
+      bgColor: clickedBgColor,
+      isIconClicked: isIconClicked,
+      uuid: uuid,
+      setUuid: setUuid,
+    });
+  };
+
   return (
     <S.Wrapper>
       {modalOn && (
         <CommonModal
+          handleFn={handleFn}
           category="note_complete"
-          uuid={uuid}
           setModalOn={setModalOn}
         />
       )}
@@ -82,18 +108,7 @@ function LecueNotePage() {
         binaryImage={(file) => setImgFile2(file)}
         selectedFile={(file) => setFile(file)}
       />
-      <Footer
-        file={file}
-        contents={contents}
-        fileName={fileName}
-        textColor={clickedTextColor}
-        bgColor={clickedBgColor}
-        imgFile2={imgFile2}
-        presignedUrl={presignedUrl}
-        isIconClicked={isIconClicked}
-        setModalOn={setModalOn}
-        setUuid={setUuid}
-      />
+      <Footer contents={contents} setModalOn={setModalOn} />
     </S.Wrapper>
   );
 }

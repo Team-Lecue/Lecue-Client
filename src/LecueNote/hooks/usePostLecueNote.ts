@@ -12,7 +12,7 @@ const usePostLecueNote = () => {
       fileName,
       bgColor,
       isIconClicked,
-      setModalOn,
+      uuid,
       setUuid,
     }: postLecueNoteProps) => {
       return postLecueNote({
@@ -21,7 +21,7 @@ const usePostLecueNote = () => {
         fileName,
         bgColor,
         isIconClicked,
-        setModalOn,
+        uuid,
         setUuid,
       });
     },
