@@ -63,15 +63,9 @@ function CreateBook() {
             <S.SectionTitle variant={backgroundColor === '#191919'}>
               레큐북 제목
             </S.SectionTitle>
-            <S.SectionTitle variant={backgroundColor === '#191919'}>
-              레큐북 제목
-            </S.SectionTitle>
             <BookInput title={title} changeTitle={(title) => setTitle(title)} />
           </S.BookInputWrapper>
           <S.BookInfoTextareaWrapper>
-            <S.SectionTitle variant={backgroundColor === '#191919'}>
-              레큐북 소개
-            </S.SectionTitle>
             <S.SectionTitle variant={backgroundColor === '#191919'}>
               레큐북 소개
             </S.SectionTitle>
