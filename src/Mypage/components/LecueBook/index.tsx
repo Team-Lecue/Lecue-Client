@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcWaste } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import useDeleteMyBook from '../../hooks/useDeleteMyBook';
 import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
@@ -13,7 +12,7 @@ function LecueBook(props: LecueBookProps) {
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
   const navigate = useNavigate();
-  const deleteMyBookMutation = useDeleteMyBook();
+  // const deleteMutation = useDeleteMyBook();
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
@@ -25,10 +24,11 @@ function LecueBook(props: LecueBookProps) {
 
   const handleClickTrashBtn = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    bookId: number,
+    // bookId: number,
   ) => {
     event.stopPropagation();
-    // deleteMyBookMutation.mutate(bookId);
+    // 주석은 전부 삭제 함수 모달 props 이후 수정
+    // deleteMutation.mutate(bookId);
     setModalOn(true);
   };
 
