@@ -52,6 +52,8 @@ export const Contents = styled.textarea<{ $textColor: string }>`
   background-color: transparent;
   color: ${({ $textColor }) => $textColor};
 
+  outline-color: ${({ theme }) => theme.colors.key};
+
   &::placeholder {
     color: ${({ theme }) => theme.colors.MG};
     ${({ theme }) => theme.fonts.Body2_M_14};

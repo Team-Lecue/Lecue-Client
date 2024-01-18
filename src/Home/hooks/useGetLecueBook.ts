@@ -10,6 +10,7 @@ const useGetLecueBook = () => {
     queryKey: ['get-lecue-book'],
     queryFn: () => getLecueBook(),
     onError: () => navigate('/error'),
+    refetchOnWindowFocus: false,
   });
 
   return { isLoading, data };

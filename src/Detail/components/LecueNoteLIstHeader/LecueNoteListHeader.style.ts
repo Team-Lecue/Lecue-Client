@@ -8,7 +8,7 @@ export const LecueNoteListHeaderWrapper = styled.div<{
   top: 9.8rem;
   z-index: 2;
 
-  padding: 1.2rem 1.65rem 0;
+  padding: 1.2rem 0;
 
   background-color: transparent;
   column-gap: 1rem;
@@ -19,7 +19,7 @@ export const LecueNoteCountBox = styled.div<{ backgroundColor: string }>`
   justify-content: center;
   align-items: center;
 
-  padding: 1.05rem 1.8rem;
+  padding: 1.05rem 1.6rem;
 
   border-radius: 7rem;
   background-color: ${({ theme, backgroundColor }) => {

@@ -9,6 +9,7 @@ const useGetNoteNum = () => {
     queryKey: ['get-note-num'],
     queryFn: () => getNoteNum(),
     onError: () => navigate('/error'),
+    refetchOnWindowFocus: false,
   });
 
   return { isLoading, data };

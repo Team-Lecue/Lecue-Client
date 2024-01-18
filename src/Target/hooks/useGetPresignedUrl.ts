@@ -9,6 +9,7 @@ const useGetPresignedUrl = () => {
     queryKey: ['get-presigned-url'],
     queryFn: () => getPresignedUrl(),
     onError: () => navigate('/error'),
+    refetchOnWindowFocus: false,
   });
 
   return { isLoading, data };
