@@ -29,6 +29,7 @@ function LecueNotePage() {
   const [presignedUrl, setPresignedUrl] = useState('');
   const [file, setFile] = useState<File>();
   const [modalOn, setModalOn] = useState(false);
+  const [escapeModal, setEscapeModal] = useState(false);
 
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
@@ -62,7 +63,7 @@ function LecueNotePage() {
     setIsIconClicked(true);
   };
 
-  const handleFn = async () => {
+  const handleClickCompleteModal = async () => {
     if (imgFile2) {
       if (imgFile2.result && file) {
         putMutation.mutate({
@@ -87,12 +88,23 @@ function LecueNotePage() {
     <S.Wrapper>
       {modalOn && (
         <CommonModal
-          handleFn={handleFn}
+          handleFn={handleClickCompleteModal}
           category="note_complete"
           setModalOn={setModalOn}
         />
       )}
-      <Header headerTitle="레큐노트 작성" />
+
+      {escapeModal && (
+        <CommonModal
+          handleFn={() => navigate(-1)}
+          category="note_escape"
+          setModalOn={setEscapeModal}
+        />
+      )}
+      <Header
+        headerTitle="레큐노트 작성"
+        handleFn={() => setEscapeModal(true)}
+      />
       <CreateNote
         clickedCategory={clickedCategory}
         clickedTextColor={clickedTextColor}
