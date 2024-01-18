@@ -8,17 +8,19 @@ export interface ButtonProps
     'type' | 'disabled' | 'onClick'
   > {
   variant: S.ButtonStyle;
+  backgroundColor?: string;
   children: ReactNode;
 }
 
 function Button(props: ButtonProps) {
-  const { children, onClick, disabled, variant } = props;
+  const { children, onClick, disabled, variant, backgroundColor } = props;
   return (
     <S.CustomButton
       type="button"
       onClick={onClick}
       disabled={disabled}
       variant={variant}
+      $bookBackgroundColor={backgroundColor}
     >
       {children}
     </S.CustomButton>
