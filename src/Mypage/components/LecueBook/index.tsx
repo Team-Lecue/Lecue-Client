@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcWaste } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
+import useDeleteMyBook from '../../hooks/useDeleteMyBook';
 import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
@@ -12,7 +13,7 @@ function LecueBook(props: LecueBookProps) {
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
   const navigate = useNavigate();
-  // const deleteMutation = useDeleteMyBook();
+  const deleteMutation = useDeleteMyBook();
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
@@ -24,12 +25,14 @@ function LecueBook(props: LecueBookProps) {
 
   const handleClickTrashBtn = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    // bookId: number,
   ) => {
-    event.stopPropagation();
-    // 주석은 전부 삭제 함수 모달 props 이후 수정
-    // deleteMutation.mutate(bookId);
     setModalOn(true);
+    event.stopPropagation();
+  };
+
+  const handleFn = () => {
+    deleteMutation.mutate(bookId);
+    location.reload();
   };
 
   useEffect(() => {
@@ -37,25 +40,31 @@ function LecueBook(props: LecueBookProps) {
   });
 
   return (
-    <S.Wrapper
-      onClick={() => {
-        handleClickBook(bookUuid);
-      }}
-    >
-      <S.Header>
-        <S.Name>{favoriteName}</S.Name>
-        <S.TrashBtn onClick={(event) => handleClickTrashBtn(event, bookId)}>
+    <S.Wrapper>
+      <S.BookWrapper
+        onClick={() => {
+          handleClickBook(bookUuid);
+        }}
+      >
+        <S.Header>
+          <S.Name>{favoriteName}</S.Name>
+        </S.Header>
+        <S.Title>{title}</S.Title>
+        <S.Footer>
+          <S.Date>{bookDate}</S.Date>
+          <S.Count>{noteCount}개</S.Count>
+        </S.Footer>
+
+        <S.TrashBtn onClick={(event) => handleClickTrashBtn(event)}>
           <IcWaste />
         </S.TrashBtn>
-      </S.Header>
-      <S.Title>{title}</S.Title>
-      <S.Footer>
-        <S.Date>{bookDate}</S.Date>
-        <S.Count>{noteCount}개</S.Count>
-      </S.Footer>
-
+      </S.BookWrapper>
       {modalOn && (
-        <CommonModal category="book_delete" setModalOn={setModalOn} />
+        <CommonModal
+          category="book_delete"
+          setModalOn={setModalOn}
+          handleFn={handleFn}
+        />
       )}
     </S.Wrapper>
   );
