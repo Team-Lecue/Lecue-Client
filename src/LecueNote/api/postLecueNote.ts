@@ -9,24 +9,20 @@ const postLecueNote = ({
   isIconClicked,
   bookId,
 }: postLecueNoteProps) => {
-  const response = api
-    .post(
-      '/api/notes',
-      {
-        bookId: bookId,
-        content: contents,
-        textColor: color,
-        background: isIconClicked ? fileName : bgColor,
+  const response = api.post(
+    '/api/notes',
+    {
+      bookId: bookId,
+      content: contents,
+      textColor: color,
+      background: isIconClicked ? fileName : bgColor,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
-        },
-      },
-    )
-    .then((res) => {
-      console.log(res);
-    });
+    },
+  );
 
   return response;
 };
