@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ const usePostStickerState = (bookUuId: string) => {
       navigate(`/lecue-book/${bookUuId}`);
     },
 
-    onError: (err: AxiosError) => console.log(err),
+    onError: () => navigate('/error'),
   });
   return mutation;
 };

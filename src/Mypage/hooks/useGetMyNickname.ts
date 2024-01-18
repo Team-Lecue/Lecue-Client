@@ -1,17 +1,19 @@
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { getMyNickName } from '../api/getMyNickName';
 
 export default function useGetMyNickName() {
-  const { data: myNickName } = useQuery(
+  const navigate = useNavigate();
+  const { data: myNickName, isLoading } = useQuery(
     ['useGetMyNickName'],
     () => getMyNickName(),
     {
       onError: () => {
-        console.error;
+        navigate('/error');
       },
     },
   );
 
-  return { myNickName };
+  return { myNickName, isLoading };
 }

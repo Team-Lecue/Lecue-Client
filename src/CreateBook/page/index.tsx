@@ -16,8 +16,8 @@ function CreateBook() {
   const [backgroundColor, setBackgroundColor] = useState('#F5F5F5');
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { presignedFileName, name } = location.state || {};
 
   const handleClickCompleteButton = async () => {
@@ -63,9 +63,15 @@ function CreateBook() {
             <S.SectionTitle variant={backgroundColor === '#191919'}>
               레큐북 제목
             </S.SectionTitle>
+            <S.SectionTitle variant={backgroundColor === '#191919'}>
+              레큐북 제목
+            </S.SectionTitle>
             <BookInput title={title} changeTitle={(title) => setTitle(title)} />
           </S.BookInputWrapper>
           <S.BookInfoTextareaWrapper>
+            <S.SectionTitle variant={backgroundColor === '#191919'}>
+              레큐북 소개
+            </S.SectionTitle>
             <S.SectionTitle variant={backgroundColor === '#191919'}>
               레큐북 소개
             </S.SectionTitle>
@@ -82,6 +88,7 @@ function CreateBook() {
           />
         </S.InputWrapper>
         <CompleteButton
+          backgroundColor={backgroundColor}
           backgroundColor={backgroundColor}
           isActive={title.length !== 0 && description.length !== 0}
           onClick={handleClickCompleteButton}

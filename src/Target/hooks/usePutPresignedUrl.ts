@@ -1,5 +1,5 @@
-import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { putPresignedUrl } from '../util/api';
 
@@ -10,11 +10,12 @@ interface usePutPresignedUrlProps {
 }
 
 const usePutPresignedUrl = () => {
+  const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: ({ url, data, contentType }: usePutPresignedUrlProps) => {
       return putPresignedUrl(url, data, contentType);
     },
-    onError: (err: AxiosError) => console.log(err),
+    onError: () => navigate('/error'),
   });
   return mutation;
 };

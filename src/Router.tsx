@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import ErrorPage from './components/common/ErrorPage';
+import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
@@ -22,7 +23,7 @@ function Router() {
         <Route path="/" element={<SelectView />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/create-note" element={<LecueNotePage />} />
+        <Route path="/create-note/:bookUuid" element={<LecueNotePage />} />
         <Route path="/sticker-pack" element={<StickerPack />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/mypage" element={<Mypage />} />
@@ -34,6 +35,7 @@ function Router() {
         <Route path="/select-book" element={<SelectBookPage />} />
         <Route path="/loading" element={<LoginCallback />} />
         <Route path="/error" element={<ErrorPage />} />
+        <Route path="/loading-page" element={<LoadingPage />} />
       </Routes>
     </BrowserRouter>
   );
