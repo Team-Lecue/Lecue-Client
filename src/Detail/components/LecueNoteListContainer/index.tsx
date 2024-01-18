@@ -24,6 +24,7 @@ interface LecueNoteListContainerProps {
   postedStickerList: postedStickerType[];
   isEditable: boolean;
   setEditableStateFalse: () => void;
+  bookUuid: string;
 }
 
 function LecueNoteListContainer({
@@ -33,6 +34,7 @@ function LecueNoteListContainer({
   postedStickerList,
   isEditable,
   setEditableStateFalse,
+  bookUuid,
 }: LecueNoteListContainerProps) {
   //hooks
   const location = useLocation();
@@ -53,7 +55,7 @@ function LecueNoteListContainer({
 
   const { state } = location;
 
-  const postMutation = usePostStickerState();
+  const postMutation = usePostStickerState(bookUuid);
 
   useEffect(() => {
     // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면

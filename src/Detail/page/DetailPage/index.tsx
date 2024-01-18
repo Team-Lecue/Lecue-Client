@@ -26,6 +26,7 @@ function DetailPage() {
         <S.LecueBookContainer>
           <BookInfoBox {...bookDetail} />
           <LecueNoteListContainer
+            bookUuid={bookUuid}
             isEditable={isEditable}
             setEditableStateFalse={setEditableStateFalse}
             noteNum={bookDetail.noteNum}
