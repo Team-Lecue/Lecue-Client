@@ -27,15 +27,17 @@ interface LecueNoteListContainerProps {
   bookUuid: string;
 }
 
-function LecueNoteListContainer({
-  noteNum,
-  backgroundColor,
-  noteList,
-  postedStickerList,
-  isEditable,
-  setEditableStateFalse,
-  bookUuid,
-}: LecueNoteListContainerProps) {
+function LecueNoteListContainer(props: LecueNoteListContainerProps) {
+  const {
+    noteNum,
+    backgroundColor,
+    noteList,
+    postedStickerList,
+    isEditable,
+    setEditableStateFalse,
+    bookUuid,
+    bookId,
+  } = props;
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
@@ -52,13 +54,30 @@ function LecueNoteListContainer({
     positionX: 0,
     positionY: savedScrollPosition,
   });
-
   const { state } = location;
 
-  const postMutation = usePostStickerState(bookUuid);
+  // 스티커 위치 값 저장
+  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
+    const { positionX, positionY } = stickerState;
+    setStickerState((prev) => ({
+      ...prev,
+      positionX: positionX + ui.deltaX,
+      positionY: positionY + ui.deltaY,
+    }));
+  };
+
+  const handleClickStickerButton = () => {
+    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+
+    navigate('/sticker-pack');
+  };
+
+  const handleClickWriteButton = () => {
+    navigate('/create-note');
+  };
 
   useEffect(() => {
-    // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면
+    // state : 라우터 타고 온 스티커 값
     if (state) {
       window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
@@ -73,28 +92,7 @@ function LecueNoteListContainer({
     }
   }, [state, isEditable]);
 
-  // 스티커 위치 값 저장
-  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
-    const { positionX, positionY } = stickerState;
-    setStickerState((prev) => ({
-      ...prev,
-      positionX: positionX + ui.deltaX,
-      positionY: positionY + ui.deltaY,
-    }));
-  };
-
-  // 스티커 버튼 클릭시
-  const handleClickStickerButton = () => {
-    // 현재 스크롤 위치 저장
-    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-
-    navigate('/sticker-pack');
-  };
-
-  const handleClickWriteButton = () => {
-    navigate('/create-note');
-  };
-
+  const postMutation = usePostStickerState(bookUuid);
   const handleClickDone = () => {
     // 다 붙였을 때 post 실행
     const { postedStickerId, positionX, positionY } = stickerState;

@@ -34,7 +34,6 @@ const ZigZagView = forwardRef(function ZigZagView(
           <SmallLecueNote {...note} noteList={noteList} />
         </S.LecueNoteContainer>
       ))}
-      {/* <S.StickerContainer ref={ref}> */}
       {isEditable && (
         <Draggable
           defaultPosition={{
@@ -62,7 +61,6 @@ const ZigZagView = forwardRef(function ZigZagView(
           <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
         </Draggable>
       ))}
-      {/* </S.StickerContainer> */}
     </S.ZigZagViewWrapper>
   );
 });
