@@ -52,7 +52,7 @@ function TargetPage() {
     });
   };
 
-  return isLoading || putMutation ? (
+  return isLoading ? (
     <LoadingPage />
   ) : (
     <S.TargetPageWrapper>

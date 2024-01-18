@@ -9,6 +9,8 @@ const postLecueNote = ({
   isIconClicked,
   bookId,
 }: postLecueNoteProps) => {
+  const token = localStorage.getItem('token');
+
   const response = api.post(
     '/api/notes',
     {
@@ -19,7 +21,7 @@ const postLecueNote = ({
     },
     {
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     },
   );
