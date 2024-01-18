@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/common/Header';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
@@ -33,6 +33,7 @@ function LecueNotePage() {
 
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
+  const { bookUuid } = useParams() as { bookUuid: string };
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -80,8 +81,7 @@ function LecueNotePage() {
       bgColor: clickedBgColor,
       isIconClicked: isIconClicked,
     });
-    // 추후 수정 예정
-    navigate(`/lecue-book`);
+    navigate(`/lecue-book/${bookUuid}`);
   };
 
   return (
