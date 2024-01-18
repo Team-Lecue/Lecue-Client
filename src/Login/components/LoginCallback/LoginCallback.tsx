@@ -19,6 +19,7 @@ function LoginCallback() {
         } else {
           window.localStorage.setItem('token', tokenDto.accessToken);
           window.localStorage.setItem('nickname', nickname);
+          navigate('/', { state: { step: 1 } });
         }
       } catch (error) {
         console.error('로딩-fetchData() 에러 발생:', error);

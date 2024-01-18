@@ -36,7 +36,7 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
     },
     onSuccess: () => {
       //어차피 200 리턴됨
-      navigate(-2);
+      navigate('/', { state: { step: 1 } });
     },
   });
 
