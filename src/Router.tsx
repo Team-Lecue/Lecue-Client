@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -53,6 +54,18 @@ function Router() {
 
 export default Router;
 
-function fallbackRender() {
-  return <ErrorPage />;
+function fallbackRender({ error, resetErrorBoundary }: any) {
+  const errorData = error?.error.response?.data;
+  if (errorData.code === 404) {
+    resetErrorBoundary();
+    return <Login />;
+  } else if (errorData.code === 401) {
+    resetErrorBoundary();
+    localStorage.removeItem('token');
+    localStorage.removeItem('nickname');
+    return <Login />;
+    return;
+  } else {
+    return <ErrorPage resetErrorBoundary={resetErrorBoundary} />;
+  }
 }
