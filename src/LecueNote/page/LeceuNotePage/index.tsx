@@ -86,7 +86,7 @@ function LecueNotePage() {
       isIconClicked: isIconClicked,
       bookId: bookId,
     });
-    navigate(`/lecue-book/${bookUuid}`);
+    setTimeout(() => navigate(`/lecue-book/${bookUuid}`), 1000);
   };
 
   return putMutation.isLoading || postMutation.isLoading ? (
