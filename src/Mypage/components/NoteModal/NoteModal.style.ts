@@ -93,7 +93,7 @@ export const NoteDate = styled.p`
   padding: 1.2rem 0;
 
   ${({ theme }) => theme.fonts.E_Body2_R_14};
-  color: ${({ theme }) => theme.colors.DG};
+  color: ${({ theme }) => theme.colors.DG50};
 
   text-align: end;
 `;

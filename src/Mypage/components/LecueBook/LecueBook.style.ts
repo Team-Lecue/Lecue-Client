@@ -44,7 +44,7 @@ export const Footer = styled.div`
 
 export const Date = styled.p`
   ${({ theme }) => theme.fonts.E_Caption_R_12};
-  color: ${({ theme }) => theme.colors.DG};
+  color: ${({ theme }) => theme.colors.DG50};
 `;
 
 export const Count = styled.p`
