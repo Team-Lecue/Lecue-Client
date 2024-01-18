@@ -35,7 +35,12 @@ import ImgKakaoStarOrange from './img/img_kakao_star_orange.svg?react';
 import ImgKakaoStarWhite from './img/img_kakao_star_white.svg?react';
 import ImgLe from './img/img_le.svg?react';
 import ImgLogoLecue from './img/img_logo_lecue.svg?react';
-import ImgModalEx from './img/img_modal_ex.svg?react';
+import ImgModalBookcomplete from './img/img_modal_bookcomplete.svg?react';
+import ImgModalBookexit from './img/img_modal_bookexit.svg?react';
+import ImgModalLogin from './img/img_modal_login.svg?react';
+import ImgModalMypagedelete from './img/img_modal_mypagedelete.svg?react';
+import ImgModalNotecomplete from './img/img_modal_notecomplete.svg?react';
+import ImgModalNoteexit from './img/img_modal_noteexit.svg?react';
 import ImgSaleprice from './img/img_saleprice.svg?react';
 import ImgSplashLogo from './img/img_splash_logo.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
@@ -79,7 +84,12 @@ export {
   ImgKakaoStarWhite,
   ImgLe,
   ImgLogoLecue,
-  ImgModalEx,
+  ImgModalBookcomplete,
+  ImgModalBookexit,
+  ImgModalLogin,
+  ImgModalMypagedelete,
+  ImgModalNotecomplete,
+  ImgModalNoteexit,
   ImgSaleprice,
   ImgSplashLogo,
   ImgStarOrangeLine,
