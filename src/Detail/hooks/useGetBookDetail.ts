@@ -12,6 +12,7 @@ export default function useGetBookDetail(bookUuid: string) {
       onError: () => {
         navigate('/error');
       },
+      refetchOnWindowFocus: false,
     },
   );
 
