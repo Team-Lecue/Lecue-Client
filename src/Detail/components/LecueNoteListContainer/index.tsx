@@ -7,14 +7,13 @@ import {
   BtnFloatingStickerOrange,
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
-  IcCaution,
 } from '../../../assets';
-import Button from '../../../components/common/Button';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
+import AlertBanner from './AlretBanner';
 import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
@@ -154,19 +153,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         </>
       )}
 
-      {isEditable && (
-        <>
-          <S.ButtonWrapper>
-            <S.AlertBanner>
-              <IcCaution />
-              스티커는 한 번 붙이면 수정/삭제할 수 없습니다
-            </S.AlertBanner>
-            <Button variant="choose" onClick={handleClickDone}>
-              부착 완료
-            </Button>
-          </S.ButtonWrapper>
-        </>
-      )}
+      {isEditable && <AlertBanner onClick={handleClickDone} />}
     </S.LecueNoteListContainerWrapper>
   );
 }
