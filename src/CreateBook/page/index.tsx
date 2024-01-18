@@ -89,7 +89,6 @@ function CreateBook() {
         </S.InputWrapper>
         <CompleteButton
           backgroundColor={backgroundColor}
-          backgroundColor={backgroundColor}
           isActive={title.length !== 0 && description.length !== 0}
           onClick={handleClickCompleteButton}
         />
