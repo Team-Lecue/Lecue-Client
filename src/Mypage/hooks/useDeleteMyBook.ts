@@ -10,6 +10,7 @@ const useDeleteMyBook = () => {
       return deleteMyBook(noteId);
     },
     onError: () => navigate('/error'),
+    onSuccess: () => location.reload(),
   });
   return mutation;
 };

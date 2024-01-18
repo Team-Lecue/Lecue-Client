@@ -69,6 +69,7 @@ export const Date = styled.p`
 
   ${({ theme }) => theme.fonts.E_Caption_R_12};
   color: ${({ theme }) => theme.colors.Modal};
+  opacity: 0.7;
 
   text-align: right;
 `;
