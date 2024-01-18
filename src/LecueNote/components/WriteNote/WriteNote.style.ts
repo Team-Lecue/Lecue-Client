@@ -51,6 +51,11 @@ export const Contents = styled.textarea<{ $textColor: string }>`
   ${({ theme }) => theme.fonts.Body1_R_16};
   background-color: transparent;
   color: ${({ $textColor }) => $textColor};
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.MG};
+    ${({ theme }) => theme.fonts.Body2_M_14};
+  }
 `;
 
 export const BottomContentsWrapper = styled.div`
