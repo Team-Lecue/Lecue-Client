@@ -32,7 +32,6 @@ function LecueBook(props: LecueBookProps) {
 
   const handleFn = () => {
     deleteMutation.mutate(bookId);
-    location.reload();
   };
 
   useEffect(() => {
