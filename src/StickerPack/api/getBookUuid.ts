@@ -1,6 +1,6 @@
 import { api } from '../../libs/api';
 
-export async function getStickerPack(bookId: number) {
+export async function getBookUuid(bookId: number) {
   const data = await api.get(`/api/stickers/${bookId}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -8,5 +8,5 @@ export async function getStickerPack(bookId: number) {
     },
   });
 
-  return data.data.data.stickerPackList;
+  return data.data.data.bookUuid;
 }

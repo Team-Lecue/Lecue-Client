@@ -42,11 +42,11 @@ function Router() {
         <Route path="/sticker-pack" element={<StickerPack />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/lecue-book" element={<DetailPage />} />
+        <Route path="/lecue-book/:bookUuid" element={<DetailPage />} />
         <Route path="/target" element={<TargetPage />} />
         <Route path="/test" element={<HealthTest />} />
         <Route path="/create-book" element={<CreateBook />} />
-        <Route path="/sticker-attach" element={<StickerAttach />} />
+        <Route path="/sticker-attach/:bookUuid" element={<StickerAttach />} />
         <Route path="/select-book" element={<SelectBookPage />} />
         <Route path="/loading" element={<LoginCallback />} />
       </Routes>
