@@ -46,6 +46,10 @@ function StickerPack() {
     });
   };
 
+  const handleClickModalBtn = () => {
+    navigate(`/login`);
+  };
+
   return (
     <S.Wrapper>
       <Header headerTitle="스티커팩" />
@@ -65,7 +69,13 @@ function StickerPack() {
           선택 완료
         </Button>
       </S.ButtonWrapper>
-      {modalOn && <CommonModal category="login" setModalOn={setModalOn} />}
+      {modalOn && (
+        <CommonModal
+          category="login"
+          setModalOn={setModalOn}
+          handleFn={handleClickModalBtn}
+        />
+      )}
     </S.Wrapper>
   );
 }
