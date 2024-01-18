@@ -1,6 +1,6 @@
 import { ImgModalBookcomplete, ImgModalBookexit, ImgModalLogin, ImgModalNotecomplete, ImgModalNoteexit } from "../../../../assets";
 
-export const MODAL_CONTETNS = [
+export const MODAL_CONTENTS = [
   {
     id: 'note_complete',
     img: <ImgModalNotecomplete />,

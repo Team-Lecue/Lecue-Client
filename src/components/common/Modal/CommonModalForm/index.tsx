@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { MODAL_CONTETNS } from '../constants/ModalContents';
+import { MODAL_CONTENTS } from '../constants/ModalContents';
 import * as S from './CommonModalForm.style';
 
 interface CommonModalFormProps {
@@ -43,18 +43,18 @@ function CommonModalForm({
   return (
     <S.Wrapper>
       <S.Contents>
-        <S.ImgWrapper>{MODAL_CONTETNS[idx].img}</S.ImgWrapper>
+        <S.ImgWrapper>{MODAL_CONTENTS[idx].img}</S.ImgWrapper>
 
-        <S.Title>{MODAL_CONTETNS[idx].title}</S.Title>
+        <S.Title>{MODAL_CONTENTS[idx].title}</S.Title>
         <S.SubTitleWrapper>
-          <S.SubTitle>{MODAL_CONTETNS[idx].subTitle1}</S.SubTitle>
-          <S.SubTitle>{MODAL_CONTETNS[idx].subTitle2}</S.SubTitle>
+          <S.SubTitle>{MODAL_CONTENTS[idx].subTitle1}</S.SubTitle>
+          <S.SubTitle>{MODAL_CONTENTS[idx].subTitle2}</S.SubTitle>
         </S.SubTitleWrapper>
 
         <S.BtnWrapper>
           {idx !== 5 && (
             <S.Button type="button" variant="stop" onClick={onClose}>
-              {MODAL_CONTETNS[idx].leftBtn}
+              {MODAL_CONTENTS[idx].leftBtn}
             </S.Button>
           )}
 
@@ -63,7 +63,7 @@ function CommonModalForm({
             variant="continue"
             onClick={handleClickRightBtn}
           >
-            {MODAL_CONTETNS[idx].rightBtn}
+            {MODAL_CONTENTS[idx].rightBtn}
           </S.Button>
         </S.BtnWrapper>
       </S.Contents>
