@@ -7,7 +7,7 @@ function ErrorPage() {
   const navigate = useNavigate();
 
   const handleClickHomeButton = () => {
-    navigate('/');
+    navigate('/', { state: { step: 1 } });
   };
 
   return (
