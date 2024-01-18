@@ -6,6 +6,7 @@ import Button from '../../../components/common/Button/index.tsx';
 import Header from '../../../components/common/Header/index.tsx';
 import CommonModal from '../../../components/common/Modal/CommonModal.tsx';
 import StickerList from '../../components/StickerList/index.tsx';
+import useGetBookUuid from '../../hooks/useGetBookUuid.ts';
 // type
 import { stickerType } from '../../type/stickerPackType.ts';
 // style
@@ -34,8 +35,10 @@ function StickerPack() {
     }));
   };
 
+  const { bookUuId } = useGetBookUuid(1);
+
   const handleClickDone = () => {
-    navigate('/sticker-attach', {
+    navigate(`/sticker-attach/${bookUuId}`, {
       state: { sticker: selectedStickerData },
     });
   };

@@ -1,12 +1,12 @@
 import { api } from '../../libs/api';
 
-export async function getStickerPack(bookId: number) {
+export async function getBookUuid(bookId: number) {
   const data = await api.get(`/api/stickers/${bookId}`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
     },
   });
 
-  return data.data.data.stickerPackList;
+  return data.data.data.bookUuid;
 }
