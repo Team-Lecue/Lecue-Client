@@ -11,9 +11,15 @@ const usePostLecueNote = () => {
       color,
       fileName,
       bgColor,
-      setModalOn
+      isIconClicked,
     }: postLecueNoteProps) => {
-      return postLecueNote({ contents, color, fileName, bgColor, setModalOn });
+      return postLecueNote({
+        contents,
+        color,
+        fileName,
+        bgColor,
+        isIconClicked,
+      });
     },
     onError: (err: AxiosError) => console.log(err),
   });
