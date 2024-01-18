@@ -24,7 +24,11 @@ const usePostLecueNote = () => {
         bookId,
       });
     },
-    onError:() => navigate('/error'),
+    onError: () => navigate('/error'),
+    onSuccess: (data) => {
+      const bookUuid = data.data.data.bookUuid;
+      navigate(`/lecue-book/${bookUuid}`);
+    },
   });
   return mutation;
 };

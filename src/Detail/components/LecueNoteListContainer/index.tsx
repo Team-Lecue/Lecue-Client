@@ -95,7 +95,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       localStorage.getItem('token') &&
       localStorage.getItem('token') !== null
     ) {
-      navigate(`/create-note/${bookUuid}`, {
+      navigate(`/create-note`, {
         state: { bookId: bookId },
       });
     } else {
