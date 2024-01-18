@@ -6,7 +6,15 @@ import Router from './Router';
 import gStyle from './styles/GlobalStyles';
 import theme from './styles/theme';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+      useErrorBoundary: true,
+      retry: 0,
+    },
+  },
+});
 
 function App() {
   return (
