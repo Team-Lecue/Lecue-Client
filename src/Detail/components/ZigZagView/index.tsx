@@ -12,6 +12,7 @@ interface ZigZagViewProps {
   isEditable: boolean;
   postedStickerList: postedStickerType[];
   savedScrollPosition: number;
+  fullHeight: number | null;
 }
 
 const ZigZagView = forwardRef(function ZigZagView(
@@ -22,6 +23,7 @@ const ZigZagView = forwardRef(function ZigZagView(
     isEditable,
     postedStickerList,
     savedScrollPosition,
+    fullHeight,
   }: ZigZagViewProps,
   ref: React.Ref<HTMLDivElement>,
 ) {
@@ -51,16 +53,22 @@ const ZigZagView = forwardRef(function ZigZagView(
           />
         </Draggable>
       )}
-      {postedStickerList.map((data) => (
-        <Draggable
-          onStart={() => false}
-          nodeRef={nodeRef}
-          key={data.postedStickerId}
-          defaultPosition={{ x: data.positionX, y: data.positionY }}
-        >
-          <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-        </Draggable>
-      ))}
+      {postedStickerList.map(
+        (data) =>
+          fullHeight !== null && (
+            <Draggable
+              onStart={() => false}
+              nodeRef={nodeRef}
+              key={data.postedStickerId}
+              defaultPosition={{
+                x: data.positionX,
+                y: fullHeight - data.positionY,
+              }}
+            >
+              <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+            </Draggable>
+          ),
+      )}
     </S.ZigZagViewWrapper>
   );
 });

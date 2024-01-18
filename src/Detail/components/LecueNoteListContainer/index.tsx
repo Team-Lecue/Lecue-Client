@@ -41,12 +41,16 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
-  const scrollRef = useRef(document.createElement('div'));
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
     storedValue !== null ? parseInt(storedValue, 10) : 0;
+
   //state
+  const [fullHeight, setFullHeight] = useState<number | null>(null);
+  const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
@@ -77,6 +81,18 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   useEffect(() => {
+    if (scrollRef.current) {
+      if (scrollRef.current.offsetHeight) {
+        setFullHeight(scrollRef.current.offsetHeight);
+      }
+
+      if (fullHeight !== null) {
+        setHeightFromBottom(fullHeight - stickerState.positionY);
+      }
+    }
+  }, [fullHeight, stickerState.positionY]);
+
+  useEffect(() => {
     // state : 라우터 타고 온 스티커 값
     if (state) {
       window.scrollTo(0, savedScrollPosition);
@@ -95,14 +111,18 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const postMutation = usePostStickerState(bookUuid);
 
   const handleClickDone = () => {
-    const { postedStickerId, positionX, positionY } = stickerState;
+    // 다 붙였을 때 post 실행
+    const { postedStickerId, positionX } = stickerState;
+    const bookId = 1;
 
-    postMutation.mutate({
-      postedStickerId: postedStickerId,
-      bookId: bookId,
-      positionX: positionX,
-      positionY: positionY,
-    });
+    if (heightFromBottom !== null) {
+      postMutation.mutate({
+        postedStickerId: postedStickerId,
+        bookId: bookId,
+        positionX: positionX,
+        positionY: heightFromBottom,
+      });
+    }
 
     setEditableStateFalse();
   };
@@ -121,6 +141,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       <S.LecueNoteListViewWrapper>
         {isZigZagView ? (
           <ZigZagView
+            fullHeight={fullHeight}
             savedScrollPosition={savedScrollPosition}
             noteList={noteList}
             isEditable={isEditable}
