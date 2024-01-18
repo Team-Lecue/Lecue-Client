@@ -55,11 +55,10 @@ function Router() {
 export default Router;
 
 function fallbackRender({ error, resetErrorBoundary }: any) {
-  const errorData = error?.error.response?.data;
-  if (errorData.code === 404) {
+  if (error.response.status === 404) {
     resetErrorBoundary();
     return <Login />;
-  } else if (errorData.code === 401) {
+  } else if (error.response.status === 401) {
     resetErrorBoundary();
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
