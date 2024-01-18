@@ -1,5 +1,5 @@
-import { IcCaution } from '../../../../assets';
-import Button from '../../../../components/common/Button';
+import { IcCaution } from '../../../assets';
+import Button from '../../../components/common/Button';
 import * as S from './AlertBanner.style';
 
 interface AlertBannerProps {
