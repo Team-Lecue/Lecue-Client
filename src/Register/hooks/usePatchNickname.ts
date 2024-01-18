@@ -27,16 +27,20 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
     onError: (err: AxiosError) => {
       const code = err.response?.status;
       if (code === 409) {
+        // 닉네임 중복코드 : 409
         setIsValid('duplicate');
         setIsActive(false);
       } else {
         console.error('usePatchNickname', err.response?.data);
-        // error페이지 띄우기
+        navigate('/error');
       }
     },
     onSuccess: () => {
-      //어차피 200 리턴됨
-      navigate('/', { state: { step: 1 } });
+      if (sessionStorage.getItem('url') === '') {
+        navigate('/', { state: { step: 1 } });
+      } else {
+        navigate(-4);
+      }
     },
   });
 

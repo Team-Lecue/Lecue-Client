@@ -19,7 +19,12 @@ function LoginCallback() {
         } else {
           window.localStorage.setItem('token', tokenDto.accessToken);
           window.localStorage.setItem('nickname', nickname);
-          navigate('/', { state: { step: 1 } });
+
+          if (sessionStorage.getItem('url') === '') {
+            navigate('/', { state: { step: 1 } });
+          } else {
+            navigate(-4);
+          }
         }
       } catch (error) {
         console.error('로딩-fetchData() 에러 발생:', error);
@@ -29,7 +34,7 @@ function LoginCallback() {
     fetchData();
   }, []);
 
-  return <div>로딩중</div>;
+  return <></>;
 }
 
 export default LoginCallback;
