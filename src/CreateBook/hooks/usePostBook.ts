@@ -30,6 +30,10 @@ const usePostBook = () => {
       });
     },
     onError: () => navigate('/error'),
+    onSuccess: (data) => {
+      const { bookUuid } = data;
+      navigate(`/lecue-book/${bookUuid}`);
+    },
   });
   return mutation;
 };
