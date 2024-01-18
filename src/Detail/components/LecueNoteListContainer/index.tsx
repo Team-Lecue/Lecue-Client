@@ -10,11 +10,11 @@ import {
 } from '../../../assets';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
-import AlertBanner from './AlretBanner';
 import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
