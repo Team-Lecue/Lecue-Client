@@ -36,6 +36,7 @@ function Router() {
         <Route path="/loading" element={<LoginCallback />} />
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/loading-page" element={<LoadingPage />} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
