@@ -1,17 +1,20 @@
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { getBookUuid } from '../api/getBookUuid';
 
 export default function useGetBookUuid(bookId: number) {
-  const { data: bookUuId } = useQuery(
+  const navigate = useNavigate();
+
+  const { data: bookUuId, isLoading } = useQuery(
     ['useGetBookUuid'],
     () => getBookUuid(bookId),
     {
       onError: () => {
-        console.error;
+        navigate('/error');
       },
     },
   );
 
-  return { bookUuId };
+  return { bookUuId, isLoading };
 }

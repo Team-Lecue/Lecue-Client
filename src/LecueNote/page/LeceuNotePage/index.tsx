@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
+import LoadingPage from '../../../components/common/LoadingPage';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
 import Footer from '../../components/Footer';
@@ -88,7 +89,9 @@ function LecueNotePage() {
     navigate(`/lecue-book/${bookUuid}`);
   };
 
-  return (
+  return putMutation.isLoading || postMutation.isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.Wrapper>
       {modalOn && (
         <CommonModal

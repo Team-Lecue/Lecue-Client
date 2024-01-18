@@ -1,17 +1,19 @@
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { getMyBookList } from '../api/getMyBookList';
 
 export default function useGetMyBookList() {
-  const { data: myBookList } = useQuery(
+  const navigate = useNavigate();
+  const { data: myBookList, isLoading } = useQuery(
     ['useGetMyBookList'],
     () => getMyBookList(),
     {
       onError: () => {
-        console.error;
+        navigate('/error');
       },
     },
   );
 
-  return { myBookList };
+  return { myBookList, isLoading };
 }

@@ -4,9 +4,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // component
 import Button from '../../../components/common/Button/index.tsx';
 import Header from '../../../components/common/Header/index.tsx';
+import LoadingPage from '../../../components/common/LoadingPage/index.tsx';
 import CommonModal from '../../../components/common/Modal/CommonModal.tsx';
 import StickerList from '../../components/StickerList/index.tsx';
 import useGetBookUuid from '../../hooks/useGetBookUuid.ts';
+import useGetStickerPack from '../../hooks/useGetStickerPack.ts';
 // type
 import { stickerType } from '../../type/stickerPackType.ts';
 // style
@@ -39,6 +41,7 @@ function StickerPack() {
   };
 
   const { bookUuId } = useGetBookUuid(bookId);
+  const { isLoading } = useGetBookUuid(bookId) || useGetStickerPack(bookId);
 
   const handleClickDone = () => {
     navigate(`/sticker-attach/${bookUuId}`, {
@@ -50,7 +53,9 @@ function StickerPack() {
     navigate(`/login`);
   };
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.Wrapper>
       <Header headerTitle="스티커팩" />
       <S.Body>
