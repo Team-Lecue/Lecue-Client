@@ -56,7 +56,6 @@ function LecueNote(props: LecueNoteProps) {
           bookUuid={bookUuid}
           selectedNote={getClickedNote()[0]}
           setClickedCloseBtn={setClickedCloseBtn}
-          clickedCloseBtn={clickedCloseBtn}
         />
       )}
     </S.Wrapper>

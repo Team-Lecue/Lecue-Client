@@ -8,16 +8,10 @@ import * as S from './NoteModal.style';
 interface ModalProps {
   bookUuid: string;
   selectedNote: LecueNoteType;
-  clickedCloseBtn: boolean;
   setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function NoteModal({
-  bookUuid,
-  selectedNote,
-  clickedCloseBtn,
-  setClickedCloseBtn,
-}: ModalProps) {
+function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
   const navigate = useNavigate();
   const handleClickBtn = () => {
     navigate(`/lecue-book/${bookUuid}`);
@@ -26,8 +20,6 @@ function NoteModal({
   const handleClickCloseBtn = () => {
     setClickedCloseBtn((prev) => !prev);
   };
-
-  console.log('clickedCloseBtn', clickedCloseBtn);
 
   return (
     <ModalPortal>
