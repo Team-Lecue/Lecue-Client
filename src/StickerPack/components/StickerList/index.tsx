@@ -7,11 +7,12 @@ import * as S from './StickerList.style';
 interface StickerListProps {
   selectedStickerData: stickerType;
   handleStickerClick: (newId: number, newImage: string) => void;
+  bookId: number;
 }
 
 function StickerList(props: StickerListProps) {
-  const { selectedStickerData, handleStickerClick } = props;
-  const { stickerPack } = useGetStickerPack(1);
+  const { selectedStickerData, handleStickerClick, bookId } = props;
+  const { stickerPack } = useGetStickerPack(bookId);
 
   return (
     <S.Wrapper>

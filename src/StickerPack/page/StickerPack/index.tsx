@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // component
 import Button from '../../../components/common/Button/index.tsx';
@@ -14,7 +14,10 @@ import * as S from './StickerPack.style.ts';
 
 function StickerPack() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [modalOn, setModalOn] = useState(false);
+
+  const { bookId } = location.state;
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
@@ -35,7 +38,7 @@ function StickerPack() {
     }));
   };
 
-  const { bookUuId } = useGetBookUuid(1);
+  const { bookUuId } = useGetBookUuid(bookId);
 
   const handleClickDone = () => {
     navigate(`/sticker-attach/${bookUuId}`, {
@@ -48,6 +51,7 @@ function StickerPack() {
       <Header headerTitle="스티커팩" />
       <S.Body>
         <StickerList
+          bookId={bookId}
           selectedStickerData={selectedStickerData}
           handleStickerClick={handleStickerClick}
         />

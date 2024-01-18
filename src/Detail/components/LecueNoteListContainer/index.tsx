@@ -74,7 +74,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const handleClickStickerButton = () => {
     sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 
-    navigate('/sticker-pack');
+    navigate('/sticker-pack', { state: { bookId: bookId } });
   };
 
   const handleClickWriteButton = () => {
