@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { BOOK_LIST, NOTE_LIST } from '../../constants/DATA';
-import { LecueBookType, LecueNoteType } from '../../types/myPageType';
+import useGetMyBookList from '../../hooks/useGetMyBookList';
+import useGetNoteList from '../../hooks/useGetMyNoteList';
+import {
+  LecueBookProps,
+  LecueBookType,
+  LecueNoteType,
+} from '../../types/myPageType';
 import LecueBook from '../LecueBook';
 import LecueNote from '../LecueNote';
 import * as S from './LecueList.style';
@@ -9,6 +14,9 @@ import * as S from './LecueList.style';
 function LecueList() {
   const [clickedBtn, setClickedBtn] = useState('note');
   const [counter, setCounter] = useState([0, 0]);
+
+  const { myBookList } = useGetMyBookList();
+  const { myNoteList } = useGetNoteList();
 
   const handleClickNoteBtn = () => {
     document.getElementById('list-wrapper')!.scrollTo(0, 0);
@@ -25,8 +33,10 @@ function LecueList() {
   };
 
   useEffect(() => {
-    numberCount(NOTE_LIST, BOOK_LIST);
-  }, []);
+    if (myNoteList && myBookList) {
+      numberCount(myNoteList, myBookList);
+    }
+  }, [myNoteList, myBookList]);
 
   return (
     <S.Wrapper>
@@ -49,34 +59,40 @@ function LecueList() {
       </S.ButtonWrapper>
 
       <S.ListWrapper variant={clickedBtn} id="list-wrapper">
-        {clickedBtn === 'note'
-          ? NOTE_LIST.map((note) => {
-              return (
-                <LecueNote
-                  key={note.noteId}
-                  noteId={note.noteId}
-                  favoriteName={note.favoriteName}
-                  title={note.title}
-                  noteDate={note.noteDate}
-                  content={note.content}
-                  noteTextColor={note.noteTextColor}
-                  noteBackgroundColor={note.noteBackgroundColor}
-                  noteBackgroundImage={note.noteBackgroundImage}
-                />
-              );
-            })
-          : BOOK_LIST.map((book) => {
-              return (
-                <LecueBook
-                  key={book.bookId}
-                  bookId={book.bookId}
-                  favoriteName={book.favoriteName}
-                  title={book.title}
-                  bookDate={book.bookDate}
-                  noteNum={book.noteNum}
-                />
-              );
-            })}
+        <S.ListContainer variant={clickedBtn}>
+          {clickedBtn === 'note'
+            ? myNoteList &&
+              myNoteList.map((note: LecueNoteType) => {
+                return (
+                  <LecueNote
+                    bookUuid={note.bookUuid}
+                    key={note.noteId}
+                    noteId={note.noteId}
+                    favoriteName={note.favoriteName}
+                    title={note.title}
+                    noteDate={note.noteDate}
+                    content={note.content}
+                    noteTextColor={note.noteTextColor}
+                    noteBackground={note.noteBackground}
+                    noteList={myNoteList}
+                  />
+                );
+              })
+            : myBookList &&
+              myBookList.map((book: LecueBookProps) => {
+                return (
+                  <LecueBook
+                    key={book.bookId}
+                    bookUuid={book.bookUuid}
+                    bookId={book.bookId}
+                    favoriteName={book.favoriteName}
+                    title={book.title}
+                    bookDate={book.bookDate}
+                    noteNum={book.noteNum}
+                  />
+                );
+              })}
+        </S.ListContainer>
       </S.ListWrapper>
     </S.Wrapper>
   );
