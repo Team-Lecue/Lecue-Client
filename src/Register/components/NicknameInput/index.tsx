@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
+import { isValidState } from '../../page';
 import * as S from './NicknameInput.style';
 
 interface NicknameInputProps {
   nickname: string;
   setNickname: React.Dispatch<React.SetStateAction<string>>;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
+  isValid: string;
 }
 
 function NicknameInput(props: NicknameInputProps) {
-  const { nickname, setNickname, setIsActive } = props;
+  const { nickname, setNickname, setIsActive, isValid, setIsValid } = props;
 
   const [wordCnt, setWordCnt] = useState(0);
 
@@ -34,6 +37,9 @@ function NicknameInput(props: NicknameInputProps) {
         setNickname(e.target.value);
         setWordCnt(e.target.value.length);
       }
+      setIsValid('valid');
+    } else {
+      e.target.value.length > 8 ? setIsValid('valid') : setIsValid('special');
     }
   };
 
@@ -44,7 +50,7 @@ function NicknameInput(props: NicknameInputProps) {
   return (
     <S.NicknameWrapper>
       <S.Question>레큐에서 사용할 닉네임</S.Question>
-      <S.InputContainer isEmpty={nickname.length === 0}>
+      <S.InputContainer isEmpty={nickname.length === 0} isValid={isValid}>
         <S.Input
           type="text"
           value={nickname}
@@ -53,6 +59,14 @@ function NicknameInput(props: NicknameInputProps) {
         />
         <S.WordCount>({wordCnt}/8)</S.WordCount>
       </S.InputContainer>
+
+      {isValid === 'special' ? (
+        <S.WarnigMsg>특수문자/이모지는 사용 불가능해요</S.WarnigMsg>
+      ) : (
+        isValid === 'duplicate' && (
+          <S.WarnigMsg>이미 있는 닉네임이에요</S.WarnigMsg>
+        )
+      )}
     </S.NicknameWrapper>
   );
 }
