@@ -6,7 +6,7 @@ export const ZigZagViewWrapper = styled.div`
   position: relative;
 
   width: 34.2rem;
-  padding: 0.4rem 0 2rem;
+  padding: 1rem 0 2rem;
 `;
 
 export const LecueNoteContainer = styled.div`
@@ -28,6 +28,10 @@ export const Sticker = styled.div<{
   border-radius: 0.4rem;
   background-position: center;
   background-image: ${({ stickerImage }) => `url(${stickerImage})`};
+
+  background-size: 10rem 10rem;
+
   background-repeat: no-repeat;
-  object-fit: cover;
+
+  object-fit: contain;
 `;

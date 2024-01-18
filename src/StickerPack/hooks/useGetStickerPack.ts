@@ -13,6 +13,7 @@ export default function useGetStickerPack(bookId: number) {
       onError: () => {
         navigate('/error');
       },
+      refetchOnWindowFocus: false,
     },
   );
 

@@ -12,6 +12,7 @@ export default function useGetMyNickName() {
       onError: () => {
         navigate('/error');
       },
+      refetchOnWindowFocus: false,
     },
   );
 

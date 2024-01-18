@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const BodyWrapper = styled.section`
   display: flex;
-  gap: 1.5rem;
   justify-content: center;
   flex-direction: column;
 
