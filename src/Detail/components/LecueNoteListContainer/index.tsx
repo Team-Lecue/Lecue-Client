@@ -91,9 +91,16 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   const handleClickWriteButton = () => {
-    navigate(`/create-note/${bookUuid}`, {
-      state: { bookId: bookId },
-    });
+    if (
+      localStorage.getItem('token') &&
+      localStorage.getItem('token') !== null
+    ) {
+      navigate(`/create-note/${bookUuid}`, {
+        state: { bookId: bookId },
+      });
+    } else {
+      setModalOn(true);
+    }
   };
 
   useEffect(() => {
