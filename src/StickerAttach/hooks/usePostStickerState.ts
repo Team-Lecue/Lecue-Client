@@ -1,11 +1,10 @@
-import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { postStickerState } from '../api/postStickerState';
 import { postedStickerParams } from '../type/postStickerType';
 
-const usePostStickerState = () => {
+const usePostStickerState = (bookUuId: string) => {
   const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: ({
@@ -22,10 +21,10 @@ const usePostStickerState = () => {
       });
     },
     onSuccess: () => {
-      navigate('/lecue-book');
+      navigate(`/lecue-book/${bookUuId}`);
     },
 
-    onError: (err: AxiosError) => console.log(err),
+    onError: () => navigate('/error'),
   });
   return mutation;
 };

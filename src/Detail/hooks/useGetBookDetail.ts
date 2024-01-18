@@ -1,17 +1,19 @@
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { getBookDetail } from '../api/getBookDetail';
 
-export default function useGetBookDetail() {
-  const { data: bookDetail } = useQuery(
-    ['useGetBookDetail'],
-    () => getBookDetail(),
+export default function useGetBookDetail(bookUuid: string) {
+  const navigate = useNavigate();
+  const { data: bookDetail, isLoading } = useQuery(
+    ['useGetBookDetail', bookUuid],
+    () => getBookDetail(bookUuid),
     {
       onError: () => {
-        console.error;
+        navigate('/error');
       },
     },
   );
 
-  return { bookDetail };
+  return { bookDetail, isLoading };
 }

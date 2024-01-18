@@ -7,11 +7,12 @@ import * as S from './StickerList.style';
 interface StickerListProps {
   selectedStickerData: stickerType;
   handleStickerClick: (newId: number, newImage: string) => void;
+  bookId: number;
 }
 
 function StickerList(props: StickerListProps) {
-  const { selectedStickerData, handleStickerClick } = props;
-  const { stickerPack } = useGetStickerPack(1);
+  const { selectedStickerData, handleStickerClick, bookId } = props;
+  const { stickerPack } = useGetStickerPack(bookId);
 
   return (
     <S.Wrapper>
@@ -20,7 +21,7 @@ function StickerList(props: StickerListProps) {
           <Fragment key={data.stickerCategory}>
             <S.Title>{data.stickerCategory}</S.Title>
             <S.StickerGridWrapper>
-              {data.stickerList.map((sticker) => (
+              {data?.stickerList?.map((sticker) => (
                 <S.ImageWrapper
                   type="button"
                   key={sticker.stickerId}

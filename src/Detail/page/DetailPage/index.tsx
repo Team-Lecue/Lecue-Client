@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
+import LoadingPage from '../../../components/common/LoadingPage';
+import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
 import SlideBanner from '../../components/SlideBanner';
@@ -8,14 +11,19 @@ import useGetBookDetail from '../../hooks/useGetBookDetail';
 import * as S from './DetailPage.style';
 
 function DetailPage() {
-  const { bookDetail } = useGetBookDetail();
   const [isEditable, setIsEditable] = useState(true);
+
+  const { bookUuid } = useParams() as { bookUuid: string };
+  const { bookDetail, isLoading } = useGetBookDetail(bookUuid);
+  const postMutation = usePostStickerState(bookUuid);
 
   const setEditableStateFalse = () => {
     setIsEditable(false);
   };
 
-  return bookDetail ? (
+  return isLoading || postMutation.isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.DetailPageWrapper>
       <Header headerTitle="레큐북" isDetailPage={!isEditable} />
       <S.DetailPageBodyWrapper>
@@ -23,6 +31,8 @@ function DetailPage() {
         <S.LecueBookContainer>
           <BookInfoBox {...bookDetail} />
           <LecueNoteListContainer
+            bookId={bookDetail.bookId}
+            bookUuid={bookUuid}
             isEditable={isEditable}
             setEditableStateFalse={setEditableStateFalse}
             noteNum={bookDetail.noteNum}
@@ -33,9 +43,6 @@ function DetailPage() {
         </S.LecueBookContainer>
       </S.DetailPageBodyWrapper>
     </S.DetailPageWrapper>
-  ) : (
-    //TODO 에러페이지로 route
-    <div>에러에러에러에러</div>
   );
 }
 

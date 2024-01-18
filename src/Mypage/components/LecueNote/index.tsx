@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import { LecueNoteProps } from '../../types/myPageType';
+import NoteModal from '../NoteModal';
 import * as S from './LecueNote.style';
 
 function LecueNote(props: LecueNoteProps) {
@@ -9,20 +12,37 @@ function LecueNote(props: LecueNoteProps) {
     noteDate,
     content,
     noteTextColor,
-    noteBackgroundColor,
-    noteBackgroundImage,
+    noteBackground,
+    noteList,
+    bookUuid,
   } = props;
 
-  const handleClickNote = (noteId: number) => {
-    alert(`${noteId}가 선택되었습니다.`);
+  const [isModalShow, setIsModalShow] = useState(false);
+  const [clickedCloseBtn, setClickedCloseBtn] = useState(false);
+
+  const getClickedNote = () =>
+    noteList.filter((note) => note.noteId === noteId);
+
+  const handleClickNote = () => {
+    const clickedNote = getClickedNote();
+    if (clickedNote) {
+      setIsModalShow(true);
+    }
   };
+
+  const handleClickedCloseBtn = () => {
+    setIsModalShow(false);
+  };
+
+  useEffect(() => {
+    handleClickedCloseBtn();
+  }, [clickedCloseBtn]);
 
   return (
     <S.Wrapper
-      noteBackgroundColor={noteBackgroundColor}
-      noteBackgroundImage={noteBackgroundImage}
+      noteBackground={noteBackground}
       onClick={() => {
-        handleClickNote(noteId);
+        handleClickNote();
       }}
     >
       <S.TextWrapper noteTextColor={noteTextColor}>
@@ -31,6 +51,14 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
+      {isModalShow && (
+        <NoteModal
+          bookUuid={bookUuid}
+          selectedNote={getClickedNote()[0]}
+          setClickedCloseBtn={setClickedCloseBtn}
+          clickedCloseBtn={clickedCloseBtn}
+        />
+      )}
     </S.Wrapper>
   );
 }

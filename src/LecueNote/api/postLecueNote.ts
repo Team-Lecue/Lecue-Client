@@ -1,5 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
-
 import { api } from '../../libs/api';
 import { postLecueNoteProps } from '../type/lecueNoteType';
 
@@ -8,16 +6,17 @@ const postLecueNote = ({
   color,
   fileName,
   bgColor,
-  setModalOn,
+  isIconClicked,
+  bookId,
 }: postLecueNoteProps) => {
   const response = api
     .post(
       '/api/notes',
       {
-        bookId: 1,
+        bookId: bookId,
         content: contents,
         textColor: color,
-        background: fileName ? fileName : bgColor,
+        background: isIconClicked ? fileName : bgColor,
       },
       {
         headers: {
@@ -25,7 +24,9 @@ const postLecueNote = ({
         },
       },
     )
-    .then(() => setModalOn(true));
+    .then((res) => {
+      console.log(res);
+    });
 
   return response;
 };
