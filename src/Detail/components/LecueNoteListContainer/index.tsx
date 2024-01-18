@@ -10,6 +10,7 @@ import {
 } from '../../../assets';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
@@ -138,7 +139,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         buttonOnClick={() => setIsZigZagView(!isZigZagView)}
       />
       <S.LecueNoteListViewWrapper>
-        {isZigZagView ? (
+        {noteList.length === 0 ? (
+          <EmptyView />
+        ) : isZigZagView ? (
           <ZigZagView
             fullHeight={fullHeight}
             savedScrollPosition={savedScrollPosition}
@@ -157,11 +160,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       {!isEditable && (
         <>
           <S.StickerButton type="button" onClick={handleClickStickerButton}>
-            {backgroundColor === '#F5F5F5' ? (
-              <BtnFloatingSticker />
-            ) : (
-              <BtnFloatingStickerOrange />
-            )}
+            {backgroundColor === '#F5F5F5'
+              ? noteList.length !== 0 && <BtnFloatingSticker />
+              : noteList.length !== 0 && <BtnFloatingStickerOrange />}
           </S.StickerButton>
           <S.WriteButton type="button" onClick={handleClickWriteButton}>
             {backgroundColor === '#F5F5F5' ? (
