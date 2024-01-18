@@ -28,6 +28,10 @@ export const Sticker = styled.div<{
   border-radius: 0.4rem;
   background-position: center;
   background-image: ${({ stickerImage }) => `url(${stickerImage})`};
+
+  background-size: 10rem 10rem;
+
   background-repeat: no-repeat;
-  object-fit: cover;
+
+  object-fit: contain;
 `;
