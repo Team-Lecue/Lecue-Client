@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  padding: 0.5rem 0.1rem 0.7rem 0.3rem;
+  padding: 0.2rem 0.1rem 1rem 0.3rem;
 
   overflow-x: scroll;
 `;
