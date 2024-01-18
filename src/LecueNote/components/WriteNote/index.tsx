@@ -31,7 +31,7 @@ function WriteNote({
         $imgFile={imgFile}
       >
         <S.Nickname $textColor={clickedTextColor}>{nickname}</S.Nickname>
-        <S.Contents $textColor={clickedTextColor} onChange={handleChangeFn} />
+        <S.Contents $textColor={clickedTextColor} onChange={handleChangeFn} placeholder='최애에게 마음을 표현해보세요'/>
         <S.BottomContentsWrapper>
           <S.Date>
             {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
