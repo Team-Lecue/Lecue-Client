@@ -7,7 +7,7 @@ import BookInfoTextarea from '../components/BookInfoTextarea';
 import BookInput from '../components/BookInput';
 import CompleteButton from '../components/CompleteButton';
 import SelectColor from '../components/SelectColor';
-import { postBook } from '../utils/api';
+import usePostBook from '../hooks/usePostBook';
 import * as S from './CreateBook.style';
 
 function CreateBook() {
@@ -24,16 +24,16 @@ function CreateBook() {
     setModalOn(true);
   };
 
+  const postMutation = usePostBook();
+
   const handleClickCompleteModal = async () => {
-    const postData = {
+    const bookUuid = postMutation.mutate({
       favoriteName: name,
       favoriteImage: presignedFileName,
       title: title,
       description: description,
       backgroundColor: backgroundColor,
-    };
-
-    const { bookUuid } = await postBook(postData);
+    });
     navigate(`/lecue-book/${bookUuid}`);
   };
 
