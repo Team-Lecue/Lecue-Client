@@ -24,6 +24,7 @@ interface LecueNoteListContainerProps {
   isEditable: boolean;
   setEditableStateFalse: () => void;
   bookUuid: string;
+  bookId: number;
 }
 
 function LecueNoteListContainer(props: LecueNoteListContainerProps) {
@@ -92,10 +93,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   }, [state, isEditable]);
 
   const postMutation = usePostStickerState(bookUuid);
+
   const handleClickDone = () => {
-    // 다 붙였을 때 post 실행
     const { postedStickerId, positionX, positionY } = stickerState;
-    const bookId = 1;
 
     postMutation.mutate({
       postedStickerId: postedStickerId,
