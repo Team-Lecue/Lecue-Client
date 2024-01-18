@@ -19,7 +19,7 @@ function SubmitButton({
   setIsValid,
   setIsActive,
 }: SubmitButtonProps) {
-  const patchMutation = usePatchNickname({ setIsValid, setIsActive });
+  const patchMutation = usePatchNickname({ setIsValid, setIsActive, token, nickname });
 
   const handelClickSubmitBtn = (token: string, nickname: string) => {
     const patchNickname = nickname.trim();

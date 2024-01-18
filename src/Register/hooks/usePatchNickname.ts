@@ -10,13 +10,13 @@ interface patchNicknameProps {
   nickname: string;
 }
 
-interface usePatchNicknameProps {
+interface usePatchNicknameProps extends patchNicknameProps {
   setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const usePatchNickname = (props: usePatchNicknameProps) => {
-  const { setIsValid, setIsActive } = props;
+  const { setIsValid, setIsActive, token, nickname } = props;
 
   const navigate = useNavigate();
 
@@ -36,6 +36,8 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       }
     },
     onSuccess: () => {
+      window.localStorage.setItem('token', token);
+      window.localStorage.setItem('nickname', nickname);
       if (sessionStorage.getItem('url') === '') {
         navigate('/', { state: { step: 1 } });
       } else {
