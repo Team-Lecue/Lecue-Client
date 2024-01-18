@@ -28,7 +28,7 @@ function Router() {
             <Route path="/" element={<SelectView />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/create-note/:bookUuid" element={<LecueNotePage />} />
+            <Route path="/create-note" element={<LecueNotePage />} />
             <Route path="/sticker-pack" element={<StickerPack />} />
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/mypage" element={<Mypage />} />
