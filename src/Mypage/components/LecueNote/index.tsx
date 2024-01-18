@@ -14,6 +14,7 @@ function LecueNote(props: LecueNoteProps) {
     noteTextColor,
     noteBackground,
     noteList,
+    bookUuid,
   } = props;
 
   const [isModalShow, setIsModalShow] = useState(false);
@@ -52,6 +53,7 @@ function LecueNote(props: LecueNoteProps) {
       <S.Date>{noteDate}</S.Date>
       {isModalShow && (
         <NoteModal
+          bookUuid={bookUuid}
           selectedNote={getClickedNote()[0]}
           setClickedCloseBtn={setClickedCloseBtn}
           clickedCloseBtn={clickedCloseBtn}

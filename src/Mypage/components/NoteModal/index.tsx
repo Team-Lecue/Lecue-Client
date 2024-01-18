@@ -1,21 +1,26 @@
+import { useNavigate } from 'react-router-dom';
+
 import { IcX, ImgStarPosit } from '../../../assets';
 import ModalPortal from '../../../components/common/Modal/ModalPortal';
 import { LecueNoteType } from '../../types/myPageType';
 import * as S from './NoteModal.style';
 
 interface ModalProps {
+  bookUuid: string;
   selectedNote: LecueNoteType;
   clickedCloseBtn: boolean;
   setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function NoteModal({
+  bookUuid,
   selectedNote,
   clickedCloseBtn,
   setClickedCloseBtn,
 }: ModalProps) {
+  const navigate = useNavigate();
   const handleClickBtn = () => {
-    alert(`${selectedNote.noteId}로 가시겠습니까?`);
+    navigate(`lecue-book/${bookUuid}`);
   };
 
   const handleClickCloseBtn = () => {

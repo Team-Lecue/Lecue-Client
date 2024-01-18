@@ -61,6 +61,7 @@ export const CloseBtn = styled.button`
 
 export const FavoriteName = styled.p`
   ${({ theme }) => theme.fonts.Head2_SB_18};
+  color: ${({ theme }) => theme.colors.BG};
 `;
 
 export const BodyWrapper = styled.div`

@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { IcWaste } from '../../../assets';
 import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
 function LecueBook(props: LecueBookProps) {
-  const { bookId, favoriteName, title, bookDate, noteNum } = props;
+  const { bookId, favoriteName, title, bookDate, noteNum, bookUuid } = props;
 
   const [noteCount, setNoteCount] = useState('');
+  const navigate = useNavigate();
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
   };
 
-  const handleClickBook = (bookId: number) => {
-    alert(`${bookId}가 선택되었습니다.`);
+  const handleClickBook = (bookUuid: string) => {
+    navigate(`lecue-book/${bookUuid}`);
   };
 
   const handleClickTrashBtn = (
@@ -32,7 +34,7 @@ function LecueBook(props: LecueBookProps) {
   return (
     <S.Wrapper
       onClick={() => {
-        handleClickBook(bookId);
+        handleClickBook(bookUuid);
       }}
     >
       <S.Header>
