@@ -63,8 +63,7 @@ function fallbackRender({ error, resetErrorBoundary }: any) {
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
     return <Login />;
-    return;
   } else {
-    return <ErrorPage resetErrorBoundary={resetErrorBoundary} />;
+    location.reload();
   }
 }
