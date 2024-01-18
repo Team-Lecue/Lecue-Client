@@ -6,7 +6,7 @@ export const ZigZagViewWrapper = styled.div`
   position: relative;
 
   width: 34.2rem;
-  padding: 0.4rem 0 2rem;
+  padding: 1rem 0 2rem;
 `;
 
 export const LecueNoteContainer = styled.div`
