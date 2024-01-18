@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // component
 import Button from '../../../components/common/Button/index.tsx';
 import Header from '../../../components/common/Header/index.tsx';
+import CommonModal from '../../../components/common/Modal/CommonModal.tsx';
 import StickerList from '../../components/StickerList/index.tsx';
+import useGetBookUuid from '../../hooks/useGetBookUuid.ts';
 // type
 import { stickerType } from '../../type/stickerPackType.ts';
 // style
@@ -12,6 +14,14 @@ import * as S from './StickerPack.style.ts';
 
 function StickerPack() {
   const navigate = useNavigate();
+  const [modalOn, setModalOn] = useState(false);
+
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      setModalOn(true);
+    }
+  }, []);
+
   const [selectedStickerData, setSelectedStickerData] = useState<stickerType>({
     stickerId: 0,
     stickerImage: '',
@@ -25,8 +35,10 @@ function StickerPack() {
     }));
   };
 
+  const { bookUuId } = useGetBookUuid(1);
+
   const handleClickDone = () => {
-    navigate('/sticker-attach', {
+    navigate(`/sticker-attach/${bookUuId}`, {
       state: { sticker: selectedStickerData },
     });
   };
@@ -49,6 +61,7 @@ function StickerPack() {
           선택 완료
         </Button>
       </S.ButtonWrapper>
+      {modalOn && <CommonModal category="login" setModalOn={setModalOn} />}
     </S.Wrapper>
   );
 }

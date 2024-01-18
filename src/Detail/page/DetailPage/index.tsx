@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
 import BookInfoBox from '../../components/BookInfoBox';
@@ -8,8 +9,10 @@ import useGetBookDetail from '../../hooks/useGetBookDetail';
 import * as S from './DetailPage.style';
 
 function DetailPage() {
-  const { bookDetail } = useGetBookDetail();
   const [isEditable, setIsEditable] = useState(true);
+
+  const { bookUuid } = useParams() as { bookUuid: string };
+  const { bookDetail } = useGetBookDetail(bookUuid);
 
   const setEditableStateFalse = () => {
     setIsEditable(false);
@@ -23,6 +26,8 @@ function DetailPage() {
         <S.LecueBookContainer>
           <BookInfoBox {...bookDetail} />
           <LecueNoteListContainer
+            bookId={bookDetail.bookId}
+            bookUuid={bookUuid}
             isEditable={isEditable}
             setEditableStateFalse={setEditableStateFalse}
             noteNum={bookDetail.noteNum}

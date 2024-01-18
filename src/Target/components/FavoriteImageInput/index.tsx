@@ -4,7 +4,6 @@ import { IcCamera, ImgBook } from '../../../assets';
 import * as S from './FavoriteImageInput.style';
 
 interface FavoriteImageInputProps {
-  imgFile: File | null;
   changeFileData: (file: File) => void;
 }
 

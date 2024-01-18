@@ -6,8 +6,7 @@ export const BlurryContainer = styled.div`
   align-items: center;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 9999;
+  z-index: 10;
 
   width: 100vw;
   height: 100vh;
@@ -27,7 +26,7 @@ export const LecueNoteModalWrapper = styled.div<{
 
   border-radius: 0.4rem;
   ${({ noteBackground }) => {
-    if (noteBackground.substring(0, 1) === '#') {
+    if (noteBackground?.substring(0, 1) === '#') {
       return `background-color: ${noteBackground}`;
     } else {
       return `background: url(${noteBackground})`;

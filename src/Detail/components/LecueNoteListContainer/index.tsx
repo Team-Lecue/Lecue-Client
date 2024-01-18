@@ -7,14 +7,14 @@ import {
   BtnFloatingStickerOrange,
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
-  IcCaution,
 } from '../../../assets';
-import Button from '../../../components/common/Button';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
+import AlertBanner from './AlretBanner';
 import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
@@ -24,25 +24,34 @@ interface LecueNoteListContainerProps {
   postedStickerList: postedStickerType[];
   isEditable: boolean;
   setEditableStateFalse: () => void;
+  bookUuid: string;
+  bookId: number;
 }
 
-function LecueNoteListContainer({
-  noteNum,
-  backgroundColor,
-  noteList,
-  postedStickerList,
-  isEditable,
-  setEditableStateFalse,
-}: LecueNoteListContainerProps) {
+function LecueNoteListContainer(props: LecueNoteListContainerProps) {
+  const {
+    noteNum,
+    backgroundColor,
+    noteList,
+    postedStickerList,
+    isEditable,
+    setEditableStateFalse,
+    bookUuid,
+    bookId,
+  } = props;
   //hooks
   const location = useLocation();
   const navigate = useNavigate();
-  const scrollRef = useRef(document.createElement('div'));
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
     storedValue !== null ? parseInt(storedValue, 10) : 0;
+
   //state
+  const [fullHeight, setFullHeight] = useState<number | null>(null);
+  const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
@@ -50,13 +59,42 @@ function LecueNoteListContainer({
     positionX: 0,
     positionY: savedScrollPosition,
   });
-
   const { state } = location;
 
-  const postMutation = usePostStickerState();
+  // 스티커 위치 값 저장
+  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
+    const { positionX, positionY } = stickerState;
+    setStickerState((prev) => ({
+      ...prev,
+      positionX: positionX + ui.deltaX,
+      positionY: positionY + ui.deltaY,
+    }));
+  };
+
+  const handleClickStickerButton = () => {
+    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+
+    navigate('/sticker-pack');
+  };
+
+  const handleClickWriteButton = () => {
+    navigate('/create-note');
+  };
 
   useEffect(() => {
-    // state : 라우터 타고 온 스티커 값, 즉 스티커 값을 갖고 있는 상태라면
+    if (scrollRef.current) {
+      if (scrollRef.current.offsetHeight) {
+        setFullHeight(scrollRef.current.offsetHeight);
+      }
+
+      if (fullHeight !== null) {
+        setHeightFromBottom(fullHeight - stickerState.positionY);
+      }
+    }
+  }, [fullHeight, stickerState.positionY]);
+
+  useEffect(() => {
+    // state : 라우터 타고 온 스티커 값
     if (state) {
       window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
@@ -71,39 +109,20 @@ function LecueNoteListContainer({
     }
   }, [state, isEditable]);
 
-  // 스티커 위치 값 저장
-  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
-    const { positionX, positionY } = stickerState;
-    setStickerState((prev) => ({
-      ...prev,
-      positionX: positionX + ui.deltaX,
-      positionY: positionY + ui.deltaY,
-    }));
-  };
-
-  // 스티커 버튼 클릭시
-  const handleClickStickerButton = () => {
-    // 현재 스크롤 위치 저장
-    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-
-    navigate('/sticker-pack');
-  };
-
-  const handleClickWriteButton = () => {
-    navigate('/create-note');
-  };
+  const postMutation = usePostStickerState(bookUuid);
 
   const handleClickDone = () => {
     // 다 붙였을 때 post 실행
-    const { postedStickerId, positionX, positionY } = stickerState;
-    const bookId = 1;
+    const { postedStickerId, positionX } = stickerState;
 
-    postMutation.mutate({
-      postedStickerId: postedStickerId,
-      bookId: bookId,
-      positionX: positionX,
-      positionY: positionY,
-    });
+    if (heightFromBottom !== null) {
+      postMutation.mutate({
+        postedStickerId: postedStickerId,
+        bookId: bookId,
+        positionX: positionX,
+        positionY: heightFromBottom,
+      });
+    }
 
     setEditableStateFalse();
   };
@@ -120,8 +139,11 @@ function LecueNoteListContainer({
         buttonOnClick={() => setIsZigZagView(!isZigZagView)}
       />
       <S.LecueNoteListViewWrapper>
-        {isZigZagView ? (
+        {noteList.length === 0 ? (
+          <EmptyView />
+        ) : isZigZagView ? (
           <ZigZagView
+            fullHeight={fullHeight}
             savedScrollPosition={savedScrollPosition}
             noteList={noteList}
             isEditable={isEditable}
@@ -138,11 +160,9 @@ function LecueNoteListContainer({
       {!isEditable && (
         <>
           <S.StickerButton type="button" onClick={handleClickStickerButton}>
-            {backgroundColor === '#F5F5F5' ? (
-              <BtnFloatingSticker />
-            ) : (
-              <BtnFloatingStickerOrange />
-            )}
+            {backgroundColor === '#F5F5F5'
+              ? noteList.length !== 0 && <BtnFloatingSticker />
+              : noteList.length !== 0 && <BtnFloatingStickerOrange />}
           </S.StickerButton>
           <S.WriteButton type="button" onClick={handleClickWriteButton}>
             {backgroundColor === '#F5F5F5' ? (
@@ -154,19 +174,7 @@ function LecueNoteListContainer({
         </>
       )}
 
-      {isEditable && (
-        <>
-          <S.ButtonWrapper>
-            <S.AlertBanner>
-              <IcCaution />
-              스티커는 한 번 붙이면 수정/삭제할 수 없습니다
-            </S.AlertBanner>
-            <Button variant="choose" onClick={handleClickDone}>
-              부착 완료
-            </Button>
-          </S.ButtonWrapper>
-        </>
-      )}
+      {isEditable && <AlertBanner onClick={handleClickDone} />}
     </S.LecueNoteListContainerWrapper>
   );
 }

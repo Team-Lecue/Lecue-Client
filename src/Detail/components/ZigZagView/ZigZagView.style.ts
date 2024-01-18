@@ -14,16 +14,6 @@ export const LecueNoteContainer = styled.div`
   height: 20.6rem;
 `;
 
-export const StickerContainer = styled.div`
-  position: absolute;
-
-  width: 34.2rem;
-  height: 100%;
-  padding: 0.4rem 0 2rem;
-
-  background: none;
-`;
-
 export const Sticker = styled.div<{
   stickerImage: string;
   isEditable?: boolean;
