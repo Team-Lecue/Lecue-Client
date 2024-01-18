@@ -83,6 +83,7 @@ export const LecueNoteModalDate = styled.p`
   margin-top: 1.3rem;
 
   ${({ theme }) => theme.fonts.E_Body2_R_14};
+  color: ${({ theme }) => theme.colors.DG50};
 
   text-align: end;
 `;

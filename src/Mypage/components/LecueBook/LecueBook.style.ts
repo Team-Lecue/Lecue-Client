@@ -4,6 +4,7 @@ export const Wrapper = styled.li`
   display: flex;
   gap: 0.8rem;
   flex-direction: column;
+  position: relative;
 
   width: 100%;
   height: 11.4rem;
@@ -11,6 +12,17 @@ export const Wrapper = styled.li`
 
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const BookWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
 `;
 
 export const Header = styled.div`
@@ -26,6 +38,10 @@ export const Name = styled.p`
 `;
 
 export const TrashBtn = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
   width: 3.2rem;
   height: 3.2rem;
 `;
@@ -44,7 +60,7 @@ export const Footer = styled.div`
 
 export const Date = styled.p`
   ${({ theme }) => theme.fonts.E_Caption_R_12};
-  color: ${({ theme }) => theme.colors.DG};
+  color: ${({ theme }) => theme.colors.DG50};
 `;
 
 export const Count = styled.p`
