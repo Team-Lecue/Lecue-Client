@@ -28,14 +28,13 @@ function CreateBook() {
   const postMutation = usePostBook();
 
   const handleClickCompleteModal = async () => {
-    const bookUuid = postMutation.mutate({
+    postMutation.mutate({
       favoriteName: name,
       favoriteImage: presignedFileName,
       title: title,
       description: description,
       backgroundColor: backgroundColor,
     });
-    navigate(`/lecue-book/${bookUuid}`);
   };
 
   return postMutation.isLoading ? (
