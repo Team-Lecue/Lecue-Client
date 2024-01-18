@@ -35,7 +35,7 @@ export const ListWrapper = styled.section<{ variant: string }>`
   justify-content: center;
 
   width: 100%;
-  height: calc(100dvh - 9.2rem);
+  height: calc(100dvh - 19.3rem);
   padding: 1rem;
 
   border-radius: ${({ variant }) => (variant === 'note' ? 0 : 0.4)}rem
