@@ -11,6 +11,7 @@ export const Wrapper = styled.li`
 
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.colors.background};
+  cursor: pointer;
 `;
 
 export const Header = styled.div`
