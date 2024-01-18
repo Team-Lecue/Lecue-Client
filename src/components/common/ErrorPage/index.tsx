@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from 'react-router-dom';
 
 import { ImgError } from '../../../assets';
 import * as S from './ErrorPage.style';
 
-function ErrorPage() {
+function ErrorPage({ resetErrorBoundary }: any) {
   const navigate = useNavigate();
 
   const handleClickHomeButton = () => {
+    resetErrorBoundary();
     navigate('/', { state: { step: 1 } });
   };
 
