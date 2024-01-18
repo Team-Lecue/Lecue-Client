@@ -78,7 +78,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   const handleClickWriteButton = () => {
-    navigate('/create-note');
+    navigate(`/create-note/${bookUuid}`, {
+      state: { bookId: bookId },
+    });
   };
 
   useEffect(() => {

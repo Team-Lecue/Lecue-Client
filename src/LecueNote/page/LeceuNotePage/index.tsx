@@ -33,6 +33,9 @@ function LecueNotePage() {
 
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
+  const location = useLocation();
+
+  const { bookId } = location.state;
   const { bookUuid } = useParams() as { bookUuid: string };
 
   const handleClickCategory = (
@@ -80,6 +83,7 @@ function LecueNotePage() {
       fileName: fileName,
       bgColor: clickedBgColor,
       isIconClicked: isIconClicked,
+      bookId: bookId,
     });
     navigate(`/lecue-book/${bookUuid}`);
   };

@@ -7,12 +7,13 @@ const postLecueNote = ({
   fileName,
   bgColor,
   isIconClicked,
+  bookId,
 }: postLecueNoteProps) => {
   const response = api
     .post(
       '/api/notes',
       {
-        bookId: 1,
+        bookId: bookId,
         content: contents,
         textColor: color,
         background: isIconClicked ? fileName : bgColor,
