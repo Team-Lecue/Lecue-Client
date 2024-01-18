@@ -32,7 +32,7 @@ function SmallLecueNote({
   const handleClickSmallLecueNote = () => {
     const clickedNote = getClickedNote();
     if (clickedNote) {
-      setModalShow((prevModalShow) => !prevModalShow);
+      setModalShow(true);
     }
   };
 
@@ -48,7 +48,12 @@ function SmallLecueNote({
         <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
       </S.SmallLecueNoteContentWrapper>
       <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
-      {modalShow && <LecueNoteModal selectedNote={getClickedNote()} />}
+      {modalShow && (
+        <LecueNoteModal
+          selectedNote={getClickedNote()}
+          closeModal={() => setModalShow(false)}
+        />
+      )}
     </S.SmallLecueNoteWrapper>
   );
 }

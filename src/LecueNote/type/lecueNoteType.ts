@@ -5,6 +5,8 @@ export interface CreateNoteProps {
   isIconClicked: boolean;
   imgFile: string;
   contents: string;
+  selectedFile: (file: File) => void;
+  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleClickCategory: (
@@ -15,6 +17,7 @@ export interface CreateNoteProps {
   ) => void;
   handleClickedIcon: () => void;
   uploadImage: (file: string) => void;
+  binaryImage: (file: FileReader) => void;
 }
 
 export interface SelectColorProps {
@@ -22,6 +25,8 @@ export interface SelectColorProps {
   clickedCategory: string;
   clickedTextColor: string;
   clickedBgColor: string;
+  selectedFile: (file: File) => void;
+  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
   handleCategoryFn: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -29,16 +34,20 @@ export interface SelectColorProps {
   handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
   uploadImage: (file: string) => void;
+  binaryImage: (file: FileReader) => void;
 }
 
 export interface ShowColorChartProps {
   isIconClicked: boolean;
   colorChart: string[];
   state: string;
+  selectedFile: (file: File) => void;
+  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
   uploadImage: (file: string) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
+  binaryImage: (file: FileReader) => void;
 }
 
 export interface WriteNoteProps {
@@ -55,6 +64,10 @@ export interface FooterProps {
   fileName: string;
   textColor: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
+  imgFile2?: FileReader;
+  presignedUrl: string;
+  file?: File;
 }
 
 export interface getPresignedUrlPrps {
@@ -73,4 +86,5 @@ export interface postLecueNoteProps {
   color: string;
   fileName: string;
   bgColor: string;
+  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -16,6 +16,9 @@ function CreateNote({
   handleClickedIcon,
   imgFile,
   uploadImage,
+  binaryImage,
+  setPresignedUrl,
+  selectedFile
 }: CreateNoteProps) {
   return (
     <S.Wrapper>
@@ -37,6 +40,9 @@ function CreateNote({
         handleColorFn={handleClickedColorBtn}
         handleIconFn={handleClickedIcon}
         uploadImage={uploadImage}
+        binaryImage={binaryImage}
+        setPresignedUrl={setPresignedUrl}
+        selectedFile={selectedFile}
       />
     </S.Wrapper>
   );

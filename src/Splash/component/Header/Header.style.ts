@@ -5,6 +5,7 @@ export const Header = styled.header`
   justify-content: left;
 
   width: 100vw;
+  margin-top: 2rem;
 `;
 
 export const Wrapper = styled.div`

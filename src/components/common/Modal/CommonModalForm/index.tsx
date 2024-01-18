@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { MODAL_CONTETNS } from '../constants/ModalContents';
 import * as S from './CommonModalForm.style';
@@ -9,7 +10,30 @@ interface CommonModalFormProps {
 }
 
 function CommonModalForm({ onClose, category }: CommonModalFormProps) {
+  const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+
+  const handleClickRightBtn = () => {
+    onClose();
+    switch (category) {
+      case 'note_complete':
+        break;
+      case 'note_escape':
+        break;
+      case 'book_escape':
+        break;
+      case 'book_create':
+        break;
+      case 'book_delete':
+        break;
+      case 'login':
+        navigate('/login');
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     switch (category) {
       case 'note_complete':
@@ -47,7 +71,11 @@ function CommonModalForm({ onClose, category }: CommonModalFormProps) {
             </S.Button>
           )}
 
-          <S.Button type="button" variant="continue" onClick={onClose}>
+          <S.Button
+            type="button"
+            variant="continue"
+            onClick={handleClickRightBtn}
+          >
             {MODAL_CONTETNS[idx].rightBtn}
           </S.Button>
         </S.BtnWrapper>

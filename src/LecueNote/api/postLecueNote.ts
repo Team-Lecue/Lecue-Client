@@ -8,9 +8,8 @@ const postLecueNote = ({
   color,
   fileName,
   bgColor,
+  setModalOn,
 }: postLecueNoteProps) => {
-  //   const navigate = useNavigate();
-
   const response = api
     .post(
       '/api/notes',
@@ -26,11 +25,7 @@ const postLecueNote = ({
         },
       },
     )
-    .then((res) => {
-      console.log(res);
-      // 나중에 주석코드를 활성화시킬 예정!
-      // navigate(`lecue-book/${res.data.data.bookUuid}`);
-    });
+    .then(() => setModalOn(true));
 
   return response;
 };

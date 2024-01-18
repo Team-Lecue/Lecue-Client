@@ -12,11 +12,14 @@ function SelectColor({
   clickedCategory,
   clickedTextColor,
   clickedBgColor,
+  setPresignedUrl,
+  binaryImage,
   setFileName,
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
   uploadImage,
+  selectedFile
 }: SelectColorProps) {
   return (
     <S.Wrapper>
@@ -40,6 +43,9 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={clickedTextColor}
+          selectedFile={selectedFile}
+          setPresignedUrl={setPresignedUrl}
+          binaryImage={binaryImage}
           setFileName={setFileName}
           uploadImage={uploadImage}
           handleFn={handleColorFn}
@@ -50,6 +56,9 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={clickedBgColor}
+          selectedFile={selectedFile}
+          setPresignedUrl={setPresignedUrl}
+          binaryImage={binaryImage}
           setFileName={setFileName}
           uploadImage={uploadImage}
           handleFn={handleColorFn}
