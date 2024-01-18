@@ -1,51 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
-import useGetPresignedUrl from '../../hooks/usegetPresignedUrl';
-import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import * as S from './FavoriteImageInput.style';
 
 interface FavoriteImageInputProps {
-  imgFile: string;
-  uploadImage: (file: string) => void;
-  changePresignedFileName: (fileName: string) => void;
+  changeFileData: (file: File) => void;
 }
 
-function FavoriteImageInput({
-  imgFile,
-  uploadImage,
-  changePresignedFileName,
-}: FavoriteImageInputProps) {
+function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  const [presignedData, setPresignedData] = useState({
-    url: '',
-    fileName: '',
-  });
-
-  const { isLoading, error, data } = useGetPresignedUrl();
-  const putMutation = usePutPresignedUrl();
-
-  useEffect(() => {
-    const fetchPresignedData = async () => {
-      if (data) {
-        const { url, fileName } = data;
-        setPresignedData({ url, fileName });
-        changePresignedFileName(fileName);
-      }
-    };
-
-    fetchPresignedData();
-  });
-
-  // 로딩 핸들링
-  if (isLoading) {
-    return <div>로딩중</div>;
-  }
-
-  // 에러 핸들링
-  if (error) {
-    return <div>에러 발생</div>;
-  }
+  const [imgFile, setImgFile] = useState('');
 
   const handleImageUpload = async (): Promise<void> => {
     const fileInput = imgRef.current;
@@ -57,19 +21,8 @@ function FavoriteImageInput({
       base64Reader.readAsDataURL(file);
       base64Reader.onloadend = () => {
         if (base64Reader.result !== null) {
-          uploadImage(base64Reader.result as string);
-        }
-      };
-
-      const binaryReader = new FileReader();
-      binaryReader.readAsArrayBuffer(file);
-      binaryReader.onloadend = async () => {
-        if (binaryReader.result !== null) {
-          putMutation.mutate({
-            url: presignedData.url,
-            data: binaryReader.result as ArrayBuffer,
-            contentType: file.type,
-          });
+          changeFileData(file);
+          setImgFile(base64Reader.result as string);
         }
       };
     }

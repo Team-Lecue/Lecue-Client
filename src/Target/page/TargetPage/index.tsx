@@ -5,28 +5,31 @@ import Header from '../../../components/common/Header';
 import CompleteButton from '../../components/CompleteButton';
 import FavoriteImageInput from '../../components/FavoriteImageInput';
 import NameInput from '../../components/NameInput';
-import { getPresignedUrl, uploadFile } from '../../util/api';
+import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
+import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import * as S from './TargetPage.style';
 
 function TargetPage() {
   const [presignedFileName, setPresignedFileName] = useState('');
   const [name, setName] = useState('');
-  const [fileData, setFileData] = useState<File | null>(null); // Add this line
+  const [fileData, setFileData] = useState<File | null>(null);
   const [presignedData, setPresignedData] = useState({
     url: '',
     fileName: '',
   });
+
   const navigate = useNavigate();
 
+  const { data } = useGetPresignedUrl();
+  const putMutation = usePutPresignedUrl();
+
   useEffect(() => {
-    const fetchPresignedData = async () => {
-      const { url, fileName } = await getPresignedUrl('/api/images/book');
+    if (data) {
+      const { url, fileName } = data;
       setPresignedData({ url, fileName });
       setPresignedFileName(fileName);
-    };
-
-    fetchPresignedData();
-  }, []);
+    }
+  }, [data]);
 
   const handleClickCompleteButton = async () => {
     if (fileData) {
@@ -34,11 +37,11 @@ function TargetPage() {
       reader.readAsArrayBuffer(fileData);
       reader.onloadend = async () => {
         if (reader.result !== null) {
-          await uploadFile(
-            presignedData.url,
-            reader.result as ArrayBuffer,
-            fileData.type,
-          );
+          putMutation.mutate({
+            url: presignedData.url,
+            data: reader.result as ArrayBuffer,
+            contentType: fileData.type,
+          });
         }
       };
     }
@@ -59,10 +62,7 @@ function TargetPage() {
           </S.NameInputWrapper>
           <S.FavoriteInputWrapper>
             <S.SectionTitle>최애의 사진 업로드</S.SectionTitle>
-            <FavoriteImageInput
-              imgFile={fileData}
-              changeFileData={(file) => setFileData(file)}
-            />
+            <FavoriteImageInput changeFileData={(file) => setFileData(file)} />
           </S.FavoriteInputWrapper>
         </S.InputSectionWrapper>
         <CompleteButton
