@@ -21,9 +21,9 @@ function LecueNotePage() {
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
-  const [clickedCategory, setclickedCategory] = useState(CATEGORY[0]);
+  const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-  const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
+  const [clickedBgColor, setClickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
   const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
@@ -37,7 +37,7 @@ function LecueNotePage() {
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setclickedCategory(e.currentTarget.innerHTML);
+    setClickedCategory(e.currentTarget.innerHTML);
   };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -54,7 +54,7 @@ function LecueNotePage() {
     if (clickedCategory === '텍스트색') {
       setClickedTextColor(e.currentTarget.id);
     } else {
-      setclickedBgColor(e.currentTarget.id);
+      setClickedBgColor(e.currentTarget.id);
       setIsIconClicked(false);
     }
   };
