@@ -15,6 +15,7 @@ const getPresignedUrl = async (): Promise<{
 }> => {
   const response: AxiosResponse<PresignedUrlResponse> =
     await api.get('/api/images/book');
+  console.log(response);
   return {
     url: response.data.data.url,
     fileName: response.data.data.fileName,

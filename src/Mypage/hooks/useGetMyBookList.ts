@@ -12,6 +12,7 @@ export default function useGetMyBookList() {
       onError: () => {
         navigate('/error');
       },
+      refetchOnWindowFocus: false,
     },
   );
 
