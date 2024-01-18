@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react';
+import { forwardRef, Fragment, useRef } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
@@ -31,11 +31,16 @@ const ZigZagView = forwardRef(function ZigZagView(
 
   return (
     <S.ZigZagViewWrapper ref={ref}>
-      {noteList.map((note) => (
-        <S.LecueNoteContainer key={note.noteId}>
-          <SmallLecueNote {...note} noteList={noteList} />
-        </S.LecueNoteContainer>
-      ))}
+      {noteList.length > 0 && (
+        <Fragment>
+          {noteList.map((note) => (
+            <S.LecueNoteContainer key={note.noteId}>
+              <SmallLecueNote {...note} noteList={noteList} />
+            </S.LecueNoteContainer>
+          ))}
+        </Fragment>
+      )}
+
       {isEditable && (
         <Draggable
           defaultPosition={{
@@ -53,21 +58,25 @@ const ZigZagView = forwardRef(function ZigZagView(
           />
         </Draggable>
       )}
-      {postedStickerList.map(
-        (data) =>
-          fullHeight !== null && (
-            <Draggable
-              onStart={() => false}
-              nodeRef={nodeRef}
-              key={data.postedStickerId}
-              defaultPosition={{
-                x: data.positionX,
-                y: fullHeight - data.positionY,
-              }}
-            >
-              <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
-            </Draggable>
-          ),
+      {postedStickerList.length > 0 && (
+        <Fragment>
+          {postedStickerList.map(
+            (data) =>
+              fullHeight !== null && (
+                <Draggable
+                  onStart={() => false}
+                  nodeRef={nodeRef}
+                  key={data.postedStickerId}
+                  defaultPosition={{
+                    x: data.positionX,
+                    y: fullHeight - data.positionY,
+                  }}
+                >
+                  <S.Sticker ref={nodeRef} stickerImage={data.stickerImage} />
+                </Draggable>
+              ),
+          )}
+        </Fragment>
       )}
     </S.ZigZagViewWrapper>
   );
