@@ -113,7 +113,6 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const handleClickDone = () => {
     // 다 붙였을 때 post 실행
     const { postedStickerId, positionX } = stickerState;
-    const bookId = 1;
 
     if (heightFromBottom !== null) {
       postMutation.mutate({
