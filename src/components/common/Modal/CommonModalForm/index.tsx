@@ -14,7 +14,7 @@ function CommonModalForm({
   category,
   handleFn,
 }: CommonModalFormProps) {
-  const [idx, setIdx] = useState(0);
+  const [idx, setIdx] = useState(-1);
 
   const handleClickRightBtn = () => {
     onClose();
@@ -42,31 +42,33 @@ function CommonModalForm({
 
   return (
     <S.Wrapper>
-      <S.Contents>
-        <S.ImgWrapper>{MODAL_CONTENTS[idx].img}</S.ImgWrapper>
+      {idx !== -1 && (
+        <S.Contents>
+          <S.ImgWrapper>{MODAL_CONTENTS[idx].img}</S.ImgWrapper>
 
-        <S.Title>{MODAL_CONTENTS[idx].title}</S.Title>
-        <S.SubTitleWrapper>
-          <S.SubTitle>{MODAL_CONTENTS[idx].subTitle1}</S.SubTitle>
-          <S.SubTitle>{MODAL_CONTENTS[idx].subTitle2}</S.SubTitle>
-        </S.SubTitleWrapper>
+          <S.Title>{MODAL_CONTENTS[idx].title}</S.Title>
+          <S.SubTitleWrapper>
+            <S.SubTitle>{MODAL_CONTENTS[idx].subTitle1}</S.SubTitle>
+            <S.SubTitle>{MODAL_CONTENTS[idx].subTitle2}</S.SubTitle>
+          </S.SubTitleWrapper>
 
-        <S.BtnWrapper>
-          {idx !== 5 && (
-            <S.Button type="button" variant="stop" onClick={onClose}>
-              {MODAL_CONTENTS[idx].leftBtn}
+          <S.BtnWrapper>
+            {idx !== 5 && (
+              <S.Button type="button" variant="stop" onClick={onClose}>
+                {MODAL_CONTENTS[idx].leftBtn}
+              </S.Button>
+            )}
+
+            <S.Button
+              type="button"
+              variant="continue"
+              onClick={handleClickRightBtn}
+            >
+              {MODAL_CONTENTS[idx].rightBtn}
             </S.Button>
-          )}
-
-          <S.Button
-            type="button"
-            variant="continue"
-            onClick={handleClickRightBtn}
-          >
-            {MODAL_CONTENTS[idx].rightBtn}
-          </S.Button>
-        </S.BtnWrapper>
-      </S.Contents>
+          </S.BtnWrapper>
+        </S.Contents>
+      )}
     </S.Wrapper>
   );
 }
