@@ -1,17 +1,20 @@
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { getStickerPack } from '../api/getStickerPack';
 
 export default function useGetStickerPack(bookId: number) {
-  const { data: stickerPack } = useQuery(
+  const navigate = useNavigate();
+
+  const { data: stickerPack, isLoading } = useQuery(
     ['useGetStickerPack'],
     () => getStickerPack(bookId),
     {
       onError: () => {
-        console.error;
+        navigate('/error');
       },
     },
   );
 
-  return { stickerPack };
+  return { stickerPack, isLoading };
 }

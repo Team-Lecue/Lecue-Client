@@ -1,10 +1,11 @@
 import { api } from '../../libs/api';
 
 export async function getMyNickName() {
+  const token = localStorage.getItem('token');
   const data = await api.get(`/api/mypage/note`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
   });
   return data.data.data.memberNickname;

@@ -12,17 +12,28 @@ interface HeaderProps {
   headerTitle: string;
   isDarkMode?: boolean;
   isDetailPage?: boolean;
+  handleFn?: () => void;
 }
 
 interface HeaderButtonProps {
   isDarkMode?: boolean;
+  handleFn?: () => void;
 }
 
-function Header({ headerTitle, isDarkMode, isDetailPage }: HeaderProps) {
+function Header({
+  headerTitle,
+  isDarkMode,
+  isDetailPage,
+  handleFn,
+}: HeaderProps) {
   return (
     <S.HeaderWrapper isDarkMode={isDarkMode}>
       <S.HeaderButtonWrapper isLeft={true}>
-        {isDetailPage ? <HomeButton /> : <BackButton isDarkMode={isDarkMode} />}
+        {isDetailPage ? (
+          <HomeButton />
+        ) : (
+          <BackButton isDarkMode={isDarkMode} handleFn={handleFn} />
+        )}
       </S.HeaderButtonWrapper>
       <S.HeaderTitle isDarkMode={isDarkMode}>{headerTitle}</S.HeaderTitle>
       <S.HeaderButtonWrapper isLeft={false}>
@@ -35,7 +46,7 @@ function Header({ headerTitle, isDarkMode, isDetailPage }: HeaderProps) {
 export function HomeButton() {
   const navigate = useNavigate();
   const handleClickHomeButton = () => {
-    navigate('/');
+    navigate('/', { state: { step: 1 } });
   };
 
   return (
@@ -68,10 +79,10 @@ export function ShareButton() {
   );
 }
 
-export function BackButton({ isDarkMode }: HeaderButtonProps) {
+export function BackButton({ isDarkMode, handleFn }: HeaderButtonProps) {
   const navigate = useNavigate();
   const handleClickBackButton = () => {
-    navigate(-1);
+    handleFn ? handleFn() : navigate(-1);
   };
 
   return (

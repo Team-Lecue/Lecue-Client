@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
+import LoadingPage from '../../../components/common/LoadingPage';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
 import Footer from '../../components/Footer';
@@ -9,26 +11,38 @@ import {
   CATEGORY,
   TEXT_COLOR_CHART,
 } from '../../constants/colorChart';
+import usePostLecueNote from '../../hooks/usePostLecueNote';
+import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import * as S from './LecueNotePage.style';
 
 function LecueNotePage() {
   const MAX_LENGTH = 1000;
+  const navigate = useNavigate();
+
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
-  const [clickedCategory, setclickedCategory] = useState(CATEGORY[0]);
+  const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-  const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
+  const [clickedBgColor, setClickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
   const [file, setFile] = useState<File>();
   const [modalOn, setModalOn] = useState(false);
+  const [escapeModal, setEscapeModal] = useState(false);
+
+  const putMutation = usePutPresignedUrl();
+  const postMutation = usePostLecueNote();
+  const location = useLocation();
+
+  const { bookId } = location.state;
+  const { bookUuid } = useParams() as { bookUuid: string };
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setclickedCategory(e.currentTarget.innerHTML);
+    setClickedCategory(e.currentTarget.innerHTML);
   };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -45,7 +59,7 @@ function LecueNotePage() {
     if (clickedCategory === '텍스트색') {
       setClickedTextColor(e.currentTarget.id);
     } else {
-      setclickedBgColor(e.currentTarget.id);
+      setClickedBgColor(e.currentTarget.id);
       setIsIconClicked(false);
     }
   };
@@ -54,12 +68,50 @@ function LecueNotePage() {
     setIsIconClicked(true);
   };
 
-  return (
+  const handleClickCompleteModal = async () => {
+    if (imgFile2) {
+      if (imgFile2.result && file) {
+        putMutation.mutate({
+          presignedUrl: presignedUrl,
+          binaryFile: imgFile2.result,
+          fileType: file.type,
+        });
+      }
+    }
+    postMutation.mutate({
+      contents: contents,
+      color: clickedTextColor,
+      fileName: fileName,
+      bgColor: clickedBgColor,
+      isIconClicked: isIconClicked,
+      bookId: bookId,
+    });
+    navigate(`/lecue-book/${bookUuid}`);
+  };
+
+  return putMutation.isLoading || postMutation.isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.Wrapper>
       {modalOn && (
-        <CommonModal category="note_complete" setModalOn={setModalOn} />
+        <CommonModal
+          handleFn={handleClickCompleteModal}
+          category="note_complete"
+          setModalOn={setModalOn}
+        />
       )}
-      <Header headerTitle="레큐노트 작성" />
+
+      {escapeModal && (
+        <CommonModal
+          handleFn={() => navigate(-1)}
+          category="note_escape"
+          setModalOn={setEscapeModal}
+        />
+      )}
+      <Header
+        headerTitle="레큐노트 작성"
+        handleFn={() => setEscapeModal(true)}
+      />
       <CreateNote
         clickedCategory={clickedCategory}
         clickedTextColor={clickedTextColor}
@@ -77,16 +129,7 @@ function LecueNotePage() {
         binaryImage={(file) => setImgFile2(file)}
         selectedFile={(file) => setFile(file)}
       />
-      <Footer
-        file={file}
-        contents={contents}
-        fileName={fileName}
-        textColor={clickedTextColor}
-        bgColor={clickedBgColor}
-        imgFile2={imgFile2}
-        presignedUrl={presignedUrl}
-        setModalOn={setModalOn}
-      />
+      <Footer contents={contents} setModalOn={setModalOn} />
     </S.Wrapper>
   );
 }

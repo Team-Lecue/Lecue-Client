@@ -8,13 +8,14 @@ import {
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
 } from '../../../assets';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
-import AlertBanner from './AlretBanner';
 import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
@@ -52,6 +53,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
   const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
+  const [modalOn, setModalOn] = useState<boolean>(false);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
@@ -72,13 +74,26 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   const handleClickStickerButton = () => {
-    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    if (
+      localStorage.getItem('token') &&
+      localStorage.getItem('token') !== null
+    ) {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 
-    navigate('/sticker-pack');
+      navigate('/sticker-pack', { state: { bookId: bookId } });
+    } else {
+      setModalOn(true);
+    }
+  };
+
+  const handleClickModalBtn = () => {
+    navigate(`/login`);
   };
 
   const handleClickWriteButton = () => {
-    navigate('/create-note');
+    navigate(`/create-note/${bookUuid}`, {
+      state: { bookId: bookId },
+    });
   };
 
   useEffect(() => {
@@ -175,6 +190,14 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       )}
 
       {isEditable && <AlertBanner onClick={handleClickDone} />}
+
+      {modalOn && (
+        <CommonModal
+          category="login"
+          setModalOn={setModalOn}
+          handleFn={handleClickModalBtn}
+        />
+      )}
     </S.LecueNoteListContainerWrapper>
   );
 }

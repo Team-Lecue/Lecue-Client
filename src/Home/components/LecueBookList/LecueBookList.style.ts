@@ -5,6 +5,8 @@ export const LecueBookListWrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
+  height: 100dvh;
+  background-color: ${({ theme }) => theme.colors.key};
 `;
 
 export const Title = styled.header`
@@ -17,6 +19,7 @@ export const Title = styled.header`
   color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Title1_SB_16};
 
+  background-color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;
 
@@ -26,18 +29,18 @@ export const LecueBookList = styled.section`
   grid-template-columns: repeat(3, 1fr);
 
   width: 100%;
-  padding: 3rem 1.6rem 2.2rem;
 
-  background-color: ${({ theme }) => theme.colors.key};
+  padding: 3rem 1.6rem 2.2rem;
 `;
 
 export const LecueBook = styled.li`
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 
-  width: 10rem;
+  width: 100%;
   height: 14rem;
 
   cursor: pointer;

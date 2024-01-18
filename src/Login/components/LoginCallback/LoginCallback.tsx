@@ -14,11 +14,17 @@ function LoginCallback() {
 
         const { nickname, tokenDto } = await postLoginToken(tokenRes);
 
-        if (nickname === null) {
+        if (nickname === null || nickname === '') {
           navigate('/register', { state: { token: tokenDto.accessToken } });
         } else {
           window.localStorage.setItem('token', tokenDto.accessToken);
           window.localStorage.setItem('nickname', nickname);
+
+          if (sessionStorage.getItem('url') === '') {
+            navigate('/', { state: { step: 1 } });
+          } else {
+            navigate(-4);
+          }
         }
       } catch (error) {
         console.error('로딩-fetchData() 에러 발생:', error);
@@ -28,7 +34,7 @@ function LoginCallback() {
     fetchData();
   }, []);
 
-  return <div>로딩중</div>;
+  return <></>;
 }
 
 export default LoginCallback;
