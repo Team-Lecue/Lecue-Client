@@ -62,7 +62,7 @@ function LecueList() {
       <S.ListWrapper variant={clickedBtn} id="list-wrapper">
         <S.ListContainer variant={clickedBtn}>
           {clickedBtn === 'note' ? (
-            myNoteList?.length ? (
+            myNoteList && myNoteList.length !== 0 ? (
               myNoteList.map((note: LecueNoteType) => {
                 return (
                   <LecueNote
@@ -82,7 +82,7 @@ function LecueList() {
             ) : (
               <EmptyView clickedBtn={clickedBtn} />
             )
-          ) : myBookList?.length ? (
+          ) : myBookList && myBookList.length !== 0 ? (
             myBookList.map((book: LecueBookProps) => {
               return (
                 <LecueBook

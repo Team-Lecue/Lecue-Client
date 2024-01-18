@@ -5,6 +5,7 @@ export const Wrapper = styled.article`
   flex-direction: column;
 
   width: 100%;
+  height: 100%;
 `;
 
 export const ButtonWrapper = styled.section`
@@ -34,7 +35,7 @@ export const ListWrapper = styled.section<{ variant: string }>`
   justify-content: center;
 
   width: 100%;
-  height: calc(100dvh - 19.3rem);
+  height: calc(100dvh - 9.2rem);
   padding: 1rem;
 
   border-radius: ${({ variant }) => (variant === 'note' ? 0 : 0.4)}rem
@@ -50,4 +51,5 @@ export const ListContainer = styled.div<{ variant: string }>`
 
   width: 100%;
   height: 100%;
+  align-content: flex-start;
 `;
