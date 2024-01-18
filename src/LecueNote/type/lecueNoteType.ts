@@ -61,13 +61,7 @@ export interface WriteNoteProps {
 
 export interface FooterProps {
   contents: string;
-  fileName: string;
-  textColor: string;
-  bgColor: string;
   setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
-  imgFile2?: FileReader;
-  presignedUrl: string;
-  file?: File;
 }
 
 export interface getPresignedUrlPrps {
@@ -86,5 +80,5 @@ export interface postLecueNoteProps {
   color: string;
   fileName: string;
   bgColor: string;
-  setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
+  isIconClicked: boolean;
 }
