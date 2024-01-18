@@ -7,6 +7,7 @@ import {
   LecueBookType,
   LecueNoteType,
 } from '../../types/myPageType';
+import EmptyView from '../EmptyView';
 import LecueBook from '../LecueBook';
 import LecueNote from '../LecueNote';
 import * as S from './LecueList.style';
@@ -60,8 +61,8 @@ function LecueList() {
 
       <S.ListWrapper variant={clickedBtn} id="list-wrapper">
         <S.ListContainer variant={clickedBtn}>
-          {clickedBtn === 'note'
-            ? myNoteList &&
+          {clickedBtn === 'note' ? (
+            myNoteList?.length ? (
               myNoteList.map((note: LecueNoteType) => {
                 return (
                   <LecueNote
@@ -78,20 +79,26 @@ function LecueList() {
                   />
                 );
               })
-            : myBookList &&
-              myBookList.map((book: LecueBookProps) => {
-                return (
-                  <LecueBook
-                    key={book.bookId}
-                    bookUuid={book.bookUuid}
-                    bookId={book.bookId}
-                    favoriteName={book.favoriteName}
-                    title={book.title}
-                    bookDate={book.bookDate}
-                    noteNum={book.noteNum}
-                  />
-                );
-              })}
+            ) : (
+              <EmptyView clickedBtn={clickedBtn} />
+            )
+          ) : myBookList?.length ? (
+            myBookList.map((book: LecueBookProps) => {
+              return (
+                <LecueBook
+                  key={book.bookId}
+                  bookUuid={book.bookUuid}
+                  bookId={book.bookId}
+                  favoriteName={book.favoriteName}
+                  title={book.title}
+                  bookDate={book.bookDate}
+                  noteNum={book.noteNum}
+                />
+              );
+            })
+          ) : (
+            <EmptyView clickedBtn={clickedBtn} />
+          )}
         </S.ListContainer>
       </S.ListWrapper>
     </S.Wrapper>
