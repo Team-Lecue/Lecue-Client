@@ -8,6 +8,7 @@ import {
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
 } from '../../../assets';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import AlertBanner from '../AlretBanner';
@@ -52,6 +53,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
   const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
+  const [modalOn, setModalOn] = useState<boolean>(false);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
   const [stickerState, setStickerState] = useState<postedStickerType>({
     postedStickerId: 0,
@@ -72,9 +74,20 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   const handleClickStickerButton = () => {
-    sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    if (
+      localStorage.getItem('token') &&
+      localStorage.getItem('token') !== null
+    ) {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 
-    navigate('/sticker-pack', { state: { bookId: bookId } });
+      navigate('/sticker-pack', { state: { bookId: bookId } });
+    } else {
+      setModalOn(true);
+    }
+  };
+
+  const handleClickModalBtn = () => {
+    navigate(`/login`);
   };
 
   const handleClickWriteButton = () => {
@@ -177,6 +190,14 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       )}
 
       {isEditable && <AlertBanner onClick={handleClickDone} />}
+
+      {modalOn && (
+        <CommonModal
+          category="login"
+          setModalOn={setModalOn}
+          handleFn={handleClickModalBtn}
+        />
+      )}
     </S.LecueNoteListContainerWrapper>
   );
 }
