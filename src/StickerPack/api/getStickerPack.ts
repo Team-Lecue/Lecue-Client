@@ -8,5 +8,5 @@ export async function getStickerPack(bookId: number) {
     },
   });
 
-  return data.data.data;
+  return data.data.data.stickerPackList;
 }
