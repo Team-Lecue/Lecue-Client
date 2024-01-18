@@ -20,7 +20,7 @@ function NoteModal({
 }: ModalProps) {
   const navigate = useNavigate();
   const handleClickBtn = () => {
-    navigate(`lecue-book/${bookUuid}`);
+    navigate(`/lecue-book/${bookUuid}`);
   };
 
   const handleClickCloseBtn = () => {
