@@ -1,4 +1,10 @@
-import { ImgModalBookcomplete, ImgModalBookexit, ImgModalLogin, ImgModalNotecomplete, ImgModalNoteexit } from "../../../../assets";
+import {
+  ImgModalBookcomplete,
+  ImgModalBookexit,
+  ImgModalLogin,
+  ImgModalNotecomplete,
+  ImgModalNoteexit,
+} from '../../../../assets';
 
 export const MODAL_CONTENTS = [
   {
@@ -22,7 +28,7 @@ export const MODAL_CONTENTS = [
   {
     id: 'book_escape',
     img: <ImgModalBookexit />,
-    title: '레큐북 제작을 완료하셨나요?',
+    title: '레큐북 제작을 그만두시나요?',
     subTitle1: '작성한 내용은 모두 사라집니다.',
     subTitle2: '신중하게 결정해주세요!',
     leftBtn: '계속 제작',
