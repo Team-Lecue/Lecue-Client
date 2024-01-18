@@ -1,5 +1,6 @@
 export interface LecueBookProps {
   key: number;
+  bookUuid: string;
   bookId: number;
   favoriteName: string;
   title: string;
@@ -8,18 +9,20 @@ export interface LecueBookProps {
 }
 
 export interface LecueNoteProps {
+  bookUuid: string;
   key: number;
   noteId: number;
   favoriteName: string;
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteTextColor: string;
+  noteBackground: string;
+  noteList: LecueNoteType[];
 }
 
 export interface LecueBookType {
+  bookUuid: string;
   bookId: number;
   favoriteName: string;
   title: string;
@@ -28,12 +31,12 @@ export interface LecueBookType {
 }
 
 export interface LecueNoteType {
+  bookUuid: string;
   noteId: number;
   favoriteName: string;
   title: string;
   noteDate: string;
   content: string;
-  noteTextColor: number;
-  noteBackgroundColor: number;
-  noteBackgroundImage: string;
+  noteTextColor: string;
+  noteBackground: string;
 }

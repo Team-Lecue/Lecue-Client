@@ -71,9 +71,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 0,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#FF71B3',
   },
   {
     noteId: 1,
@@ -82,9 +81,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐기들 사랑해 큐기들 최고 큐기들 완전 귀여움 큐기들밖에 없다 내 사랑 큐기들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 1,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#EFB6B6',
   },
   {
     noteId: 2,
@@ -93,9 +91,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐디들 사랑해 큐디들 최고 큐디들 완전 귀여움 큐디들밖에 없다 내 사랑 큐디들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 2,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#E5E2CE',
   },
   {
     noteId: 3,
@@ -104,9 +101,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐버들 사랑해 큐버들 최고 큐버들 완전 귀여움 큐버들밖에 없다 내 사랑 큐버들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 1,
-    noteBackgroundColor: 3,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#F8E99A',
   },
   {
     noteId: 4,
@@ -115,9 +111,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 4,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#85CEAF',
   },
   {
     noteId: 5,
@@ -126,9 +121,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 5,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#929DD9',
   },
   {
     noteId: 6,
@@ -137,9 +131,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 1,
-    noteBackgroundColor: 6,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#B3CBE8',
   },
   {
     noteId: 7,
@@ -148,9 +141,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 7,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#929DD9',
   },
   {
     noteId: 8,
@@ -159,9 +151,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 8,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#FE394C',
   },
   {
     noteId: 9,
@@ -170,9 +161,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 1,
-    noteBackgroundColor: 9,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#9852F9',
   },
   {
     noteId: 10,
@@ -181,9 +171,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 10,
-    noteBackgroundImage: '',
+    noteTextColor: '#ffffff',
+    noteBackground: '#FFD600',
   },
   {
     noteId: 11,
@@ -192,9 +181,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: 11,
-    noteBackgroundImage: '',
+    noteTextColor: '#000000',
+    noteBackground: '#98ED4D',
   },
   {
     noteId: 12,
@@ -203,9 +191,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 1,
-    noteBackgroundColor: -1,
-    noteBackgroundImage:
+    noteTextColor: '#ffffff',
+    noteBackground:
       'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/912ac7e2-672a-4f26-b115-b90cda4d7cc3.jpg',
   },
   {
@@ -215,9 +202,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 0,
-    noteBackgroundColor: -1,
-    noteBackgroundImage:
+    noteTextColor: '#000000',
+    noteBackground:
       'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/469456ec-5894-4014-8b90-332d453217ba.jpg',
   },
   {
@@ -227,9 +213,8 @@ export const NOTE_LIST = [
     noteDate: '2024.01.12',
     content:
       '큐비들 사랑해 큐비들 최고 큐비들 완전 귀여움 큐비들밖에 없다 내 사랑 큐비들 알러뷰 다들 끝까지 파이팅 사랑해앸!!!!!!',
-    noteTextColor: 1,
-    noteBackgroundColor: -1,
-    noteBackgroundImage:
+    noteTextColor: '#ffffff',
+    noteBackground:
       'https://lequu-server-bucket.s3.ap-northeast-2.amazonaws.com/notes/background_image/676c2ca3-f868-423f-8000-a0bcb67dc797.jpg',
   },
 ];
