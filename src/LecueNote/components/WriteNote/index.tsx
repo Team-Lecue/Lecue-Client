@@ -12,7 +12,7 @@ function WriteNote({
   contents,
   handleChangeFn,
 }: WriteNoteProps) {
-  const nickname = '와라라라랄라';
+  const nickname = localStorage.getItem('nickname');
 
   // 이모지 글자 수 세기 관련 라이브러리
   const split = new GraphemeSplitter();

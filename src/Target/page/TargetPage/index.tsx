@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
+import LoadingPage from '../../../components/common/LoadingPage';
 import CompleteButton from '../../components/CompleteButton';
 import FavoriteImageInput from '../../components/FavoriteImageInput';
 import NameInput from '../../components/NameInput';
@@ -20,7 +21,7 @@ function TargetPage() {
 
   const navigate = useNavigate();
 
-  const { data } = useGetPresignedUrl();
+  const { data, isLoading } = useGetPresignedUrl();
   const putMutation = usePutPresignedUrl();
 
   useEffect(() => {
@@ -51,7 +52,9 @@ function TargetPage() {
     });
   };
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.TargetPageWrapper>
       <Header headerTitle={'레큐북 만들기'} />
       <S.TargetPageBodyWrapper>

@@ -1,10 +1,11 @@
-import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import postLecueNote from '../api/postLecueNote';
 import { postLecueNoteProps } from '../type/lecueNoteType';
 
 const usePostLecueNote = () => {
+  const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: ({
       contents,
@@ -12,6 +13,7 @@ const usePostLecueNote = () => {
       fileName,
       bgColor,
       isIconClicked,
+      bookId,
     }: postLecueNoteProps) => {
       return postLecueNote({
         contents,
@@ -19,9 +21,10 @@ const usePostLecueNote = () => {
         fileName,
         bgColor,
         isIconClicked,
+        bookId,
       });
     },
-    onError: (err: AxiosError) => console.log(err),
+    onError:() => navigate('/error'),
   });
   return mutation;
 };

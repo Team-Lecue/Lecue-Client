@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/common/Header';
+import LoadingPage from '../../../components/common/LoadingPage';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CreateNote from '../../components/CreateNote';
 import Footer from '../../components/Footer';
@@ -21,9 +22,9 @@ function LecueNotePage() {
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
-  const [clickedCategory, setclickedCategory] = useState(CATEGORY[0]);
+  const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
   const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-  const [clickedBgColor, setclickedBgColor] = useState(BG_COLOR_CHART[0]);
+  const [clickedBgColor, setClickedBgColor] = useState(BG_COLOR_CHART[0]);
   const [isIconClicked, setIsIconClicked] = useState(false);
   const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
@@ -33,11 +34,15 @@ function LecueNotePage() {
 
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
+  const location = useLocation();
+
+  const { bookId } = location.state;
+  const { bookUuid } = useParams() as { bookUuid: string };
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setclickedCategory(e.currentTarget.innerHTML);
+    setClickedCategory(e.currentTarget.innerHTML);
   };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -54,7 +59,7 @@ function LecueNotePage() {
     if (clickedCategory === '텍스트색') {
       setClickedTextColor(e.currentTarget.id);
     } else {
-      setclickedBgColor(e.currentTarget.id);
+      setClickedBgColor(e.currentTarget.id);
       setIsIconClicked(false);
     }
   };
@@ -79,12 +84,14 @@ function LecueNotePage() {
       fileName: fileName,
       bgColor: clickedBgColor,
       isIconClicked: isIconClicked,
+      bookId: bookId,
     });
-    // 추후 수정 예정
-    navigate(`/lecue-book`);
+    navigate(`/lecue-book/${bookUuid}`);
   };
 
-  return (
+  return putMutation.isLoading || postMutation.isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.Wrapper>
       {modalOn && (
         <CommonModal

@@ -7,25 +7,24 @@ const postLecueNote = ({
   fileName,
   bgColor,
   isIconClicked,
+  bookId,
 }: postLecueNoteProps) => {
-  const response = api
-    .post(
-      '/api/notes',
-      {
-        bookId: 1,
-        content: contents,
-        textColor: color,
-        background: isIconClicked ? fileName : bgColor,
+  const token = localStorage.getItem('token');
+
+  const response = api.post(
+    '/api/notes',
+    {
+      bookId: bookId,
+      content: contents,
+      textColor: color,
+      background: isIconClicked ? fileName : bgColor,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_APP_TOKEN}`,
-        },
-      },
-    )
-    .then((res) => {
-      console.log(res);
-    });
+    },
+  );
 
   return response;
 };

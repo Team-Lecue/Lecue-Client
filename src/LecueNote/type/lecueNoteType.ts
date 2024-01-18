@@ -81,4 +81,5 @@ export interface postLecueNoteProps {
   fileName: string;
   bgColor: string;
   isIconClicked: boolean;
+  bookId: number;
 }
