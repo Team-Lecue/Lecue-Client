@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/common/Header';
+import LoadingPage from '../../components/common/LoadingPage';
 import CommonModal from '../../components/common/Modal/CommonModal';
 import BookInfoTextarea from '../components/BookInfoTextarea';
 import BookInput from '../components/BookInput';
@@ -37,7 +38,9 @@ function CreateBook() {
     navigate(`/lecue-book/${bookUuid}`);
   };
 
-  return (
+  return postMutation.isLoading ? (
+    <LoadingPage />
+  ) : (
     <S.CreateBookWrapper $backgroundColor={backgroundColor}>
       {modalOn && (
         <CommonModal
