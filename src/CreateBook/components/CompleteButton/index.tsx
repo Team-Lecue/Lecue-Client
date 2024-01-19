@@ -15,7 +15,7 @@ function CompleteButton({
   return (
     <S.CompleteButtonWrapper>
       <Button variant="complete" disabled={!isActive} onClick={onClick} backgroundColor={backgroundColor}>
-        완료
+        제작 완료
       </Button>
     </S.CompleteButtonWrapper>
   );
