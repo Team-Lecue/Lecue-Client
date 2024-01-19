@@ -17,7 +17,7 @@ function StickerPack() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { bookId } = location.state;
+  const { bookId } = location.state || {};
 
   const [selectedStickerData, setSelectedStickerData] = useState<stickerType>({
     stickerId: 0,

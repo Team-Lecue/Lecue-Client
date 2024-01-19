@@ -22,7 +22,7 @@ export const ModalWrapper = styled.div<{
 
   width: 31rem;
   height: 35.8rem;
-  padding: 0.6rem 0.4rem 1.5rem 2rem;
+  padding: 0.6rem 0.6rem 1.5rem 2rem;
 
   border-radius: 0.4rem;
   background-size: 31rem 35.8rem;
@@ -44,20 +44,20 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-
-  padding-bottom: 1.5rem;
 `;
 
 export const NameWrapper = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+
+  padding: 2rem 0 1.5rem;
 `;
 
 export const CloseBtn = styled.button`
   width: 3.2rem;
   height: 3.2rem;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.5rem;
 `;
 
 export const FavoriteName = styled.p`
@@ -67,8 +67,9 @@ export const FavoriteName = styled.p`
 
 export const BodyWrapper = styled.div`
   width: 100%;
-  padding-right: 1.4rem;
+  padding-right: 1.2rem;
 `;
+
 export const Title = styled.p`
   padding-bottom: 0.8rem;
 
@@ -79,19 +80,19 @@ export const ContentWrapper = styled.div`
   overflow-y: scroll;
 
   width: 100%;
-  height: 17.2rem;
+  height: 16.8rem;
   padding-right: 0.6rem;
 `;
 
 export const Content = styled.p`
   width: 100%;
-  height: 17.2rem;
+  height: 16.8rem;
 
   ${({ theme }) => theme.fonts.Body1_R_16};
 `;
 
 export const NoteDate = styled.p`
-  padding: 1.2rem 0;
+  padding: 1rem 0 1.1rem;
 
   ${({ theme }) => theme.fonts.E_Body2_R_14};
   color: ${({ theme }) => theme.colors.DG50};
@@ -106,4 +107,5 @@ export const Button = styled.button`
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.fonts.Title1_SB_16}
 `;
