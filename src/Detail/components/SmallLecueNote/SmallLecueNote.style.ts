@@ -33,7 +33,7 @@ export const SmallLecueNoteWrapper = styled.div<{
       return `background: url(${noteBackground})`;
     }
   }};
-  background-size: cover;
+  background-size: 15.2rem 16.6rem;
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
