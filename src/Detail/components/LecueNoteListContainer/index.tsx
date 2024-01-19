@@ -155,6 +155,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       backgroundColor={backgroundColor}
     >
       <LecueNoteListHeader
+        isEditable={isEditable}
         noteNum={noteNum}
         backgroundColor={backgroundColor}
         isZigZagView={isZigZagView}
