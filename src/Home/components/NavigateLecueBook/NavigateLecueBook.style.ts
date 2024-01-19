@@ -9,8 +9,8 @@ export const MainWrapper = styled.div`
 export const IconWrapper = styled.section`
   display: flex;
   gap: 15.7rem;
-  align-items: baseline;
   justify-content: space-between;
+  align-items: baseline;
 
   width: 100%;
   padding: 6rem 1.6rem 5rem;
