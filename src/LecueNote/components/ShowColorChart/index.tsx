@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
@@ -19,7 +19,8 @@ function ShowColorChart({
   handleIconFn,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  const { data } = useGetPresignedUrl();
+  // 여기
+  useGetPresignedUrl(setPresignedUrl, setFileName);
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -43,13 +44,6 @@ function ShowColorChart({
       selectedFile(file);
     }
   };
-
-  useEffect(() => {
-    if (data !== undefined) {
-      setPresignedUrl(data.data.url);
-      setFileName(data.data.fileName);
-    }
-  }, [data]);
 
   return (
     <S.Wrapper>

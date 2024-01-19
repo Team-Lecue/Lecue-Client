@@ -117,6 +117,7 @@ const resetCss = css`
 
   body {
     position: relative;
+    overscroll-behavior: none;
 
     line-height: 1;
     touch-action: manipulation;
