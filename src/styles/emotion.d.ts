@@ -36,6 +36,7 @@ type fonts =
   | 'Title1_SB_16'
   | 'Title2_M_16'
   | 'Body1_R_16'
+  | 'Body1_M_16'
   | 'Body2_M_14'
   | 'Body3_R_14'
   | 'Body4_SB_14'
