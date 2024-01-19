@@ -35,7 +35,7 @@ function SelectBookPage() {
 
   return (
     <S.SelectBookPageWrapper>
-      <Header headerTitle="레큐북 만들기" />
+      <Header headerTitle="요금 선택" />
       <S.SelectBookPageBodyWrapper>
         <S.SelectBookContainer isClickedSelectButton={isClickedSelectButton}>
           {isClickedSelectButton ? (
