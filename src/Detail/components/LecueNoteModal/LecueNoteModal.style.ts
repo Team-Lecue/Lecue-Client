@@ -9,7 +9,7 @@ export const BlurryContainer = styled.div`
   z-index: 10;
 
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 
   background-color: ${({ theme }) => theme.colors.Modal};
 `;
