@@ -81,6 +81,8 @@ export const SmallLecueNoteContent = styled.p`
 
   max-height: 100%;
 
+  white-space: pre-wrap;
+
   ${({ theme }) => theme.fonts.Body2_M_14};
 `;
 
