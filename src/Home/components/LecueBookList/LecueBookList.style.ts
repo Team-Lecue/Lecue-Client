@@ -50,6 +50,8 @@ export const BookImage = styled.img`
   height: 9.8rem;
 
   border-radius: 50%;
+
+  object-fit: cover;
 `;
 
 export const BookTitle = styled.p`
