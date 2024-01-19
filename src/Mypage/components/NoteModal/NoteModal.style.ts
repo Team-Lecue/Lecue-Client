@@ -89,6 +89,7 @@ export const Content = styled.p`
   height: 16.8rem;
 
   ${({ theme }) => theme.fonts.Body1_R_16};
+  white-space: pre-wrap;
 `;
 
 export const NoteDate = styled.p`

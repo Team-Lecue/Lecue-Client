@@ -62,6 +62,8 @@ export const Content = styled.p`
   ${({ theme }) => theme.fonts.Body3_R_14};
 
   text-overflow: ellipsis;
+
+  white-space: pre-wrap;
 `;
 
 export const Date = styled.p`

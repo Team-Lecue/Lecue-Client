@@ -68,6 +68,8 @@ export const LecueNoteModalContent = styled.p`
   max-height: 100%;
 
   ${({ theme }) => theme.fonts.Title2_M_16};
+
+  white-space: pre-wrap;
 `;
 
 export const LecueNoteModalDate = styled.p`
