@@ -5,7 +5,7 @@ export const LecueBookListWrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: 100dvh;
+
   background-color: ${({ theme }) => theme.colors.key};
 `;
 
@@ -16,10 +16,10 @@ export const Title = styled.header`
   border-color: ${({ theme }) => theme.colors.BG};
   border-width: 0.1rem 0;
   border-style: solid;
+  background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Title1_SB_16};
 
-  background-color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;
 
@@ -29,15 +29,14 @@ export const LecueBookList = styled.section`
   grid-template-columns: repeat(3, 1fr);
 
   width: 100%;
-
   padding: 3rem 1.6rem 2.2rem;
 `;
 
 export const LecueBook = styled.li`
   display: flex;
   gap: 1rem;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 
   width: 100%;
@@ -51,6 +50,8 @@ export const BookImage = styled.img`
   height: 9.8rem;
 
   border-radius: 50%;
+
+  object-fit: cover;
 `;
 
 export const BookTitle = styled.p`

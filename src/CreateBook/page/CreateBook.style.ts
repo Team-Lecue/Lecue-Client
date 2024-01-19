@@ -16,7 +16,7 @@ export const CreateBookBodyWrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: calc(100vh - 5.4rem);
+  height: calc(100dvh - 5.4rem);
   padding: 0 1.6rem;
   margin-top: 5.4rem;
 `;
