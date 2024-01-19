@@ -7,7 +7,7 @@ export const Wrapper = styled.li<{
   justify-content: space-between;
   flex-direction: column;
 
-  width: 48.5%;
+  width: 48%;
   height: 16.3rem;
   padding: 1.5rem 0.95rem 1rem;
 
