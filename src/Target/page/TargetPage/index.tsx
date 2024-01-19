@@ -56,7 +56,7 @@ function TargetPage() {
     <LoadingPage />
   ) : (
     <S.TargetPageWrapper>
-      <Header headerTitle={'레큐북 만들기'} />
+      <Header headerTitle={'레큐북 제작'} />
       <S.TargetPageBodyWrapper>
         <S.InputSectionWrapper>
           <S.NameInputWrapper>
