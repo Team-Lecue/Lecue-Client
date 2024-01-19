@@ -15,6 +15,33 @@
 
 <br/>
 
+## 🍟핵심 기능
+[핵심 기능]
+- 레큐북 : 레큐노트를 부착할 수 있는 롤링페이퍼 기능
+  <br />
+  <img alt="레큐북 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/9a7698ef-8e26-4065-91be-0b2dab43e3c2/image.png" />
+- 레큐노트 : 텍스트와 이미지를 업로드할 수 있는 포스트잇 기능
+  <br />
+  <img alt="레큐노트 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/b5d0dc9c-937f-40f8-a008-82e341bd619e/image.png" />
+- 스티커 : 스티커 이미지로 레큐북을 꾸밀 수 있는 기능
+  <br />
+  <img alt="스티커 부착 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/dd433bca-c7de-4815-b5a3-0b6dc779b083/image.png" />
+
+[팬덤 특화 기능]
+- 커스텀 기능 : 레큐북, 레큐노트, 스티커 유저 커스텀 기능
+- 인기 롤링페이퍼 기능 : 레큐노트가 많이 부착된 레큐북 홈화면에 노출
+   → 추후 스프린트로는 최애 등록하고 등록한 최애 관련 레큐북을 노출
+- 텍스트 추출 요청을 통한 굿즈 제작 : 기능 개발보다 팬덤이 레큐에 요청하면 텍스트 파일로 제공하는 형태
+
+[기본 기능]
+- 내 기록 보기 - 유저가 남긴 레큐노트 / 제작한 레큐북 모아보기
+  <br />
+  <img alt="마이페이지 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/7c027d28-dcad-4f07-a3e7-a2b20fc05a0d/image.png" />
+  <img alt="마이페이지 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/05e91732-8495-4f4d-87b9-38a5bc400c0d/image.png" />
+- 문의 요청 기능
+
+<br/>
+
 ## ✨ OUR TEAM
 
 | <img src="https://avatars.githubusercontent.com/u/80264647?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/65286685?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/60962533?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg" width="200" height="200" alt="프로필사진"> |

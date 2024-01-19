@@ -17,7 +17,7 @@ function StickerPack() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { bookId } = location.state;
+  const { bookId } = location.state || {};
 
   const [selectedStickerData, setSelectedStickerData] = useState<stickerType>({
     stickerId: 0,
@@ -37,7 +37,7 @@ function StickerPack() {
 
   const handleClickDone = () => {
     navigate(`/sticker-attach/${bookUuId}`, {
-      state: { sticker: selectedStickerData },
+      state: { sticker: selectedStickerData, replace: true },
     });
   };
 

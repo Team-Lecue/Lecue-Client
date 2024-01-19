@@ -6,7 +6,7 @@ import RegisterLogo from '../components/RegisterLogo';
 import SubmitButton from '../components/SubmitButton';
 import * as S from './Register.style';
 
-export type isValidState = 'valid' | 'special' | 'duplicate';
+export type isValidState = 'valid' | 'special' | 'duplicate' | 'space';
 
 function Register() {
   const [isActive, setIsActive] = useState(false);

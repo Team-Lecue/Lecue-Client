@@ -80,7 +80,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     ) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 
-      navigate('/sticker-pack', { state: { bookId: bookId } });
+      navigate('/sticker-pack', { state: { bookId: bookId }, replace: true });
     } else {
       setModalOn(true);
     }

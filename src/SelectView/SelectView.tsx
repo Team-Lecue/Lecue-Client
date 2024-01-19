@@ -7,12 +7,13 @@ import SplashPage from '../Splash/page/SplashPage';
 function SelectView() {
   const { state } = useLocation();
   const [step, setStep] = useState(state?.step ? state.step : 0);
+  const token = localStorage.getItem('token');
 
   const handleStep = (step: number) => {
     setStep(step);
   };
 
-  return step === 0 ? (
+  return !token && step === 0 ? (
     <SplashPage handleStep={handleStep} />
   ) : (
     <Home handleStep={handleStep} />

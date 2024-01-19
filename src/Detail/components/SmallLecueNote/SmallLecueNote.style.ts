@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const SmallLecueNoteWrapper = styled.div<{
   renderType: number;
-  noteTextColor: number;
+  noteTextColor: string;
   noteBackground: string;
 }>`
   width: 15.2rem;
@@ -33,7 +33,7 @@ export const SmallLecueNoteWrapper = styled.div<{
       return `background: url(${noteBackground})`;
     }
   }};
-  background-size: cover;
+  background-size: 15.2rem 16.6rem;
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
@@ -79,6 +79,8 @@ export const SmallLecueNoteContent = styled.p`
   -webkit-line-clamp: 5;
 
   max-height: 100%;
+
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.fonts.Body2_M_14};
 `;

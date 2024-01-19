@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import LoadingPage from '../../../components/common/LoadingPage';
 import Body from '../../component/Body';
@@ -13,10 +13,6 @@ export interface StepProps {
 
 function SplashPage({ handleStep }: StepProps) {
   const { isLoading } = useGetNoteNum();
-
-  useEffect(() => {
-    handleStep(0);
-  }, []);
 
   return (
     <S.Wrapper>

@@ -36,7 +36,7 @@ function LecueNotePage() {
   const postMutation = usePostLecueNote();
   const location = useLocation();
 
-  const { bookId } = location.state;
+  const { bookId } = location.state || {};
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,

@@ -16,7 +16,7 @@ export const BlurryContainer = styled.div`
 
 export const LecueNoteModalWrapper = styled.div<{
   noteBackground?: string;
-  noteTextColor: number;
+  noteTextColor: string;
 }>`
   position: relative;
 
@@ -33,13 +33,8 @@ export const LecueNoteModalWrapper = styled.div<{
     }
   }};
   background-size: cover;
-  color: ${({ theme, noteTextColor }) => {
-    switch (noteTextColor) {
-      case 0:
-        return theme.colors.white;
-      case 1:
-        return theme.colors.BG;
-    }
+  color: ${({ noteTextColor }) => {
+    return noteTextColor;
   }};
 `;
 
@@ -64,7 +59,7 @@ export const LecueNoteModalContentWrapper = styled.div`
 
   width: 100%;
   height: 23.4rem;
-  padding: 1.3rem 0.6rem;
+  padding: 0 0.6rem;
   margin-top: 3rem;
 `;
 
