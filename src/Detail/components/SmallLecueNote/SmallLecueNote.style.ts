@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const SmallLecueNoteWrapper = styled.div<{
   renderType: number;
-  noteTextColor: number;
+  noteTextColor: string;
   noteBackground: string;
 }>`
   width: 15.2rem;

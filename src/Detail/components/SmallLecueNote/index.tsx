@@ -9,7 +9,7 @@ interface SmallLecueNoteProps {
   content: string;
   noteDate: string;
   noteNickname: string;
-  noteTextColor: number;
+  noteTextColor: string;
   noteBackground: string;
   noteId: number;
   noteList: NoteType[];
@@ -27,7 +27,8 @@ function SmallLecueNote({
 }: SmallLecueNoteProps) {
   const [modalShow, setModalShow] = useState(false);
 
-  const getClickedNote = () => noteList.find((note) => note.noteId === noteId);
+  const getClickedNote = () =>
+    noteList.filter((note) => note.noteId === noteId);
 
   const handleClickSmallLecueNote = () => {
     const clickedNote = getClickedNote();
@@ -50,7 +51,7 @@ function SmallLecueNote({
       <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
       {modalShow && (
         <LecueNoteModal
-          selectedNote={getClickedNote()}
+          selectedNote={getClickedNote()[0]}
           closeModal={() => setModalShow(false)}
         />
       )}
