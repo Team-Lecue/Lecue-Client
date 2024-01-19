@@ -37,7 +37,7 @@ function StickerPack() {
 
   const handleClickDone = () => {
     navigate(`/sticker-attach/${bookUuId}`, {
-      state: { sticker: selectedStickerData },
+      state: { sticker: selectedStickerData, replace: true },
     });
   };
 
