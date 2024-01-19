@@ -62,7 +62,6 @@ export const SmallLecueNoteNickName = styled.p`
 
 export const SmallLecueNoteContentWrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   height: 10rem;

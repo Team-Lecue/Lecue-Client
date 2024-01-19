@@ -47,6 +47,8 @@ function TargetPage() {
       };
     }
 
+    sessionStorage.setItem('name', name);
+
     navigate('/select-book', {
       state: { presignedFileName: presignedFileName, name: name },
     });
