@@ -79,6 +79,14 @@ const fonts = {
     lineHeight: '150%',
     letterSpacing: '-0.04rem',
   },
+  Body1_M_16: {
+    fontFamily: 'Pretendard',
+    fontStyle: 'normal',
+    fontWeight: 500,
+    fontSize: '1.6rem',
+    lineHeight: '150%',
+    letterSpacing: '-0.04rem',
+  },
   Body2_M_14: {
     fontFamily: 'Pretendard',
     fontStyle: 'normal',

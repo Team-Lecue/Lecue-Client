@@ -42,7 +42,7 @@ export const BigLecueNoteContent = styled.div`
   width: 100%;
   max-height: 100%;
 
-  ${({ theme }) => theme.fonts.Body1_R_16};
+  ${({ theme }) => theme.fonts.Body1_M_16};
 `;
 
 export const BigLecueNoteDate = styled.p`
