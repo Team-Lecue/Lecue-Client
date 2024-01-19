@@ -10,7 +10,7 @@ function MakeLecueBookButton({ isActive, onClick }: MakeLecueBookButtonProps) {
   return (
     <S.MakeLecueBookButtonWrapper>
       <Button variant="choose" disabled={!isActive} onClick={onClick}>
-        레큐북 만들기
+        다음
       </Button>
     </S.MakeLecueBookButtonWrapper>
   );

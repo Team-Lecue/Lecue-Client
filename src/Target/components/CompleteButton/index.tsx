@@ -10,7 +10,7 @@ function CompleteButton({ isActive, onClick }: CompleteButtonProps) {
   return (
     <S.CompleteButtonWrapper>
       <Button variant="complete" disabled={!isActive} onClick={onClick}>
-        완료
+        다음
       </Button>
     </S.CompleteButtonWrapper>
   );

@@ -21,7 +21,7 @@ const usePostStickerState = (bookUuId: string) => {
       });
     },
     onSuccess: () => {
-      navigate(`/lecue-book/${bookUuId}`);
+      navigate(`/lecue-book/${bookUuId}`, { replace: true });
     },
 
     onError: () => navigate('/error'),

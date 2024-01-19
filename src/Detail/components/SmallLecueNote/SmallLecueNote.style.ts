@@ -62,7 +62,6 @@ export const SmallLecueNoteNickName = styled.p`
 
 export const SmallLecueNoteContentWrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   height: 10rem;
@@ -80,6 +79,8 @@ export const SmallLecueNoteContent = styled.p`
   -webkit-line-clamp: 5;
 
   max-height: 100%;
+
+  white-space: pre-wrap;
 
   ${({ theme }) => theme.fonts.Body2_M_14};
 `;
