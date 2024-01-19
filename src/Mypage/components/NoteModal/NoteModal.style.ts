@@ -21,11 +21,11 @@ export const ModalWrapper = styled.div<{
   position: relative;
 
   width: 31rem;
-  height: 35.8rem;
+  height: 36.5rem;
   padding: 0.6rem 0.6rem 1.5rem 2rem;
 
   border-radius: 0.4rem;
-  background-size: 31rem 35.8rem;
+  background-size: 31rem 36.5rem;
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
