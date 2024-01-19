@@ -11,6 +11,6 @@ export interface NoteType {
   content: string;
   noteDate: string;
   noteNickname: string;
-  noteTextColor: number;
+  noteTextColor: string;
   noteBackground: string;
 }

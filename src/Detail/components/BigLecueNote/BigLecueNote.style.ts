@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const BigLecueNoteWrapper = styled.div<{
   noteBackground: string;
-  noteTextColor: number;
+  noteTextColor: string;
 }>`
   width: 100%;
   height: 34.2rem;

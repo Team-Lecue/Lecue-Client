@@ -4,7 +4,7 @@ interface BigLecueNoteProps {
   content: string;
   noteDate: string;
   noteNickname: string;
-  noteTextColor: number;
+  noteTextColor: string;
   noteBackground: string;
 }
 

@@ -8,7 +8,7 @@ const modalContainer = document.getElementById(
 ) as HTMLElement;
 
 interface LecueNoteModalProps {
-  selectedNote: NoteType | undefined;
+  selectedNote: NoteType;
   closeModal: () => void;
 }
 
@@ -22,21 +22,21 @@ function LecueNoteModal({ selectedNote, closeModal }: LecueNoteModalProps) {
   return createPortal(
     <S.BlurryContainer>
       <S.LecueNoteModalWrapper
-        noteBackground={selectedNote?.noteBackground}
-        noteTextColor={selectedNote?.noteTextColor || 0}
+        noteBackground={selectedNote.noteBackground}
+        noteTextColor={selectedNote.noteTextColor}
       >
         <S.CloseButton type="button" onClick={handleCloseButtonClick}>
           <IcX />
         </S.CloseButton>
         <S.LecueNoteModalNickname>
-          {selectedNote?.noteNickname}
+          {selectedNote.noteNickname}
         </S.LecueNoteModalNickname>
         <S.LecueNoteModalContentWrapper>
           <S.LecueNoteModalContent>
-            {selectedNote?.content}
+            {selectedNote.content}
           </S.LecueNoteModalContent>
         </S.LecueNoteModalContentWrapper>
-        <S.LecueNoteModalDate>{selectedNote?.noteDate}</S.LecueNoteModalDate>
+        <S.LecueNoteModalDate>{selectedNote.noteDate}</S.LecueNoteModalDate>
       </S.LecueNoteModalWrapper>
     </S.BlurryContainer>,
     modalContainer,
