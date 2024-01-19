@@ -28,7 +28,7 @@ function Router() {
             <Route path="/" element={<SelectView />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/create-note/:bookUuid" element={<LecueNotePage />} />
+            <Route path="/create-note" element={<LecueNotePage />} />
             <Route path="/sticker-pack" element={<StickerPack />} />
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/mypage" element={<Mypage />} />
@@ -55,15 +55,22 @@ function Router() {
 export default Router;
 
 function fallbackRender({ error, resetErrorBoundary }: any) {
-  if (error.response.status === 404) {
+  if (error.response.status === 404 || error.error.response.status === 404) {
     resetErrorBoundary();
     return <Login />;
-  } else if (error.response.status === 401) {
+  } else if (
+    error.response.status === 401 ||
+    error.error.response.status === 401
+  ) {
     resetErrorBoundary();
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
     return <Login />;
   } else {
-    location.reload();
+    alert(
+      ` ${error.response.status},
+      ${error.error.response.status},
+      에러 발생 : 콘솔창 캡쳐해서 개발자 보내주삼`,
+    );
   }
 }

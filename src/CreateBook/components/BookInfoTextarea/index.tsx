@@ -10,7 +10,7 @@ function BookInfoTextarea({
   changeDescription,
 }: BookInfoTextareaProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (e.target.value.length <= 85) {
+    if (e.target.value.length <= 65) {
       changeDescription(e.target.value);
     }
   };
@@ -22,7 +22,7 @@ function BookInfoTextarea({
           value={description}
           onChange={handleChangeInput}
         />
-        <S.WordCount>({description.length}/85)</S.WordCount>
+        <S.WordCount>({description.length}/65)</S.WordCount>
       </S.TextareaContainer>
     </S.BookInfoWrapper>
   );

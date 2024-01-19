@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
 import LoadingPage from '../../../components/common/LoadingPage';
@@ -37,7 +37,6 @@ function LecueNotePage() {
   const location = useLocation();
 
   const { bookId } = location.state;
-  const { bookUuid } = useParams() as { bookUuid: string };
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -86,7 +85,6 @@ function LecueNotePage() {
       isIconClicked: isIconClicked,
       bookId: bookId,
     });
-    navigate(`/lecue-book/${bookUuid}`);
   };
 
   return putMutation.isLoading || postMutation.isLoading ? (
