@@ -59,7 +59,7 @@ export const LecueNoteModalContentWrapper = styled.div`
 
   width: 100%;
   height: 23.4rem;
-  padding: 1.3rem 0.6rem;
+  padding: 0 0.6rem;
   margin-top: 3rem;
 `;
 
