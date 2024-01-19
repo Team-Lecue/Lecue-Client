@@ -40,24 +40,6 @@ const ZigZagView = forwardRef(function ZigZagView(
           ))}
         </Fragment>
       )}
-
-      {isEditable && (
-        <Draggable
-          defaultPosition={{
-            x: 0,
-            y: savedScrollPosition,
-          }}
-          onDrag={handleDrag}
-          bounds="parent"
-          nodeRef={nodeRef}
-        >
-          <S.Sticker
-            ref={nodeRef}
-            stickerImage={stickerState.stickerImage}
-            isEditable
-          />
-        </Draggable>
-      )}
       {postedStickerList.length > 0 && (
         <Fragment>
           {postedStickerList.map(
@@ -77,6 +59,24 @@ const ZigZagView = forwardRef(function ZigZagView(
               ),
           )}
         </Fragment>
+      )}
+
+      {isEditable && (
+        <Draggable
+          defaultPosition={{
+            x: 0,
+            y: savedScrollPosition,
+          }}
+          onDrag={handleDrag}
+          bounds="parent"
+          nodeRef={nodeRef}
+        >
+          <S.Sticker
+            ref={nodeRef}
+            stickerImage={stickerState.stickerImage}
+            isEditable
+          />
+        </Draggable>
       )}
     </S.ZigZagViewWrapper>
   );

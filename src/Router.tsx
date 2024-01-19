@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import ErrorPage from './components/common/ErrorPage';
@@ -20,9 +21,10 @@ import StickerPack from './StickerPack/page/StickerPack';
 import TargetPage from './Target/page/TargetPage';
 
 function Router() {
+  const { reset } = useQueryErrorResetBoundary();
   return (
     <BrowserRouter>
-      <ErrorBoundary FallbackComponent={fallbackRender}>
+      <ErrorBoundary FallbackComponent={fallbackRender} onReset={reset}>
         <Suspense fallback={<LoadingPage />}>
           <Routes>
             <Route path="/" element={<SelectView />} />
@@ -54,23 +56,9 @@ function Router() {
 
 export default Router;
 
-function fallbackRender({ error, resetErrorBoundary }: any) {
-  if (error.response.status === 404 || error.error.response.status === 404) {
-    resetErrorBoundary();
+function fallbackRender({ error }: FallbackProps) {
+  if (error.response?.status === 401 || error.response?.status === 403) {
     return <Login />;
-  } else if (
-    error.response.status === 401 ||
-    error.error.response.status === 401
-  ) {
-    resetErrorBoundary();
-    localStorage.removeItem('token');
-    localStorage.removeItem('nickname');
-    return <Login />;
-  } else {
-    alert(
-      ` ${error.response.status},
-      ${error.error.response.status},
-      에러 발생 : 콘솔창 캡쳐해서 개발자 보내주삼`,
-    );
   }
+  return <ErrorPage />;
 }
