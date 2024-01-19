@@ -20,11 +20,12 @@ export const ModalWrapper = styled.div<{
 }>`
   position: relative;
 
-  width: 31.1rem;
+  width: 31rem;
+  height: 35.8rem;
   padding: 0.6rem 0.4rem 1.5rem 2rem;
 
   border-radius: 0.4rem;
-  background-size: cover;
+  background-size: 31rem 35.8rem;
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
@@ -34,7 +35,7 @@ export const ModalWrapper = styled.div<{
       return `background-color: ${noteBackground}`;
     } else {
       return `background: url(${noteBackground});
-      background-size: cover;`;
+      background-size: 31rem 35.8rem;`;
     }
   }}
 `;
