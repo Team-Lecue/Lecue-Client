@@ -7,12 +7,13 @@ export const EmptyViewWrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: calc(100vh - 39rem);
+  height: calc(100dvh - 39rem);
 `;
 
 export const EmptyViewTextWrapper = styled.div`
-  text-align: center;
   margin-top: 2.1rem;
+
+  text-align: center;
 `;
 
 export const EmptyViewText = styled.p`
