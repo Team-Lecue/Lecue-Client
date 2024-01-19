@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
 import LoadingPage from '../../../components/common/LoadingPage';
+import CommonModal from '../../../components/common/Modal/CommonModal';
 import CompleteButton from '../../components/CompleteButton';
 import FavoriteImageInput from '../../components/FavoriteImageInput';
 import NameInput from '../../components/NameInput';
@@ -14,6 +15,7 @@ function TargetPage() {
   const [presignedFileName, setPresignedFileName] = useState('');
   const [name, setName] = useState('');
   const [fileData, setFileData] = useState<File | null>(null);
+  const [escapeModal, setEscapeModal] = useState(false);
   const [presignedData, setPresignedData] = useState({
     url: '',
     fileName: '',
@@ -70,7 +72,14 @@ function TargetPage() {
     <LoadingPage />
   ) : (
     <S.TargetPageWrapper>
-      <Header headerTitle={'레큐북 제작'} />
+      {escapeModal && (
+        <CommonModal
+          handleFn={() => navigate('/', { state: { step: 1 } })}
+          category="book_escape"
+          setModalOn={setEscapeModal}
+        />
+      )}
+      <Header headerTitle="레큐북 제작" handleFn={() => setEscapeModal(true)} />
       <S.TargetPageBodyWrapper>
         <S.InputSectionWrapper>
           <S.NameInputWrapper>

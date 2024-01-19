@@ -50,15 +50,12 @@ function CreateBook() {
       )}
       {escapeModal && (
         <CommonModal
-          handleFn={() => navigate(-1)}
+          handleFn={() => navigate('/', { state: { step: 1 } })}
           category="book_escape"
           setModalOn={setEscapeModal}
         />
       )}
-      <Header
-        headerTitle="레큐북 만들기"
-        handleFn={() => setEscapeModal(true)}
-      />
+      <Header headerTitle="레큐북 제작" handleFn={() => setEscapeModal(true)} />
       <S.CreateBookBodyWrapper>
         <S.InputWrapper>
           <S.BookInputWrapper>
