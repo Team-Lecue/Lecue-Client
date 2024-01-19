@@ -9,6 +9,9 @@ function SelectView() {
   const [step, setStep] = useState(state?.step ? state.step : 0);
   const token = localStorage.getItem('token');
 
+  sessionStorage.removeItem('name');
+  sessionStorage.removeItem('image');
+
   const handleStep = (step: number) => {
     setStep(step);
   };
