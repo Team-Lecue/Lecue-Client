@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
 import * as S from './FavoriteImageInput.style';
@@ -11,6 +11,18 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [imgFile, setImgFile] = useState('');
 
+  useEffect(() => {
+    if (
+      sessionStorage.getItem('image') &&
+      sessionStorage.getItem('image') !== null
+    ) {
+      const a = sessionStorage.getItem('image');
+      if (typeof a === 'string') {
+        setImgFile(a);
+      }
+    }
+  }, []);
+
   const handleImageUpload = async (): Promise<void> => {
     const fileInput = imgRef.current;
 
@@ -21,6 +33,7 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
       base64Reader.readAsDataURL(file);
       base64Reader.onloadend = () => {
         if (base64Reader.result !== null) {
+          sessionStorage.setItem('image', base64Reader.result as string);
           changeFileData(file);
           setImgFile(base64Reader.result as string);
         }
