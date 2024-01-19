@@ -43,6 +43,8 @@ export const BigLecueNoteContent = styled.div`
   max-height: 100%;
 
   ${({ theme }) => theme.fonts.Body1_M_16};
+
+  white-space: pre-wrap;
 `;
 
 export const BigLecueNoteDate = styled.p`
