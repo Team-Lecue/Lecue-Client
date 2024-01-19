@@ -30,6 +30,9 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
         // 닉네임 중복코드 : 409
         setIsValid('duplicate');
         setIsActive(false);
+      } else if (code === 400) {
+        setIsValid('space');
+        setIsActive(false);
       } else {
         console.error('usePatchNickname', err.response?.data);
         navigate('/error');
