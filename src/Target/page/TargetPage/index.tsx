@@ -25,6 +25,18 @@ function TargetPage() {
   const putMutation = usePutPresignedUrl();
 
   useEffect(() => {
+    if (
+      sessionStorage.getItem('name') &&
+      sessionStorage.getItem('name') !== null
+    ) {
+      const a = sessionStorage.getItem('name');
+      if (typeof a === 'string') {
+        setName(a);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     if (data) {
       const { url, fileName } = data;
       setPresignedData({ url, fileName });
@@ -71,7 +83,10 @@ function TargetPage() {
           </S.FavoriteInputWrapper>
         </S.InputSectionWrapper>
         <CompleteButton
-          isActive={fileData !== null && name.length !== 0}
+          isActive={
+            (fileData !== null || sessionStorage.getItem('image') !== null) &&
+            name.length !== 0
+          }
           onClick={handleClickCompleteButton}
         />
       </S.TargetPageBodyWrapper>
