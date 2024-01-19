@@ -4,6 +4,7 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import BoundaryErrorPage from './components/common/BoundaryErrorPage';
 import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
@@ -56,9 +57,9 @@ function Router() {
 
 export default Router;
 
-function fallbackRender({ error }: FallbackProps) {
+function fallbackRender({ error, resetErrorBoundary }: FallbackProps) {
   if (error.response?.status === 401 || error.response?.status === 403) {
     return <Login />;
   }
-  return <ErrorPage />;
+  return <BoundaryErrorPage resetErrorBoundary={resetErrorBoundary} />;
 }
