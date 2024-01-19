@@ -4,6 +4,7 @@ const resetCss = css`
   :root {
     --vh: 100%;
   }
+
   html,
   body,
   div,
@@ -50,7 +51,6 @@ const resetCss = css`
   dl,
   dt,
   dd,
-  menu,
   ol,
   ul,
   li,
@@ -87,13 +87,15 @@ const resetCss = css`
   mark,
   audio,
   video {
-    margin: 0;
-    border: 0;
     padding: 0;
-    vertical-align: baseline;
-    font: inherit;
+    margin: 0;
+
+    border: 0;
     font-size: 100%;
+
+    vertical-align: baseline;
   }
+
   article,
   aside,
   details,
@@ -108,32 +110,41 @@ const resetCss = css`
   section {
     display: block;
   }
+
   *[hidden] {
     display: none;
   }
-  body {
-    touch-action: manipulation;
-    line-height: 1;
 
-    width: 37.5rem;
-    height: 66.7rem;
+  body {
+    position: relative;
+    overscroll-behavior: none;
+
+    line-height: 1;
+    touch-action: manipulation;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
   menu,
   ol,
   ul {
     list-style: none;
   }
+
   blockquote,
   q {
     quotes: none;
   }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
+
+  blockquote::before,
+  blockquote::after,
+  q::before,
+  q::after {
     content: '';
     content: none;
   }
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -143,12 +154,27 @@ const resetCss = css`
 const gStyle = css`
   ${resetCss}
 
+  #root, body, html {
+    margin: 0 auto;
+
+    background-color: #f5f5f5;
+    max-width: 43rem;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+
+  #root::-webkit-scrollbar {
+    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+  }
+
   * {
+    max-width: 43rem;
     box-sizing: border-box;
   }
+
   html {
     -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 
     scroll-behavior: smooth;
 
@@ -159,25 +185,33 @@ const gStyle = css`
 
     font-size: 62.5%;
   }
+
   ul,
   li {
-    padding-left: 0rem;
+    padding-left: 0;
     list-style: none;
   }
+
   a {
-    text-decoration: none;
     color: inherit;
+
+    text-decoration: none;
   }
+
   input,
   button {
     outline: none;
+
     border: none;
     background-color: transparent;
   }
+
   button {
     cursor: pointer;
+
     padding: 0;
   }
+
   input {
     appearance: none;
 
@@ -187,8 +221,9 @@ const gStyle = css`
   }
 
   @font-face {
-    font-family: 'Sequel Sans';
-    src: url('src/styles/fonts/SequelSansMediumOblBody.woff') format('woff');
+    font-family: Pretendard;
+    src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css')
+      format ('woff');
   }
 `;
 

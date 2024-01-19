@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -12,10 +12,20 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@sentry/browser": "^7.93.0",
+    "@sentry/react": "^7.93.0",
+    "@sentry/vite-plugin": "^2.10.2",
+    "axios": "^1.6.5",
     "eslint-plugin-react": "^7.33.2",
+    "grapheme-splitter": "^1.0.4",
+    "lottie-react": "^2.4.0",
+    "postcss": "^8.4.33",
+    "postcss-styled-syntax": "^0.6.3",
     "prettier": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.6",
+    "react-error-boundary": "^4.0.12",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
     "vite-plugin-svgr": "^4.2.0"
@@ -31,6 +41,9 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }
