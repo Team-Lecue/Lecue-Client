@@ -5,7 +5,7 @@ export const LecueNoteListContainerWrapper = styled.div<{
   isEditable: boolean;
 }>`
   width: 100vw;
-  min-height: calc(100vh - 28.1rem);
+  min-height: calc(100dvh - 28.1rem);
 
   padding: 0 1.6rem;
   padding-bottom: ${({ isEditable }) => isEditable && '12rem'};

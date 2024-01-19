@@ -6,6 +6,7 @@ interface LecueNoteListHeaderProps {
   backgroundColor: string;
   isZigZagView: boolean;
   buttonOnClick: () => void;
+  isEditable: boolean;
 }
 
 function LecueNoteListHeader({
@@ -13,13 +14,18 @@ function LecueNoteListHeader({
   backgroundColor,
   isZigZagView,
   buttonOnClick,
+  isEditable,
 }: LecueNoteListHeaderProps) {
   return (
     <S.LecueNoteListHeaderWrapper backgroundColor={backgroundColor}>
       <S.LecueNoteCountBox
         backgroundColor={backgroundColor}
       >{`${noteNum}개`}</S.LecueNoteCountBox>
-      <S.LecueNoteRenderModeButton type="button" onClick={buttonOnClick}>
+      <S.LecueNoteRenderModeButton
+        type="button"
+        onClick={buttonOnClick}
+        disabled={isEditable}
+      >
         {isZigZagView ? <BtnFloatingList /> : <BtnFloatingPostit />}
       </S.LecueNoteRenderModeButton>
     </S.LecueNoteListHeaderWrapper>

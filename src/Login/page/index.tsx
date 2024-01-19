@@ -5,7 +5,6 @@ import LoginBtnContainer from '../components/LoginBtnContainer';
 import * as S from './Login.style';
 
 function Login() {
-  window.localStorage.clear();
   const ref = document.referrer;
   sessionStorage.setItem('url', ref);
 

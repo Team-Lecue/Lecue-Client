@@ -5,6 +5,7 @@ import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import BoundaryErrorPage from './components/common/BoundaryErrorPage';
+import ClearToken from './components/common/ClearToken/ClearToken';
 import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
@@ -47,6 +48,7 @@ function Router() {
             <Route path="/loading" element={<LoginCallback />} />
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/loading-page" element={<LoadingPage />} />
+            <Route path="/clear" element={<ClearToken />} />
             <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </Suspense>

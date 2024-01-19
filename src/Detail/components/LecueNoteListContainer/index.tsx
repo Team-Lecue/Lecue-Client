@@ -113,7 +113,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         setHeightFromBottom(fullHeight - stickerState.positionY);
       }
     }
-  }, [fullHeight, stickerState.positionY]);
+  }, [fullHeight, stickerState.positionY, scrollRef]);
 
   useEffect(() => {
     // state : 라우터 타고 온 스티커 값
@@ -155,6 +155,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
       backgroundColor={backgroundColor}
     >
       <LecueNoteListHeader
+        isEditable={isEditable}
         noteNum={noteNum}
         backgroundColor={backgroundColor}
         isZigZagView={isZigZagView}
