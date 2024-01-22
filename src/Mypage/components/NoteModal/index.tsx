@@ -45,7 +45,7 @@ function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
 
             <S.NoteDate>{selectedNote.noteDate}</S.NoteDate>
             <S.Button type="button" onClick={handleClickBtn}>
-              롤링페이퍼 보러가기
+              레큐북 보러가기
             </S.Button>
           </S.BodyWrapper>
         </S.ModalWrapper>
