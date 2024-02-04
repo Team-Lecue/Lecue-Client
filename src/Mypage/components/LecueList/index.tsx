@@ -42,7 +42,6 @@ function LecueList() {
   return (
     <S.Wrapper>
       <S.ButtonWrapper>
-        {/* clickedBtn이 true이면 note false이면 book */}
         <S.Button
           type="button"
           variant={clickedBtn === 'note'}
