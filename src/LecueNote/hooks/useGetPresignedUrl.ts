@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import getPresignedUrl from '../api/getPresignedUrl';
@@ -8,19 +8,29 @@ const useGetPresignedUrl = (
   setFileName: React.Dispatch<React.SetStateAction<string>>,
 ) => {
   const navigate = useNavigate();
+  const isUnmounted = useRef(false);
 
-  const { isLoading, data } = useQuery({
-    queryKey: ['get-presigned-url'],
-    queryFn: () => getPresignedUrl(),
-    onError: () => navigate('/error'),
-    onSuccess: (data) => {
-      setPresignedUrl(data.data.url);
-      setFileName(data.data.fileName);
-    },
-    refetchOnWindowFocus: false,
-  });
+  useEffect(() => {
+    isUnmounted.current = false;
+    const fetchData = async () => {
+      try {
+        const { data } = await getPresignedUrl();
 
-  return { isLoading, data };
+        setPresignedUrl(data.url);
+        setFileName(data.fileName);
+      } catch (error) {
+        navigate('/error');
+      }
+    };
+
+    if (!isUnmounted.current) {
+      fetchData();
+    }
+
+    return () => {
+      isUnmounted.current = true;
+    };
+  }, [navigate, setPresignedUrl, setFileName]);
 };
 
 export default useGetPresignedUrl;
