@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { DraggableData, DraggableEvent } from 'react-draggable';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -9,7 +8,10 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
+import useAuth from '../../../libs/hooks/useAuth';
+import usePostSticker from '../../hooks/usePostSticker';
 import useScrollPosition from '../../hooks/useScrollPosition';
+import useStickerState from '../../hooks/useStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
@@ -46,63 +48,16 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const location = useLocation();
   const scrollRef = useRef<HTMLDivElement>(null);
   const { savedScrollPosition } = useScrollPosition();
-  //storage
-  const storedValue = sessionStorage.getItem('scrollPosition');
+  const { stickerState, setStickerState, handleDrag } =
+    useStickerState(savedScrollPosition);
   const isLoggedIn = useAuth();
-    storedValue !== null ? parseInt(storedValue, 10) : 0;
+  const { state } = location;
 
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
   const [heightFromBottom, setHeightFromBottom] = useState<number | null>(null);
-  const [modalOn, setModalOn] = useState<boolean>(false);
   const [isZigZagView, setIsZigZagView] = useState<boolean>(true);
-  const [stickerState, setStickerState] = useState<postedStickerType>({
-    postedStickerId: 0,
-    stickerImage: '',
-    positionX: 0,
-    positionY: savedScrollPosition,
-  });
-  const { state } = location;
-
-  // 스티커 위치 값 저장
-  const handleDrag = (_e: DraggableEvent, ui: DraggableData) => {
-    const { positionX, positionY } = stickerState;
-    setStickerState((prev) => ({
-      ...prev,
-      positionX: positionX + ui.deltaX,
-      positionY: positionY + ui.deltaY,
-    }));
-  };
-
-  const handleClickStickerButton = () => {
-    if (
-      localStorage.getItem('token') &&
-      localStorage.getItem('token') !== null
-    ) {
-      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-
-      navigate('/sticker-pack', { state: { bookId: bookId }, replace: true });
-    } else {
-      setModalOn(true);
-    }
-  };
-
-  const handleClickModalBtn = () => {
-    navigate(`/login`);
-  };
-
-  const handleClickWriteButton = () => {
-    if (
-      localStorage.getItem('token') &&
-      localStorage.getItem('token') !== null
-    ) {
-      navigate(`/create-note`, {
-        state: { bookId: bookId },
-      });
-    } else {
-      setModalOn(true);
-    }
-  };
+  const [modalOn, setModalOn] = useState<boolean>(false);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -114,7 +69,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         setHeightFromBottom(fullHeight - stickerState.positionY);
       }
     }
-  }, [fullHeight, stickerState.positionY, scrollRef]);
+  }, [scrollRef]);
 
   useEffect(() => {
     if (state) {
@@ -207,7 +162,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         <CommonModal
           category="login"
           setModalOn={setModalOn}
-          handleFn={handleClickModalBtn}
+          handleFn={() => navigate(`/login`)}
         />
       )}
     </S.LecueNoteListContainerWrapper>
