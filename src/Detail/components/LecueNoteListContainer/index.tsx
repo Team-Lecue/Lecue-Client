@@ -48,7 +48,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const { savedScrollPosition } = useScrollPosition();
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
-  const savedScrollPosition =
+  const isLoggedIn = useAuth();
     storedValue !== null ? parseInt(storedValue, 10) : 0;
 
   //state
@@ -137,7 +137,31 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     bookId,
   });
 
-  
+  const handleClickIconButton = (isSticker: boolean) => {
+    if (isLoggedIn) {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+      const path = isSticker ? '/sticker-pack' : '/create-note';
+      navigate(path, { state: { bookId }, replace: true });
+    } else {
+      setModalOn(true);
+    }
+  };
+
+  const renderFloatingButton = (isSticker: boolean) => (
+    <button type="button" onClick={() => handleClickIconButton(isSticker)}>
+      {backgroundColor === '#F5F5F5' ? (
+        isSticker ? (
+          <BtnFloatingSticker />
+        ) : (
+          <BtnFloatingWrite />
+        )
+      ) : isSticker ? (
+        <BtnFloatingStickerOrange />
+      ) : (
+        <BtnFloatingWriteOrange />
+      )}
+    </button>
+  );
 
   return (
     <S.LecueNoteListContainerWrapper
@@ -170,28 +194,14 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         )}
       </S.LecueNoteListViewWrapper>
 
-      {!isEditable && (
+      {!isEditable ? (
         <>
-          {noteList.length !== 0 && (
-            <S.StickerButton type="button" onClick={handleClickStickerButton}>
-              {backgroundColor === '#F5F5F5' ? (
-                <BtnFloatingSticker />
-              ) : (
-                <BtnFloatingStickerOrange />
-              )}
-            </S.StickerButton>
-          )}
-          <S.WriteButton type="button" onClick={handleClickWriteButton}>
-            {backgroundColor === '#F5F5F5' ? (
-              <BtnFloatingWrite />
-            ) : (
-              <BtnFloatingWriteOrange />
-            )}
-          </S.WriteButton>
+          {noteList.length !== 0 && renderFloatingButton(true)}
+          {renderFloatingButton(false)}
         </>
+      ) : (
+        <AlertBanner onClick={handleClickDone} />
       )}
-
-      {isEditable && <AlertBanner onClick={handleClickDone} />}
 
       {modalOn && (
         <CommonModal
