@@ -130,23 +130,14 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     }
   }, [state, isEditable]);
 
-  const postMutation = usePostStickerState(bookUuid);
+  const handleClickDone = usePostSticker({
+    bookUuid,
+    heightFromBottom,
+    stickerState,
+    bookId,
+  });
 
-  const handleClickDone = () => {
-    // 다 붙였을 때 post 실행
-    const { postedStickerId, positionX } = stickerState;
-
-    if (heightFromBottom !== null) {
-      postMutation.mutate({
-        postedStickerId: postedStickerId,
-        bookId: bookId,
-        positionX: positionX,
-        positionY: heightFromBottom,
-      });
-    }
-
-    setEditableStateFalse();
-  };
+  
 
   return (
     <S.LecueNoteListContainerWrapper
