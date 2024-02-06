@@ -26,3 +26,13 @@ export interface LecueNoteProps extends LecueNoteType {
   key: number;
   noteList: LecueNoteType[];
 }
+
+export interface ModalProps {
+  bookUuid: string;
+  selectedNote: LecueNoteType;
+  setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface EmptyViewProps {
+  clickedBtn: string;
+}

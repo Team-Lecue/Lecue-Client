@@ -2,17 +2,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcX, ImgStarPosit } from '../../../assets';
 import ModalPortal from '../../../components/common/Modal/ModalPortal';
-import { LecueNoteType } from '../../types/myPageType';
+import { ModalProps } from '../../types/myPageType';
 import * as S from './NoteModal.style';
 
-interface ModalProps {
-  bookUuid: string;
-  selectedNote: LecueNoteType;
-  setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+function NoteModal(props: ModalProps) {
+  const { bookUuid, selectedNote, setClickedCloseBtn } = props;
 
-function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
   const navigate = useNavigate();
+
   const handleClickBtn = () => {
     navigate(`/lecue-book/${bookUuid}`);
   };
