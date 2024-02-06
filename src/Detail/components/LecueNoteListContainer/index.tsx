@@ -9,7 +9,7 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import usePostStickerState from '../../../StickerAttach/hooks/usePostStickerState';
+import useScrollPosition from '../../hooks/useScrollPosition';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
@@ -40,11 +40,12 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     bookUuid,
     bookId,
   } = props;
-  //hooks
-  const location = useLocation();
-  const navigate = useNavigate();
-  const scrollRef = useRef<HTMLDivElement>(null);
 
+  //hooks
+  const navigate = useNavigate();
+  const location = useLocation();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { savedScrollPosition } = useScrollPosition();
   //storage
   const storedValue = sessionStorage.getItem('scrollPosition');
   const savedScrollPosition =
@@ -116,17 +117,15 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   }, [fullHeight, stickerState.positionY, scrollRef]);
 
   useEffect(() => {
-    // state : 라우터 타고 온 스티커 값
     if (state) {
-      window.scrollTo(0, savedScrollPosition);
       const { stickerId, stickerImage } = state.sticker;
+      window.scrollTo(0, savedScrollPosition);
       setStickerState((prev) => ({
         ...prev,
         postedStickerId: stickerId,
         stickerImage: stickerImage,
       }));
     } else {
-      // editable 상태 변경
       setEditableStateFalse();
     }
   }, [state, isEditable]);
