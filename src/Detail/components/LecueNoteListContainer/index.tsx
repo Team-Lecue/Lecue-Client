@@ -54,7 +54,6 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const { stickerState, setStickerState, handleDrag } =
     useStickerState(savedScrollPosition);
   const isLoggedIn = useAuth();
-  const { state } = location;
 
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
@@ -75,8 +74,8 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   }, [scrollRef]);
 
   useEffect(() => {
-    if (state) {
-      const { stickerId, stickerImage } = state.sticker;
+    if (location.state) {
+      const { stickerId, stickerImage } = location.state.sticker;
 
       window.scrollTo(0, savedScrollPosition);
 
@@ -88,7 +87,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     } else {
       setEditableStateFalse();
     }
-  }, [state, isEditable]);
+  }, [location.state, isEditable]);
 
   const handleClickDone = usePostSticker({
     bookUuid,
