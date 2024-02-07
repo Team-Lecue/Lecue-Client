@@ -77,7 +77,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   useEffect(() => {
     if (state) {
       const { stickerId, stickerImage } = state.sticker;
+
       window.scrollTo(0, savedScrollPosition);
+
       setStickerState((prev) => ({
         ...prev,
         postedStickerId: stickerId,
@@ -106,19 +108,36 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   };
 
   const renderFloatingButton = (isSticker: boolean) => (
-    <button type="button" onClick={() => handleClickIconButton(isSticker)}>
-      {backgroundColor === '#F5F5F5' ? (
-        isSticker ? (
-          <BtnFloatingSticker />
+    <S.StickerWrapper>
+      <S.StickerButton
+        type="button"
+        onClick={() => handleClickIconButton(isSticker)}
+      >
+        {backgroundColor === '#F5F5F5' ? (
+          isSticker ? (
+            <div
+              style={{
+                paddingTop: '8rem',
+              }}
+            >
+              <BtnFloatingSticker />
+            </div>
+          ) : (
+            <BtnFloatingWrite />
+          )
+        ) : isSticker ? (
+          <div
+            style={{
+              paddingTop: '8rem',
+            }}
+          >
+            <BtnFloatingStickerOrange />
+          </div>
         ) : (
-          <BtnFloatingWrite />
-        )
-      ) : isSticker ? (
-        <BtnFloatingStickerOrange />
-      ) : (
-        <BtnFloatingWriteOrange />
-      )}
-    </button>
+          <BtnFloatingWriteOrange />
+        )}
+      </S.StickerButton>
+    </S.StickerWrapper>
   );
 
   return (
@@ -150,16 +169,15 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         ) : (
           <LinearView noteList={noteList} />
         )}
+        {!isEditable ? (
+          <>
+            {noteList.length !== 0 && renderFloatingButton(true)}
+            {renderFloatingButton(false)}
+          </>
+        ) : (
+          <AlertBanner onClick={handleClickDone} />
+        )}
       </S.LecueNoteListViewWrapper>
-
-      {!isEditable ? (
-        <>
-          {noteList.length !== 0 && renderFloatingButton(true)}
-          {renderFloatingButton(false)}
-        </>
-      ) : (
-        <AlertBanner onClick={handleClickDone} />
-      )}
 
       {modalOn && (
         <CommonModal
