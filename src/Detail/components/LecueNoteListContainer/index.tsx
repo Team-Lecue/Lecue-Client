@@ -9,15 +9,18 @@ import {
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import useAuth from '../../../libs/hooks/useAuth';
+// hooks
 import usePostSticker from '../../hooks/usePostSticker';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import useStickerState from '../../hooks/useStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
+//views
 import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
 import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
+//style
 import * as S from './LecueNoteListContainer.style';
 
 interface LecueNoteListContainerProps {
