@@ -5,14 +5,14 @@ import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
 
 function WriteNote({
+  clickedData,
   imgFile,
   isIconClicked,
-  background,
-  textColor,
   contents,
   handleChangeFn,
 }: WriteNoteProps) {
   const nickname = localStorage.getItem('nickname');
+  const { textColor, background } = clickedData;
 
   // 이모지 글자 수 세기 관련 라이브러리
   const split = new GraphemeSplitter();
@@ -31,7 +31,11 @@ function WriteNote({
         $imgFile={imgFile}
       >
         <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
-        <S.Contents $textColor={textColor} onChange={handleChangeFn} placeholder='최애에게 마음을 표현해보세요'/>
+        <S.Contents
+          $textColor={textColor}
+          onChange={handleChangeFn}
+          placeholder="최애에게 마음을 표현해보세요"
+        />
         <S.BottomContentsWrapper>
           <S.Date>
             {dateArr[0]}.{dateArr[1]}.{dateArr[2]}

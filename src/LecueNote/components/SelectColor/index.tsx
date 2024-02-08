@@ -8,10 +8,8 @@ import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
 function SelectColor({
+  clickedData,
   isIconClicked,
-  category,
-  textColor,
-  background,
   setPresignedUrl,
   binaryImage,
   setFileName,
@@ -21,6 +19,8 @@ function SelectColor({
   uploadImage,
   selectedFile,
 }: SelectColorProps) {
+  const { textColor, background, category } = clickedData;
+
   return (
     <S.Wrapper>
       <S.CategoryWrapper>

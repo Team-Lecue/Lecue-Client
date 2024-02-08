@@ -19,8 +19,17 @@ import * as S from './LecueNotePage.style';
 function LecueNotePage() {
   const MAX_LENGTH = 1000;
   const navigate = useNavigate();
+  const location = useLocation();
+  const { bookId } = location.state || {};
 
   const [contents, setContents] = useState('');
+  const [isIconClicked, setIsIconClicked] = useState(false);
+  const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
+  const [presignedUrl, setPresignedUrl] = useState('');
+  const [file, setFile] = useState<File>();
+  const [modalOn, setModalOn] = useState(false);
+  const [escapeModal, setEscapeModal] = useState(false);
+
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
 
@@ -31,18 +40,8 @@ function LecueNotePage() {
   });
   const { category, textColor, background } = clickedData;
 
-  const [isIconClicked, setIsIconClicked] = useState(false);
-  const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
-  const [presignedUrl, setPresignedUrl] = useState('');
-  const [file, setFile] = useState<File>();
-  const [modalOn, setModalOn] = useState(false);
-  const [escapeModal, setEscapeModal] = useState(false);
-
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
-  const location = useLocation();
-
-  const { bookId } = location.state || {};
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -124,16 +123,13 @@ function LecueNotePage() {
         <WriteNote
           imgFile={imgFile}
           isIconClicked={isIconClicked}
-          background={background}
-          textColor={textColor}
+          clickedData={clickedData}
           contents={contents}
           handleChangeFn={handleChangeContents}
         />
         <SelectColor
           isIconClicked={isIconClicked}
-          category={category}
-          textColor={textColor}
-          background={background}
+          clickedData={clickedData}
           setFileName={setFileName}
           handleCategoryFn={handleClickCategory}
           handleColorFn={handleClickedColorBtn}

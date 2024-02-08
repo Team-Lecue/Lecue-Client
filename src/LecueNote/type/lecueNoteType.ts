@@ -22,9 +22,11 @@ export interface CreateNoteProps {
 
 export interface SelectColorProps {
   isIconClicked: boolean;
-  category: string;
-  textColor: string;
-  background: string;
+  clickedData: {
+    textColor: string;
+    background: string;
+    category?: string;
+  };
   selectedFile: (file: File) => void;
   setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
@@ -53,8 +55,11 @@ export interface ShowColorChartProps {
 export interface WriteNoteProps {
   imgFile: string;
   isIconClicked: boolean;
-  background: string;
-  textColor: string;
+  clickedData: {
+    textColor: string;
+    background: string;
+    category?: string;
+  };
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
