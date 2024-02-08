@@ -30,7 +30,7 @@ const useGetPresignedUrl = (
     return () => {
       isUnmounted.current = true;
     };
-  }, [navigate, setPresignedUrl, setFileName]);
+  }, []);
 };
 
 export default useGetPresignedUrl;
