@@ -10,11 +10,10 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  handleTrainsitImgFile,
   selectedFile,
   setPresignedUrl,
-  binaryImage,
   setFileName,
-  uploadImage,
   handleFn,
   handleIconFn,
 }: ShowColorChartProps) {
@@ -33,15 +32,18 @@ function ShowColorChart({
       reader1.readAsDataURL(file);
       reader1.onloadend = () => {
         if (reader1.result !== null) {
-          uploadImage(reader1.result as string);
+          handleTrainsitImgFile(reader1.result as string);
         }
       };
 
       // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
       const reader2 = new FileReader();
       reader2.readAsArrayBuffer(file);
-      binaryImage(reader2);
-      selectedFile(file);
+      // reader1의 비동기 작업이 완료된 후 수행(onloadend() 활용)
+      reader2.onloadend = () => {
+        handleTrainsitImgFile(reader2);
+        selectedFile(file);
+      };
     }
   };
 
