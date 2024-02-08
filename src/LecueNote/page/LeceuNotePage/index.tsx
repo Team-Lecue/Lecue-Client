@@ -4,8 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../../components/common/Header';
 import LoadingPage from '../../../components/common/LoadingPage';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import CreateNote from '../../components/CreateNote';
 import Footer from '../../components/Footer';
+import SelectColor from '../../components/SelectColor';
+import WriteNote from '../../components/WriteNote';
 import {
   BG_COLOR_CHART,
   CATEGORY,
@@ -110,23 +111,32 @@ function LecueNotePage() {
         headerTitle="레큐노트 작성"
         handleFn={() => setEscapeModal(true)}
       />
-      <CreateNote
-        clickedCategory={clickedCategory}
-        clickedTextColor={clickedTextColor}
-        clickedBgColor={clickedBgColor}
-        isIconClicked={isIconClicked}
-        contents={contents}
-        imgFile={imgFile}
-        uploadImage={(file) => setImgFile(file)}
-        setFileName={setFileName}
-        handleChangeFn={handleChangeContents}
-        handleClickCategory={handleClickCategory}
-        handleClickedColorBtn={handleClickedColorBtn}
-        handleClickedIcon={handleClickedIcon}
-        setPresignedUrl={setPresignedUrl}
-        binaryImage={(file) => setImgFile2(file)}
-        selectedFile={(file) => setFile(file)}
-      />
+
+      <S.CreateNote>
+        <WriteNote
+          imgFile={imgFile}
+          isIconClicked={isIconClicked}
+          clickedBgColor={clickedBgColor}
+          clickedTextColor={clickedTextColor}
+          contents={contents}
+          handleChangeFn={handleChangeContents}
+        />
+        <SelectColor
+          isIconClicked={isIconClicked}
+          clickedCategory={clickedCategory}
+          clickedTextColor={clickedTextColor}
+          clickedBgColor={clickedBgColor}
+          setFileName={setFileName}
+          handleCategoryFn={handleClickCategory}
+          handleColorFn={handleClickedColorBtn}
+          handleIconFn={handleClickedIcon}
+          uploadImage={(file) => setImgFile(file)}
+          binaryImage={(file) => setImgFile2(file)}
+          setPresignedUrl={setPresignedUrl}
+          selectedFile={(file) => setFile(file)}
+        />
+      </S.CreateNote>
+
       <Footer contents={contents} setModalOn={setModalOn} />
     </S.Wrapper>
   );
