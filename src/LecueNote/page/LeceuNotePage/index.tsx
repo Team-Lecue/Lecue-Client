@@ -20,31 +20,32 @@ function LecueNotePage() {
   const MAX_LENGTH = 1000;
   const navigate = useNavigate();
   const location = useLocation();
+  const putMutation = usePutPresignedUrl();
+  const postMutation = usePostLecueNote();
   const { bookId } = location.state || {};
 
   const [contents, setContents] = useState('');
   const [isIconClicked, setIsIconClicked] = useState(false);
+  // 얘 다시 보기 file.type 알아내기 위해서만 쓰임 ;;
+  const [file, setFile] = useState<File>();
+  // 여기 --------------------------------------------------------
   const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
-  const [file, setFile] = useState<File>();
+  // 여기 --------------------------------------------------------
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
-
+  // -------------------------------------------------------------
   const [rawImgFile, setRawImgFile] = useState({
     imgStr: '',
     imgBinary: new FileReader(),
   });
-  const { imgStr, imgBinary } = rawImgFile;
-  
   const [clickedData, setClickedData] = useState({
     category: CATEGORY[0],
     textColor: TEXT_COLOR_CHART[0],
     background: BG_COLOR_CHART[0],
   });
+  const { imgStr, imgBinary } = rawImgFile;
   const { category, textColor, background } = clickedData;
-
-  const putMutation = usePutPresignedUrl();
-  const postMutation = usePostLecueNote();
 
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
