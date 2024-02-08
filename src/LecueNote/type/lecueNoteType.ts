@@ -1,25 +1,3 @@
-export interface CreateNoteProps {
-  category: string;
-  textColor: string;
-  background: string;
-  isIconClicked: boolean;
-  imgFile: string;
-  contents: string;
-  selectedFile: (file: File) => void;
-  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
-  setFileName: React.Dispatch<React.SetStateAction<string>>;
-  handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  handleClickCategory: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
-  handleClickedColorBtn: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
-  handleClickedIcon: () => void;
-  uploadImage: (file: string) => void;
-  binaryImage: (file: FileReader) => void;
-}
-
 export interface SelectColorProps {
   isIconClicked: boolean;
   clickedData: {
@@ -35,21 +13,19 @@ export interface SelectColorProps {
   ) => void;
   handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
-  uploadImage: (file: string) => void;
-  binaryImage: (file: FileReader) => void;
+  handleTrainsitImgFile: (file: string | FileReader) => void;
 }
 
 export interface ShowColorChartProps {
   isIconClicked: boolean;
   colorChart: string[];
   state: string;
+  handleTrainsitImgFile: (file: string | FileReader) => void;
   selectedFile: (file: File) => void;
   setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
-  uploadImage: (file: string) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
-  binaryImage: (file: FileReader) => void;
 }
 
 export interface WriteNoteProps {
