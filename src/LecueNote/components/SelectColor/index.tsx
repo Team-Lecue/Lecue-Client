@@ -10,13 +10,12 @@ import * as S from './SelectColor.style';
 function SelectColor({
   clickedData,
   isIconClicked,
+  handleTrainsitImgFile,
   setPresignedUrl,
-  binaryImage,
   setFileName,
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
-  uploadImage,
   selectedFile,
 }: SelectColorProps) {
   const { textColor, background, category } = clickedData;
@@ -44,11 +43,10 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={textColor}
+          handleTrainsitImgFile={handleTrainsitImgFile}
           selectedFile={selectedFile}
           setPresignedUrl={setPresignedUrl}
-          binaryImage={binaryImage}
           setFileName={setFileName}
-          uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />
@@ -57,11 +55,10 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={background}
+          handleTrainsitImgFile={handleTrainsitImgFile}
           selectedFile={selectedFile}
           setPresignedUrl={setPresignedUrl}
-          binaryImage={binaryImage}
           setFileName={setFileName}
-          uploadImage={uploadImage}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />

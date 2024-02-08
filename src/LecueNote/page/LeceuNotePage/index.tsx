@@ -30,9 +30,12 @@ function LecueNotePage() {
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
 
-  const [imgFile, setImgFile] = useState('');
-  const [imgFile2, setImgFile2] = useState<FileReader>();
-
+  const [rawImgFile, setRawImgFile] = useState({
+    imgStr: '',
+    imgBinary: new FileReader(),
+  });
+  const { imgStr, imgBinary } = rawImgFile;
+  
   const [clickedData, setClickedData] = useState({
     category: CATEGORY[0],
     textColor: TEXT_COLOR_CHART[0],
@@ -75,12 +78,21 @@ function LecueNotePage() {
     setIsIconClicked(true);
   };
 
+  const handleTrainsitImgFile = (file: string | FileReader) => {
+    if (typeof file === 'string') {
+      // prev를 활용해서 이전 값을 기반으로 상태 업데이트
+      setRawImgFile((prev) => ({ ...prev, ['imgStr']: file }));
+    } else {
+      setRawImgFile((prev) => ({ ...prev, ['imgBinary']: file }));
+    }
+  };
+
   const handleClickCompleteModal = async () => {
-    if (imgFile2) {
-      if (imgFile2.result && file) {
+    if (imgBinary) {
+      if (imgBinary.result && file) {
         putMutation.mutate({
           presignedUrl: presignedUrl,
-          binaryFile: imgFile2.result,
+          binaryFile: imgBinary.result,
           fileType: file.type,
         });
       }
@@ -121,7 +133,7 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
-          imgFile={imgFile}
+          imgFile={imgStr}
           isIconClicked={isIconClicked}
           clickedData={clickedData}
           contents={contents}
@@ -134,8 +146,7 @@ function LecueNotePage() {
           handleCategoryFn={handleClickCategory}
           handleColorFn={handleClickedColorBtn}
           handleIconFn={handleClickedIcon}
-          uploadImage={(file) => setImgFile(file)}
-          binaryImage={(file) => setImgFile2(file)}
+          handleTrainsitImgFile={(imgFile) => handleTrainsitImgFile(imgFile)}
           setPresignedUrl={setPresignedUrl}
           selectedFile={(file) => setFile(file)}
         />
