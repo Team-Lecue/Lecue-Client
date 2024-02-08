@@ -23,9 +23,14 @@ function LecueNotePage() {
   const [contents, setContents] = useState('');
   const [imgFile, setImgFile] = useState('');
   const [imgFile2, setImgFile2] = useState<FileReader>();
-  const [clickedCategory, setClickedCategory] = useState(CATEGORY[0]);
-  const [clickedTextColor, setClickedTextColor] = useState(TEXT_COLOR_CHART[0]);
-  const [clickedBgColor, setClickedBgColor] = useState(BG_COLOR_CHART[0]);
+
+  const [clickedData, setClickedData] = useState({
+    category: CATEGORY[0],
+    textColor: TEXT_COLOR_CHART[0],
+    background: BG_COLOR_CHART[0],
+  });
+  const { category, textColor, background } = clickedData;
+
   const [isIconClicked, setIsIconClicked] = useState(false);
   const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
   const [presignedUrl, setPresignedUrl] = useState('');
@@ -42,7 +47,10 @@ function LecueNotePage() {
   const handleClickCategory = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setClickedCategory(e.currentTarget.innerHTML);
+    setClickedData({
+      ...clickedData,
+      [e.currentTarget.name]: e.currentTarget.innerHTML,
+    });
   };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -56,12 +64,12 @@ function LecueNotePage() {
   const handleClickedColorBtn = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    if (clickedCategory === '텍스트색') {
-      setClickedTextColor(e.currentTarget.id);
-    } else {
-      setClickedBgColor(e.currentTarget.id);
-      setIsIconClicked(false);
-    }
+    setClickedData({
+      ...clickedData,
+      [e.currentTarget.name]: e.currentTarget.id,
+    });
+
+    category !== '텍스트색' && setIsIconClicked(false);
   };
 
   const handleClickedIcon = () => {
@@ -80,9 +88,9 @@ function LecueNotePage() {
     }
     postMutation.mutate({
       contents: contents,
-      color: clickedTextColor,
+      color: textColor,
       fileName: fileName,
-      bgColor: clickedBgColor,
+      bgColor: background,
       isIconClicked: isIconClicked,
       bookId: bookId,
     });
@@ -116,16 +124,16 @@ function LecueNotePage() {
         <WriteNote
           imgFile={imgFile}
           isIconClicked={isIconClicked}
-          clickedBgColor={clickedBgColor}
-          clickedTextColor={clickedTextColor}
+          background={background}
+          textColor={textColor}
           contents={contents}
           handleChangeFn={handleChangeContents}
         />
         <SelectColor
           isIconClicked={isIconClicked}
-          clickedCategory={clickedCategory}
-          clickedTextColor={clickedTextColor}
-          clickedBgColor={clickedBgColor}
+          category={category}
+          textColor={textColor}
+          background={background}
           setFileName={setFileName}
           handleCategoryFn={handleClickCategory}
           handleColorFn={handleClickedColorBtn}

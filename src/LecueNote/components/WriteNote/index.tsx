@@ -7,8 +7,8 @@ import * as S from './WriteNote.style';
 function WriteNote({
   imgFile,
   isIconClicked,
-  clickedBgColor,
-  clickedTextColor,
+  background,
+  textColor,
   contents,
   handleChangeFn,
 }: WriteNoteProps) {
@@ -26,12 +26,12 @@ function WriteNote({
   return (
     <S.Wrapper>
       <S.LecueNote
-        $bgColor={clickedBgColor}
+        $bgColor={background}
         $isIconClicked={isIconClicked}
         $imgFile={imgFile}
       >
-        <S.Nickname $textColor={clickedTextColor}>{nickname}</S.Nickname>
-        <S.Contents $textColor={clickedTextColor} onChange={handleChangeFn} placeholder='최애에게 마음을 표현해보세요'/>
+        <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
+        <S.Contents $textColor={textColor} onChange={handleChangeFn} placeholder='최애에게 마음을 표현해보세요'/>
         <S.BottomContentsWrapper>
           <S.Date>
             {dateArr[0]}.{dateArr[1]}.{dateArr[2]}

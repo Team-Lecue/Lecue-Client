@@ -72,6 +72,7 @@ function ShowColorChart({
           <S.Color
             type="button"
             id={colorCode}
+            name={colorChart === BG_COLOR_CHART ? 'background' : 'textColor'}
             variant={state === colorCode}
             $isIconClicked={
               colorChart === BG_COLOR_CHART ? isIconClicked : false

@@ -9,9 +9,9 @@ import * as S from './SelectColor.style';
 
 function SelectColor({
   isIconClicked,
-  clickedCategory,
-  clickedTextColor,
-  clickedBgColor,
+  category,
+  textColor,
+  background,
   setPresignedUrl,
   binaryImage,
   setFileName,
@@ -19,7 +19,7 @@ function SelectColor({
   handleColorFn,
   handleIconFn,
   uploadImage,
-  selectedFile
+  selectedFile,
 }: SelectColorProps) {
   return (
     <S.Wrapper>
@@ -29,7 +29,8 @@ function SelectColor({
             <S.Category
               key={it}
               type="button"
-              variant={clickedCategory === it}
+              name="category"
+              variant={category === it}
               onClick={handleCategoryFn}
             >
               {it}
@@ -38,11 +39,11 @@ function SelectColor({
         })}
       </S.CategoryWrapper>
 
-      {clickedCategory === '텍스트색' ? (
+      {category === '텍스트색' ? (
         <ShowColorChart
           isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
-          state={clickedTextColor}
+          state={textColor}
           selectedFile={selectedFile}
           setPresignedUrl={setPresignedUrl}
           binaryImage={binaryImage}
@@ -55,7 +56,7 @@ function SelectColor({
         <ShowColorChart
           isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
-          state={clickedBgColor}
+          state={background}
           selectedFile={selectedFile}
           setPresignedUrl={setPresignedUrl}
           binaryImage={binaryImage}
