@@ -11,21 +11,16 @@ export const getLoginToken = async () => {
   const GRANT_TYPE = 'authorization_code';
 
   if (AUTHORIZE_CODE) {
-    try {
-      const response = await axios.post(
-        `${KAKAO_BASE_URL}/token?grant_type=${GRANT_TYPE}&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&code=${AUTHORIZE_CODE}`,
-        {},
-        {
-          headers: {
-            'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-          },
+    const response = await axios.post(
+      `${KAKAO_BASE_URL}/token?grant_type=${GRANT_TYPE}&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&code=${AUTHORIZE_CODE}`,
+      {},
+      {
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
         },
-      );
+      },
+    );
 
-      return response.data.access_token;
-    } catch (error) {
-      console.error('로그인 토큰을 가져오는 중 에러 발생:', error);
-      throw error;
-    }
+    return response.data;
   }
 };
