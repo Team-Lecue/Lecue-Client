@@ -4,7 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { getLoginToken } from '../api/getLoginToken';
 
-const useGetLoginToken = () => {
+interface useGetLoginTokenProps {
+  loginToken: string;
+  setLoginToken: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const useGetLoginToken = (props: useGetLoginTokenProps) => {
+  const { setLoginToken } = props;
+
   const navigate = useNavigate();
 
   const mutation = useMutation({
@@ -16,7 +23,7 @@ const useGetLoginToken = () => {
       navigate('/error');
     },
     onSuccess: (data) => {
-      return data.access_token;
+      setLoginToken(data.access_token);
     },
   });
   return mutation;
