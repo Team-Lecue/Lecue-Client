@@ -1,25 +1,17 @@
 import Button from '../../../components/common/Button';
 import usePatchNickname from '../../hooks/usePatchNickname';
-import { isValidState } from '../../page';
+import { SubmitButtonProps } from '../../types/registerTypes';
 import * as S from './SubmitButton.style';
 
-type SubmitButtonProps = {
-  isActive: boolean;
-  token: string;
-  nickname: string;
-  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
-  isValid: string;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-};
+function SubmitButton(props: SubmitButtonProps) {
+  const { isActive, token, nickname, setIsValid, setIsActive } = props;
 
-function SubmitButton({
-  isActive,
-  token,
-  nickname,
-  setIsValid,
-  setIsActive,
-}: SubmitButtonProps) {
-  const patchMutation = usePatchNickname({ setIsValid, setIsActive, token, nickname });
+  const patchMutation = usePatchNickname({
+    setIsValid,
+    setIsActive,
+    token,
+    nickname,
+  });
 
   const handelClickSubmitBtn = (token: string, nickname: string) => {
     const patchNickname = nickname.trim();
