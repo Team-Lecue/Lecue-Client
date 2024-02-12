@@ -4,9 +4,8 @@ import { useLocation } from 'react-router-dom';
 import NicknameInput from '../components/NicknameInput';
 import RegisterLogo from '../components/RegisterLogo';
 import SubmitButton from '../components/SubmitButton';
+import { isValidState } from '../types/registerTypes';
 import * as S from './Register.style';
-
-export type isValidState = 'valid' | 'special' | 'duplicate' | 'space';
 
 function Register() {
   const [isActive, setIsActive] = useState(false);
