@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   BG_COLOR_CHART,
   CATEGORY,
@@ -51,4 +53,4 @@ function SelectColor({
   );
 }
 
-export default SelectColor;
+export default React.memo(SelectColor);
