@@ -58,8 +58,8 @@ function LecueList() {
         </S.Button>
       </S.ButtonWrapper>
 
-      <S.ListWrapper variant={clickedBtn} id="list-wrapper">
-        <S.ListContainer variant={clickedBtn}>
+      <S.ListWrapper variant={clickedBtn}>
+        <S.ListContainer variant={clickedBtn} id="list-wrapper">
           {clickedBtn === 'note' ? (
             myNoteList && myNoteList.length !== 0 ? (
               myNoteList.map((note: LecueNoteType) => {
