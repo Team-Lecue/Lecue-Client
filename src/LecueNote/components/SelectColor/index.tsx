@@ -37,29 +37,16 @@ function SelectColor({
         })}
       </S.CategoryWrapper>
 
-      {category === '텍스트색' ? (
-        <ShowColorChart
-          isIconClicked={isIconClicked}
-          colorChart={TEXT_COLOR_CHART}
-          state={textColor}
-          handleTransformImgFile={handleTransformImgFile}
-          presignedUrlDispatch={presignedUrlDispatch}
-          selectedFile={selectedFile}
-          handleFn={handleColorFn}
-          handleIconFn={handleIconFn}
-        />
-      ) : (
-        <ShowColorChart
-          isIconClicked={isIconClicked}
-          colorChart={BG_COLOR_CHART}
-          state={background}
-          handleTransformImgFile={handleTransformImgFile}
-          presignedUrlDispatch={presignedUrlDispatch}
-          selectedFile={selectedFile}
-          handleFn={handleColorFn}
-          handleIconFn={handleIconFn}
-        />
-      )}
+      <ShowColorChart
+        isIconClicked={isIconClicked}
+        colorChart={category === '텍스트색' ? TEXT_COLOR_CHART : BG_COLOR_CHART}
+        state={category === '텍스트색' ? textColor : background}
+        handleTransformImgFile={handleTransformImgFile}
+        presignedUrlDispatch={presignedUrlDispatch}
+        selectedFile={selectedFile}
+        handleFn={handleColorFn}
+        handleIconFn={handleIconFn}
+      />
     </S.Wrapper>
   );
 }
