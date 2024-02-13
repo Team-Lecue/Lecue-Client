@@ -5,14 +5,12 @@ export interface SelectColorProps {
     background: string;
     category?: string;
   };
-
+  selectedFile: (file: File) => void;
   presignedUrlDispatch: React.Dispatch<{
     type: 'SET_PRESIGNED_URL';
     presignedUrl: string;
     filename: string;
   }>;
-
-  selectedFile: (file: File) => void;
   handleCategoryFn: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
@@ -29,7 +27,6 @@ export interface ShowColorChartProps {
   selectedFile: (file: File) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
-
   presignedUrlDispatch: React.Dispatch<{
     type: 'SET_PRESIGNED_URL';
     presignedUrl: string;
