@@ -10,16 +10,14 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
-  handleTrainsitImgFile,
+  handleTransformImgFile,
+  presignedUrlDispatch,
   selectedFile,
-  setPresignedUrl,
-  setFileName,
   handleFn,
   handleIconFn,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  // 여기
-  useGetPresignedUrl(setPresignedUrl, setFileName);
+  useGetPresignedUrl({ presignedUrlDispatch });
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -32,7 +30,7 @@ function ShowColorChart({
       reader1.readAsDataURL(file);
       reader1.onloadend = () => {
         if (reader1.result !== null) {
-          handleTrainsitImgFile(reader1.result as string);
+          handleTransformImgFile(reader1.result as string);
         }
       };
 
@@ -41,7 +39,7 @@ function ShowColorChart({
       reader2.readAsArrayBuffer(file);
       // reader1의 비동기 작업이 완료된 후 수행(onloadend() 활용)
       reader2.onloadend = () => {
-        handleTrainsitImgFile(reader2);
+        handleTransformImgFile(reader2);
         selectedFile(file);
       };
     }

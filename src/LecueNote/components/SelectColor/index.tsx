@@ -8,17 +8,16 @@ import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
 function SelectColor({
-  clickedData,
+  lecueNoteState,
   isIconClicked,
-  handleTrainsitImgFile,
-  setPresignedUrl,
-  setFileName,
+  presignedUrlDispatch,
+  handleTransformImgFile,
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
   selectedFile,
 }: SelectColorProps) {
-  const { textColor, background, category } = clickedData;
+  const { textColor, background, category } = lecueNoteState;
 
   return (
     <S.Wrapper>
@@ -43,10 +42,9 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={TEXT_COLOR_CHART}
           state={textColor}
-          handleTrainsitImgFile={handleTrainsitImgFile}
+          handleTransformImgFile={handleTransformImgFile}
+          presignedUrlDispatch={presignedUrlDispatch}
           selectedFile={selectedFile}
-          setPresignedUrl={setPresignedUrl}
-          setFileName={setFileName}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />
@@ -55,10 +53,9 @@ function SelectColor({
           isIconClicked={isIconClicked}
           colorChart={BG_COLOR_CHART}
           state={background}
-          handleTrainsitImgFile={handleTrainsitImgFile}
+          handleTransformImgFile={handleTransformImgFile}
+          presignedUrlDispatch={presignedUrlDispatch}
           selectedFile={selectedFile}
-          setPresignedUrl={setPresignedUrl}
-          setFileName={setFileName}
           handleFn={handleColorFn}
           handleIconFn={handleIconFn}
         />

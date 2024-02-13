@@ -5,14 +5,14 @@ import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
 
 function WriteNote({
-  clickedData,
+  lecueNoteState,
   imgFile,
   isIconClicked,
   contents,
   handleChangeFn,
 }: WriteNoteProps) {
   const nickname = localStorage.getItem('nickname');
-  const { textColor, background } = clickedData;
+  const { textColor, background } = lecueNoteState;
 
   // 이모지 글자 수 세기 관련 라이브러리
   const split = new GraphemeSplitter();

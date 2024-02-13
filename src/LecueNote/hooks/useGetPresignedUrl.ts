@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import getPresignedUrl from '../api/getPresignedUrl';
+import { getPresignedUrlProps } from '../type/lecueNoteType';
 
-const useGetPresignedUrl = (
-  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>,
-  setFileName: React.Dispatch<React.SetStateAction<string>>,
-) => {
+const useGetPresignedUrl = ({ presignedUrlDispatch }: getPresignedUrlProps) => {
   const navigate = useNavigate();
   const isUnmounted = useRef(false);
 
@@ -16,8 +14,11 @@ const useGetPresignedUrl = (
       try {
         const { data } = await getPresignedUrl();
 
-        setPresignedUrl(data.url);
-        setFileName(data.fileName);
+        presignedUrlDispatch({
+          type: 'SET_PRESIGNED_URL',
+          presignedUrl: data.url,
+          filename: data.fileName,
+        });
       } catch (error) {
         navigate('/error');
       }

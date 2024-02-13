@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
@@ -14,6 +14,7 @@ import {
 } from '../../constants/colorChart';
 import usePostLecueNote from '../../hooks/usePostLecueNote';
 import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
+import { reducer } from '../../reducer/lecueNoteReducer';
 import * as S from './LecueNotePage.style';
 
 function LecueNotePage() {
@@ -24,42 +25,29 @@ function LecueNotePage() {
   const postMutation = usePostLecueNote();
   const { bookId } = location.state || {};
 
-  const [contents, setContents] = useState('');
-  const [isIconClicked, setIsIconClicked] = useState(false);
-  // 얘 다시 보기 file.type 알아내기 위해서만 쓰임 ;;
-  const [file, setFile] = useState<File>();
-  // 여기 --------------------------------------------------------
-  const [fileName, setFileName] = useState(BG_COLOR_CHART[0]);
-  const [presignedUrl, setPresignedUrl] = useState('');
-  // 여기 --------------------------------------------------------
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
-  // -------------------------------------------------------------
-  const [rawImgFile, setRawImgFile] = useState({
-    imgStr: '',
-    imgBinary: new FileReader(),
-  });
-  const [clickedData, setClickedData] = useState({
+
+  const [lecueNoteState, dispatch] = useReducer(reducer, {
+    presignedUrl: '',
+    filename: BG_COLOR_CHART[0],
+    contents: '',
     category: CATEGORY[0],
     textColor: TEXT_COLOR_CHART[0],
     background: BG_COLOR_CHART[0],
+    file: null,
+    isIconClicked: false,
+    imgToStr: '',
+    imgToBinary: new FileReader(),
   });
-  const { imgStr, imgBinary } = rawImgFile;
-  const { category, textColor, background } = clickedData;
-
-  const handleClickCategory = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    setClickedData({
-      ...clickedData,
-      [e.currentTarget.name]: e.currentTarget.innerHTML,
-    });
-  };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContents(e.target.value);
+    dispatch({ type: 'SET_CONTENTS', contents: e.target.value });
     if (e.target.value.length > MAX_LENGTH) {
-      setContents((e.target.value = e.target.value.substring(0, MAX_LENGTH)));
+      dispatch({
+        type: 'SET_CONTENTS',
+        contents: (e.target.value = e.target.value.substring(0, MAX_LENGTH)),
+      });
       alert('1000자 내로 작성해주세요.');
     }
   };
@@ -67,43 +55,38 @@ function LecueNotePage() {
   const handleClickedColorBtn = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setClickedData({
-      ...clickedData,
-      [e.currentTarget.name]: e.currentTarget.id,
-    });
+    e.currentTarget.name === 'textColor'
+      ? dispatch({ type: 'CLICKED_TEXT_COLOR', color: e.currentTarget.id })
+      : dispatch({ type: 'CLICKED_BG_COLOR', color: e.currentTarget.id });
 
-    category !== '텍스트색' && setIsIconClicked(false);
+    lecueNoteState.category !== '텍스트색' &&
+      dispatch({ type: 'NOT_CLICKED_IMG_ICON' });
   };
 
-  const handleClickedIcon = () => {
-    setIsIconClicked(true);
-  };
-
-  const handleTrainsitImgFile = (file: string | FileReader) => {
+  const handleTransformImgFile = (file: string | FileReader) => {
     if (typeof file === 'string') {
-      // prev를 활용해서 이전 값을 기반으로 상태 업데이트
-      setRawImgFile((prev) => ({ ...prev, ['imgStr']: file }));
+      dispatch({ type: 'IMG_TO_STR', imgFile: file });
     } else {
-      setRawImgFile((prev) => ({ ...prev, ['imgBinary']: file }));
+      dispatch({ type: 'IMG_TO_BINARY', imgFile: file });
     }
   };
 
   const handleClickCompleteModal = async () => {
-    if (imgBinary) {
-      if (imgBinary.result && file) {
+    if (lecueNoteState.imgToBinary) {
+      if (lecueNoteState.imgToBinary.result && lecueNoteState.file) {
         putMutation.mutate({
-          presignedUrl: presignedUrl,
-          binaryFile: imgBinary.result,
-          fileType: file.type,
+          presignedUrl: lecueNoteState.presignedUrl,
+          binaryFile: lecueNoteState.imgToBinary.result,
+          fileType: lecueNoteState.file.type,
         });
       }
     }
     postMutation.mutate({
-      contents: contents,
-      color: textColor,
-      fileName: fileName,
-      bgColor: background,
-      isIconClicked: isIconClicked,
+      contents: lecueNoteState.contents,
+      color: lecueNoteState.textColor,
+      fileName: lecueNoteState.filename,
+      bgColor: lecueNoteState.background,
+      isIconClicked: lecueNoteState.isIconClicked,
       bookId: bookId,
     });
   };
@@ -134,26 +117,32 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
-          imgFile={imgStr}
-          isIconClicked={isIconClicked}
-          clickedData={clickedData}
-          contents={contents}
+          imgFile={lecueNoteState.imgToStr}
+          isIconClicked={lecueNoteState.isIconClicked}
+          lecueNoteState={lecueNoteState}
+          contents={lecueNoteState.contents}
           handleChangeFn={handleChangeContents}
         />
         <SelectColor
-          isIconClicked={isIconClicked}
-          clickedData={clickedData}
-          setFileName={setFileName}
-          handleCategoryFn={handleClickCategory}
+          isIconClicked={lecueNoteState.isIconClicked}
+          lecueNoteState={lecueNoteState}
+          presignedUrlDispatch={dispatch}
+          handleTransformImgFile={(imgFile) => handleTransformImgFile(imgFile)}
+          selectedFile={(file: File) =>
+            dispatch({ type: 'SELECTED_FILE', file: file })
+          }
+          handleCategoryFn={(e) =>
+            dispatch({
+              type: 'CLICKED_CATEGORY',
+              category: e.currentTarget.innerHTML,
+            })
+          }
           handleColorFn={handleClickedColorBtn}
-          handleIconFn={handleClickedIcon}
-          handleTrainsitImgFile={(imgFile) => handleTrainsitImgFile(imgFile)}
-          setPresignedUrl={setPresignedUrl}
-          selectedFile={(file) => setFile(file)}
+          handleIconFn={() => dispatch({ type: 'CLICKED_IMG_ICON' })}
         />
       </S.CreateNote>
 
-      <Footer contents={contents} setModalOn={setModalOn} />
+      <Footer contents={lecueNoteState.contents} setModalOn={setModalOn} />
     </S.Wrapper>
   );
 }
