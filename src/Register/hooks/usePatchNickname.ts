@@ -27,7 +27,6 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
         handleSetIsValid('space');
         handleSetIsActive(false);
       } else {
-        console.error('usePatchNickname', err.response?.data);
         navigate('/error');
       }
     },
