@@ -23,3 +23,13 @@ export interface CheckNicknameProps {
   handleSetIsValid: (isValid: isValidState) => void;
   e: React.ChangeEvent<HTMLInputElement>;
 }
+
+export interface patchNicknameProps {
+  token: string;
+  nickname: string;
+}
+
+export interface usePatchNicknameProps extends patchNicknameProps {
+  handleSetIsActive: (isActive: boolean) => void;
+  handleSetIsValid: (isValid: isValidState) => void;
+}

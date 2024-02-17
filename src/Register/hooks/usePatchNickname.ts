@@ -3,17 +3,10 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { patchNickname } from '../api/patchNickname';
-import { isValidState } from '../types/registerTypes';
-
-interface patchNicknameProps {
-  token: string;
-  nickname: string;
-}
-
-interface usePatchNicknameProps extends patchNicknameProps {
-  handleSetIsActive: (isActive: boolean) => void;
-  handleSetIsValid: (isValid: isValidState) => void;
-}
+import {
+  patchNicknameProps,
+  usePatchNicknameProps,
+} from '../types/registerTypes';
 
 const usePatchNickname = (props: usePatchNicknameProps) => {
   const { handleSetIsValid, handleSetIsActive, token, nickname } = props;
