@@ -14,7 +14,7 @@ const usePostLoginToken = () => {
     onSuccess: (data) => {
       const { tokenDto, nickname } = data;
 
-      if (nickname === null || nickname === '') {
+      if (nickname === null) {
         navigate('/register', { state: { token: tokenDto.accessToken } });
       } else {
         window.localStorage.setItem('token', tokenDto.accessToken);
