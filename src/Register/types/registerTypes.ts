@@ -3,9 +3,9 @@ export type isValidState = 'valid' | 'special' | 'duplicate' | 'space';
 export interface NicknameInputProps {
   nickname: string;
   isValid: string;
-  setNickname: React.Dispatch<React.SetStateAction<string>>;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
+  handleSetNickname: (nickname: string) => void;
+  handleSetIsActive: (isActive: boolean) => void;
+  handleSetIsValid: (isValid: isValidState) => void;
 }
 
 export type SubmitButtonProps = {
@@ -13,13 +13,13 @@ export type SubmitButtonProps = {
   nickname: string;
   isActive: boolean;
   isValid: string;
-  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSetIsValid: (isValid: isValidState) => void;
+  handleSetIsActive: (isActive: boolean) => void;
 };
 
 export interface CheckNicknameProps {
-  setNickname: React.Dispatch<React.SetStateAction<string>>;
-  setWordCnt: React.Dispatch<React.SetStateAction<number>>;
-  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
+  handleSetNickname: (nickname: string) => void;
+  handleSetWordCnt: (wordCnt: number) => void;
+  handleSetIsValid: (isValid: isValidState) => void;
   e: React.ChangeEvent<HTMLInputElement>;
 }

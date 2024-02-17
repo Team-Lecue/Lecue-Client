@@ -5,12 +5,22 @@ import handleChangeInput from '../../utils/handleCheckInput';
 import * as S from './NicknameInput.style';
 
 function NicknameInput(props: NicknameInputProps) {
-  const { nickname, setNickname, setIsActive, isValid, setIsValid } = props;
+  const {
+    nickname,
+    isValid,
+    handleSetNickname,
+    handleSetIsActive,
+    handleSetIsValid,
+  } = props;
 
   const [wordCnt, setWordCnt] = useState(0);
 
+  const handleSetWordCnt = (wordCnt: number) => {
+    setWordCnt(wordCnt);
+  };
+
   useEffect(() => {
-    wordCnt >= 2 ? setIsActive(true) : setIsActive(false);
+    wordCnt >= 2 ? handleSetIsActive(true) : handleSetIsActive(false);
   }, [wordCnt]);
 
   return (
@@ -22,7 +32,12 @@ function NicknameInput(props: NicknameInputProps) {
           value={nickname}
           placeholder="닉네임을 입력해주세요."
           onChange={(e) => {
-            handleChangeInput({ setNickname, setWordCnt, setIsValid, e });
+            handleChangeInput({
+              handleSetNickname,
+              handleSetWordCnt,
+              handleSetIsValid,
+              e,
+            });
           }}
         />
         <S.WordCount>({wordCnt}/8)</S.WordCount>

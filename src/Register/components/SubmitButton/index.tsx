@@ -4,11 +4,12 @@ import { SubmitButtonProps } from '../../types/registerTypes';
 import * as S from './SubmitButton.style';
 
 function SubmitButton(props: SubmitButtonProps) {
-  const { isActive, token, nickname, setIsValid, setIsActive } = props;
+  const { isActive, token, nickname, handleSetIsValid, handleSetIsActive } =
+    props;
 
   const patchMutation = usePatchNickname({
-    setIsValid,
-    setIsActive,
+    handleSetIsValid,
+    handleSetIsActive,
     token,
     nickname,
   });

@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { patchNickname } from '../api/patchNickname';
-import { isValidState } from '../page';
+import { isValidState } from '../types/registerTypes';
 
 interface patchNicknameProps {
   token: string;
@@ -11,12 +11,12 @@ interface patchNicknameProps {
 }
 
 interface usePatchNicknameProps extends patchNicknameProps {
-  setIsValid: React.Dispatch<React.SetStateAction<isValidState>>;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSetIsActive: (isActive: boolean) => void;
+  handleSetIsValid: (isValid: isValidState) => void;
 }
 
 const usePatchNickname = (props: usePatchNicknameProps) => {
-  const { setIsValid, setIsActive, token, nickname } = props;
+  const { handleSetIsValid, handleSetIsActive, token, nickname } = props;
 
   const navigate = useNavigate();
 
@@ -28,11 +28,11 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       const code = err.response?.status;
       if (code === 409) {
         // 닉네임 중복코드 : 409
-        setIsValid('duplicate');
-        setIsActive(false);
+        handleSetIsValid('duplicate');
+        handleSetIsActive(false);
       } else if (code === 400) {
-        setIsValid('space');
-        setIsActive(false);
+        handleSetIsValid('space');
+        handleSetIsActive(false);
       } else {
         console.error('usePatchNickname', err.response?.data);
         navigate('/error');
