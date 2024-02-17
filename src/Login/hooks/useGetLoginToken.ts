@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { getLoginToken } from '../api/getLoginToken';
 
 interface useGetLoginTokenProps {
-  loginToken: string;
-  setLoginToken: React.Dispatch<React.SetStateAction<string>>;
+  handleLoginToken: (token: string) => void;
 }
 
 const useGetLoginToken = (props: useGetLoginTokenProps) => {
-  const { setLoginToken } = props;
+  const { handleLoginToken } = props;
 
   const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ const useGetLoginToken = (props: useGetLoginTokenProps) => {
       navigate('/error');
     },
     onSuccess: (data) => {
-      setLoginToken(data.access_token);
+      handleLoginToken(data.access_token);
     },
   });
   return mutation;

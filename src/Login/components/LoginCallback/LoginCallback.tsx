@@ -6,7 +6,11 @@ import usePostLoginToken from '../../hooks/usePostLoginToken';
 function LoginCallback() {
   const [loginToken, setLoginToken] = useState('');
 
-  const getMutation = useGetLoginToken({ loginToken, setLoginToken });
+  const handleLoginToken = (token: string) => {
+    setLoginToken(token);
+  };
+
+  const getMutation = useGetLoginToken({ handleLoginToken });
   const postMutation = usePostLoginToken();
 
   loginToken === '' ? getMutation.mutate() : postMutation.mutate(loginToken);
