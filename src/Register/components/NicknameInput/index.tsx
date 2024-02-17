@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { handleChangeInput } from '../../hooks/useCheckNickname';
 import { NicknameInputProps } from '../../types/registerTypes';
+import handleChangeInput from '../../utils/handleCheckInput';
 import * as S from './NicknameInput.style';
 
 function NicknameInput(props: NicknameInputProps) {
