@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,8 +26,7 @@ const usePostLoginToken = () => {
         }
       }
     },
-    onError: (error: AxiosError) => {
-      console.error('usePostLoginToken', error.response?.data);
+    onError: () => {
       navigate('/error');
     },
   });
