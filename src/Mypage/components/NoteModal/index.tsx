@@ -6,16 +6,12 @@ import { ModalProps } from '../../types/myPageType';
 import * as S from './NoteModal.style';
 
 function NoteModal(props: ModalProps) {
-  const { bookUuid, selectedNote, setClickedCloseBtn } = props;
+  const { bookUuid, selectedNote, handleSetClickedCloseBtn } = props;
 
   const navigate = useNavigate();
 
   const handleClickBtn = () => {
     navigate(`/lecue-book/${bookUuid}`);
-  };
-
-  const handleClickCloseBtn = () => {
-    setClickedCloseBtn((prev) => !prev);
   };
 
   return (
@@ -30,7 +26,7 @@ function NoteModal(props: ModalProps) {
               <ImgStarPosit />
               <S.FavoriteName>{selectedNote.favoriteName}</S.FavoriteName>
             </S.NameWrapper>
-            <S.CloseBtn type="button" onClick={handleClickCloseBtn}>
+            <S.CloseBtn type="button" onClick={handleSetClickedCloseBtn}>
               <IcX />
             </S.CloseBtn>
           </S.Header>
