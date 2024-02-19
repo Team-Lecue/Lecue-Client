@@ -9,9 +9,9 @@ import {
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import useAuth from '../../../libs/hooks/useAuth';
+import useScrollPosition from '../../../utils/savedScrollPosition';
 // hooks
 import usePostSticker from '../../hooks/usePostSticker';
-import useScrollPosition from '../../hooks/useScrollPosition';
 import useStickerState from '../../hooks/useStickerState';
 import { NoteType, postedStickerType } from '../../type/lecueBookType';
 //views
