@@ -63,7 +63,7 @@ function LecueBook(props: LecueBookProps) {
       {modalOn && (
         <CommonModal
           category="book_delete"
-          setModalOn={(modalOn) => setModalOn(modalOn)}
+          setModalOn={setModalOn}
           handleFn={handleFn}
         />
       )}
