@@ -30,7 +30,7 @@ export interface LecueNoteProps extends LecueNoteType {
 export interface ModalProps {
   bookUuid: string;
   selectedNote: LecueNoteType;
-  handleSetClickedCloseBtn: () => void;
+  handleCloseBtn: () => void;
 }
 
 export interface EmptyViewProps {
