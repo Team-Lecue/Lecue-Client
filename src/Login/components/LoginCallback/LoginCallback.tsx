@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import LoadingPage from '../../../components/common/LoadingPage';
 import useGetLoginToken from '../../hooks/useGetLoginToken';
 import usePostLoginToken from '../../hooks/usePostLoginToken';
 
@@ -15,7 +16,7 @@ function LoginCallback() {
 
   loginToken === '' ? getMutation.mutate() : postMutation.mutate(loginToken);
 
-  return <></>;
+  return <LoadingPage />;
 }
 
 export default LoginCallback;
