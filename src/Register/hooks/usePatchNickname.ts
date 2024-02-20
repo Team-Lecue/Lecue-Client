@@ -34,7 +34,6 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
         setIsValid('space');
         setIsActive(false);
       } else {
-        console.error('usePatchNickname', err.response?.data);
         navigate('/error');
       }
     },
