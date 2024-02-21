@@ -8,9 +8,13 @@ export interface NicknameInputProps {
   handleSetIsValid: (isValid: isValidState) => void;
 }
 
-export interface SubmitButtonProps extends NicknameInputProps {
+export interface SubmitButtonProps {
   token: string;
+  nickname: string;
   isActive: boolean;
+  isValid: string;
+  handleSetIsValid: (isValid: isValidState) => void;
+  handleSetIsActive: (isActive: boolean) => void;
 }
 
 export interface CheckNicknameProps {
