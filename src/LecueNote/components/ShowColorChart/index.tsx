@@ -5,6 +5,8 @@ import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
 import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
+import handleClickFiletoBinary from '../../util/handleClickFiletoBinary';
+import handleClickFiletoString from '../../util/handleClickFiletoString';
 import * as S from './ShowColorChart.style';
 
 function ShowColorChart({
@@ -19,6 +21,11 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   useGetPresignedUrl({ presignedUrlDispatch });
+
+  const handleReaderOnloadend = (reader: FileReader, file: File) => {
+    handleTransformImgFile(reader);
+    selectedFile(file);
+  };
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -39,45 +46,38 @@ function ShowColorChart({
               file.name.split('.')[0] + '.jpg',
               { type: 'image/jpeg', lastModified: new Date().getTime() },
             );
-            
+
             // reader1: 파일을 base64로 읽어서 업로드
             const reader1 = new FileReader();
-
-            reader1.readAsDataURL(jpg);
-            reader1.onloadend = () => {
-              if (reader1.result !== null) {
-                handleTransformImgFile(reader1.result as string);
-              }
-            };
+            handleClickFiletoString({
+              file: jpg,
+              reader: reader1,
+              handleTransformImgFile,
+            });
 
             // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
             const reader2 = new FileReader();
-            reader2.readAsArrayBuffer(jpg);
-            // reader1의 비동기 작업이 완료된 후 수행(onloadend() 활용)
-            reader2.onloadend = () => {
-              handleTransformImgFile(reader2);
-              selectedFile(jpg);
-            };
+            handleClickFiletoBinary({
+              file: jpg,
+              reader: reader2,
+              handleReaderOnloadend,
+            });
           },
         );
       } else {
-        // reader1: 파일을 base64로 읽어서 업로드
         const reader1 = new FileReader();
-        reader1.readAsDataURL(file);
-        reader1.onloadend = () => {
-          if (reader1.result !== null) {
-            handleTransformImgFile(reader1.result as string);
-          }
-        };
+        handleClickFiletoString({
+          file: file,
+          reader: reader1,
+          handleTransformImgFile,
+        });
 
-        // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
         const reader2 = new FileReader();
-        reader2.readAsArrayBuffer(file);
-        // reader1의 비동기 작업이 완료된 후 수행(onloadend() 활용)
-        reader2.onloadend = () => {
-          handleTransformImgFile(reader2);
-          selectedFile(file);
-        };
+        handleClickFiletoBinary({
+          file: file,
+          reader: reader2,
+          handleReaderOnloadend,
+        });
       }
     }
   };
