@@ -10,17 +10,14 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  handleTransformImgFile,
+  presignedUrlDispatch,
   selectedFile,
-  setPresignedUrl,
-  binaryImage,
-  setFileName,
-  uploadImage,
   handleFn,
   handleIconFn,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  // 여기
-  useGetPresignedUrl(setPresignedUrl, setFileName);
+  useGetPresignedUrl({ presignedUrlDispatch });
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -33,15 +30,18 @@ function ShowColorChart({
       reader1.readAsDataURL(file);
       reader1.onloadend = () => {
         if (reader1.result !== null) {
-          uploadImage(reader1.result as string);
+          handleTransformImgFile(reader1.result as string);
         }
       };
 
       // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
       const reader2 = new FileReader();
       reader2.readAsArrayBuffer(file);
-      binaryImage(reader2);
-      selectedFile(file);
+      // reader1의 비동기 작업이 완료된 후 수행(onloadend() 활용)
+      reader2.onloadend = () => {
+        handleTransformImgFile(reader2);
+        selectedFile(file);
+      };
     }
   };
 
@@ -72,6 +72,7 @@ function ShowColorChart({
           <S.Color
             type="button"
             id={colorCode}
+            name={colorChart === BG_COLOR_CHART ? 'background' : 'textColor'}
             variant={state === colorCode}
             $isIconClicked={
               colorChart === BG_COLOR_CHART ? isIconClicked : false
