@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import * as Sentry from '@sentry/react';
 import { Suspense } from 'react';
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -24,9 +24,20 @@ import TargetPage from './Target/page/TargetPage';
 
 function Router() {
   const { reset } = useQueryErrorResetBoundary();
+
+  function fallbackRender(error: any) {
+    if (
+      error &&
+      (error.response?.status === 401 || error.response?.status === 403)
+    ) {
+      return <Login />;
+    }
+    return <BoundaryErrorPage />;
+  }
+
   return (
     <BrowserRouter>
-      <ErrorBoundary FallbackComponent={fallbackRender} onReset={reset}>
+      <Sentry.ErrorBoundary fallback={fallbackRender} onReset={reset}>
         <Suspense fallback={<LoadingPage />}>
           <Routes>
             <Route path="/" element={<SelectView />} />
@@ -52,16 +63,9 @@ function Router() {
             <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </Suspense>
-      </ErrorBoundary>
+      </Sentry.ErrorBoundary>
     </BrowserRouter>
   );
 }
 
 export default Router;
-
-function fallbackRender({ error, resetErrorBoundary }: FallbackProps) {
-  if (error.response?.status === 401 || error.response?.status === 403) {
-    return <Login />;
-  }
-  return <BoundaryErrorPage resetErrorBoundary={resetErrorBoundary} />;
-}

@@ -4,15 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { ImgError } from '../../../assets';
 import * as S from './BoundaryErrorPage.style';
 
-interface BoundaryErrorPageProps {
-  resetErrorBoundary: (...args: any[]) => void;
-}
-
-function BoundaryErrorPage({ resetErrorBoundary }: BoundaryErrorPageProps) {
+function BoundaryErrorPage() {
   const navigate = useNavigate();
 
   const handleClickHomeButton = () => {
-    resetErrorBoundary();
     navigate('/', { state: { step: 1 } });
   };
 
