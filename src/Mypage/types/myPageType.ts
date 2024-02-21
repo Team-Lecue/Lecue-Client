@@ -1,26 +1,3 @@
-export interface LecueBookProps {
-  key: number;
-  bookUuid: string;
-  bookId: number;
-  favoriteName: string;
-  title: string;
-  bookDate: string;
-  noteNum: number;
-}
-
-export interface LecueNoteProps {
-  bookUuid: string;
-  key: number;
-  noteId: number;
-  favoriteName: string;
-  title: string;
-  noteDate: string;
-  content: string;
-  noteTextColor: string;
-  noteBackground: string;
-  noteList: LecueNoteType[];
-}
-
 export interface LecueBookType {
   bookUuid: string;
   bookId: number;
@@ -28,6 +5,10 @@ export interface LecueBookType {
   title: string;
   bookDate: string;
   noteNum: number;
+}
+
+export interface LecueBookProps extends LecueBookType {
+  key: number;
 }
 
 export interface LecueNoteType {
@@ -39,4 +20,19 @@ export interface LecueNoteType {
   content: string;
   noteTextColor: string;
   noteBackground: string;
+}
+
+export interface LecueNoteProps extends LecueNoteType {
+  key: number;
+  noteList: LecueNoteType[];
+}
+
+export interface ModalProps {
+  bookUuid: string;
+  selectedNote: LecueNoteType;
+  handleCloseBtn: () => void;
+}
+
+export interface EmptyViewProps {
+  clickedBtn: string;
 }
