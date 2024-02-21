@@ -20,8 +20,13 @@ function LecueNote(props: LecueNoteProps) {
   const [isModalShow, setIsModalShow] = useState(false);
   const [clickedCloseBtn, setClickedCloseBtn] = useState(false);
 
-  const getClickedNote = () =>
-    noteList.filter((note) => note.noteId === noteId);
+  const handleCloseBtn = () => {
+    setClickedCloseBtn(true);
+  };
+
+  const getClickedNote = () => {
+    return noteList.filter((note) => note.noteId === noteId);
+  };
 
   const handleClickNote = () => {
     const clickedNote = getClickedNote();
@@ -30,12 +35,11 @@ function LecueNote(props: LecueNoteProps) {
     }
   };
 
-  const handleClickedCloseBtn = () => {
-    setIsModalShow(false);
-  };
-
   useEffect(() => {
-    handleClickedCloseBtn();
+    if (clickedCloseBtn) {
+      setIsModalShow(false);
+      setClickedCloseBtn(false);
+    }
   }, [clickedCloseBtn]);
 
   return (
@@ -51,11 +55,12 @@ function LecueNote(props: LecueNoteProps) {
         <S.Content>{content}</S.Content>
       </S.TextWrapper>
       <S.Date>{noteDate}</S.Date>
+
       {isModalShow && (
         <NoteModal
           bookUuid={bookUuid}
           selectedNote={getClickedNote()[0]}
-          setClickedCloseBtn={setClickedCloseBtn}
+          handleCloseBtn={handleCloseBtn}
         />
       )}
     </S.Wrapper>

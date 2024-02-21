@@ -1,8 +1,5 @@
+import { EmptyViewProps } from '../../types/myPageType';
 import * as S from './EmptyView.style';
-
-interface EmptyViewProps {
-  clickedBtn: string;
-}
 
 function EmptyView({ clickedBtn }: EmptyViewProps) {
   return (

@@ -2,23 +2,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcX, ImgStarPosit } from '../../../assets';
 import ModalPortal from '../../../components/common/Modal/ModalPortal';
-import { LecueNoteType } from '../../types/myPageType';
+import { ModalProps } from '../../types/myPageType';
 import * as S from './NoteModal.style';
 
-interface ModalProps {
-  bookUuid: string;
-  selectedNote: LecueNoteType;
-  setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+function NoteModal(props: ModalProps) {
+  const { bookUuid, selectedNote, handleCloseBtn } = props;
 
-function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
   const navigate = useNavigate();
+
   const handleClickBtn = () => {
     navigate(`/lecue-book/${bookUuid}`);
-  };
-
-  const handleClickCloseBtn = () => {
-    setClickedCloseBtn((prev) => !prev);
   };
 
   return (
@@ -33,7 +26,7 @@ function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
               <ImgStarPosit />
               <S.FavoriteName>{selectedNote.favoriteName}</S.FavoriteName>
             </S.NameWrapper>
-            <S.CloseBtn type="button" onClick={handleClickCloseBtn}>
+            <S.CloseBtn type="button" onClick={handleCloseBtn}>
               <IcX />
             </S.CloseBtn>
           </S.Header>
