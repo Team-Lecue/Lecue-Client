@@ -14,8 +14,5 @@ export const postLoginToken = async (token: string) => {
     },
   );
 
-  return {
-    nickname: response.data.data.nickname,
-    tokenDto: response.data.data.tokenDto,
-  };
+  return response.data.data;
 };
