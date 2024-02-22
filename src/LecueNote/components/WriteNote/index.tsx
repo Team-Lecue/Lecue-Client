@@ -1,10 +1,13 @@
 import GraphemeSplitter from 'grapheme-splitter';
+import Lottie from 'lottie-react';
 import { useEffect, useState } from 'react';
 
+import animationData from '../../../../src/assets/lottie/spiner 120.json';
 import { WriteNoteProps } from '../../type/lecueNoteType';
 import * as S from './WriteNote.style';
 
 function WriteNote({
+  isLoading,
   lecueNoteState,
   imgFile,
   isIconClicked,
@@ -30,18 +33,30 @@ function WriteNote({
         $isIconClicked={isIconClicked}
         $imgFile={imgFile}
       >
-        <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
-        <S.Contents
-          $textColor={textColor}
-          onChange={handleChangeFn}
-          placeholder="최애에게 마음을 표현해보세요"
-        />
-        <S.BottomContentsWrapper>
-          <S.Date>
-            {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
-          </S.Date>
-          <S.Counter>({split.splitGraphemes(contents).length}/1000)</S.Counter>
-        </S.BottomContentsWrapper>
+        {isLoading ? (
+          <S.LoadingWrapper>
+            <S.LottieWrapper>
+              <Lottie animationData={animationData} />
+            </S.LottieWrapper>
+          </S.LoadingWrapper>
+        ) : (
+          <>
+            <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
+            <S.Contents
+              $textColor={textColor}
+              onChange={handleChangeFn}
+              placeholder="최애에게 마음을 표현해보세요"
+            />
+            <S.BottomContentsWrapper>
+              <S.Date>
+                {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
+              </S.Date>
+              <S.Counter>
+                ({split.splitGraphemes(contents).length}/1000)
+              </S.Counter>
+            </S.BottomContentsWrapper>
+          </>
+        )}
       </S.LecueNote>
       <S.Notice>*욕설/비속어는 자동 필터링됩니다.</S.Notice>
     </S.Wrapper>

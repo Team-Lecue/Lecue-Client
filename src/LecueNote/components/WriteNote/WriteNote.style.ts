@@ -85,3 +85,19 @@ export const Notice = styled.p`
 
   ${({ theme }) => theme.fonts.Caption1_R_12};
 `;
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: transparent;
+`;
+
+export const LottieWrapper = styled.div`
+  width: 10rem;
+  height: 10rem;
+`;
