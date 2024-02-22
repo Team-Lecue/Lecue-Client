@@ -17,6 +17,7 @@ export interface SelectColorProps {
   handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
   handleTransformImgFile: (file: string | FileReader) => void;
+  handleIsLoading: (status: boolean) => void;
 }
 
 export interface ShowColorChartProps {
@@ -32,9 +33,11 @@ export interface ShowColorChartProps {
     presignedUrl: string;
     filename: string;
   }>;
+  handleIsLoading: (status: boolean) => void;
 }
 
 export interface WriteNoteProps {
+  isLoading: boolean;
   imgFile: string;
   isIconClicked: boolean;
   lecueNoteState: {

@@ -18,6 +18,7 @@ function SelectColor({
   handleColorFn,
   handleIconFn,
   selectedFile,
+  handleIsLoading,
 }: SelectColorProps) {
   const { textColor, background, category } = lecueNoteState;
 
@@ -48,6 +49,7 @@ function SelectColor({
         selectedFile={selectedFile}
         handleFn={handleColorFn}
         handleIconFn={handleIconFn}
+        handleIsLoading={handleIsLoading}
       />
     </S.Wrapper>
   );

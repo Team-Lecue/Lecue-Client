@@ -28,6 +28,12 @@ function LecueNotePage() {
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleIsLoading = (booleanStatus: boolean) => {
+    setIsLoading(booleanStatus);
+  };
+
   const [lecueNoteState, dispatch] = useReducer(reducer, {
     presignedUrl: '',
     filename: BG_COLOR_CHART[0],
@@ -117,6 +123,7 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
+        isLoading={isLoading}
           imgFile={lecueNoteState.imgToStr}
           isIconClicked={lecueNoteState.isIconClicked}
           lecueNoteState={lecueNoteState}
@@ -139,6 +146,7 @@ function LecueNotePage() {
           }
           handleColorFn={handleClickedColorBtn}
           handleIconFn={() => dispatch({ type: 'CLICKED_IMG_ICON' })}
+          handleIsLoading={handleIsLoading}
         />
       </S.CreateNote>
 
