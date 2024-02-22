@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { NoteType } from '../../type/lecueBookType';
 import LecueNoteModal from '../LecueNoteModal';
@@ -38,24 +38,26 @@ function SmallLecueNote({
   };
 
   return (
-    <S.SmallLecueNoteWrapper
-      renderType={renderType}
-      noteTextColor={noteTextColor}
-      noteBackground={noteBackground}
-      onClick={handleClickSmallLecueNote}
-    >
-      <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
-      <S.SmallLecueNoteContentWrapper>
-        <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
-      </S.SmallLecueNoteContentWrapper>
-      <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
+    <React.Fragment>
       {modalShow && (
         <LecueNoteModal
           selectedNote={getClickedNote()[0]}
           closeModal={() => setModalShow(false)}
         />
       )}
-    </S.SmallLecueNoteWrapper>
+      <S.SmallLecueNoteWrapper
+        renderType={renderType}
+        noteTextColor={noteTextColor}
+        noteBackground={noteBackground}
+        onClick={handleClickSmallLecueNote}
+      >
+        <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
+        <S.SmallLecueNoteContentWrapper>
+          <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
+        </S.SmallLecueNoteContentWrapper>
+        <S.SmallLecueNoteDate>{noteDate}</S.SmallLecueNoteDate>
+      </S.SmallLecueNoteWrapper>
+    </React.Fragment>
   );
 }
 
