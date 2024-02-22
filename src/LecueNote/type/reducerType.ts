@@ -21,4 +21,5 @@ export type Action =
   | { type: 'CLICKED_IMG_ICON' }
   | { type: 'NOT_CLICKED_IMG_ICON' }
   | { type: 'IMG_TO_STR'; imgFile: string }
-  | { type: 'IMG_TO_BINARY'; imgFile: FileReader };
+  | { type: 'IMG_TO_BINARY'; imgFile: FileReader }
+  | { type: 'RESET_PREV_IMG'; };

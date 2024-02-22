@@ -12,6 +12,7 @@ function WriteNote({
   isIconClicked,
   contents,
   handleChangeFn,
+  handleResetPrevImg,
 }: WriteNoteProps) {
   const nickname = localStorage.getItem('nickname');
   const { textColor, background } = lecueNoteState;
@@ -33,7 +34,7 @@ function WriteNote({
         $imgFile={imgFile}
       >
         {isLoading ? (
-          <NoteLoading />
+          <NoteLoading handleResetPrevImg={handleResetPrevImg} />
         ) : (
           <>
             <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>

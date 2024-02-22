@@ -47,6 +47,7 @@ export interface WriteNoteProps {
   };
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleResetPrevImg: () => void;
 }
 
 export interface FooterProps {

@@ -30,10 +30,6 @@ function LecueNotePage() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleIsLoading = (booleanStatus: boolean) => {
-    setIsLoading(booleanStatus);
-  };
-
   const [lecueNoteState, dispatch] = useReducer(reducer, {
     presignedUrl: '',
     filename: BG_COLOR_CHART[0],
@@ -46,6 +42,14 @@ function LecueNotePage() {
     imgToStr: '',
     imgToBinary: new FileReader(),
   });
+
+  const handleIsLoading = (booleanStatus: boolean) => {
+    setIsLoading(booleanStatus);
+  };
+
+  const handleResetPrevImg = () => {
+    dispatch({ type: 'RESET_PREV_IMG' });
+  };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({ type: 'SET_CONTENTS', contents: e.target.value });
@@ -123,12 +127,13 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
-        isLoading={isLoading}
+          isLoading={isLoading}
           imgFile={lecueNoteState.imgToStr}
           isIconClicked={lecueNoteState.isIconClicked}
           lecueNoteState={lecueNoteState}
           contents={lecueNoteState.contents}
           handleChangeFn={handleChangeContents}
+          handleResetPrevImg={handleResetPrevImg}
         />
         <SelectColor
           isIconClicked={lecueNoteState.isIconClicked}
