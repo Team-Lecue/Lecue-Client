@@ -1,9 +1,8 @@
 import GraphemeSplitter from 'grapheme-splitter';
-import Lottie from 'lottie-react';
 import { useEffect, useState } from 'react';
 
-import animationData from '../../../../src/assets/lottie/spiner 120.json';
 import { WriteNoteProps } from '../../type/lecueNoteType';
+import NoteLoading from './NoteLoading';
 import * as S from './WriteNote.style';
 
 function WriteNote({
@@ -34,11 +33,7 @@ function WriteNote({
         $imgFile={imgFile}
       >
         {isLoading ? (
-          <S.LoadingWrapper>
-            <S.LottieWrapper>
-              <Lottie animationData={animationData} />
-            </S.LottieWrapper>
-          </S.LoadingWrapper>
+          <NoteLoading />
         ) : (
           <>
             <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
