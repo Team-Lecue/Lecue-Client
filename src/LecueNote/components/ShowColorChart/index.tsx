@@ -13,6 +13,7 @@ function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  contents,
   handleTransformImgFile,
   presignedUrlDispatch,
   selectedFile,
@@ -22,6 +23,10 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   useGetPresignedUrl({ presignedUrlDispatch });
+
+  const handleChangeContents = () => {
+    localStorage.setItem('noteContents', contents ? contents : '');
+  };
 
   const handleReaderOnloadend = (reader: FileReader, file: File) => {
     handleTransformImgFile(reader);
@@ -76,6 +81,7 @@ function ShowColorChart({
           <S.IconWrapper
             onClick={() => {
               handleIconFn();
+              handleChangeContents();
               imgRef.current?.click();
             }}
             $isIconClicked={isIconClicked}

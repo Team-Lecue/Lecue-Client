@@ -23,17 +23,17 @@ function LecueNotePage() {
   const location = useLocation();
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
+  const noteContents = localStorage.getItem('noteContents');
   const { bookId } = location.state || {};
 
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
 
   const [lecueNoteState, dispatch] = useReducer(reducer, {
     presignedUrl: '',
     filename: BG_COLOR_CHART[0],
-    contents: '',
+    contents: noteContents !== null ? noteContents : '',
     category: CATEGORY[0],
     textColor: TEXT_COLOR_CHART[0],
     background: BG_COLOR_CHART[0],
@@ -99,6 +99,8 @@ function LecueNotePage() {
       isIconClicked: lecueNoteState.isIconClicked,
       bookId: bookId,
     });
+
+    localStorage.setItem('noteContents', '');
   };
 
   return putMutation.isLoading || postMutation.isLoading ? (
@@ -115,7 +117,10 @@ function LecueNotePage() {
 
       {escapeModal && (
         <CommonModal
-          handleFn={() => navigate(-1)}
+          handleFn={() => {
+            navigate(-1);
+            localStorage.setItem('noteContents', '');
+          }}
           category="note_escape"
           setModalOn={setEscapeModal}
         />

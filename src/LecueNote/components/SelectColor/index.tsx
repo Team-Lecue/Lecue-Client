@@ -20,7 +20,7 @@ function SelectColor({
   selectedFile,
   handleIsLoading,
 }: SelectColorProps) {
-  const { textColor, background, category } = lecueNoteState;
+  const { textColor, background, category, contents } = lecueNoteState;
 
   return (
     <S.Wrapper>
@@ -44,6 +44,7 @@ function SelectColor({
         isIconClicked={isIconClicked}
         colorChart={category === '텍스트색' ? TEXT_COLOR_CHART : BG_COLOR_CHART}
         state={category === '텍스트색' ? textColor : background}
+        contents={contents}
         handleTransformImgFile={handleTransformImgFile}
         presignedUrlDispatch={presignedUrlDispatch}
         selectedFile={selectedFile}

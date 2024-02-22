@@ -33,26 +33,20 @@ function WriteNote({
         $isIconClicked={isIconClicked}
         $imgFile={imgFile}
       >
-        {isLoading ? (
-          <NoteLoading handleResetPrevImg={handleResetPrevImg} />
-        ) : (
-          <>
-            <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
-            <S.Contents
-              $textColor={textColor}
-              onChange={handleChangeFn}
-              placeholder="최애에게 마음을 표현해보세요"
-            />
-            <S.BottomContentsWrapper>
-              <S.Date>
-                {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
-              </S.Date>
-              <S.Counter>
-                ({split.splitGraphemes(contents).length}/1000)
-              </S.Counter>
-            </S.BottomContentsWrapper>
-          </>
-        )}
+        {isLoading && <NoteLoading handleResetPrevImg={handleResetPrevImg} />}
+
+        <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
+        <S.Contents
+          $textColor={textColor}
+          onChange={handleChangeFn}
+          placeholder="최애에게 마음을 표현해보세요"
+        />
+        <S.BottomContentsWrapper>
+          <S.Date>
+            {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
+          </S.Date>
+          <S.Counter>({split.splitGraphemes(contents).length}/1000)</S.Counter>
+        </S.BottomContentsWrapper>
       </S.LecueNote>
       <S.Notice>*욕설/비속어는 자동 필터링됩니다.</S.Notice>
     </S.Wrapper>

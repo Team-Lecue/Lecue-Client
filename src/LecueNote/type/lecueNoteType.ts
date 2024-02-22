@@ -4,6 +4,7 @@ export interface SelectColorProps {
     textColor: string;
     background: string;
     category?: string;
+    contents?: string;
   };
   selectedFile: (file: File) => void;
   presignedUrlDispatch: React.Dispatch<{
@@ -24,6 +25,7 @@ export interface ShowColorChartProps {
   isIconClicked: boolean;
   colorChart: string[];
   state: string;
+  contents?: string;
   handleTransformImgFile: (file: string | FileReader) => void;
   selectedFile: (file: File) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
