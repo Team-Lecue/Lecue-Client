@@ -71,7 +71,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         setHeightFromBottom(fullHeight - stickerState.positionY);
       }
     }
-  }, [scrollRef]);
+  }, [fullHeight, stickerState.positionY, scrollRef]);
 
   useEffect(() => {
     if (location.state) {
