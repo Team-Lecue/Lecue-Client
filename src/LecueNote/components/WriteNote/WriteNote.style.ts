@@ -14,6 +14,7 @@ export const LecueNote = styled.article<{
 }>`
   display: flex;
   flex-direction: column;
+  position: relative;
 
   width: 100%;
   height: calc(100dvh - 33.2rem);

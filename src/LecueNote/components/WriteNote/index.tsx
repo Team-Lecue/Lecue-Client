@@ -2,14 +2,17 @@ import GraphemeSplitter from 'grapheme-splitter';
 import { useEffect, useState } from 'react';
 
 import { WriteNoteProps } from '../../type/lecueNoteType';
+import NoteLoading from './NoteLoading';
 import * as S from './WriteNote.style';
 
 function WriteNote({
+  isLoading,
   lecueNoteState,
   imgFile,
   isIconClicked,
   contents,
   handleChangeFn,
+  handleResetPrevImg,
 }: WriteNoteProps) {
   const nickname = localStorage.getItem('nickname');
   const { textColor, background } = lecueNoteState;
@@ -30,6 +33,8 @@ function WriteNote({
         $isIconClicked={isIconClicked}
         $imgFile={imgFile}
       >
+        {isLoading && <NoteLoading handleResetPrevImg={handleResetPrevImg} />}
+
         <S.Nickname $textColor={textColor}>{nickname}</S.Nickname>
         <S.Contents
           $textColor={textColor}
