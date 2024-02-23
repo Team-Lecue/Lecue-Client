@@ -4,6 +4,7 @@ export interface SelectColorProps {
     textColor: string;
     background: string;
     category?: string;
+    contents?: string;
   };
   selectedFile: (file: File) => void;
   presignedUrlDispatch: React.Dispatch<{
@@ -17,12 +18,14 @@ export interface SelectColorProps {
   handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
   handleTransformImgFile: (file: string | FileReader) => void;
+  handleIsLoading: (status: boolean) => void;
 }
 
 export interface ShowColorChartProps {
   isIconClicked: boolean;
   colorChart: string[];
   state: string;
+  contents?: string;
   handleTransformImgFile: (file: string | FileReader) => void;
   selectedFile: (file: File) => void;
   handleFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -32,9 +35,11 @@ export interface ShowColorChartProps {
     presignedUrl: string;
     filename: string;
   }>;
+  handleIsLoading: (status: boolean) => void;
 }
 
 export interface WriteNoteProps {
+  isLoading: boolean;
   imgFile: string;
   isIconClicked: boolean;
   lecueNoteState: {
@@ -44,6 +49,7 @@ export interface WriteNoteProps {
   };
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleResetPrevImg: () => void;
 }
 
 export interface FooterProps {

@@ -23,15 +23,17 @@ function LecueNotePage() {
   const location = useLocation();
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
+  const noteContents = sessionStorage.getItem('noteContents');
   const { bookId } = location.state || {};
 
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [lecueNoteState, dispatch] = useReducer(reducer, {
     presignedUrl: '',
     filename: BG_COLOR_CHART[0],
-    contents: '',
+    contents: noteContents !== null ? noteContents : '',
     category: CATEGORY[0],
     textColor: TEXT_COLOR_CHART[0],
     background: BG_COLOR_CHART[0],
@@ -40,6 +42,14 @@ function LecueNotePage() {
     imgToStr: '',
     imgToBinary: new FileReader(),
   });
+
+  const handleIsLoading = (booleanStatus: boolean) => {
+    setIsLoading(booleanStatus);
+  };
+
+  const handleResetPrevImg = () => {
+    dispatch({ type: 'RESET_PREV_IMG' });
+  };
 
   const handleChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({ type: 'SET_CONTENTS', contents: e.target.value });
@@ -89,6 +99,8 @@ function LecueNotePage() {
       isIconClicked: lecueNoteState.isIconClicked,
       bookId: bookId,
     });
+
+    sessionStorage.setItem('noteContents', '');
   };
 
   return putMutation.isLoading || postMutation.isLoading ? (
@@ -105,7 +117,10 @@ function LecueNotePage() {
 
       {escapeModal && (
         <CommonModal
-          handleFn={() => navigate(-1)}
+          handleFn={() => {
+            navigate(-1);
+            sessionStorage.setItem('noteContents', '');
+          }}
           category="note_escape"
           setModalOn={setEscapeModal}
         />
@@ -117,11 +132,13 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
+          isLoading={isLoading}
           imgFile={lecueNoteState.imgToStr}
           isIconClicked={lecueNoteState.isIconClicked}
           lecueNoteState={lecueNoteState}
           contents={lecueNoteState.contents}
           handleChangeFn={handleChangeContents}
+          handleResetPrevImg={handleResetPrevImg}
         />
         <SelectColor
           isIconClicked={lecueNoteState.isIconClicked}
@@ -139,6 +156,7 @@ function LecueNotePage() {
           }
           handleColorFn={handleClickedColorBtn}
           handleIconFn={() => dispatch({ type: 'CLICKED_IMG_ICON' })}
+          handleIsLoading={handleIsLoading}
         />
       </S.CreateNote>
 

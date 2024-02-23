@@ -46,6 +46,9 @@ export const reducer = (state: State, action: Action): State => {
     case 'IMG_TO_BINARY':
       return { ...state, imgToBinary: action.imgFile };
 
+    case 'RESET_PREV_IMG':
+      return { ...state, imgToStr: '' };
+
     default:
       throw new Error('Unhandled action');
   }
