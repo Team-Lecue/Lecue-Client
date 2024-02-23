@@ -25,7 +25,7 @@ function ShowColorChart({
   useGetPresignedUrl({ presignedUrlDispatch });
 
   const handleChangeContents = () => {
-    localStorage.setItem('noteContents', contents ? contents : '');
+    sessionStorage.setItem('noteContents', contents ? contents : '');
   };
 
   const handleReaderOnloadend = (reader: FileReader, file: File) => {
@@ -39,10 +39,7 @@ function ShowColorChart({
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      if (
-        file.name.split('.')[1] === 'heic' ||
-        file.name.split('.')[1] === 'HEIC'
-      ) {
+      if (file.name.split('.')[1].toUpperCase() === 'HEIC') {
         handleClickHeicToJpg({
           file: file,
           handleTransformImgFile,

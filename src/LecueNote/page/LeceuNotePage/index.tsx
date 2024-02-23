@@ -23,7 +23,7 @@ function LecueNotePage() {
   const location = useLocation();
   const putMutation = usePutPresignedUrl();
   const postMutation = usePostLecueNote();
-  const noteContents = localStorage.getItem('noteContents');
+  const noteContents = sessionStorage.getItem('noteContents');
   const { bookId } = location.state || {};
 
   const [modalOn, setModalOn] = useState(false);
@@ -100,7 +100,7 @@ function LecueNotePage() {
       bookId: bookId,
     });
 
-    localStorage.setItem('noteContents', '');
+    sessionStorage.setItem('noteContents', '');
   };
 
   return putMutation.isLoading || postMutation.isLoading ? (
@@ -119,7 +119,7 @@ function LecueNotePage() {
         <CommonModal
           handleFn={() => {
             navigate(-1);
-            localStorage.setItem('noteContents', '');
+            sessionStorage.setItem('noteContents', '');
           }}
           category="note_escape"
           setModalOn={setEscapeModal}
