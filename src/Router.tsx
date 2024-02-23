@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Sentry from '@sentry/react';
+import { AxiosError } from 'axios';
 import { Suspense } from 'react';
 import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import BoundaryErrorPage from './components/common/BoundaryErrorPage';
 import ClearToken from './components/common/ClearToken/ClearToken';
 import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
@@ -25,14 +24,23 @@ import TargetPage from './Target/page/TargetPage';
 function Router() {
   const { reset } = useQueryErrorResetBoundary();
 
-  function fallbackRender(error: any) {
+  interface fallbackProps {
+    error: Error;
+    componentStack: string;
+    eventId: string;
+    resetError(): void;
+  }
+
+  function fallbackRender(fallback: fallbackProps) {
+    const error = fallback.error;
     if (
-      error &&
+      error instanceof AxiosError &&
       (error.response?.status === 401 || error.response?.status === 403)
     ) {
       return <Login />;
     }
-    return <BoundaryErrorPage />;
+    console.log('return');
+    return <ErrorPage />;
   }
 
   return (
