@@ -2,23 +2,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcX, ImgStarPosit } from '../../../assets';
 import ModalPortal from '../../../components/common/Modal/ModalPortal';
-import { LecueNoteType } from '../../types/myPageType';
+import { ModalProps } from '../../types/myPageType';
 import * as S from './NoteModal.style';
 
-interface ModalProps {
-  bookUuid: string;
-  selectedNote: LecueNoteType;
-  setClickedCloseBtn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+function NoteModal(props: ModalProps) {
+  const { bookUuid, selectedNote, handleCloseBtn } = props;
 
-function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
   const navigate = useNavigate();
+
   const handleClickBtn = () => {
     navigate(`/lecue-book/${bookUuid}`);
-  };
-
-  const handleClickCloseBtn = () => {
-    setClickedCloseBtn((prev) => !prev);
   };
 
   return (
@@ -33,7 +26,7 @@ function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
               <ImgStarPosit />
               <S.FavoriteName>{selectedNote.favoriteName}</S.FavoriteName>
             </S.NameWrapper>
-            <S.CloseBtn type="button" onClick={handleClickCloseBtn}>
+            <S.CloseBtn type="button" onClick={handleCloseBtn}>
               <IcX />
             </S.CloseBtn>
           </S.Header>
@@ -45,7 +38,7 @@ function NoteModal({ bookUuid, selectedNote, setClickedCloseBtn }: ModalProps) {
 
             <S.NoteDate>{selectedNote.noteDate}</S.NoteDate>
             <S.Button type="button" onClick={handleClickBtn}>
-              롤링페이퍼 보러가기
+              레큐북 보러가기
             </S.Button>
           </S.BodyWrapper>
         </S.ModalWrapper>

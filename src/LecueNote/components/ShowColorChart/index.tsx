@@ -4,23 +4,34 @@ import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
 import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
+import handleClickFiletoBinary from '../../util/handleClickFiletoBinary';
+import handleClickFiletoString from '../../util/handleClickFiletoString';
+import handleClickHeicToJpg from '../../util/handleClickHeicToJpg';
 import * as S from './ShowColorChart.style';
 
 function ShowColorChart({
   isIconClicked,
   colorChart,
   state,
+  contents,
+  handleTransformImgFile,
+  presignedUrlDispatch,
   selectedFile,
-  setPresignedUrl,
-  binaryImage,
-  setFileName,
-  uploadImage,
   handleFn,
   handleIconFn,
+  handleIsLoading,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  // 여기
-  useGetPresignedUrl(setPresignedUrl, setFileName);
+  useGetPresignedUrl({ presignedUrlDispatch });
+
+  const handleChangeContents = () => {
+    sessionStorage.setItem('noteContents', contents ? contents : '');
+  };
+
+  const handleReaderOnloadend = (reader: FileReader, file: File) => {
+    handleTransformImgFile(reader);
+    selectedFile(file);
+  };
 
   const handleImageUpload = () => {
     const fileInput = imgRef.current;
@@ -28,20 +39,28 @@ function ShowColorChart({
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      // reader1: 파일을 base64로 읽어서 업로드
-      const reader1 = new FileReader();
-      reader1.readAsDataURL(file);
-      reader1.onloadend = () => {
-        if (reader1.result !== null) {
-          uploadImage(reader1.result as string);
-        }
-      };
+      if (file.name.split('.')[1].toUpperCase() === 'HEIC') {
+        handleClickHeicToJpg({
+          file: file,
+          handleTransformImgFile,
+          handleReaderOnloadend,
+          handleIsLoading,
+        });
+      } else {
+        const reader1 = new FileReader();
+        handleClickFiletoString({
+          file: file,
+          reader: reader1,
+          handleTransformImgFile,
+        });
 
-      // reader2: 파일을 ArrayBuffer로 읽어서 PUT 요청 수행
-      const reader2 = new FileReader();
-      reader2.readAsArrayBuffer(file);
-      binaryImage(reader2);
-      selectedFile(file);
+        const reader2 = new FileReader();
+        handleClickFiletoBinary({
+          file: file,
+          reader: reader2,
+          handleReaderOnloadend,
+        });
+      }
     }
   };
 
@@ -51,7 +70,7 @@ function ShowColorChart({
         <>
           <S.Input
             type="file"
-            accept="image/*"
+            accept="image/*, image/heic"
             onChange={handleImageUpload}
             ref={imgRef}
           />
@@ -59,6 +78,7 @@ function ShowColorChart({
           <S.IconWrapper
             onClick={() => {
               handleIconFn();
+              handleChangeContents();
               imgRef.current?.click();
             }}
             $isIconClicked={isIconClicked}
@@ -72,6 +92,7 @@ function ShowColorChart({
           <S.Color
             type="button"
             id={colorCode}
+            name={colorChart === BG_COLOR_CHART ? 'background' : 'textColor'}
             variant={state === colorCode}
             $isIconClicked={
               colorChart === BG_COLOR_CHART ? isIconClicked : false

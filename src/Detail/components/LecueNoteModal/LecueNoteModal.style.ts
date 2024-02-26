@@ -32,7 +32,7 @@ export const LecueNoteModalWrapper = styled.div<{
       return `background: url(${noteBackground})`;
     }
   }};
-  background-size: cover;
+  background-size: 31.1rem 35.8rem;
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};

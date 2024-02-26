@@ -36,7 +36,7 @@ export const ListWrapper = styled.section<{ variant: string }>`
 
   width: 100%;
   height: calc(100dvh - 19.3rem);
-  padding: 1rem;
+  padding: 1rem 1rem 1rem ${({ variant }) => (variant === 'note' ? 1.5 : 1)}rem;
 
   border-radius: ${({ variant }) => (variant === 'note' ? 0 : 0.4)}rem
     ${({ variant }) => (variant === 'note' ? 0.4 : 0)}rem 0.4rem 0.4rem;
@@ -45,8 +45,8 @@ export const ListWrapper = styled.section<{ variant: string }>`
 
 export const ListContainer = styled.div<{ variant: string }>`
   display: flex;
-  gap: ${({ variant }) => (variant === 'note' ? 1 : 0.8)}rem
-    ${({ variant }) => (variant === 'note' ? 1 : 0.95)}rem;
+  gap: ${({ variant }) => (variant === 'note' ? 1.1 : 0.8)}rem
+    ${({ variant }) => (variant === 'note' ? 1.1 : 0.95)}rem;
   flex-wrap: wrap;
   overflow: scroll;
 

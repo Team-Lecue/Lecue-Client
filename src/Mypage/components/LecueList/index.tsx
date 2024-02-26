@@ -42,7 +42,6 @@ function LecueList() {
   return (
     <S.Wrapper>
       <S.ButtonWrapper>
-        {/* clickedBtn이 true이면 note false이면 book */}
         <S.Button
           type="button"
           variant={clickedBtn === 'note'}
@@ -59,8 +58,8 @@ function LecueList() {
         </S.Button>
       </S.ButtonWrapper>
 
-      <S.ListWrapper variant={clickedBtn} id="list-wrapper">
-        <S.ListContainer variant={clickedBtn}>
+      <S.ListWrapper variant={clickedBtn}>
+        <S.ListContainer variant={clickedBtn} id="list-wrapper">
           {clickedBtn === 'note' ? (
             myNoteList && myNoteList.length !== 0 ? (
               myNoteList.map((note: LecueNoteType) => {

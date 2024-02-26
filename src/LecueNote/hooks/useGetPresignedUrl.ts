@@ -1,26 +1,37 @@
-import { useQuery } from 'react-query';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import getPresignedUrl from '../api/getPresignedUrl';
+import { getPresignedUrlProps } from '../type/lecueNoteType';
 
-const useGetPresignedUrl = (
-  setPresignedUrl: React.Dispatch<React.SetStateAction<string>>,
-  setFileName: React.Dispatch<React.SetStateAction<string>>,
-) => {
+const useGetPresignedUrl = ({ presignedUrlDispatch }: getPresignedUrlProps) => {
   const navigate = useNavigate();
+  const isUnmounted = useRef(false);
 
-  const { isLoading, data } = useQuery({
-    queryKey: ['get-presigned-url'],
-    queryFn: () => getPresignedUrl(),
-    onError: () => navigate('/error'),
-    onSuccess: (data) => {
-      setPresignedUrl(data.data.url);
-      setFileName(data.data.fileName);
-    },
-    refetchOnWindowFocus: false,
-  });
+  useEffect(() => {
+    isUnmounted.current = false;
+    const fetchData = async () => {
+      try {
+        const { data } = await getPresignedUrl();
 
-  return { isLoading, data };
+        presignedUrlDispatch({
+          type: 'SET_PRESIGNED_URL',
+          presignedUrl: data.url,
+          filename: data.fileName,
+        });
+      } catch (error) {
+        navigate('/error');
+      }
+    };
+
+    if (!isUnmounted.current) {
+      fetchData();
+    }
+
+    return () => {
+      isUnmounted.current = true;
+    };
+  }, []);
 };
 
 export default useGetPresignedUrl;

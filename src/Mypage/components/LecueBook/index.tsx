@@ -12,7 +12,9 @@ function LecueBook(props: LecueBookProps) {
 
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
+
   const navigate = useNavigate();
+
   const deleteMutation = useDeleteMyBook();
 
   const convertNoteCount = (noteNum: number) => {
@@ -53,11 +55,11 @@ function LecueBook(props: LecueBookProps) {
           <S.Date>{bookDate}</S.Date>
           <S.Count>{noteCount}개</S.Count>
         </S.Footer>
-
         <S.TrashBtn onClick={(event) => handleClickTrashBtn(event)}>
           <IcWaste />
         </S.TrashBtn>
       </S.BookWrapper>
+
       {modalOn && (
         <CommonModal
           category="book_delete"
