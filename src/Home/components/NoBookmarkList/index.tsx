@@ -1,6 +1,14 @@
+import { useNavigate } from 'react-router';
+
 import * as S from './NoBookmarkList.style';
 
 const NoBookmarkList = () => {
+  const navigate = useNavigate();
+
+  const handleClickNavigateBtn = () => {
+    navigate('/mypage');
+  };
+
   return (
     <S.ListWrapper>
       <S.DescriptionWrapper>
@@ -10,7 +18,9 @@ const NoBookmarkList = () => {
         </S.Description>
       </S.DescriptionWrapper>
 
-      <S.NavigateBtn type="button">레큐북 보러가기</S.NavigateBtn>
+      <S.NavigateBtn type="button" onClick={handleClickNavigateBtn}>
+        레큐북 보러가기
+      </S.NavigateBtn>
     </S.ListWrapper>
   );
 };
