@@ -19,6 +19,7 @@ function Home({ handleStep }: StepProps) {
   ) : (
     <S.Wrapper>
       <NavigateLecueBook />
+      {/* 서버 api 나오면 즐겨찾기 data props로 넘겨주는 부분 추가할 예정 */}
       <LecueBookList title="즐겨찾기한 레큐북" />
       <LecueBookList title="인기 레큐북 구경하기" data={data.data} />
     </S.Wrapper>
