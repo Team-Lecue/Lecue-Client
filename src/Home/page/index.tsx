@@ -8,7 +8,7 @@ import useGetLecueBook from '../hooks/useGetLecueBook';
 import * as S from './Home.style';
 
 function Home({ handleStep }: StepProps) {
-  const { isLoading } = useGetLecueBook();
+  const { isLoading, data } = useGetLecueBook();
 
   useEffect(() => {
     handleStep(1);
@@ -19,7 +19,8 @@ function Home({ handleStep }: StepProps) {
   ) : (
     <S.Wrapper>
       <NavigateLecueBook />
-      <LecueBookList />
+      <LecueBookList title="즐겨찾기한 레큐북" />
+      <LecueBookList title="인기 레큐북 구경하기" data={data.data} />
     </S.Wrapper>
   );
 }
