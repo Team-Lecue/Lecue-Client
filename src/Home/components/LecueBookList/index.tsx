@@ -12,7 +12,7 @@ interface BookProps {
 
 interface LecueBookListProps {
   title: string;
-  data?: [BookProps];
+  data?: BookProps[];
 }
 
 function LecueBookList({ title, data }: LecueBookListProps) {
