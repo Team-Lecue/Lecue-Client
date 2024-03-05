@@ -24,6 +24,15 @@ function LecueBookList({ title, data }: LecueBookListProps) {
     navigate(`/lecue-book/${uuid}`);
   };
 
+  const handleClickFavoriteIcon = (bookId: number) => {
+    // api가 나오면 서버 통신 코드로 변경할 예정! (현재는 임시로 구현해둠)
+    const clickedBookMark = document.getElementById(`${bookId}`);
+
+    if (clickedBookMark) {
+      clickedBookMark.style.display = 'none';
+    }
+  };
+
   return (
     <S.LecueBookListWrapper>
       <S.Title>{title}</S.Title>
@@ -33,10 +42,16 @@ function LecueBookList({ title, data }: LecueBookListProps) {
             data.map((book: BookProps) => (
               <S.LecueBook
                 key={book.bookId}
+                id={`${book.bookId}`}
                 onClick={() => handleClickLecueBook(book.bookUuid)}
               >
                 {isBookmark && (
-                  <S.IconWrapper>
+                  <S.IconWrapper
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleClickFavoriteIcon(book.bookId);
+                    }}
+                  >
                     <IcHomeFavorite />
                   </S.IconWrapper>
                 )}
