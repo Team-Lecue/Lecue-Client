@@ -38,11 +38,17 @@ export const LecueBook = styled.li`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   width: 100%;
-  height: 14rem;
 
   cursor: pointer;
+`;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0.1rem;
 `;
 
 export const BookImage = styled.img`
