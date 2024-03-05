@@ -6,6 +6,8 @@ import BtnFloatingStickerOrange from './button/btn_floating_sticker_orange.svg?r
 import BtnFloatingWrite from './button/btn_floating_write.svg?react';
 import BtnFloatingWriteOrange from './button/btn_floating_write_orange.svg?react';
 import BtnKakaologin from './button/btn_kakaologin.svg?react';
+import IcAlertO from './icon/ic_alert_o.svg?react';
+import IcAlertX from './icon/ic_alert_x.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
@@ -15,7 +17,9 @@ import IcCheck from './icon/ic_check.svg?react';
 import IcCrown from './icon/ic_crown.svg?react';
 import IcDate from './icon/ic_date.svg?react';
 import IcHome from './icon/ic_home.svg?react';
+import IcHomeFavorite from './icon/ic_home_favorite.svg?react';
 import IcNotice from './icon/ic_notice.svg?react';
+import IcProfile from './icon/ic_profile.svg?react';
 import IcSharing from './icon/ic_sharing.svg?react';
 import IcWaste from './icon/ic_waste.svg?react';
 import IcX from './icon/ic_x.svg?react';
@@ -56,6 +60,8 @@ export {
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
   BtnKakaologin,
+  IcAlertO,
+  IcAlertX,
   IcArrowLeftBlack,
   IcArrowLeftWhite,
   IcCamera,
@@ -65,7 +71,9 @@ export {
   IcCrown,
   IcDate,
   IcHome,
+  IcHomeFavorite,
   IcNotice,
+  IcProfile,
   IcSharing,
   IcWaste,
   IcX,
