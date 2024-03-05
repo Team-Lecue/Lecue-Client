@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import BoundaryErrorPage from './components/common/BoundaryErrorPage';
 import ClearToken from './components/common/ClearToken/ClearToken';
 import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
@@ -28,24 +29,23 @@ function Router() {
     error: Error;
     componentStack: string;
     eventId: string;
-    resetError(): void;
+    resetError: () => void;
   }
 
-  function fallbackRender(fallback: fallbackProps) {
-    const error = fallback.error;
+  function fallback(fallback: fallbackProps) {
+    const { error, resetError } = fallback;
     if (
       error instanceof AxiosError &&
       (error.response?.status === 401 || error.response?.status === 403)
     ) {
       return <Login />;
     }
-    console.log('return');
-    return <ErrorPage />;
+    return <BoundaryErrorPage resetError={resetError} />;
   }
 
   return (
     <BrowserRouter>
-      <Sentry.ErrorBoundary fallback={fallbackRender} onReset={reset}>
+      <Sentry.ErrorBoundary fallback={fallback}>
         <Suspense fallback={<LoadingPage />}>
           <Routes>
             <Route path="/" element={<SelectView />} />
