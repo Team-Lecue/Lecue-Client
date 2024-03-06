@@ -40,22 +40,20 @@ function LecueBookList({ title, data }: LecueBookListProps) {
         <S.LecueBookList>
           {data &&
             data.map((book: BookProps) => (
-              <S.LecueBook
-                key={book.bookId}
-                id={`${book.bookId}`}
-                onClick={() => handleClickLecueBook(book.bookUuid)}
-              >
+              <S.LecueBook key={book.bookId} id={`${book.bookId}`}>
                 {isBookmark && (
                   <S.IconWrapper
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleClickFavoriteIcon(book.bookId);
-                    }}
+                    onClick={() => handleClickFavoriteIcon(book.bookId)}
                   >
                     <IcHomeFavorite />
                   </S.IconWrapper>
                 )}
-                <S.BookImage src={book.favoriteImage} alt="레큐북-이미지" />
+
+                <S.BookImage
+                  src={book.favoriteImage}
+                  alt="레큐북-이미지"
+                  onClick={() => handleClickLecueBook(book.bookUuid)}
+                />
                 <S.BookTitle>{book.favoriteName}</S.BookTitle>
               </S.LecueBook>
             ))}
