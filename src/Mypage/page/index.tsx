@@ -1,7 +1,5 @@
 import Header from '../../components/common/Header';
 import LoadingPage from '../../components/common/LoadingPage';
-import LecueList from '../components/LecueList';
-import Nickname from '../components/Nickname';
 import useDeleteMyBook from '../hooks/useDeleteMyBook';
 import useGetMyBookList from '../hooks/useGetMyBookList';
 import useGetMyNickName from '../hooks/useGetMyNickname';
@@ -17,13 +15,8 @@ function Mypage() {
     <LoadingPage />
   ) : (
     <S.Wrapper>
-      <Header headerTitle={'내 기록'} />
-      <S.InfoWrapper>
-        <Nickname />
-      </S.InfoWrapper>
-      <S.ListWrapper>
-        <LecueList />
-      </S.ListWrapper>
+      <Header headerTitle={'마이페이지'} />
+      <S.MyPageBodyWrapper></S.MyPageBodyWrapper>
     </S.Wrapper>
   );
 }
