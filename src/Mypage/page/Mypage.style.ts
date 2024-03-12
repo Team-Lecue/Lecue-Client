@@ -12,5 +12,6 @@ export const Wrapper = styled.article`
 `;
 
 export const MyPageBodyWrapper = styled.div`
+  padding: 0 1.6rem;
   margin-top: 5.4rem;
 `;
