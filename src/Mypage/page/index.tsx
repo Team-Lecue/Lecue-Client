@@ -1,6 +1,7 @@
+import { Outlet } from 'react-router-dom';
+
 import Header from '../../components/common/Header';
 import LoadingPage from '../../components/common/LoadingPage';
-import EnterView from '../components/EnterView';
 import useDeleteMyBook from '../hooks/useDeleteMyBook';
 import useGetMyBookList from '../hooks/useGetMyBookList';
 import useGetMyNickName from '../hooks/useGetMyNickname';
@@ -18,7 +19,7 @@ function Mypage() {
     <S.Wrapper>
       <Header headerTitle={'마이페이지'} />
       <S.MyPageBodyWrapper>
-        <EnterView />
+        <Outlet />
       </S.MyPageBodyWrapper>
     </S.Wrapper>
   );

@@ -14,6 +14,7 @@ import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
+import EnterView from './Mypage/components/EnterView';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';
@@ -35,7 +36,11 @@ function Router() {
             <Route path="/create-note" element={<LecueNotePage />} />
             <Route path="/sticker-pack" element={<StickerPack />} />
             <Route path="/detail" element={<DetailPage />} />
-            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/mypage" element={<Mypage />}>
+              <Route path="" element={<EnterView />} />
+              {/* <Route path="nickname" element={<NicknamePage />} /> */}
+              {/* <Route path="history" element={<History />} /> */}
+            </Route>
             <Route path="/lecue-book/:bookUuid" element={<DetailPage />} />
             <Route path="/target" element={<TargetPage />} />
             <Route path="/test" element={<HealthTest />} />

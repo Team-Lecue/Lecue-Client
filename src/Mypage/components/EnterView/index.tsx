@@ -6,20 +6,11 @@ function EnterView() {
   const navigate = useNavigate();
 
   const handleClickNickname = () => {
-    navigate('/nickname');
+    navigate('nickname');
   };
 
   const handleClickHistory = () => {
-    navigate('/history');
-  };
-
-  const handleClickLogout = () => {
-    //모달 띄우기(2차 스프린트)
-    alert('로그아웃');
-  };
-
-  const handleClickUnsubscribe = () => {
-    alert('탈퇴하기');
+    navigate('history');
   };
 
   return (
@@ -63,11 +54,11 @@ function EnterView() {
       <S.OtherWrapper>
         <S.SubTitle>기타</S.SubTitle>
         <S.Tab>
-          <S.Text onClick={handleClickLogout}>로그아웃</S.Text>
+          <S.Text>로그아웃</S.Text>
 
           <IcArrowLeft />
         </S.Tab>
-        <S.Tab onClick={handleClickUnsubscribe}>
+        <S.Tab>
           <S.Text>탈퇴하기</S.Text>
           <IcArrowLeft />
         </S.Tab>
