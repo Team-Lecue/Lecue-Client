@@ -48,3 +48,8 @@ export const Text = styled.span`
   ${({ theme }) => theme.fonts.Title2_M_16};
   color: ${({ theme }) => theme.colors.BG};
 `;
+
+export const Link = styled.a`
+  ${({ theme }) => theme.fonts.Title2_M_16};
+  color: ${({ theme }) => theme.colors.BG};
+`;
