@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { IcArrowLeft } from '../../../assets';
+import useGetMyNickName from '../../hooks/useGetMyNickname';
 import * as S from './EnterView.style';
 function EnterView() {
   const navigate = useNavigate();
+  const { myNickName } = useGetMyNickName();
   const token = window.localStorage.getItem('token');
 
   const handleClickNickname = () => {
@@ -15,16 +17,20 @@ function EnterView() {
     navigate('history');
   };
 
+  const handleClickLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <React.Fragment>
       {token ? (
         <>
           <S.NicknameWrapper>
-            <S.NicknameText>님, 안녕하세요</S.NicknameText>
+            <S.NicknameText>{myNickName}님, 안녕하세요</S.NicknameText>
           </S.NicknameWrapper>
         </>
       ) : (
-        <S.NicknameWrapper variant={'login'}>
+        <S.NicknameWrapper onClick={handleClickLogin} variant={'login'}>
           <S.NicknameText>로그인하세요</S.NicknameText>
           <IcArrowLeft />
         </S.NicknameWrapper>
