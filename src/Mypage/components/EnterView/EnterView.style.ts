@@ -37,6 +37,18 @@ export const Tab = styled.li`
   cursor: pointer;
 `;
 
+export const Link = styled.a`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 3.2rem;
+  margin: 0.525rem 0;
+
+  cursor: pointer;
+`;
+
 export const SubTitle = styled.span`
   padding-bottom: 1em;
 
@@ -45,11 +57,6 @@ export const SubTitle = styled.span`
 `;
 
 export const Text = styled.span`
-  ${({ theme }) => theme.fonts.Title2_M_16};
-  color: ${({ theme }) => theme.colors.BG};
-`;
-
-export const Link = styled.a`
   ${({ theme }) => theme.fonts.Title2_M_16};
   color: ${({ theme }) => theme.colors.BG};
 `;

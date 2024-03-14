@@ -28,28 +28,22 @@ function EnterView() {
       </S.ProfileWrapper>
       <S.ServiceWrapper>
         <S.SubTitle>서비스 이용 방침</S.SubTitle>
-        <S.Tab>
-          <S.Link href="" rel="noreferrer">
-            팀 설명 보기
-          </S.Link>
+        <S.Link href="" rel="noreferrer">
+          <S.Text>팀 설명 보기</S.Text>
           <IcArrowLeft />
-        </S.Tab>
-        <S.Tab>
-          <S.Link
-            href="https://rileybyeon.notion.site/TEAM-LECUE-b7801fe345544442938d3e54980032e4?pvs=4"
-            target="_blank"
-            rel="noreferrer"
-          >
-            공지사항
-          </S.Link>
+        </S.Link>
+        <S.Link
+          href="https://rileybyeon.notion.site/TEAM-LECUE-b7801fe345544442938d3e54980032e4?pvs=4"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <S.Text>공지사항</S.Text>
           <IcArrowLeft />
-        </S.Tab>
-        <S.Tab>
-          <S.Link href="" rel="noreferrer">
-            문의하기
-          </S.Link>
+        </S.Link>
+        <S.Link href="" rel="noreferrer">
+          <S.Text>문의하기</S.Text>
           <IcArrowLeft />
-        </S.Tab>
+        </S.Link>
       </S.ServiceWrapper>
       <S.OtherWrapper>
         <S.SubTitle>기타</S.SubTitle>
