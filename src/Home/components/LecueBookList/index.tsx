@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 
 import { IcHomeFavorite } from '../../../assets';
+import useDeleteFavorite from '../../hooks/useDeleteFavorite';
 import NoBookmarkList from '../NoBookmarkList';
 import * as S from './LecueBookList.style';
 
@@ -18,6 +19,7 @@ interface LecueBookListProps {
 
 function LecueBookList({ title, data }: LecueBookListProps) {
   const navigate = useNavigate();
+  const deleteMutation = useDeleteFavorite();
   const isBookmark = title.includes('즐겨찾기');
 
   const handleClickLecueBook = (uuid: string) => {
@@ -25,12 +27,7 @@ function LecueBookList({ title, data }: LecueBookListProps) {
   };
 
   const handleClickFavoriteIcon = (bookId: number) => {
-    // api가 나오면 서버 통신 코드로 변경할 예정! (현재는 임시로 구현해둠)
-    const clickedBookMark = document.getElementById(`${bookId}`);
-
-    if (clickedBookMark) {
-      clickedBookMark.style.display = 'none';
-    }
+    deleteMutation.mutate(bookId);
   };
 
   return (
