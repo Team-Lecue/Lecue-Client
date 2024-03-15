@@ -8,7 +8,7 @@ const getFavorite = async () => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return data;
+  return data.data;
 };
 
 export default getFavorite;
