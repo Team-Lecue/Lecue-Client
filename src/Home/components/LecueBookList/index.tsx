@@ -36,27 +36,26 @@ function LecueBookList({ title, data }: LecueBookListProps) {
   return (
     <S.LecueBookListWrapper>
       <S.Title>{title}</S.Title>
-      {data ? (
+      {data && data.length !== 0 ? (
         <S.LecueBookList>
-          {data &&
-            data.map((book: BookProps) => (
-              <S.LecueBook key={book.bookId} id={`${book.bookId}`}>
-                {isBookmark && (
-                  <S.IconWrapper
-                    onClick={() => handleClickFavoriteIcon(book.bookId)}
-                  >
-                    <IcHomeFavorite />
-                  </S.IconWrapper>
-                )}
+          {data.map((book: BookProps) => (
+            <S.LecueBook key={book.bookId} id={`${book.bookId}`}>
+              {isBookmark && (
+                <S.IconWrapper
+                  onClick={() => handleClickFavoriteIcon(book.bookId)}
+                >
+                  <IcHomeFavorite />
+                </S.IconWrapper>
+              )}
 
-                <S.BookImage
-                  src={book.favoriteImage}
-                  alt="레큐북-이미지"
-                  onClick={() => handleClickLecueBook(book.bookUuid)}
-                />
-                <S.BookTitle>{book.favoriteName}</S.BookTitle>
-              </S.LecueBook>
-            ))}
+              <S.BookImage
+                src={book.favoriteImage}
+                alt="레큐북-이미지"
+                onClick={() => handleClickLecueBook(book.bookUuid)}
+              />
+              <S.BookTitle>{book.favoriteName}</S.BookTitle>
+            </S.LecueBook>
+          ))}
         </S.LecueBookList>
       ) : (
         <NoBookmarkList />
