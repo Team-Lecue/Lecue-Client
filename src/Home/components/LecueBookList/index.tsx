@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router';
 
 import { IcHomeFavorite } from '../../../assets';
 import useDeleteFavorite from '../../hooks/useDeleteFavorite';
+import useGetFavorite from '../../hooks/useGetFavorite';
+import useGetLecueBook from '../../hooks/useGetLecueBook';
 import NoBookmarkList from '../NoBookmarkList';
 import * as S from './LecueBookList.style';
 
@@ -14,13 +16,13 @@ interface BookProps {
 
 interface LecueBookListProps {
   title: string;
-  data?: BookProps[];
 }
 
-function LecueBookList({ title, data }: LecueBookListProps) {
+function LecueBookList({ title }: LecueBookListProps) {
   const navigate = useNavigate();
   const deleteMutation = useDeleteFavorite();
   const isBookmark = title.includes('즐겨찾기');
+  const { data } = isBookmark ? useGetFavorite() : useGetLecueBook();
 
   const handleClickLecueBook = (uuid: string) => {
     navigate(`/lecue-book/${uuid}`);
