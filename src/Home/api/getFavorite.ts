@@ -9,8 +9,6 @@ const getFavorite = async () => {
     },
   });
   return data;
-
-  console.log(data);
 };
 
 export default getFavorite;
