@@ -38,8 +38,9 @@ function Router() {
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/mypage" element={<Mypage />}>
               <Route path="" element={<EnterView />} />
-              {/* <Route path="nickname" element={<NicknamePage />} /> */}
-              {/* <Route path="history" element={<History />} /> */}
+              {/* <Route path="edit-nickname" element={<NicknamePage />} /> */}
+              {/* <Route path="history" element={< History/>} /> */}
+              {/* <Route path="select-history" element={<HistoryEnterView />} /> */}
             </Route>
             <Route path="/lecue-book/:bookUuid" element={<DetailPage />} />
             <Route path="/target" element={<TargetPage />} />

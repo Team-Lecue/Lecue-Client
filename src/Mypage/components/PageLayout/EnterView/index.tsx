@@ -16,11 +16,11 @@ function EnterView() {
   }
 
   const handleClickNickname = () => {
-    navigate('nickname');
+    navigate('edit-nickname');
   };
 
   const handleClickHistory = () => {
-    navigate('history');
+    navigate('select-history');
   };
 
   const handleClickLogin = () => {
