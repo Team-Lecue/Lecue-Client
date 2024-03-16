@@ -14,7 +14,7 @@ import HealthTest from './HealthTest';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
-import EnterView from './Mypage/components/EnterView';
+import EnterView from './Mypage/components/PageLayout/EnterView';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';

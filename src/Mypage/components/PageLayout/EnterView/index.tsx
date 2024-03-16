@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { IcArrowLeft } from '../../../assets';
-import useGetMyNickName from '../../hooks/useGetMyNickname';
+import { IcArrowLeft } from '../../../../assets';
+import useGetMyNickName from '../../../hooks/useGetMyNickname';
 import * as S from './EnterView.style';
 
 function EnterView() {
