@@ -5,6 +5,7 @@ const colors = {
   white: '#FFFFFF',
   background: '#F5F5F5',
   LG: '#DDDDDD',
+  LG_2: '#E7E7E7',
   WG: '#BCBCBC',
   MG: '#9E9E9E',
   DG: '#494949',
