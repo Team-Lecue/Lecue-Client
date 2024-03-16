@@ -6,9 +6,9 @@ import BtnFloatingStickerOrange from './button/btn_floating_sticker_orange.svg?r
 import BtnFloatingWrite from './button/btn_floating_write.svg?react';
 import BtnFloatingWriteOrange from './button/btn_floating_write_orange.svg?react';
 import BtnKakaologin from './button/btn_kakaologin.svg?react';
-import IcArrowLeft from './icon/ic_arrow_left.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
+import IcArrowRightGray from './icon/ic_arrow_right_gray.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
 import IcCameraSmall from './icon/ic_camera_small.svg?react';
 import IcCaution from './icon/ic_caution.svg?react';
@@ -61,9 +61,9 @@ export {
   BtnFloatingWrite,
   BtnFloatingWriteOrange,
   BtnKakaologin,
-  IcArrowLeft,
   IcArrowLeftBlack,
   IcArrowLeftWhite,
+  IcArrowRightGray,
   IcCamera,
   IcCameraSmall,
   IcCaution,
