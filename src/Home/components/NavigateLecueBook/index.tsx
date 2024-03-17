@@ -10,12 +10,14 @@ function NavigateLecueBook() {
   const navigate = useNavigate();
   const [modalOn, setModalOn] = useState(false);
 
+  const handleClickIcProfile = () => {
+    const token = localStorage.getItem('token');
+
+    navigate('/mypage', { state: token });
+  };
+
   const handleClickNavBtn = (idx: number) => {
-    if (localStorage.getItem('token')) {
-      idx === 0 ? navigate('/target') : navigate('/mypage');
-    } else {
-      setModalOn(true);
-    }
+    idx === 0 ? navigate('/target') : handleClickIcProfile();
   };
 
   return (
