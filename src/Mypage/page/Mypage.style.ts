@@ -10,9 +10,3 @@ export const Wrapper = styled.article`
 
   background-color: ${({ theme }) => theme.colors.background};
 `;
-
-export const MyPageBodyWrapper = styled.div`
-  width: 100%;
-  padding: 0 1.6rem;
-  margin-top: 5.4rem;
-`;
