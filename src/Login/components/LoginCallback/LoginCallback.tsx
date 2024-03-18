@@ -1,40 +1,24 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import { getLoginToken } from '../../api/getLoginToken';
-import { postLoginToken } from '../../api/postLoginToken';
+import LoadingPage from '../../../components/common/LoadingPage';
+import useGetLoginToken from '../../hooks/useGetLoginToken';
+import usePostLoginToken from '../../hooks/usePostLoginToken';
 
 function LoginCallback() {
-  const navigate = useNavigate();
+  const [loginToken, setLoginToken] = useState('');
+
+  const handleLoginToken = (token: string) => {
+    setLoginToken(token);
+  };
+
+  const getMutation = useGetLoginToken({ handleLoginToken });
+  const postMutation = usePostLoginToken();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const tokenRes = await getLoginToken();
+    loginToken === '' ? getMutation.mutate() : postMutation.mutate(loginToken);
+  }, [loginToken]);
 
-        const { nickname, tokenDto } = await postLoginToken(tokenRes);
-
-        if (nickname === null || nickname === '') {
-          navigate('/register', { state: { token: tokenDto.accessToken } });
-        } else {
-          window.localStorage.setItem('token', tokenDto.accessToken);
-          window.localStorage.setItem('nickname', nickname);
-
-          if (sessionStorage.getItem('url') === '') {
-            navigate('/', { state: { step: 1 } });
-          } else {
-            navigate(-4);
-          }
-        }
-      } catch (error) {
-        console.error('로딩-fetchData() 에러 발생:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return <></>;
+  return <LoadingPage />;
 }
 
 export default LoginCallback;

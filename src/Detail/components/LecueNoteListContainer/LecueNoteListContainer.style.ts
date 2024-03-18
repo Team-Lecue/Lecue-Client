@@ -26,7 +26,6 @@ export const LecueNoteListViewWrapper = styled.div`
 `;
 
 export const StickerButton = styled.button`
-  position: fixed;
   right: 2.057rem;
   bottom: 9.8rem;
 
@@ -34,11 +33,10 @@ export const StickerButton = styled.button`
   height: 6.8rem;
 `;
 
-export const WriteButton = styled.button`
+export const StickerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   right: 2.057rem;
-  bottom: 2rem;
-
-  width: 6.8rem;
-  height: 6.8rem;
+  bottom: 9.8rem;
 `;

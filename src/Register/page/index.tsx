@@ -4,9 +4,8 @@ import { useLocation } from 'react-router-dom';
 import NicknameInput from '../components/NicknameInput';
 import RegisterLogo from '../components/RegisterLogo';
 import SubmitButton from '../components/SubmitButton';
+import { isValidState } from '../types/registerTypes';
 import * as S from './Register.style';
-
-export type isValidState = 'valid' | 'special' | 'duplicate' | 'space';
 
 function Register() {
   const [isActive, setIsActive] = useState(false);
@@ -14,26 +13,37 @@ function Register() {
   const [isValid, setIsValid] = useState<isValidState>('valid');
 
   const location = useLocation();
-
   const { token } = location.state && location.state;
+
+  const handleSetNickname = (nickname: string) => {
+    setNickname(nickname);
+  };
+
+  const handleSetIsValid = (isValid: isValidState) => {
+    setIsValid(isValid);
+  };
+
+  const handleSetIsActive = (isActive: boolean) => {
+    setIsActive(isActive);
+  };
 
   return (
     <S.Wrapper>
       <RegisterLogo />
       <NicknameInput
-        setIsActive={setIsActive}
+        handleSetIsActive={handleSetIsActive}
         nickname={nickname}
-        setNickname={setNickname}
+        handleSetNickname={handleSetNickname}
         isValid={isValid}
-        setIsValid={setIsValid}
+        handleSetIsValid={handleSetIsValid}
       />
       <SubmitButton
         isActive={isActive}
         nickname={nickname}
         token={token}
-        setIsValid={setIsValid}
+        handleSetIsValid={handleSetIsValid}
         isValid={isValid}
-        setIsActive={setIsActive}
+        handleSetIsActive={handleSetIsActive}
       />
     </S.Wrapper>
   );

@@ -13,10 +13,7 @@ interface LecueNoteModalProps {
 }
 
 function LecueNoteModal({ selectedNote, closeModal }: LecueNoteModalProps) {
-  const handleCloseButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.stopPropagation();
+  const handleCloseButtonClick = () => {
     closeModal();
   };
   return createPortal(

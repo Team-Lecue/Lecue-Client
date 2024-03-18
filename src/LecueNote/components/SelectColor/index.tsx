@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   BG_COLOR_CHART,
   CATEGORY,
@@ -8,19 +10,18 @@ import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
 function SelectColor({
+  lecueNoteState,
   isIconClicked,
-  clickedCategory,
-  clickedTextColor,
-  clickedBgColor,
-  setPresignedUrl,
-  binaryImage,
-  setFileName,
+  presignedUrlDispatch,
+  handleTransformImgFile,
   handleCategoryFn,
   handleColorFn,
   handleIconFn,
-  uploadImage,
-  selectedFile
+  selectedFile,
+  handleIsLoading,
 }: SelectColorProps) {
+  const { textColor, background, category, contents } = lecueNoteState;
+
   return (
     <S.Wrapper>
       <S.CategoryWrapper>
@@ -29,7 +30,8 @@ function SelectColor({
             <S.Category
               key={it}
               type="button"
-              variant={clickedCategory === it}
+              name="category"
+              variant={category === it}
               onClick={handleCategoryFn}
             >
               {it}
@@ -38,35 +40,20 @@ function SelectColor({
         })}
       </S.CategoryWrapper>
 
-      {clickedCategory === '텍스트색' ? (
-        <ShowColorChart
-          isIconClicked={isIconClicked}
-          colorChart={TEXT_COLOR_CHART}
-          state={clickedTextColor}
-          selectedFile={selectedFile}
-          setPresignedUrl={setPresignedUrl}
-          binaryImage={binaryImage}
-          setFileName={setFileName}
-          uploadImage={uploadImage}
-          handleFn={handleColorFn}
-          handleIconFn={handleIconFn}
-        />
-      ) : (
-        <ShowColorChart
-          isIconClicked={isIconClicked}
-          colorChart={BG_COLOR_CHART}
-          state={clickedBgColor}
-          selectedFile={selectedFile}
-          setPresignedUrl={setPresignedUrl}
-          binaryImage={binaryImage}
-          setFileName={setFileName}
-          uploadImage={uploadImage}
-          handleFn={handleColorFn}
-          handleIconFn={handleIconFn}
-        />
-      )}
+      <ShowColorChart
+        isIconClicked={isIconClicked}
+        colorChart={category === '텍스트색' ? TEXT_COLOR_CHART : BG_COLOR_CHART}
+        state={category === '텍스트색' ? textColor : background}
+        contents={contents}
+        handleTransformImgFile={handleTransformImgFile}
+        presignedUrlDispatch={presignedUrlDispatch}
+        selectedFile={selectedFile}
+        handleFn={handleColorFn}
+        handleIconFn={handleIconFn}
+        handleIsLoading={handleIsLoading}
+      />
     </S.Wrapper>
   );
 }
 
-export default SelectColor;
+export default React.memo(SelectColor);

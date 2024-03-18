@@ -4,6 +4,7 @@ export const ZigZagViewWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
+  overflow: hidden;
 
   width: 34.2rem;
   padding: 1rem 0 2rem;
