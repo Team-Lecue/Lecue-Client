@@ -45,7 +45,7 @@ export const LecueBook = styled.li`
   cursor: pointer;
 `;
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.button`
   position: absolute;
   top: 0;
   left: 0.1rem;
