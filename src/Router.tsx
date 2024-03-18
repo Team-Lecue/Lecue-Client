@@ -23,8 +23,6 @@ import StickerPack from './StickerPack/page/StickerPack';
 import TargetPage from './Target/page/TargetPage';
 
 function Router() {
-  const { reset } = useQueryErrorResetBoundary();
-
   interface fallbackProps {
     error: Error;
     componentStack: string;
