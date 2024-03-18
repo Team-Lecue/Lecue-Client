@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
 
 import { IcHomeFavorite } from '../../../assets';
-import useDeleteFavorite from '../../hooks/useDeleteFavorite';
-import useGetFavorite from '../../hooks/useGetFavorite';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import useGetFavorite from '../../../libs/hooks/useGetFavorite';
 import useGetLecueBook from '../../hooks/useGetLecueBook';
 import NoBookmarkList from '../NoBookmarkList';
 import * as S from './LecueBookList.style';
