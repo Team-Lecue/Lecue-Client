@@ -11,6 +11,7 @@ import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import HealthTest from './HealthTest';
+import History from './History/page';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
@@ -56,6 +57,7 @@ function Router() {
             <Route path="/loading-page" element={<LoadingPage />} />
             <Route path="/clear" element={<ClearToken />} />
             <Route path="/*" element={<ErrorPage />} />
+            <Route path="/history" element={<History />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>

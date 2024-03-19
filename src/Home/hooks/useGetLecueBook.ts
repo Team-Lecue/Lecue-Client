@@ -6,14 +6,14 @@ import getLecueBook from '../api/getLecueBook';
 const useGetLecueBook = () => {
   const navigate = useNavigate();
 
-  const { isLoading, data } = useQuery({
+  const { isLoading: isLoadingLecueBook, data: lecueBook } = useQuery({
     queryKey: ['get-lecue-book'],
     queryFn: () => getLecueBook(),
     onError: () => navigate('/error'),
     refetchOnWindowFocus: false,
   });
 
-  return { isLoading, data };
+  return { isLoading: isLoadingLecueBook, data: lecueBook };
 };
 
 export default useGetLecueBook;
