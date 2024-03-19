@@ -19,7 +19,7 @@ function MyLecueBook() {
               title={book.title}
               bookDate={book.bookDate}
               noteNum={book.noteNum}
-              // isFavorite = {book.isFavorite}
+              isFavorite={book.isFavorite}
             />
           );
         })

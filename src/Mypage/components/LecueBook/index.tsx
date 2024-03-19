@@ -3,21 +3,31 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcStar, IcStarDefault, IcWaste } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import usePostFavorite from '../../../libs/hooks/usePostFavorite';
 import useDeleteMyBook from '../../hooks/useDeleteMyBook';
 import { LecueBookProps } from '../../types/myPageType';
 import * as S from './LecueBook.style';
 
 function LecueBook(props: LecueBookProps) {
-  const { bookId, favoriteName, title, bookDate, noteNum, bookUuid } = props;
-  // const { bookId, favoriteName, title, bookDate, noteNum, bookUuid, isFavorite } = props;
-
+  const {
+    bookId,
+    favoriteName,
+    title,
+    bookDate,
+    noteNum,
+    bookUuid,
+    isFavorite,
+  } = props;
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(isFavorite);
 
   const navigate = useNavigate();
 
   const deleteMutation = useDeleteMyBook();
+  const FavoritePostMutation = usePostFavorite();
+  const FavoriteDeleteMutation = useDeleteFavorite();
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
@@ -34,12 +44,18 @@ function LecueBook(props: LecueBookProps) {
     event.stopPropagation();
   };
 
-  /** 즐찾 버튼 클릭 & 해제 */
   const handleClickFavoriteBtn = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    bookId: number,
   ) => {
     event.stopPropagation();
-    setIsFavorite(!isFavorite);
+    if (favorite) {
+      FavoriteDeleteMutation.mutate(bookId);
+      setFavorite(false);
+    } else {
+      FavoritePostMutation.mutate(bookId);
+      setFavorite(true);
+    }
   };
 
   const handleFn = () => {
@@ -48,7 +64,7 @@ function LecueBook(props: LecueBookProps) {
 
   useEffect(() => {
     convertNoteCount(noteNum);
-  });
+  }, [favorite]);
 
   return (
     <S.Wrapper>
@@ -62,10 +78,10 @@ function LecueBook(props: LecueBookProps) {
           <S.Favorite
             type="button"
             onClick={(event) => {
-              handleClickFavoriteBtn(event);
+              handleClickFavoriteBtn(event, bookId);
             }}
           >
-            {isFavorite ? <IcStar /> : <IcStarDefault />}
+            {favorite ? <IcStar /> : <IcStarDefault />}
           </S.Favorite>
         </S.Header>
         <S.Title>{title}</S.Title>
