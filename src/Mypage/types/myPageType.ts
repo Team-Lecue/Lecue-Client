@@ -5,6 +5,7 @@ export interface LecueBookType {
   title: string;
   bookDate: string;
   noteNum: number;
+  isFavorite: boolean;
 }
 
 export interface LecueBookProps extends LecueBookType {
