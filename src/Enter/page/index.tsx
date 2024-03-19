@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { IcArrowRightGray } from '../../../../assets';
-import useGetMyNickName from '../../../hooks/useGetMyNickname';
-import * as S from './EnterView.style';
+import { IcArrowRightGray } from '../../assets';
+import Header from '../../components/common/Header';
+import useGetMyNickName from '../../Mypage/hooks/useGetMyNickname';
+import * as S from './Enter.style';
 
-function EnterView() {
+function Enter() {
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -29,8 +30,9 @@ function EnterView() {
 
   return (
     <React.Fragment>
+      <Header headerTitle="마이페이지" />
       {state ? (
-        <React.Fragment>
+        <S.MypageBodyWrapper>
           <S.NicknameWrapper>
             <S.NicknameText>{nickname}님, 안녕하세요</S.NicknameText>
           </S.NicknameWrapper>
@@ -77,9 +79,9 @@ function EnterView() {
               <IcArrowRightGray />
             </S.Tab>
           </S.MenuWrapper>
-        </React.Fragment>
+        </S.MypageBodyWrapper>
       ) : (
-        <React.Fragment>
+        <S.MypageBodyWrapper>
           <S.NicknameWrapper onClick={handleClickLogin} variant={'login'}>
             <S.NicknameText>로그인하세요</S.NicknameText>
             <IcArrowRightGray />
@@ -104,10 +106,10 @@ function EnterView() {
               <IcArrowRightGray />
             </S.Link>
           </S.MenuWrapper>
-        </React.Fragment>
+        </S.MypageBodyWrapper>
       )}
     </React.Fragment>
   );
 }
 
-export default EnterView;
+export default Enter;

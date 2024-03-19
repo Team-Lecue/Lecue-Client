@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { IcArrowDownBlack } from '../../assets';
 import Header from '../../components/common/Header';
@@ -15,7 +15,7 @@ function History() {
   };
 
   return (
-    <S.HistoryPageWrapper>
+    <React.Fragment>
       {modalOn && (
         <SelectModal
           modalOn={modalOn}
@@ -38,7 +38,7 @@ function History() {
           <IcArrowDownBlack />
         </S.HistorySelectButton>
       </S.HistoryPageBodyWrapper>
-    </S.HistoryPageWrapper>
+    </React.Fragment>
   );
 }
 

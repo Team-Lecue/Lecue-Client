@@ -1,12 +1,17 @@
 import styled from '@emotion/styled';
 
+export const MypageBodyWrapper = styled.div`
+  width: 100%;
+  margin-top: 5.4rem;
+`;
+
 export const NicknameWrapper = styled.div<{ variant?: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   height: 8.9rem;
-  padding: 3.2rem 1.6rem 2.9rem 1.6rem;
+  padding: 3.2rem 1.6rem 2.9rem;
 
   border-bottom: 0.6rem solid ${({ theme }) => theme.colors.LG_2};
 
@@ -22,7 +27,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 2rem 1.6rem 1rem 1.6rem;
+  padding: 2rem 1.6rem 1rem;
 `;
 
 export const Line = styled.div`

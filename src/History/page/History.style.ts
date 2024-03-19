@@ -1,15 +1,7 @@
 import styled from '@emotion/styled';
 
-export const HistoryPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 100vw;
-  height: 100dvh;
-  overflow-x: hidden;
-`;
-
 export const HistoryPageBodyWrapper = styled.div`
+  width: 100%;
   padding: 0 1.6rem;
   margin-top: 5.4rem;
 `;
