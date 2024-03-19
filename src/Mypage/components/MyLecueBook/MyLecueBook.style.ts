@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.article`
   display: flex;
   gap: 1.2rem;
   flex-direction: column;
 
-  padding: 0 1.6rem 2rem;
-  margin-top: 7.9rem;
+  width: 100%;
+  padding-bottom: 2rem;
 `;
