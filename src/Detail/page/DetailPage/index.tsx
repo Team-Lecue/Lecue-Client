@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
@@ -24,25 +25,36 @@ function DetailPage() {
   return isLoading || postMutation.isLoading ? (
     <LoadingPage />
   ) : (
-    <S.DetailPageWrapper>
-      <Header headerTitle="레큐북" isDetailPage={!isEditable} />
-      <S.DetailPageBodyWrapper>
-        <SlideBanner name={bookDetail.favoriteName} />
-        <S.LecueBookContainer>
-          <BookInfoBox {...bookDetail} />
-          <LecueNoteListContainer
-            bookId={bookDetail.bookId}
-            bookUuid={bookUuid}
-            isEditable={isEditable}
-            setEditableStateFalse={setEditableStateFalse}
-            noteNum={bookDetail.noteNum}
-            backgroundColor={bookDetail.bookBackgroundColor}
-            noteList={bookDetail.noteList}
-            postedStickerList={bookDetail.postedStickerList}
-          />
-        </S.LecueBookContainer>
-      </S.DetailPageBodyWrapper>
-    </S.DetailPageWrapper>
+    <>
+      <Helmet>
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="레큐 lecue | ${bookDetail.favoriteName}"
+        />
+        <meta property="og:description" content="${bookDetail.description}" />
+        <meta property="og:image" content="${bookDetail.favoiteImage}" />`
+      </Helmet>
+      <S.DetailPageWrapper>
+        <Header headerTitle="레큐북" isDetailPage={!isEditable} />
+        <S.DetailPageBodyWrapper>
+          <SlideBanner name={bookDetail.favoriteName} />
+          <S.LecueBookContainer>
+            <BookInfoBox {...bookDetail} />
+            <LecueNoteListContainer
+              bookId={bookDetail.bookId}
+              bookUuid={bookUuid}
+              isEditable={isEditable}
+              setEditableStateFalse={setEditableStateFalse}
+              noteNum={bookDetail.noteNum}
+              backgroundColor={bookDetail.bookBackgroundColor}
+              noteList={bookDetail.noteList}
+              postedStickerList={bookDetail.postedStickerList}
+            />
+          </S.LecueBookContainer>
+        </S.DetailPageBodyWrapper>
+      </S.DetailPageWrapper>
+    </>
   );
 }
 
