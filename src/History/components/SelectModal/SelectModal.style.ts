@@ -71,6 +71,7 @@ export const OptionListItem = styled.button`
 export const OptionListItemText = styled.p`
   padding-top: 0.3rem;
 
+  color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Title2_M_16};
 `;
 

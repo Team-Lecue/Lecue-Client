@@ -25,5 +25,6 @@ export const HistorySelectButton = styled.button`
 export const CurrentHistoryOption = styled.h2`
   padding-top: 0.3rem;
 
+  color: ${({ theme }) => theme.colors.BG};
   ${({ theme }) => theme.fonts.Head2_SB_18};
 `;
