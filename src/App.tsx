@@ -1,6 +1,7 @@
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Router from './Router';
@@ -46,12 +47,14 @@ function App() {
 
   return (
     <Wrapper>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <Global styles={gStyle} />
-          <Router />
-        </ThemeProvider>
-      </QueryClientProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <Global styles={gStyle} />
+            <Router />
+          </ThemeProvider>
+        </QueryClientProvider>
+      </HelmetProvider>
     </Wrapper>
   );
 }
