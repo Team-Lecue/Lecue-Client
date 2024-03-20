@@ -25,11 +25,11 @@ export const Title = styled.header`
 
 export const LecueBookList = styled.section`
   display: grid;
-  gap: 2.2rem;
+  gap: 2em 2.4rem;
   grid-template-columns: repeat(3, 1fr);
 
   width: 100%;
-  padding: 3rem 1.6rem 2.2rem;
+  padding: 3rem 1.6rem;
 `;
 
 export const LecueBook = styled.li`
@@ -38,11 +38,17 @@ export const LecueBook = styled.li`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   width: 100%;
-  height: 14rem;
 
   cursor: pointer;
+`;
+
+export const IconWrapper = styled.button`
+  position: absolute;
+  top: 0;
+  left: 0.1rem;
 `;
 
 export const BookImage = styled.img`
