@@ -1,7 +1,7 @@
 import useGetMyBookList from '../../hooks/useGetMyBookList';
 import { LecueBookProps } from '../../types/myPageType';
 import LecueBook from '../LecueBook';
-import * as S from './MyLecueBook.style';
+import * as S from './LecueBookList.style';
 
 function MyLecueBook() {
   const { myBookList } = useGetMyBookList();
