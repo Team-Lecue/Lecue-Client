@@ -1,7 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { AxiosError } from 'axios';
 import { Suspense } from 'react';
-import { useQueryErrorResetBoundary } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import BoundaryErrorPage from './components/common/BoundaryErrorPage';
