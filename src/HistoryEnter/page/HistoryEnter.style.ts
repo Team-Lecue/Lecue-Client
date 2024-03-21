@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.section`
+export const HistoryEnterPageBodyWrapper = styled.section`
   display: flex;
   gap: 1.2rem;
   flex-direction: column;
 
+  width: 100%;
   padding: 2.9rem 1.6rem;
+  margin-top: 5.4rem;
 `;
 
 export const Tab = styled.li`

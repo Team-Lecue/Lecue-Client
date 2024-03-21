@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { IcArrowDownBlack } from '../../assets';
 import Header from '../../components/common/Header';
@@ -9,13 +9,12 @@ import * as S from './History.style';
 function History() {
   const [modalOn, setModalOn] = useState(false);
   const [selectedOption, setSelectedOption] = useState(0);
-
   const handleClickHistorySelectButton = () => {
     setModalOn(true);
   };
 
   return (
-    <S.HistoryPageWrapper>
+    <React.Fragment>
       {modalOn && (
         <SelectModal
           modalOn={modalOn}
@@ -38,7 +37,7 @@ function History() {
           <IcArrowDownBlack />
         </S.HistorySelectButton>
       </S.HistoryPageBodyWrapper>
-    </S.HistoryPageWrapper>
+    </React.Fragment>
   );
 }
 

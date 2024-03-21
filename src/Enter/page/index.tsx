@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { IcArrowRightGray } from '../../assets';
+import Header from '../../components/common/Header';
 import useGetMyNickName from '../../libs/hooks/useGetMyNickname';
 import * as S from './Enter.style';
 
@@ -9,32 +10,28 @@ function Enter() {
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
   const { state } = useLocation();
-
   if (state) {
     const { myNickName } = useGetMyNickName();
     if (nickname === '' || nickname !== myNickName) setNickname(myNickName);
   }
-
   const handleClickNickname = () => {
     navigate('edit-nickname');
   };
-
   const handleClickHistory = () => {
     navigate('select-history');
   };
-
   const handleClickLogin = () => {
     navigate('/login');
   };
 
   return (
     <React.Fragment>
+      <Header headerTitle="마이페이지" />
       {state ? (
-        <React.Fragment>
+        <S.MypageBodyWrapper>
           <S.NicknameWrapper>
             <S.NicknameText>{nickname}님, 안녕하세요</S.NicknameText>
           </S.NicknameWrapper>
-
           <S.MenuWrapper>
             <S.SubTitle>프로필</S.SubTitle>
             <S.Tab onClick={handleClickNickname}>
@@ -47,7 +44,6 @@ function Enter() {
             </S.Tab>
           </S.MenuWrapper>
           <S.Line />
-
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
             <S.Link href="" rel="noreferrer">
@@ -67,24 +63,21 @@ function Enter() {
               <IcArrowRightGray />
             </S.Link>
           </S.MenuWrapper>
-
           <S.Line />
           <S.MenuWrapper>
             <S.SubTitle>기타</S.SubTitle>
             <S.Tab>
               <S.Text>로그아웃</S.Text>
-
               <IcArrowRightGray />
             </S.Tab>
           </S.MenuWrapper>
-        </React.Fragment>
+        </S.MypageBodyWrapper>
       ) : (
-        <React.Fragment>
+        <S.MypageBodyWrapper>
           <S.NicknameWrapper onClick={handleClickLogin} variant={'login'}>
             <S.NicknameText>로그인하세요</S.NicknameText>
             <IcArrowRightGray />
           </S.NicknameWrapper>
-
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
             <S.Link href="" rel="noreferrer">
@@ -104,7 +97,7 @@ function Enter() {
               <IcArrowRightGray />
             </S.Link>
           </S.MenuWrapper>
-        </React.Fragment>
+        </S.MypageBodyWrapper>
       )}
     </React.Fragment>
   );
