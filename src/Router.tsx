@@ -9,12 +9,13 @@ import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
+import Enter from './Enter/page';
 import HealthTest from './HealthTest';
 import History from './History/page';
+import HistoryEnter from './HistoryEnter/page';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
-import EnterView from './Mypage/components/PageLayout/EnterView';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';
@@ -54,10 +55,10 @@ function Router() {
             <Route path="/sticker-pack" element={<StickerPack />} />
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/mypage" element={<Mypage />}>
-              <Route path="" element={<EnterView />} />
-              {/* <Route path="edit-nickname" element={<NicknamePage />} /> */}
-              {/* <Route path="history" element={< History/>} /> */}
-              {/* <Route path="select-history" element={<HistoryEnterView />} /> */}
+              <Route path="" element={<Enter />} />
+              {/* <Route path="edit-nickname" element={<EditNickname />} /> */}
+              <Route path="select-history" element={<HistoryEnter />} />
+              <Route path="history" element={<History />} />
             </Route>
             <Route path="/lecue-book/:bookUuid" element={<DetailPage />} />
             <Route path="/target" element={<TargetPage />} />
@@ -73,7 +74,6 @@ function Router() {
             <Route path="/loading-page" element={<LoadingPage />} />
             <Route path="/clear" element={<ClearToken />} />
             <Route path="/*" element={<ErrorPage />} />
-            <Route path="/history" element={<History />} />
           </Routes>
         </Suspense>
       </Sentry.ErrorBoundary>
