@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { IcArrowRightGray } from '../../../../assets';
-import useGetMyNickName from '../../../hooks/useGetMyNickname';
-import * as S from './EnterView.style';
+import { IcArrowRightGray } from '../../assets';
+import useGetMyNickName from '../../libs/hooks/useGetMyNickname';
+import * as S from './Enter.style';
 
 function Enter() {
   const [nickname, setNickname] = useState('');
