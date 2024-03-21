@@ -1,12 +1,11 @@
-import Header from '../../components/common/Header';
-import PageLayout from '../components/PageLayout';
+import { Outlet } from 'react-router-dom';
+
 import * as S from './Mypage.style';
 
 function Mypage() {
   return (
     <S.Wrapper>
-      <Header headerTitle={'마이페이지'} />
-      <PageLayout />
+      <Outlet />
     </S.Wrapper>
   );
 }
