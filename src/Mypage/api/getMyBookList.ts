@@ -8,5 +8,6 @@ export async function getMyBookList() {
       Authorization: `Bearer ${token}`,
     },
   });
-  return data.data.data.bookList;
+
+  return data.data.data;
 }
