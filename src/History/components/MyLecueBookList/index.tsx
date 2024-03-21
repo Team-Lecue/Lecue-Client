@@ -1,5 +1,5 @@
-import { LecueBookProps } from '../../../Mypage/types/myPageType';
 import useGetMyBookList from '../../hooks/useGetMyBookList';
+import { LecueBookProps } from '../../types/historyType';
 import MyLecueBook from '../MyLecueBook';
 import * as S from './MyLecueBookList.style';
 

@@ -5,8 +5,8 @@ import { IcStar, IcStarDefault, IcWaste } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
 import usePostFavorite from '../../../libs/hooks/usePostFavorite';
-import { LecueBookProps } from '../../../Mypage/types/myPageType';
 import useDeleteMyBook from '../../hooks/useDeleteMyBook';
+import { LecueBookProps } from '../../types/historyType';
 import * as S from './MyLecueBook.style';
 
 function MyLecueBook(props: LecueBookProps) {
