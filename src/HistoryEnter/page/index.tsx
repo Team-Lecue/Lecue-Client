@@ -1,6 +1,6 @@
-import * as S from './HistoryEnterView.style';
+import * as S from './HistoryEnter.style';
 
-function HistoryEnterView() {
+function HistoryEnter() {
   return (
     <S.Wrapper>
       <S.Tab>즐겨찾기 한 레큐북</S.Tab>
@@ -10,4 +10,4 @@ function HistoryEnterView() {
   );
 }
 
-export default HistoryEnterView;
+export default HistoryEnter;
