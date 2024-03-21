@@ -5,7 +5,7 @@ import { IcArrowRightGray } from '../../../../assets';
 import useGetMyNickName from '../../../hooks/useGetMyNickname';
 import * as S from './EnterView.style';
 
-function EnterView() {
+function Enter() {
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -110,4 +110,4 @@ function EnterView() {
   );
 }
 
-export default EnterView;
+export default Enter;
