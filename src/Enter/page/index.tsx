@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { IcArrowRightGray } from '../../assets';
+import { IcMypageArrowRight } from '../../assets';
 import Header from '../../components/common/Header';
 import useGetMyNickName from '../../libs/hooks/useGetMyNickname';
 import * as S from './Enter.style';
@@ -36,11 +36,11 @@ function Enter() {
             <S.SubTitle>프로필</S.SubTitle>
             <S.Tab onClick={handleClickNickname}>
               <S.Text>닉네임 수정</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Tab>
             <S.Tab onClick={handleClickHistory}>
               <S.Text>내 기록보기</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Tab>
           </S.MenuWrapper>
           <S.Line />
@@ -48,7 +48,7 @@ function Enter() {
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
             <S.Link href="" rel="noreferrer">
               <S.Text>팀 설명 보기</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
             <S.Link
               href="https://rileybyeon.notion.site/TEAM-LECUE-b7801fe345544442938d3e54980032e4?pvs=4"
@@ -56,11 +56,11 @@ function Enter() {
               rel="noreferrer"
             >
               <S.Text>공지사항</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
             <S.Link href="" rel="noreferrer">
               <S.Text>문의하기</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
           </S.MenuWrapper>
           <S.Line />
@@ -68,7 +68,7 @@ function Enter() {
             <S.SubTitle>기타</S.SubTitle>
             <S.Tab>
               <S.Text>로그아웃</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Tab>
           </S.MenuWrapper>
         </S.MypageBodyWrapper>
@@ -76,13 +76,13 @@ function Enter() {
         <S.MypageBodyWrapper>
           <S.NicknameWrapper onClick={handleClickLogin} variant={'login'}>
             <S.NicknameText>로그인하세요</S.NicknameText>
-            <IcArrowRightGray />
+            <IcMypageArrowRight />
           </S.NicknameWrapper>
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
             <S.Link href="" rel="noreferrer">
               <S.Text>팀 설명 보기</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
             <S.Link
               href="https://rileybyeon.notion.site/TEAM-LECUE-b7801fe345544442938d3e54980032e4?pvs=4"
@@ -90,11 +90,11 @@ function Enter() {
               rel="noreferrer"
             >
               <S.Text>공지사항</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
             <S.Link href="" rel="noreferrer">
               <S.Text>문의하기</S.Text>
-              <IcArrowRightGray />
+              <IcMypageArrowRight />
             </S.Link>
           </S.MenuWrapper>
         </S.MypageBodyWrapper>
