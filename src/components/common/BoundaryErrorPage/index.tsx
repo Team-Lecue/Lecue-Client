@@ -5,14 +5,14 @@ import { ImgError } from '../../../assets';
 import * as S from './BoundaryErrorPage.style';
 
 interface BoundaryErrorPageProps {
-  resetErrorBoundary: (...args: any[]) => void;
+  resetError: () => void;
 }
 
-function BoundaryErrorPage({ resetErrorBoundary }: BoundaryErrorPageProps) {
+function BoundaryErrorPage({ resetError }: BoundaryErrorPageProps) {
   const navigate = useNavigate();
 
   const handleClickHomeButton = () => {
-    resetErrorBoundary();
+    resetError();
     navigate('/', { state: { step: 1 } });
   };
 
