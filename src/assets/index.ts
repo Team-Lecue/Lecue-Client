@@ -11,7 +11,6 @@ import IcAlertX from './icon/ic_alert_x.svg?react';
 import IcArrowDownBlack from './icon/ic_arrow_down_black.svg?react';
 import IcArrowLeftBlack from './icon/ic_arrow_left_black.svg?react';
 import IcArrowLeftWhite from './icon/ic_arrow_left_white.svg?react';
-import IcArrowRightGray from './icon/ic_arrow_right_gray.svg?react';
 import IcCamera from './icon/ic_camera.svg?react';
 import IcCameraSmall from './icon/ic_camera_small.svg?react';
 import IcCaution from './icon/ic_caution.svg?react';
@@ -73,7 +72,6 @@ export {
   IcArrowDownBlack,
   IcArrowLeftBlack,
   IcArrowLeftWhite,
-  IcArrowRightGray,
   IcCamera,
   IcCameraSmall,
   IcCaution,

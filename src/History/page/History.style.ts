@@ -1,19 +1,10 @@
 import styled from '@emotion/styled';
 
-export const HistoryPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 100vw;
-  height: 100dvh;
-  overflow-x: hidden;
-`;
-
 export const HistoryPageBodyWrapper = styled.div`
+  width: 100%;
   padding: 0 1.6rem;
   margin-top: 5.4rem;
 `;
-
 export const HistorySelectButton = styled.button`
   display: flex;
   gap: 0.5rem;
@@ -21,7 +12,6 @@ export const HistorySelectButton = styled.button`
 
   margin: 3.4rem 0 2rem;
 `;
-
 export const CurrentHistoryOption = styled.h2`
   padding-top: 0.3rem;
 

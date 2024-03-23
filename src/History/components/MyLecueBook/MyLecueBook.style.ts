@@ -8,15 +8,15 @@ export const Wrapper = styled.li`
 
   width: 100%;
   height: 11.4rem;
-  padding: 1.2rem 1.1rem 0.9rem 1.9rem;
+  padding: 1.3rem 1.8rem 1.1rem 2.5rem;
 
   border-radius: 0.4rem;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const BookWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
 
   width: 100%;
@@ -27,20 +27,27 @@ export const BookWrapper = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
   align-items: center;
 
   width: 100%;
+  margin-bottom: 1.2rem;
 `;
 
 export const Name = styled.p`
   ${({ theme }) => theme.fonts.Head2_SB_18};
+  color: ${({ theme }) => theme.colors.BG};
+`;
+
+export const Favorite = styled.button`
+  width: 2.2rem;
+  height: 2.2rem;
 `;
 
 export const TrashBtn = styled.button`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.2rem;
+  right: 1.8rem;
 
   width: 3.2rem;
   height: 3.2rem;
@@ -48,17 +55,20 @@ export const TrashBtn = styled.button`
 
 export const Title = styled.p`
   ${({ theme }) => theme.fonts.Title1_SB_16};
+  color: ${({ theme }) => theme.colors.BG};
 `;
 
 export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-end;
 
   width: 100%;
 `;
 
 export const Date = styled.p`
+  padding-bottom: 0.4rem;
+
   ${({ theme }) => theme.fonts.E_Caption_R_12};
   color: ${({ theme }) => theme.colors.DG50};
 `;
