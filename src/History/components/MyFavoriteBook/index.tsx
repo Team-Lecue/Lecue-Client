@@ -1,32 +1,41 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { IcHomeFavoriteEmpty } from '../../../assets';
+import { IcHomeFavoriteFilled } from '../../../assets';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import { FavoriteBookProps } from '../../types/historyType';
 import * as S from './MyFavoriteBook.style';
 
-function MyFavoriteBook() {
-  const handleClickFavoriteBtn = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    event.stopPropagation();
-    console.log('favorite');
+function MyFavoriteBook(props: FavoriteBookProps) {
+  const { bookId, bookUuid, favoriteImage, favoriteName } = props;
+
+  const navigate = useNavigate();
+  const deleteMutation = useDeleteFavorite();
+
+  const handleClickFavoriteBtn = (bookId: number) => {
+    deleteMutation.mutate(bookId);
   };
 
-  const handleClickBook = () => {
-    console.log('book');
+  const handleClickBook = (bookUuid: string) => {
+    navigate(`/lecue-book/${bookUuid}`);
   };
 
   return (
     <React.Fragment>
       <S.MyFavoriteBookWrapper>
-        <S.BookImage onClick={() => handleClickBook()}>
-          <S.FavoriteButton
-            type="button"
-            onClick={(e) => handleClickFavoriteBtn(e)}
-          >
-            <IcHomeFavoriteEmpty />
-          </S.FavoriteButton>
-        </S.BookImage>
-        <S.Title>SOPT</S.Title>
+        <S.BookImage
+          src={favoriteImage}
+          alt="즐겨찾기-레큐북-이미지"
+          onClick={() => handleClickBook(bookUuid)}
+        />
+        <S.FavoriteButton
+          type="button"
+          onClick={() => handleClickFavoriteBtn(bookId)}
+        >
+          <IcHomeFavoriteFilled />
+        </S.FavoriteButton>
+
+        <S.Title>{favoriteName}</S.Title>
       </S.MyFavoriteBookWrapper>
     </React.Fragment>
   );

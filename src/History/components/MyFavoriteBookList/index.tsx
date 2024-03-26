@@ -1,27 +1,28 @@
-import useGetFavorite from '../../../libs/hooks/useGetFavorite';
+import useGetMyFavorite from '../../hooks/useGetMyFavorite';
+import { FavoriteBookProps } from '../../types/historyType';
 import MyFavoriteBook from '../MyFavoriteBook';
 import * as S from './MyFavoriteBookList.style';
 
 function MyFavoriteBookList() {
-  const { data } = useGetFavorite();
+  const { myFavoriteList } = useGetMyFavorite();
 
   return (
     <S.MyFavoriteBookListWrapper>
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
-      <MyFavoriteBook />
+      {myFavoriteList && myFavoriteList.length !== 0 ? (
+        myFavoriteList.map((book: FavoriteBookProps) => {
+          return (
+            <MyFavoriteBook
+              key={book.bookId}
+              bookId={book.bookId}
+              bookUuid={book.bookUuid}
+              favoriteImage={book.favoriteImage}
+              favoriteName={book.favoriteName}
+            />
+          );
+        })
+      ) : (
+        <div>0개입니당 ㅋㅋ</div>
+      )}
     </S.MyFavoriteBookListWrapper>
   );
 }

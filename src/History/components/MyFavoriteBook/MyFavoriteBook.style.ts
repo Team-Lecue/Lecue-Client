@@ -5,26 +5,34 @@ export const MyFavoriteBookWrapper = styled.div`
   gap: 1rem;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   width: 9.8rem;
   height: 14.4rem;
 `;
 
 export const FavoriteButton = styled.button`
-  display: absolute;
+  position: absolute;
+  left: 0.2rem;
 `;
 
-export const BookImage = styled.div`
-  position: relative;
-
+export const BookImage = styled.img`
   width: 9.8rem;
   height: 9.8rem;
 
-  border-radius: 5rem;
-  background-color: black;
+  border-radius: 50%;
+
+  object-fit: cover;
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.BG}
-    ${({ theme }) => theme.fonts.E_Body1_SB_14};
+  width: 100%;
+
+  color: ${({ theme }) => theme.colors.BG};
+
+  text-align: center;
+  word-wrap: normal;
+  word-break: break-all;
+
+  ${({ theme }) => theme.fonts.E_Body1_SB_14};
 `;
