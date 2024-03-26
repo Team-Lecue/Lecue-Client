@@ -14,8 +14,9 @@ function Enter() {
     const { myNickName } = useGetMyNickName();
     if (nickname === '' || nickname !== myNickName) setNickname(myNickName);
   }
+
   const handleClickNickname = () => {
-    navigate('edit-nickname');
+    navigate('edit-nickname', { state: state });
   };
   const handleClickHistory = () => {
     navigate('select-history');
