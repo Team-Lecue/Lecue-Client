@@ -31,6 +31,8 @@ function EditNickname() {
   useEffect(() => {
     if (nickname === localStorage.getItem('nickname')) {
       handleSetIsActive(false);
+    } else {
+      handleSetIsActive(true);
     }
   }, [nickname]);
 
