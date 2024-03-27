@@ -6,7 +6,7 @@ import { getMyFavorite } from '../api/getMyFavorite';
 export default function useGetMyFavorite() {
   const navigate = useNavigate();
   const { data: myFavoriteList, isLoading } = useQuery(
-    ['useGetMyFavorite'],
+    ['get-my-favorite'],
     () => getMyFavorite(),
     {
       onError: () => {

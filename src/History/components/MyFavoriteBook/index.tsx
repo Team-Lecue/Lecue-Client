@@ -10,7 +10,7 @@ function MyFavoriteBook(props: FavoriteBookProps) {
   const { bookId, bookUuid, favoriteImage, favoriteName } = props;
 
   const navigate = useNavigate();
-  const deleteMutation = useDeleteFavorite();
+  const deleteMutation = useDeleteFavorite('mypage');
 
   const handleClickFavoriteBtn = (bookId: number) => {
     deleteMutation.mutate(bookId);
