@@ -20,7 +20,7 @@ interface LecueBookListProps {
 
 function LecueBookList({ title }: LecueBookListProps) {
   const navigate = useNavigate();
-  const deleteMutation = useDeleteFavorite();
+  const deleteMutation = useDeleteFavorite('home');
   const isBookmark = title.includes('즐겨찾기');
   const { data } = isBookmark ? useGetFavorite() : useGetLecueBook();
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import deleteFavorite from '../api/deleteFavorite';
 
-const useDeleteFavorite = () => {
+const useDeleteFavorite = (state: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -12,7 +12,13 @@ const useDeleteFavorite = () => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      queryClient.refetchQueries(['get-favorite'], { exact: true });
+      state === 'home'
+        ? queryClient.refetchQueries(['get-favorite'], {
+            exact: true,
+          })
+        : queryClient.refetchQueries(['get-mypage-favorite'], {
+            exact: true,
+          });
     },
   });
   return mutation;
