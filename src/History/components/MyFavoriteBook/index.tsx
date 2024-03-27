@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { IcHomeFavoriteFilled } from '../../../assets';
@@ -21,23 +20,21 @@ function MyFavoriteBook(props: FavoriteBookProps) {
   };
 
   return (
-    <React.Fragment>
-      <S.MyFavoriteBookWrapper>
-        <S.BookImage
-          src={favoriteImage}
-          alt="즐겨찾기-레큐북-이미지"
-          onClick={() => handleClickBook(bookUuid)}
-        />
-        <S.FavoriteButton
-          type="button"
-          onClick={() => handleClickFavoriteBtn(bookId)}
-        >
-          <IcHomeFavoriteFilled />
-        </S.FavoriteButton>
+    <S.MyFavoriteBookWrapper>
+      <S.BookImage
+        src={favoriteImage}
+        alt="즐겨찾기-레큐북-이미지"
+        onClick={() => handleClickBook(bookUuid)}
+      />
+      <S.FavoriteButton
+        type="button"
+        onClick={() => handleClickFavoriteBtn(bookId)}
+      >
+        <IcHomeFavoriteFilled />
+      </S.FavoriteButton>
 
-        <S.Title>{favoriteName}</S.Title>
-      </S.MyFavoriteBookWrapper>
-    </React.Fragment>
+      <S.Title>{favoriteName}</S.Title>
+    </S.MyFavoriteBookWrapper>
   );
 }
 
