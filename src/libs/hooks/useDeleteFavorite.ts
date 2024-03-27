@@ -16,7 +16,7 @@ const useDeleteFavorite = (state: string) => {
         ? queryClient.refetchQueries(['get-favorite'], {
             exact: true,
           })
-        : queryClient.refetchQueries(['get-my-favorite'], {
+        : queryClient.refetchQueries(['get-mypage-favorite'], {
             exact: true,
           });
     },
