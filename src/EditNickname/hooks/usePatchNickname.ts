@@ -33,11 +33,7 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
     onSuccess: () => {
       window.localStorage.setItem('token', token);
       window.localStorage.setItem('nickname', nickname);
-      if (sessionStorage.getItem('url') === '') {
-        navigate('/', { state: { step: 1 } });
-      } else {
-        navigate(-4);
-      }
+      navigate('/');
     },
   });
 
