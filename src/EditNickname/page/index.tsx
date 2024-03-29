@@ -29,11 +29,9 @@ function EditNickname() {
   };
 
   useEffect(() => {
-    if (nickname === localStorage.getItem('nickname')) {
-      handleSetIsActive(false);
-    } else {
-      handleSetIsActive(true);
-    }
+    nickname === localStorage.getItem('nickname')
+      ? handleSetIsActive(false)
+      : handleSetIsActive(true);
   }, [nickname]);
 
   return (

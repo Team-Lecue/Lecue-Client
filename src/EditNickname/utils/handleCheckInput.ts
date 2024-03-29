@@ -21,11 +21,9 @@ const handleChangeInput = (props: CheckNicknameProps) => {
       handleSetNickname(e.target.value);
       handleSetWordCnt(e.target.value.length);
     }
-    if (e.target.value === currentNickname) {
-      handleSetIsValid('unchanged');
-    } else {
-      handleSetIsValid('valid');
-    }
+    e.target.value === currentNickname
+      ? handleSetIsValid('unchanged')
+      : handleSetIsValid('valid');
   } else {
     e.target.value.length > 8
       ? handleSetIsValid('valid')
