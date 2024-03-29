@@ -29,6 +29,7 @@ function EditButton({
   return (
     <S.ButtonWrapper>
       <Button
+        type="button"
         variant="complete"
         disabled={!isActive}
         onClick={() => handelClickSubmitBtn(token, nickname)}
