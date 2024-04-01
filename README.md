@@ -7,6 +7,7 @@
 <br/>
 
 ## 💡서비스 소개
+
 다 함께 마음을 전해요. 최애를 위한 우리들의 롤링페이퍼, 레큐
 
 - 최애만을 위한 레큐북을 만들고 링크로 전달해요.
@@ -16,7 +17,9 @@
 <br/>
 
 ## 🍟핵심 기능
+
 [핵심 기능]
+
 - 레큐북 : 레큐노트를 부착할 수 있는 롤링페이퍼 기능
   <br />
   <img alt="레큐북 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/9a7698ef-8e26-4065-91be-0b2dab43e3c2/image.png" />
@@ -28,12 +31,14 @@
   <img alt="스티커 부착 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/dd433bca-c7de-4815-b5a3-0b6dc779b083/image.png" />
 
 [팬덤 특화 기능]
+
 - 커스텀 기능 : 레큐북, 레큐노트, 스티커 유저 커스텀 기능
 - 인기 롤링페이퍼 기능 : 레큐노트가 많이 부착된 레큐북 홈화면에 노출
-   → 추후 스프린트로는 최애 등록하고 등록한 최애 관련 레큐북을 노출
+  → 추후 스프린트로는 최애 등록하고 등록한 최애 관련 레큐북을 노출
 - 텍스트 추출 요청을 통한 굿즈 제작 : 기능 개발보다 팬덤이 레큐에 요청하면 텍스트 파일로 제공하는 형태
 
 [기본 기능]
+
 - 내 기록 보기 - 유저가 남긴 레큐노트 / 제작한 레큐북 모아보기
   <br />
   <img alt="마이페이지 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/7c027d28-dcad-4f07-a3e7-a2b20fc05a0d/image.png" />
@@ -45,10 +50,9 @@
 ## ✨ OUR TEAM
 
 | <img src="https://avatars.githubusercontent.com/u/80264647?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/65286685?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://avatars.githubusercontent.com/u/60962533?v=4" width="200" height="200" alt="프로필사진"> | <img src="https://velog.velcdn.com/images/aroo_ming/post/a9437eb2-9104-4c8b-912f-1a8b6eaf6f9d/image.jpeg" width="200" height="200" alt="프로필사진"> |
-| :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-|                            <div align = "center"><b>[짱리드]아름</b></div>                            |                            <div align = "center"><b>은빈</b></div>                            |                            <div align = "center"><b>정우</b></div>                            |                            <div align = "center"><b>도윤</b></div>                            |
-|                            [@Arooming](https://github.com/Arooming)                             |                        [@eunbeann](https://github.com/eunbeann)                         |                       [@jungwoo3490](https://github.com/jungwoo3490)                        |                       [@doyn511](https://github.com/doyn511)                        |
-
+| :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                              <div align = "center"><b>[짱리드]아름</b></div>                               |                                  <div align = "center"><b>은빈</b></div>                                   |                                  <div align = "center"><b>정우</b></div>                                   |                                                       <div align = "center"><b>도윤</b></div>                                                        |
+|                                  [@Arooming](https://github.com/Arooming)                                  |                                  [@eunbeann](https://github.com/eunbeann)                                  |                               [@jungwoo3490](https://github.com/jungwoo3490)                               |                                                        [@doyn511](https://github.com/doyn511)                                                        |
 
 <br/>
 
@@ -60,8 +64,8 @@
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Library              | ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black)                                                                                                                                                                                                                              |
 | Programming Language | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white)                                                                                                                                                                                                               |
-| Styling              | ![Emotion](https://img.shields.io/badge/Emotion-000000?style=for-the-badge&logo=emotion&logoColor=white)                                                                                                                                                                                         |
-| Data Fetching        | ![React Query](https://img.shields.io/badge/react--query-FF4154?style=for-the-badge&logo=react-query&logoColor=white)                                                                                                                                                                                                                              |
+| Styling              | ![Emotion](https://img.shields.io/badge/Emotion-000000?style=for-the-badge&logo=emotion&logoColor=white)                                                                                                                                                                                                                        |
+| Data Fetching        | ![React Query](https://img.shields.io/badge/react--query-FF4154?style=for-the-badge&logo=react-query&logoColor=white)                                                                                                                                                                                                           |
 | State Management     | ![State Management](https://img.shields.io/badge/recoil-007af4?style=for-the-badge&logo=Recoil&logoColor=white)                                                                                                                                                                                                                 |
 | Formatting           | ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E) ![StyleLint](https://img.shields.io/badge/stylelint-E0EFEF?style=for-the-badge&logo=stylelint&logoColor=000) |
 | Package Manager      | ![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)                                                                                                                                                                                                                                 |
@@ -96,23 +100,25 @@
 
 - 기본적인것 (feat, fix, chore, ..) 위주로만 지키기!
 
-| 제목        | 내용                                                                             |
-| ----------- | -------------------------------------------------------------------------------- |
-| init        | 브랜치 첫 커밋                                                                   |
-| feat        | 새로운 기능을 추가할 경우                                                        |
-| style       | 기능에 영향을 주지 않는 커밋, 코드 순서, css 등의 포맷에 관한 커밋               |
-| fix         | 버그를 고친 경우                                                                 |
-| refactor    | 코드 리팩토링에 대한 커밋                                                        |
-| docs        | 문서를 수정한 경우, 파일 삭제, 파일명 수정 등                                    |
-| chore       | 빌드 테스트 업데이트, 패키지 매니저를 설정하는 경우, 주석 추가, 자잘한 문서 수정 |
+| 제목     | 내용                                                                             |
+| -------- | -------------------------------------------------------------------------------- |
+| init     | 브랜치 첫 커밋                                                                   |
+| feat     | 새로운 기능을 추가할 경우                                                        |
+| style    | 기능에 영향을 주지 않는 커밋, 코드 순서, css 등의 포맷에 관한 커밋               |
+| fix      | 버그를 고친 경우                                                                 |
+| refactor | 코드 리팩토링에 대한 커밋                                                        |
+| docs     | 문서를 수정한 경우, 파일 삭제, 파일명 수정 등                                    |
+| chore    | 빌드 테스트 업데이트, 패키지 매니저를 설정하는 경우, 주석 추가, 자잘한 문서 수정 |
 
 <br/>
 
 ## 🎋 브랜치 전략
+
 - **`feature/페이지명`**
-    - feature/SelectPage (파스칼)
+  - feature/SelectPage (파스칼)
 - **`페이지명/#이슈번호-기능설명`**
-    - SelectPage/#3-select-custom (-로 연결)
+
+  - SelectPage/#3-select-custom (-로 연결)
 
 - 페이지명/이슈번호-기능설명 브랜치 ⇒ feature/페이지명으로 머지
 - feature/페이지명 완료 되면 ⇒ develop으로 머지
@@ -121,6 +127,7 @@
 <br/>
 
 ## 💒 브랜치 운영
+
 - **main**: 우리가 개발 최종시에 Merge를 하는 곳 ❗️
 - **develop** : 개발할때 Merge
 - **hotfix** : QA 시 수정사항 반영
@@ -168,7 +175,7 @@
     │   └── theme.ts
     │
     ├── utils 🗂 util 함수 관련 파일들 저장
-    │   
+    │
     ├── libs 🗂 라이브러리리 관련 파일 저장
     │   ├── hooks 🗂 커스텀 훅 저장
     │   ├── api.ts
