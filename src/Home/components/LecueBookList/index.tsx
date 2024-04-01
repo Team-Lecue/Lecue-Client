@@ -1,7 +1,4 @@
-import { useNavigate } from 'react-router';
-
-import { IcHomeFavorite } from '../../../assets';
-import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import LecueBook from '../../../components/common/LecueBook';
 import useGetFavorite from '../../../libs/hooks/useGetFavorite';
 import useGetLecueBook from '../../hooks/useGetLecueBook';
 import NoBookmarkList from '../NoBookmarkList';
@@ -19,18 +16,8 @@ interface LecueBookListProps {
 }
 
 function LecueBookList({ title }: LecueBookListProps) {
-  const navigate = useNavigate();
-  const deleteMutation = useDeleteFavorite('home');
   const isBookmark = title.includes('즐겨찾기');
   const { data } = isBookmark ? useGetFavorite() : useGetLecueBook();
-
-  const handleClickLecueBook = (uuid: string) => {
-    navigate(`/lecue-book/${uuid}`);
-  };
-
-  const handleClickFavoriteIcon = (bookId: number) => {
-    deleteMutation.mutate(bookId);
-  };
 
   return (
     <S.LecueBookListWrapper>
@@ -39,20 +26,24 @@ function LecueBookList({ title }: LecueBookListProps) {
         <S.LecueBookList>
           {data.map((book: BookProps) => (
             <S.LecueBook key={book.bookId} id={`${book.bookId}`}>
-              {isBookmark && (
-                <S.IconWrapper
-                  onClick={() => handleClickFavoriteIcon(book.bookId)}
-                >
-                  <IcHomeFavorite />
-                </S.IconWrapper>
+              {isBookmark ? (
+                <LecueBook
+                  bookId={book.bookId}
+                  bookUuid={book.bookUuid}
+                  favoriteImage={book.favoriteImage}
+                  favoriteName={book.favoriteName}
+                  bookType="favorite"
+                  deleteType="home"
+                />
+              ) : (
+                <LecueBook
+                  bookId={book.bookId}
+                  bookUuid={book.bookUuid}
+                  favoriteImage={book.favoriteImage}
+                  favoriteName={book.favoriteName}
+                  bookType="normal"
+                />
               )}
-
-              <S.BookImage
-                src={book.favoriteImage}
-                alt="레큐북-이미지"
-                onClick={() => handleClickLecueBook(book.bookUuid)}
-              />
-              <S.BookTitle>{book.favoriteName}</S.BookTitle>
             </S.LecueBook>
           ))}
         </S.LecueBookList>

@@ -1,6 +1,6 @@
+import LecueBook from '../../../components/common/LecueBook';
 import useGetMyFavorite from '../../hooks/useGetMyFavorite';
 import { FavoriteBookProps } from '../../types/historyType';
-import MyFavoriteBook from '../MyFavoriteBook';
 import * as S from './MyFavoriteBookList.style';
 
 function MyFavoriteBookList() {
@@ -11,12 +11,14 @@ function MyFavoriteBookList() {
       {myFavoriteList && myFavoriteList.length !== 0 ? (
         myFavoriteList.map((book: FavoriteBookProps) => {
           return (
-            <MyFavoriteBook
+            <LecueBook
               key={book.bookId}
               bookId={book.bookId}
               bookUuid={book.bookUuid}
               favoriteImage={book.favoriteImage}
               favoriteName={book.favoriteName}
+              bookType="favorite"
+              deleteType="mypage"
             />
           );
         })
