@@ -47,7 +47,7 @@ function LecueList() {
           variant={clickedBtn === 'note'}
           onClick={handleClickNoteBtn}
         >
-          레큐노트 ({counter[0]}개)
+          레터 ({counter[0]}개)
         </S.Button>
         <S.Button
           type="button"

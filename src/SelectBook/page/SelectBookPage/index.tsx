@@ -8,10 +8,10 @@ import CompleteButton from '../../components/CompleteButton';
 import MakeLecueBookButton from '../../components/MakeLecueBookButton';
 import * as S from './SelectBookPage.style';
 
-const basicLecueBookOptions = ['레큐노트 최대 100장', '텍스트 & 배경색 2종'];
+const basicLecueBookOptions = ['레터 최대 100장', '텍스트 & 배경색 2종'];
 const premiumLecueBookOptions = [
-  '레큐노트 무제한',
-  '레큐노트 배경색 6종',
+  '레터 무제한',
+  '레터 배경색 6종',
   '스티커 꾸미기',
 ];
 

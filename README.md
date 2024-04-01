@@ -11,7 +11,7 @@
 다 함께 마음을 전해요. 최애를 위한 우리들의 롤링페이퍼, 레큐
 
 - 최애만을 위한 레큐북을 만들고 링크로 전달해요.
-- 각자의 마음을 담아 레큐노트를 작성해요.
+- 각자의 마음을 담아 레터를 작성해요.
 - 다 함께 레큐북을 꾸며요.
 
 <br/>
@@ -20,26 +20,26 @@
 
 [핵심 기능]
 
-- 레큐북 : 레큐노트를 부착할 수 있는 롤링페이퍼 기능
+- 레큐북 : 레터를 부착할 수 있는 롤링페이퍼 기능
   <br />
   <img alt="레큐북 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/9a7698ef-8e26-4065-91be-0b2dab43e3c2/image.png" />
-- 레큐노트 : 텍스트와 이미지를 업로드할 수 있는 포스트잇 기능
+- 레터 : 텍스트와 이미지를 업로드할 수 있는 포스트잇 기능
   <br />
-  <img alt="레큐노트 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/b5d0dc9c-937f-40f8-a008-82e341bd619e/image.png" />
+  <img alt="레터 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/b5d0dc9c-937f-40f8-a008-82e341bd619e/image.png" />
 - 스티커 : 스티커 이미지로 레큐북을 꾸밀 수 있는 기능
   <br />
   <img alt="스티커 부착 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/dd433bca-c7de-4815-b5a3-0b6dc779b083/image.png" />
 
 [팬덤 특화 기능]
 
-- 커스텀 기능 : 레큐북, 레큐노트, 스티커 유저 커스텀 기능
-- 인기 롤링페이퍼 기능 : 레큐노트가 많이 부착된 레큐북 홈화면에 노출
+- 커스텀 기능 : 레큐북, 레터, 스티커 유저 커스텀 기능
+- 인기 롤링페이퍼 기능 : 레터가 많이 부착된 레큐북 홈화면에 노출
   → 추후 스프린트로는 최애 등록하고 등록한 최애 관련 레큐북을 노출
 - 텍스트 추출 요청을 통한 굿즈 제작 : 기능 개발보다 팬덤이 레큐에 요청하면 텍스트 파일로 제공하는 형태
 
 [기본 기능]
 
-- 내 기록 보기 - 유저가 남긴 레큐노트 / 제작한 레큐북 모아보기
+- 내 기록 보기 - 유저가 남긴 레터 / 제작한 레큐북 모아보기
   <br />
   <img alt="마이페이지 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/7c027d28-dcad-4f07-a3e7-a2b20fc05a0d/image.png" />
   <img alt="마이페이지 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/05e91732-8495-4f4d-87b9-38a5bc400c0d/image.png" />
@@ -162,7 +162,7 @@
     │
     ├── Login 🗂 각 기능 별 폴더 생성
     │   ├── pages 🗂 라우팅 시 보여질 페이지 컴포넌트 저장
-		│   │   └── LoginPage.tsx
+  │   │   └── LoginPage.tsx
     │   ├── components 🗂 해당 기능을 구현하는데 필요한 컴포넌트 저장
     │   │   ├── LoginFooter.tsx
     │   │   ├── LoginCallback.tsx

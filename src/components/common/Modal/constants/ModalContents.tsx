@@ -10,7 +10,7 @@ export const MODAL_CONTENTS = [
   {
     id: 'note_complete',
     img: <ImgModalNotecomplete />,
-    title: '레큐노트 작성을 완료하셨나요?',
+    title: '레터 작성을 완료하셨나요?',
     subTitle1: '완료 후 수정/삭제 할 수 없습니다.',
     subTitle2: '신중하게 결정해주세요!',
     leftBtn: '돌아가기',
@@ -19,7 +19,7 @@ export const MODAL_CONTENTS = [
   {
     id: 'note_escape',
     img: <ImgModalNoteexit />,
-    title: '레큐노트 작성을 그만두시나요?',
+    title: '레터 작성을 그만두시나요?',
     subTitle1: '작성한 내용은 모두 사라집니다.',
     subTitle2: '신중하게 결정해주세요!',
     leftBtn: '계속 제작',

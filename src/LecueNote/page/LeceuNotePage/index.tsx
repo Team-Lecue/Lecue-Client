@@ -125,10 +125,7 @@ function LecueNotePage() {
           setModalOn={setEscapeModal}
         />
       )}
-      <Header
-        headerTitle="레큐노트 작성"
-        handleFn={() => setEscapeModal(true)}
-      />
+      <Header headerTitle="레터 작성" handleFn={() => setEscapeModal(true)} />
 
       <S.CreateNote>
         <WriteNote
