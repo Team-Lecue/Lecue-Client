@@ -8,8 +8,6 @@ export const LecueBookWrapper = styled.div`
   position: relative;
 
   width: 9.8rem;
-
-  /* max-height: 14.4rem; */
 `;
 
 export const FavoriteButton = styled.button`
