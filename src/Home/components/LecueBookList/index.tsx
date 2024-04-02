@@ -26,24 +26,14 @@ function LecueBookList({ title }: LecueBookListProps) {
         <S.LecueBookList>
           {data.map((book: BookProps) => (
             <S.LecueBook key={book.bookId} id={`${book.bookId}`}>
-              {isBookmark ? (
-                <LecueBook
-                  bookId={book.bookId}
-                  bookUuid={book.bookUuid}
-                  favoriteImage={book.favoriteImage}
-                  favoriteName={book.favoriteName}
-                  bookType="favorite"
-                  deleteType="home"
-                />
-              ) : (
-                <LecueBook
-                  bookId={book.bookId}
-                  bookUuid={book.bookUuid}
-                  favoriteImage={book.favoriteImage}
-                  favoriteName={book.favoriteName}
-                  bookType="normal"
-                />
-              )}
+              <LecueBook
+                bookId={book.bookId}
+                bookUuid={book.bookUuid}
+                favoriteImage={book.favoriteImage}
+                favoriteName={book.favoriteName}
+                bookType={isBookmark ? 'favorite' : 'normal'}
+                deleteType="home"
+              />
             </S.LecueBook>
           ))}
         </S.LecueBookList>
