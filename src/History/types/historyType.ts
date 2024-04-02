@@ -11,3 +11,14 @@ export interface LecueBookType {
 export interface LecueBookProps extends LecueBookType {
   key: number;
 }
+
+export interface FavoriteBookType {
+  bookId: number;
+  bookUuid: string;
+  favoriteImage: string;
+  favoriteName: string;
+}
+
+export interface FavoriteBookProps extends FavoriteBookType {
+  key: number;
+}
