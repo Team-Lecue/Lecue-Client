@@ -22,7 +22,7 @@ export const MODAL_CONTENTS = [
     title: '레터 작성을 그만두시나요?',
     subTitle1: '작성한 내용은 모두 사라집니다.',
     subTitle2: '신중하게 결정해주세요!',
-    leftBtn: '계속 제작',
+    leftBtn: '돌아가기',
     rightBtn: '그만두기',
   },
   {
