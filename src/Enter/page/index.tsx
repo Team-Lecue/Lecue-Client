@@ -24,6 +24,15 @@ function Enter() {
     navigate('/login');
   };
 
+  const handleClickLogout = () => {
+    const isLogout = confirm('로그아웃하시겠습니까?');
+
+    if (isLogout) {
+      window.localStorage.clear();
+      navigate('/', { state: { step: 1 } });
+    }
+  };
+
   return (
     <React.Fragment>
       <Header headerTitle="마이페이지" />
@@ -66,7 +75,7 @@ function Enter() {
           <S.Line />
           <S.MenuWrapper>
             <S.SubTitle>기타</S.SubTitle>
-            <S.Tab>
+            <S.Tab onClick={handleClickLogout}>
               <S.Text>로그아웃</S.Text>
               <IcMypageArrowRight />
             </S.Tab>
