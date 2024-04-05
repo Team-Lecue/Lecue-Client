@@ -7,7 +7,7 @@ function EmptyView({ clickedBtn }: EmptyViewProps) {
       {clickedBtn === 'note' ? (
         <S.TextWrapper>
           <S.Text>아직 작성한</S.Text>
-          <S.Text>레큐노트가 없습니다.</S.Text>
+          <S.Text>레터가 없습니다.</S.Text>
         </S.TextWrapper>
       ) : (
         <S.TextWrapper>
