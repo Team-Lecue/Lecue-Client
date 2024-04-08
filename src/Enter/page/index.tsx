@@ -60,7 +60,7 @@ function Enter() {
               target="_blank"
               rel="noreferrer"
             >
-              <S.Text>팀 설명 보기</S.Text>
+              <S.Text>팀 소개</S.Text>
               <IcMypageArrowRight />
             </S.Link>
             <S.Link
@@ -93,8 +93,11 @@ function Enter() {
           </S.NicknameWrapper>
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
-            <S.Link href="" rel="noreferrer">
-              <S.Text>팀 설명 보기</S.Text>
+            <S.Link
+              href="https://www.instagram.com/lecue_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              rel="noreferrer"
+            >
+              <S.Text>팀 소개</S.Text>
               <IcMypageArrowRight />
             </S.Link>
             <S.Link
