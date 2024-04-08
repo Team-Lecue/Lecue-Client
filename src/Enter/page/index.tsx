@@ -71,7 +71,11 @@ function Enter() {
               <S.Text>공지사항</S.Text>
               <IcMypageArrowRight />
             </S.Link>
-            <S.Link href="" rel="noreferrer">
+            <S.Link
+              href="https://forms.gle/ttG3rMR9VriyegJ3A"
+              target="_blank"
+              rel="noreferrer"
+            >
               <S.Text>문의하기</S.Text>
               <IcMypageArrowRight />
             </S.Link>
@@ -108,7 +112,11 @@ function Enter() {
               <S.Text>공지사항</S.Text>
               <IcMypageArrowRight />
             </S.Link>
-            <S.Link href="" rel="noreferrer">
+            <S.Link
+              href="https://forms.gle/ttG3rMR9VriyegJ3A"
+              target="_blank"
+              rel="noreferrer"
+            >
               <S.Text>문의하기</S.Text>
               <IcMypageArrowRight />
             </S.Link>
