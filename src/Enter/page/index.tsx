@@ -99,6 +99,7 @@ function Enter() {
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
             <S.Link
               href="https://www.instagram.com/lecue_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
               rel="noreferrer"
             >
               <S.Text>팀 소개</S.Text>
