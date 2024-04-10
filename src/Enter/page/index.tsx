@@ -55,8 +55,12 @@ function Enter() {
           <S.Line />
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
-            <S.Link href="" rel="noreferrer">
-              <S.Text>팀 설명 보기</S.Text>
+            <S.Link
+              href="https://www.instagram.com/lecue_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noreferrer"
+            >
+              <S.Text>팀 소개</S.Text>
               <IcMypageArrowRight />
             </S.Link>
             <S.Link
@@ -67,7 +71,11 @@ function Enter() {
               <S.Text>공지사항</S.Text>
               <IcMypageArrowRight />
             </S.Link>
-            <S.Link href="" rel="noreferrer">
+            <S.Link
+              href="https://forms.gle/ttG3rMR9VriyegJ3A"
+              target="_blank"
+              rel="noreferrer"
+            >
               <S.Text>문의하기</S.Text>
               <IcMypageArrowRight />
             </S.Link>
@@ -89,8 +97,12 @@ function Enter() {
           </S.NicknameWrapper>
           <S.MenuWrapper>
             <S.SubTitle>서비스 이용 방침</S.SubTitle>
-            <S.Link href="" rel="noreferrer">
-              <S.Text>팀 설명 보기</S.Text>
+            <S.Link
+              href="https://www.instagram.com/lecue_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noreferrer"
+            >
+              <S.Text>팀 소개</S.Text>
               <IcMypageArrowRight />
             </S.Link>
             <S.Link
@@ -101,7 +113,11 @@ function Enter() {
               <S.Text>공지사항</S.Text>
               <IcMypageArrowRight />
             </S.Link>
-            <S.Link href="" rel="noreferrer">
+            <S.Link
+              href="https://forms.gle/ttG3rMR9VriyegJ3A"
+              target="_blank"
+              rel="noreferrer"
+            >
               <S.Text>문의하기</S.Text>
               <IcMypageArrowRight />
             </S.Link>
