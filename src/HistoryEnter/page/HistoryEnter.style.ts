@@ -25,6 +25,6 @@ export const Tab = styled.li<{ variant: string }>`
 `;
 
 export const Text = styled.h1`
-  ${({ theme }) => theme.fonts.Title1_SB_16}
-  color: ${({ theme }) => theme.colors.BG}
+  color: ${({ theme }) => theme.colors.BG};
+  ${({ theme }) => theme.fonts.Title1_SB_16};
 `;
