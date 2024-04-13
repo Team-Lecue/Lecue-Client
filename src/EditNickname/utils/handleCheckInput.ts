@@ -8,7 +8,10 @@ const handleChangeInput = (props: CheckNicknameProps) => {
   const input = e.target.value;
 
   if (e.target.value.length <= 8 && checkInputRange(input[input.length - 1])) {
-    if (e.target.value.trim().length < 2) {
+    if (e.target.value === ' ') {
+      handleSetNickname('');
+      handleSetWordCnt(0);
+    } else if (e.target.value.trim().length < 2) {
       handleSetNickname(e.target.value);
       handleSetWordCnt(e.target.value.length);
       handleSetIsValid('space');
