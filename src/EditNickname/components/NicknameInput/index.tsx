@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { NicknameInputProps } from '../../types/editNicknameTypes';
 import handleChangeInput from '../../utils/handleCheckInput';
@@ -8,7 +8,6 @@ function NicknameInput({
   nickname,
   isValid,
   handleSetNickname,
-  handleSetIsActive,
   handleSetIsValid,
 }: NicknameInputProps) {
   const [wordCnt, setWordCnt] = useState(0);
@@ -18,13 +17,9 @@ function NicknameInput({
     setWordCnt(wordCnt);
   };
 
-  useEffect(() => {
-    wordCnt >= 2 ? handleSetIsActive(true) : handleSetIsActive(false);
-  }, [wordCnt]);
-
   return (
     <S.NicknameInputWrapper>
-      <S.InputContainer isEmpty={nickname.length === 0} isValid={isValid}>
+      <S.InputContainer isEmpty={wordCnt === 0} isValid={isValid}>
         <S.Input
           isValid={isValid}
           type="text"
@@ -39,7 +34,7 @@ function NicknameInput({
             });
           }}
         />
-        <S.WordCount>({nickname.length}/8)</S.WordCount>
+        <S.WordCount>({wordCnt}/8)</S.WordCount>
       </S.InputContainer>
       {isValid === 'special' ? (
         <S.WarnigMsg>특수문자/이모지는 사용 불가능해요</S.WarnigMsg>
