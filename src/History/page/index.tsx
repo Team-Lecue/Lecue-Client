@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { IcArrowDownBlack } from '../../assets';
 import Header from '../../components/common/Header';
+import MyFavoriteBookList from '../components/MyFavoriteBookList';
+import MyLecueBookList from '../components/MyLecueBookList';
+import MyLetterList from '../components/MyLetterList';
 import SelectModal from '../components/SelectModal';
 import { optionList } from '../constants/optionList';
 import * as S from './History.style';
 
 function History() {
   const location = useLocation();
-  useEffect(() => {
-    if (location.state) {
-      console.log(location.state);
-    }
-  }, [location.state]);
 
   const [modalOn, setModalOn] = useState(false);
   const [selectedOption, setSelectedOption] = useState(location.state);
@@ -44,6 +42,13 @@ function History() {
           </S.CurrentHistoryOption>
           <IcArrowDownBlack />
         </S.HistorySelectButton>
+        {selectedOption === 1 ? (
+          <MyFavoriteBookList />
+        ) : selectedOption === 2 ? (
+          <MyLecueBookList />
+        ) : (
+          <MyLetterList />
+        )}
       </S.HistoryPageBodyWrapper>
     </React.Fragment>
   );
