@@ -10,18 +10,21 @@ export const HistoryEnterPageBodyWrapper = styled.section`
   margin-top: 5.4rem;
 `;
 
-export const Tab = styled.li`
+export const Tab = styled.li<{ variant: string }>`
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
   height: 13rem;
-  padding: 0 3rem;
+  padding: 0 ${({ variant }) => (variant === 'book' ? 2.9 : 1.9)}rem 0 3rem;
 
   border-radius: 0.2rem;
-  background-color: ${({ theme }) => theme.colors.LG};
+  background-color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
+`;
 
-  ${({ theme }) => theme.fonts.Title1_SB_16}
-  color: ${({ theme }) => theme.colors.BG}
+export const Text = styled.h1`
+  color: ${({ theme }) => theme.colors.BG};
+  ${({ theme }) => theme.fonts.Title1_SB_16};
 `;
