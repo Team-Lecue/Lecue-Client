@@ -25,21 +25,20 @@ export const InputContainer = styled.div<{
 
   border: 0.1rem solid
     ${({ theme, isEmpty, isValid }) =>
-      isValid === 'unchanged'
-        ? theme.colors.LG
-        : isValid !== 'valid'
-          ? theme.colors.red
-          : isEmpty
-            ? theme.colors.LG
-            : theme.colors.BG};
+      isValid === 'special' || isValid === 'duplicate' || isValid === 'space'
+        ? theme.colors.red
+        : isEmpty || isValid === 'enter'
+          ? theme.colors.LG
+          : theme.colors.BG};
   border-radius: 0.8rem;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ isValid: string }>`
   width: 100%;
 
-  color: ${({ theme }) => theme.colors.BG};
+  color: ${({ theme, isValid }) =>
+    isValid === 'enter' ? theme.colors.MG : theme.colors.BG};
   ${({ theme }) => theme.fonts.Body2_M_14};
 `;
 

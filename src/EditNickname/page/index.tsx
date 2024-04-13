@@ -12,7 +12,7 @@ function EditNickname() {
   const [nickname, setNickname] = useState(
     localStorage.getItem('nickname') || '',
   );
-  const [isValid, setIsValid] = useState<isValidState>('unchanged');
+  const [isValid, setIsValid] = useState<isValidState>('enter');
 
   const { state } = useLocation();
 
@@ -29,10 +29,8 @@ function EditNickname() {
   };
 
   useEffect(() => {
-    nickname === localStorage.getItem('nickname')
-      ? handleSetIsActive(false)
-      : handleSetIsActive(true);
-  }, [nickname]);
+    isValid === 'valid' ? handleSetIsActive(true) : handleSetIsActive(false);
+  }, [isValid]);
 
   return (
     <React.Fragment>

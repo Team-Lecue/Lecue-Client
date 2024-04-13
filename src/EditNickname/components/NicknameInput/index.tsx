@@ -26,8 +26,8 @@ function NicknameInput({
     <S.NicknameInputWrapper>
       <S.InputContainer isEmpty={nickname.length === 0} isValid={isValid}>
         <S.Input
+          isValid={isValid}
           type="text"
-          placeholder="닉네임을 입력해주세요"
           value={nickname}
           onChange={(e) => {
             handleChangeInput({

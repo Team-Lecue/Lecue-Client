@@ -3,7 +3,7 @@ export type isValidState =
   | 'special'
   | 'duplicate'
   | 'space'
-  | 'unchanged';
+  | 'enter';
 
 export interface NicknameInputProps {
   nickname: string;
