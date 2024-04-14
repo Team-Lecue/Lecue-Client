@@ -1,15 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+
+import { MyLetterProps } from '../../types/historyType';
 import * as S from './MyLetter.style';
 
-function MyLetter() {
+function MyLetter({
+  bookUuid,
+  favoriteName,
+  title,
+  content,
+  noteDate,
+  letterIndex,
+}: MyLetterProps) {
+  const navigate = useNavigate();
+
+  const handleClickMyLetter = () => {
+    navigate(`/lecue-book/${bookUuid}`);
+  };
+
   return (
-    <S.MyLetterWrapper>
-      <S.MyLetterFavorite>MyLetter</S.MyLetterFavorite>
-      <S.MyLetterTitle>첫 예능 라디오스타 축하해!</S.MyLetterTitle>
-      <S.MyLetterContent>
-        야야야양야야야양야양 다음에 웨비고? 다음에 디팟고? 다음에 웨비고? 다음에
-        웨비
-      </S.MyLetterContent>
-      <S.MyLetterDate>2024. 01. 25</S.MyLetterDate>
+    <S.MyLetterWrapper onClick={handleClickMyLetter} letterIndex={letterIndex}>
+      <S.MyLetterFavorite>{favoriteName}</S.MyLetterFavorite>
+      <S.MyLetterTitle>{title}</S.MyLetterTitle>
+      <S.MyLetterContent>{content}</S.MyLetterContent>
+      <S.MyLetterDate>{noteDate}</S.MyLetterDate>
     </S.MyLetterWrapper>
   );
 }
