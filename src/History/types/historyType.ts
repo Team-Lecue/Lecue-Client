@@ -31,3 +31,7 @@ export interface MyLetterType {
   content: string;
   noteDate: string;
 }
+
+export interface MyLetterProps extends MyLetterType {
+  letterIndex: number;
+}
