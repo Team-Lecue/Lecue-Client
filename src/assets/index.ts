@@ -56,6 +56,7 @@ import ImgModalNoteexit from './img/img_modal_noteexit.svg?react';
 import ImgMypageFavoriteLecueBook from './img/img_mypage_favorite_lecuebook.svg?react';
 import ImgMypageLetter from './img/img_mypage_letter.svg?react';
 import ImgMypageMakeLecueBook from './img/img_mypage_make_lecuebook.svg?react';
+import ImgMyPageNotexist from './img/img_mypage_notexist.svg?react';
 import ImgSaleprice from './img/img_saleprice.svg?react';
 import ImgSplashLogo from './img/img_splash_logo.svg?react';
 import ImgStarOrangeLine from './img/img_star_orangeline.svg?react';
@@ -117,6 +118,7 @@ export {
   ImgModalMypagedelete,
   ImgModalNotecomplete,
   ImgModalNoteexit,
+  ImgMyPageNotexist,
   ImgMypageFavoriteLecueBook,
   ImgMypageLetter,
   ImgMypageMakeLecueBook,
