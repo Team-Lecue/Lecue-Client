@@ -1,5 +1,11 @@
+import MyLetter from '../MyLetter';
+
 function MyLetterList() {
-  return <div>MyLetterList</div>;
+  return (
+    <div>
+      <MyLetter />
+    </div>
+  );
 }
 
 export default MyLetterList;
