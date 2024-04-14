@@ -8,5 +8,5 @@ export async function getMyNoteList() {
       Authorization: `Bearer ${token}`,
     },
   });
-  return data.data.data.noteList;
+  return data.data.data;
 }
