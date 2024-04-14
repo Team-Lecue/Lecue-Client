@@ -1,15 +1,12 @@
 import styled from '@emotion/styled';
 
-export const MyLetterWrapper = styled.article<{ letterIndex: number }>`
-  width: 16.8rem;
+export const MyLetterWrapper = styled.article`
+  width: 100%;
   height: 16.3rem;
   padding: 1.3rem 1.2rem;
 
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.colors.sub_purple};
-
-  justify-self: ${({ letterIndex }) =>
-    letterIndex % 2 === 0 ? 'start' : 'end'};
 `;
 
 export const MyLetterFavorite = styled.h1`

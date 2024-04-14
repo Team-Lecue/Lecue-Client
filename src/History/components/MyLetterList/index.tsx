@@ -1,6 +1,6 @@
 import { ImgMyPageNotexist } from '../../../assets';
 import useGetNoteList from '../../hooks/useGetMyNoteList';
-import { MyLetterType } from '../../types/historyType';
+import { MyLetterProps } from '../../types/historyType';
 import MyLetter from '../MyLetter';
 import * as S from './MyLetterList.style';
 
@@ -11,10 +11,8 @@ function MyLetterList() {
     <S.MyLetterListWrapper>
       {myNoteList && myNoteList.length !== 0 ? (
         <S.GridViewWrapper>
-          {myNoteList.map((letter: MyLetterType, idx: number) => {
-            return (
-              <MyLetter key={letter.noteId} letterIndex={idx} {...letter} />
-            );
+          {myNoteList.map((letter: MyLetterProps) => {
+            return <MyLetter key={letter.noteId} {...letter} />;
           })}
         </S.GridViewWrapper>
       ) : (

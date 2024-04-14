@@ -23,15 +23,11 @@ export interface FavoriteBookProps extends FavoriteBookType {
   key: number;
 }
 
-export interface MyLetterType {
+export interface MyLetterProps {
   bookUuid: string;
   noteId: number;
   favoriteName: string;
   title: string;
   content: string;
   noteDate: string;
-}
-
-export interface MyLetterProps extends MyLetterType {
-  letterIndex: number;
 }

@@ -9,8 +9,8 @@ export const MyLetterListWrapper = styled.div`
 
 export const GridViewWrapper = styled.div`
   display: grid;
+  gap: 0.6rem 0.7rem;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 0.6rem;
 
   width: 100%;
   padding-bottom: 2rem;

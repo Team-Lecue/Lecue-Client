@@ -9,7 +9,6 @@ function MyLetter({
   title,
   content,
   noteDate,
-  letterIndex,
 }: MyLetterProps) {
   const navigate = useNavigate();
 
@@ -18,7 +17,7 @@ function MyLetter({
   };
 
   return (
-    <S.MyLetterWrapper onClick={handleClickMyLetter} letterIndex={letterIndex}>
+    <S.MyLetterWrapper onClick={handleClickMyLetter}>
       <S.MyLetterFavorite>{favoriteName}</S.MyLetterFavorite>
       <S.MyLetterTitle>{title}</S.MyLetterTitle>
       <S.MyLetterContent>{content}</S.MyLetterContent>
