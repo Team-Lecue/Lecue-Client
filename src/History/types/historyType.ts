@@ -22,3 +22,12 @@ export interface FavoriteBookType {
 export interface FavoriteBookProps extends FavoriteBookType {
   key: number;
 }
+
+export interface MyLetterType {
+  bookUuid: string;
+  noteId: number;
+  favoriteName: string;
+  title: string;
+  content: string;
+  noteDate: string;
+}
