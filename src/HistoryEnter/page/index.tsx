@@ -38,7 +38,7 @@ function HistoryEnter() {
 
   return (
     <React.Fragment>
-      <Header headerTitle="내 기록 보기" />
+      <Header headerTitle="내 기록보기" />
       <S.HistoryEnterPageBodyWrapper>
         {HistoryEnterList.map((element) => {
           return (
