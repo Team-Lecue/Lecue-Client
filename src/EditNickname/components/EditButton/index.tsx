@@ -1,15 +1,42 @@
 import Button from '../../../components/common/Button';
+import usePatchNickname from '../../hooks/usePatchNickname';
+import { EditButtonProps } from '../../types/editNicknameTypes';
+import * as S from './EditButton.style';
 
-interface EditButtonProps {
-  isActive: boolean;
-  onClick: () => void;
-}
+function EditButton({
+  isActive,
+  token,
+  nickname,
+  handleSetIsValid,
+  handleSetIsActive,
+}: EditButtonProps) {
+  const patchMutation = usePatchNickname({
+    handleSetIsValid,
+    handleSetIsActive,
+    token,
+    nickname,
+  });
 
-function EditButton({ isActive, onClick }: EditButtonProps) {
+  const handelClickSubmitBtn = (token: string, nickname: string) => {
+    const patchNickname = nickname.trim();
+
+    patchMutation.mutate({
+      nickname: patchNickname,
+      token: token,
+    });
+  };
+
   return (
-    <Button variant="complete" disabled={!isActive} onClick={onClick}>
-      완료
-    </Button>
+    <S.ButtonWrapper>
+      <Button
+        type="button"
+        variant="complete"
+        disabled={!isActive}
+        onClick={() => handelClickSubmitBtn(token, nickname)}
+      >
+        완료
+      </Button>
+    </S.ButtonWrapper>
   );
 }
 
