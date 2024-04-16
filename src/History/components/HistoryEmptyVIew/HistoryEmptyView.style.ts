@@ -20,4 +20,7 @@ export const HistoryEmptyViewText = styled.p`
   margin-top: 3rem;
 
   color: ${({ theme }) => theme.colors.WG};
+
+  text-align: center;
+  ${({ theme }) => theme.fonts.Body2_M_14};
 `;

@@ -1,6 +1,6 @@
 import useGetNoteList from '../../hooks/useGetMyNoteList';
 import { MyLetterProps } from '../../types/historyType';
-import HistoryEmptyView from '../HistoryEmptyVIew';
+import HistoryEmptyView from '../HistoryEmptyView';
 import MyLetter from '../MyLetter';
 import * as S from './MyLetterList.style';
 
@@ -21,6 +21,10 @@ function MyLetterList() {
           bottomLineText={'새로 남겨볼까요?'}
         />
       )}
+      <HistoryEmptyView
+        topLineText={'아직 내가 남긴 레터가 없어요'}
+        bottomLineText={'새로 남겨볼까요?'}
+      />
     </S.MyLetterListWrapper>
   );
 }
