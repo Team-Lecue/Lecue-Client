@@ -31,3 +31,8 @@ export interface MyLetterProps {
   content: string;
   noteDate: string;
 }
+
+export interface HistoryEmptyViewProps {
+  topLineText: string;
+  bottomLineText: string;
+}

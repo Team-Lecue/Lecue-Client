@@ -1,6 +1,6 @@
-import { ImgMyPageNotexist } from '../../../assets';
 import useGetNoteList from '../../hooks/useGetMyNoteList';
 import { MyLetterProps } from '../../types/historyType';
+import HistoryEmptyView from '../HistoryEmptyVIew';
 import MyLetter from '../MyLetter';
 import * as S from './MyLetterList.style';
 
@@ -16,15 +16,10 @@ function MyLetterList() {
           })}
         </S.GridViewWrapper>
       ) : (
-        <S.EmptyViewWrapper>
-          <S.EmptyViewNotice>
-            <ImgMyPageNotexist />
-            <S.EmptyViewText>
-              아직 내가 남긴 레터가 없어요 <br />
-              새로 남겨볼까요?
-            </S.EmptyViewText>
-          </S.EmptyViewNotice>
-        </S.EmptyViewWrapper>
+        <HistoryEmptyView
+          topLineText={'아직 내가 남긴 레터가 없어요'}
+          bottomLineText={'새로 남겨볼까요?'}
+        />
       )}
     </S.MyLetterListWrapper>
   );
