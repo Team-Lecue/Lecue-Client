@@ -1,16 +1,3 @@
-export interface LecueBookType {
-  bookUuid: string;
-  bookId: number;
-  favoriteName: string;
-  title: string;
-  bookDate: string;
-  noteNum: number;
-}
-
-export interface LecueBookProps extends LecueBookType {
-  key: number;
-}
-
 export interface LecueNoteType {
   bookUuid: string;
   noteId: number;

@@ -1,53 +1,73 @@
 <!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta name="title" content="레큐 lecue" />
+    <meta name="description" content="레큐노트에 우리의 마음을 담아 전달해요" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  <meta name="title" content="레큐 lecue" />
-  <meta name="description" content="레큐노트에 우리의 마음을 담아 전달해요" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="레큐 lecue" />
+    <meta
+      property="og:description"
+      content="레큐노트에 우리의 마음을 담아 전달해요"
+    />
+    <meta
+      property="og:image"
+      content="https://dzfv99wxq6tx0.cloudfront.net/lecue.png"
+    />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="레큐 lecue" />
-  <meta property="og:description" content="레큐노트에 우리의 마음을 담아 전달해요" />
-  <meta property="og:image" content="https://dzfv99wxq6tx0.cloudfront.net/lecue.png" />
+    <meta name="twitter:title" content="레큐 lecue" />
+    <meta
+      name="twitter:description"
+      content="레큐노트에 우리의 마음을 담아 전달해요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://dzfv99wxq6tx0.cloudfront.net/lecue.png"
+    />
 
-  <meta name="twitter:title" content="레큐 lecue" />
-  <meta name="twitter:description" content="레큐노트에 우리의 마음을 담아 전달해요" />
-  <meta name="twitter:image" content="https://dzfv99wxq6tx0.cloudfront.net/lecue.png" />
+    <title>Lecue</title>
+  </head>
 
-  <title>Lecue</title>
-</head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js',
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PS49HW2G');
+  </script>
+  <!-- End Google Tag Manager -->
 
-<!-- Google Tag Manager -->
-<script>
-  (function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js',
-    });
-    var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s),
-      dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-PS49HW2G');
-</script>
-<!-- End Google Tag Manager -->
+  <body>
+    <div id="root"></div>
+    <div id="lecuenote-modal"></div>
+    <div id="historyselect-modal"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 
-<body>
-  <div id="root"></div>
-  <div id="lecuenote-modal"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS49HW2G" height="0" width="0"
-    style="display: none; visibility: hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+    ><iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-PS49HW2G"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    ></iframe
+  ></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 </html>
