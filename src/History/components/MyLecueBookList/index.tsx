@@ -1,5 +1,6 @@
 import useGetMyBookList from '../../hooks/useGetMyBookList';
 import { LecueBookProps } from '../../types/historyType';
+import HistoryEmptyView from '../HistoryEmptyView';
 import MyLecueBook from '../MyLecueBook';
 import * as S from './MyLecueBookList.style';
 
@@ -24,7 +25,10 @@ function MyLecueBookList() {
           );
         })
       ) : (
-        <div>레큐북 0개....~</div>
+        <HistoryEmptyView
+          topLineText={'아직 내가 만든 레큐북이 없어요'}
+          bottomLineText={'새로 만들어볼까요?'}
+        />
       )}
     </S.Wrapper>
   );
