@@ -14,7 +14,7 @@ function History() {
   const location = useLocation();
 
   const [modalOn, setModalOn] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(location.state);
+  const [selectedOption, setSelectedOption] = useState<number>(location.state);
   const handleClickHistorySelectButton = () => {
     setModalOn(true);
   };
@@ -42,13 +42,13 @@ function History() {
           </S.CurrentHistoryOption>
           <IcArrowDownBlack />
         </S.HistorySelectButton>
-        {selectedOption === 1 ? (
-          <MyFavoriteBookList />
-        ) : selectedOption === 2 ? (
-          <MyLecueBookList />
-        ) : (
-          <MyLetterList />
-        )}
+        {
+          {
+            1: <MyFavoriteBookList />,
+            2: <MyLecueBookList />,
+            3: <MyLetterList />,
+          }[selectedOption]
+        }
       </S.HistoryPageBodyWrapper>
     </React.Fragment>
   );
