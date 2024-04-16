@@ -21,10 +21,6 @@ function MyLetterList() {
           bottomLineText={'새로 남겨볼까요?'}
         />
       )}
-      <HistoryEmptyView
-        topLineText={'아직 내가 남긴 레터가 없어요'}
-        bottomLineText={'새로 남겨볼까요?'}
-      />
     </S.MyLetterListWrapper>
   );
 }
