@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcProfile, ImgLogoLecue } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import * as S from './NavigateLecueBook.style';
+import * as S from './HomeMainBanner.style';
 
 function NavigateLecueBook() {
   const navigate = useNavigate();
