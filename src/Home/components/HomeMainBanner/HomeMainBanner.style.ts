@@ -8,8 +8,6 @@ export const MainWrapper = styled.div`
 
 export const IconWrapper = styled.section`
   display: flex;
-
-  /* 바뀔 수 있을 것 같으니 디자인 나오면 다시 확인해보기 ! */
   gap: 16rem;
   align-items: baseline;
 
@@ -17,11 +15,8 @@ export const IconWrapper = styled.section`
   margin: 4rem 1.8rem 3.5rem 1.6rem;
 `;
 
-export const DummyGraphic = styled.div`
-  width: 37.5rem;
-  height: 20rem;
-
-  background-color: ${({ theme }) => theme.colors.LG};
+export const IllustrationWrapper = styled.div`
+  width: 100%;
 `;
 
 export const Button = styled.button`
