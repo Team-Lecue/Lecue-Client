@@ -1,8 +1,10 @@
 import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Autoplay, Navigation,Pagination } from "swiper/modules";
+import { Autoplay, EffectCreative, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IcProfile, ImgLogoLecue } from '../../../assets';
@@ -40,14 +42,26 @@ function NavigateLecueBook() {
         <Swiper
           slidesPerView={1}
           mousewheel={true}
-          autoplay={{ delay: 1300, disableOnInteraction: false }}
+          autoplay={{ delay: 1700, disableOnInteraction: false }}
           loop={true}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Autoplay, Pagination, EffectCreative]}
+          pagination={{ clickable: true }}
+          effect={'creative'}
+          creativeEffect={{
+            prev: {
+              translate: ['-20%', 0, -50],
+              opacity: 0.8,
+            },
+            next: {
+              translate: ['80%', 0, 0],
+              opacity: 0.8,
+            },
+          }}
         >
           {illustrationArr.map((illustration) => {
             return (
               <SwiperSlide key={illustration.key}>
-                {illustration.img}
+                <div className="slide">{illustration.img}</div>
               </SwiperSlide>
             );
           })}
