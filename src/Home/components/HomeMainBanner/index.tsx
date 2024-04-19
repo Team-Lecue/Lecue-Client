@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { IcProfile, ImgLogoLecue } from '../../../assets';
+import {
+  IcProfile,
+  ImgHome01,
+  ImgHome02,
+  ImgHome03,
+  ImgLogoLecue,
+} from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import { illustrationArr } from '../../constants/HomeIllustArr';
 import * as S from './HomeMainBanner.style';
@@ -10,24 +16,10 @@ function NavigateLecueBook() {
   const navigate = useNavigate();
   const [modalOn, setModalOn] = useState(false);
 
-  const [curIdx, setCurIdx] = useState(0);
-  const illustrationId = useRef(0);
-
-  const nextSlide = () => {
-    setCurIdx(
-      curIdx === 2
-        ? (illustrationId.current = 0)
-        : (illustrationId.current += 1),
-    );
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 1500);
-
-    return () => clearInterval(interval);
-  }, [illustrationId.current]);
+  const illustrationRef = useRef<HTMLDivElement | null>(null);
+  const [illustListWidth, setIllustListWidth] = useState(0);
+  const [animationListWidth, setAnimationListWidth] = useState(0);
+  const [animaionDuration, setAnimationDuration] = useState(5);
 
   const handleClickIcProfile = () => {
     const token = localStorage.getItem('token');
@@ -43,6 +35,22 @@ function NavigateLecueBook() {
     }
   };
 
+  useEffect(() => {
+    if (illustrationRef.current) {
+      const itemBoxWidth = illustrationRef.current.offsetWidth;
+      const itemListWidth = itemBoxWidth + 6;
+
+      setIllustListWidth(itemListWidth);
+      setAnimationListWidth(itemListWidth * 2);
+
+      const arrLength = illustrationArr.length;
+      const newAnimationDuration = Math.max(1, arrLength * 2);
+      setAnimationDuration(newAnimationDuration);
+    }
+  }, [illustrationRef.current]);
+
+  console.log(illustListWidth, animationListWidth, animaionDuration);
+
   return (
     <S.MainWrapper>
       <S.IconWrapper>
@@ -51,11 +59,31 @@ function NavigateLecueBook() {
         <IcProfile onClick={handleClickIcProfile} />
       </S.IconWrapper>
 
-      <S.IllustrationWrapper>
-        {illustrationArr.map(
-          (illustration) => curIdx === illustration.key && illustration.img,
-        )}
-      </S.IllustrationWrapper>
+      <S.IllustrationSliderWrapper>
+        <S.IllustrationWrapper
+          width={animationListWidth}
+          animationDuration={animaionDuration}
+        >
+          {/* <S.IllustList width={illustListWidth}> */}
+          {Array.from({ length: 10 }, (_, idx) => (
+            <S.IllustList
+              key={idx}
+              width={illustListWidth}
+              ref={illustrationRef}
+            >
+              <ImgHome01 />
+              <ImgHome02 />
+              <ImgHome03 />
+            </S.IllustList>
+          ))}
+          {/* {illustrationArr.map((illustration) => (
+              <div key={illustration.key} ref={illustrationRef}>
+                {illustration.img}
+              </div>
+            ))} */}
+          {/* </S.IllustList> */}
+        </S.IllustrationWrapper>
+      </S.IllustrationSliderWrapper>
 
       <S.Button type="button" onClick={handleClickNavBtn}>
         레큐북 만들기
