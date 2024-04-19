@@ -9,8 +9,8 @@ export const SwiperWrapper = styled.section`
     transition-timing-function: linear;
   }
 
-  .slide {
-    padding-bottom: 2rem;
+  .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.5;
   }
 
   .swiper-pagination {
@@ -25,4 +25,8 @@ export const SwiperWrapper = styled.section`
   .swiper-pagination-bullet-active {
     background-color: ${({ theme }) => theme.colors.DG};
   }
+`;
+
+export const InnerSlider = styled.div`
+  padding-bottom: 2rem;
 `;
