@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  IcProfile,
-  ImgHome01,
-  ImgHome02,
-  ImgHome03,
-  ImgLogoLecue,
-} from '../../../assets';
+import { IcProfile, ImgLogoLecue } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import { illustrationArr } from '../../constants/HomeIllustArr';
 import * as S from './HomeMainBanner.style';
@@ -49,8 +43,6 @@ function NavigateLecueBook() {
     }
   }, [illustrationRef.current]);
 
-  console.log(illustListWidth, animationListWidth, animaionDuration);
-
   return (
     <S.MainWrapper>
       <S.IconWrapper>
@@ -64,24 +56,18 @@ function NavigateLecueBook() {
           width={animationListWidth}
           animationDuration={animaionDuration}
         >
-          {/* <S.IllustList width={illustListWidth}> */}
           {Array.from({ length: 10 }, (_, idx) => (
             <S.IllustList
+              ref={illustrationRef}
               key={idx}
               width={illustListWidth}
-              ref={illustrationRef}
             >
-              <ImgHome01 />
+              {/* <ImgHome01 />
               <ImgHome02 />
-              <ImgHome03 />
+              <ImgHome03 /> */}
+              {illustrationArr.map((illustration) => illustration.img)}
             </S.IllustList>
           ))}
-          {/* {illustrationArr.map((illustration) => (
-              <div key={illustration.key} ref={illustrationRef}>
-                {illustration.img}
-              </div>
-            ))} */}
-          {/* </S.IllustList> */}
         </S.IllustrationWrapper>
       </S.IllustrationSliderWrapper>
 
