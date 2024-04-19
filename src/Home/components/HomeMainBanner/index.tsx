@@ -1,5 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import 'swiper/css';
+
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Autoplay, Navigation,Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IcProfile, ImgLogoLecue } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
@@ -9,11 +13,6 @@ import * as S from './HomeMainBanner.style';
 function NavigateLecueBook() {
   const navigate = useNavigate();
   const [modalOn, setModalOn] = useState(false);
-
-  const illustrationRef = useRef<HTMLDivElement | null>(null);
-  const [illustListWidth, setIllustListWidth] = useState(0);
-  const [animationListWidth, setAnimationListWidth] = useState(0);
-  const [animaionDuration, setAnimationDuration] = useState(5);
 
   const handleClickIcProfile = () => {
     const token = localStorage.getItem('token');
@@ -29,20 +28,6 @@ function NavigateLecueBook() {
     }
   };
 
-  useEffect(() => {
-    if (illustrationRef.current) {
-      const itemBoxWidth = illustrationRef.current.offsetWidth;
-      const itemListWidth = itemBoxWidth + 6;
-
-      setIllustListWidth(itemListWidth);
-      setAnimationListWidth(itemListWidth * 2);
-
-      const arrLength = illustrationArr.length;
-      const newAnimationDuration = Math.max(1, arrLength * 2);
-      setAnimationDuration(newAnimationDuration);
-    }
-  }, [illustrationRef.current]);
-
   return (
     <S.MainWrapper>
       <S.IconWrapper>
@@ -51,25 +36,23 @@ function NavigateLecueBook() {
         <IcProfile onClick={handleClickIcProfile} />
       </S.IconWrapper>
 
-      <S.IllustrationSliderWrapper>
-        <S.IllustrationWrapper
-          width={animationListWidth}
-          animationDuration={animaionDuration}
+      <S.SwiperWrapper>
+        <Swiper
+          slidesPerView={1}
+          mousewheel={true}
+          autoplay={{ delay: 1300, disableOnInteraction: false }}
+          loop={true}
+          modules={[Autoplay, Pagination, Navigation]}
         >
-          {Array.from({ length: 10 }, (_, idx) => (
-            <S.IllustList
-              ref={illustrationRef}
-              key={idx}
-              width={illustListWidth}
-            >
-              {/* <ImgHome01 />
-              <ImgHome02 />
-              <ImgHome03 /> */}
-              {illustrationArr.map((illustration) => illustration.img)}
-            </S.IllustList>
-          ))}
-        </S.IllustrationWrapper>
-      </S.IllustrationSliderWrapper>
+          {illustrationArr.map((illustration) => {
+            return (
+              <SwiperSlide key={illustration.key}>
+                {illustration.img}
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </S.SwiperWrapper>
 
       <S.Button type="button" onClick={handleClickNavBtn}>
         레큐북 만들기
