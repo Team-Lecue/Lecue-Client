@@ -27,7 +27,7 @@ function MyLecueBook(props: LecueBookProps) {
 
   const deleteMutation = useDeleteMyBook();
   const FavoritePostMutation = usePostFavorite();
-  const FavoriteDeleteMutation = useDeleteFavorite();
+  const FavoriteDeleteMutation = useDeleteFavorite('mypage');
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
