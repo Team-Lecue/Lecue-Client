@@ -26,6 +26,7 @@ export const Title = styled.header`
 export const LecueBookList = styled.section`
   display: grid;
   gap: 2em 2.4rem;
+  align-items: start;
   grid-template-columns: repeat(3, 1fr);
 
   width: 100%;

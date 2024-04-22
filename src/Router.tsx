@@ -9,7 +9,11 @@ import ErrorPage from './components/common/ErrorPage';
 import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
+import EditNickname from './EditNickname/page';
+import Enter from './Enter/page';
 import HealthTest from './HealthTest';
+import History from './History/page';
+import HistoryEnter from './HistoryEnter/page';
 import LecueNotePage from './LecueNote/page/LeceuNotePage';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
 import Login from './Login/page';
@@ -51,7 +55,12 @@ function Router() {
             <Route path="/create-note" element={<LecueNotePage />} />
             <Route path="/sticker-pack" element={<StickerPack />} />
             <Route path="/detail" element={<DetailPage />} />
-            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/mypage" element={<Mypage />}>
+              <Route path="" element={<Enter />} />
+              <Route path="edit-nickname" element={<EditNickname />} />
+              <Route path="select-history" element={<HistoryEnter />} />
+              <Route path="history" element={<History />} />
+            </Route>
             <Route path="/lecue-book/:bookUuid" element={<DetailPage />} />
             <Route path="/target" element={<TargetPage />} />
             <Route path="/test" element={<HealthTest />} />

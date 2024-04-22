@@ -12,6 +12,7 @@ export default defineConfig({
     sentryVitePlugin({
       org: 'lecue',
       project: 'javascript-react',
+      authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
 

@@ -5,6 +5,7 @@ type colors =
   | 'white'
   | 'background'
   | 'LG'
+  | 'LG_2'
   | 'WG'
   | 'MG'
   | 'DG'
