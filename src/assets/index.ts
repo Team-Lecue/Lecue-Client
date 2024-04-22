@@ -37,6 +37,9 @@ import ImgBookOrangeBig from './img/img_book_orange_big.svg?react';
 import ImgEmpty from './img/img_empty.svg?react';
 import ImgError from './img/img_error.svg?react';
 import ImgEvent from './img/img_event.svg?react';
+import ImgHome01 from './img/img_home_01.svg?react';
+import ImgHome02 from './img/img_home_02.svg?react';
+import ImgHome03 from './img/img_home_03.svg?react';
 import ImgKakao01 from './img/img_kakao_01.svg?react';
 import ImgKakao02 from './img/img_kakao_02.svg?react';
 import ImgKakao03 from './img/img_kakao_03.svg?react';
@@ -102,6 +105,9 @@ export {
   ImgEmpty,
   ImgError,
   ImgEvent,
+  ImgHome01,
+  ImgHome02,
+  ImgHome03,
   ImgKakao01,
   ImgKakao02,
   ImgKakao03,
