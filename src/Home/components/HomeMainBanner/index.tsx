@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { IcProfile, ImgLogoLecue } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import * as S from './NavigateLecueBook.style';
+import HomeSwiper from '../HomeSwiper';
+import * as S from './HomeMainBanner.style';
 
 function NavigateLecueBook() {
   const navigate = useNavigate();
@@ -31,8 +32,7 @@ function NavigateLecueBook() {
         <IcProfile onClick={handleClickIcProfile} />
       </S.IconWrapper>
 
-      {/* 임시로 넣은 것! 추후 새로운 그래픽으로 수정 */}
-      <S.DummyGraphic></S.DummyGraphic>
+      <HomeSwiper />
 
       <S.Button type="button" onClick={handleClickNavBtn}>
         레큐북 만들기
