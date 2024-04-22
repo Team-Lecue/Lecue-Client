@@ -6,7 +6,7 @@ const NoBookmarkList = () => {
   const navigate = useNavigate();
 
   const handleClickNavigateBtn = () => {
-    navigate('/mypage');
+    navigate('/mypage/history', { state: 2 });
   };
 
   return (
