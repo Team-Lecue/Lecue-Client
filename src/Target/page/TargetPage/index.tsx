@@ -83,11 +83,11 @@ function TargetPage() {
       <S.TargetPageBodyWrapper>
         <S.InputSectionWrapper>
           <S.NameInputWrapper>
-            <S.SectionTitle>최애의 이름</S.SectionTitle>
+            <S.SectionTitle>이름 입력</S.SectionTitle>
             <NameInput name={name} changeName={(name) => setName(name)} />
           </S.NameInputWrapper>
           <S.FavoriteInputWrapper>
-            <S.SectionTitle>최애의 사진 업로드</S.SectionTitle>
+            <S.SectionTitle>사진 업로드</S.SectionTitle>
             <FavoriteImageInput changeFileData={(file) => setFileData(file)} />
           </S.FavoriteInputWrapper>
         </S.InputSectionWrapper>
