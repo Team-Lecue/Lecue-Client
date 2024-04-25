@@ -29,7 +29,6 @@ function NicknameInput({
               handleSetNickname,
               handleSetWordCnt,
               handleSetIsValid,
-              currentNickname,
               e,
             });
           }}
