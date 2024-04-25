@@ -12,13 +12,25 @@ const useDeleteFavorite = (state: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      state === 'home'
-        ? queryClient.refetchQueries(['get-favorite'], {
-            exact: true,
-          })
-        : queryClient.refetchQueries(['get-mypage-favorite'], {
+      switch (state) {
+        case 'home':
+          queryClient.refetchQueries(['get-favorite'], {
             exact: true,
           });
+          break;
+
+        case 'favoriteBook':
+          queryClient.refetchQueries(['get-mypage-favorite'], {
+            exact: true,
+          });
+          break;
+
+        case 'myLecueBook':
+          queryClient.refetchQueries(['get-my-lecueBook'], {
+            exact: true,
+          });
+          break;
+      }
     },
   });
   return mutation;

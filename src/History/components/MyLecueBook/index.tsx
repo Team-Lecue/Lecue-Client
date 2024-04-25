@@ -21,13 +21,12 @@ function MyLecueBook(props: LecueBookProps) {
   } = props;
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
-  const [favorite, setFavorite] = useState(isFavorite);
 
   const navigate = useNavigate();
 
   const deleteMutation = useDeleteMyBook();
   const FavoritePostMutation = usePostFavorite();
-  const FavoriteDeleteMutation = useDeleteFavorite('mypage');
+  const FavoriteDeleteMutation = useDeleteFavorite('myLecueBook');
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
@@ -49,12 +48,10 @@ function MyLecueBook(props: LecueBookProps) {
     bookId: number,
   ) => {
     event.stopPropagation();
-    if (favorite) {
+    if (isFavorite) {
       FavoriteDeleteMutation.mutate(bookId);
-      setFavorite(false);
     } else {
       FavoritePostMutation.mutate(bookId);
-      setFavorite(true);
     }
   };
 
@@ -64,7 +61,7 @@ function MyLecueBook(props: LecueBookProps) {
 
   useEffect(() => {
     convertNoteCount(noteNum);
-  }, [favorite]);
+  }, []);
 
   return (
     <S.Wrapper>
@@ -81,7 +78,7 @@ function MyLecueBook(props: LecueBookProps) {
               handleClickFavoriteBtn(event, bookId);
             }}
           >
-            {favorite ? <IcStar /> : <IcStarDefault />}
+            {isFavorite ? <IcStar /> : <IcStarDefault />}
           </S.Favorite>
         </S.Header>
         <S.Title>{title}</S.Title>
