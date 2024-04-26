@@ -29,7 +29,7 @@ function MyLecueBook(props: LecueBookProps) {
   const deleteFavoriteMutation = useDeleteFavorite('myLecueBook');
 
   const convertNoteCount = (noteNum: number) => {
-    setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+    setNoteCount(noteNum.toLocaleString());
   };
 
   const handleClickBook = (bookUuid: string) => {
