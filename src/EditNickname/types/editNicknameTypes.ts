@@ -26,7 +26,6 @@ export interface CheckNicknameProps {
   handleSetNickname: (nickname: string) => void;
   handleSetWordCnt: (wordCnt: number) => void;
   handleSetIsValid: (isValid: isValidState) => void;
-  currentNickname: string;
   e: React.ChangeEvent<HTMLInputElement>;
 }
 
