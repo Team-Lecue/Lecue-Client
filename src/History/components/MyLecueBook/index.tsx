@@ -24,9 +24,9 @@ function MyLecueBook(props: LecueBookProps) {
 
   const navigate = useNavigate();
 
-  const deleteMutation = useDeleteMyBook();
-  const FavoritePostMutation = usePostFavorite();
-  const FavoriteDeleteMutation = useDeleteFavorite('myLecueBook');
+  const deleteBookMutation = useDeleteMyBook();
+  const postFavoriteMutation = usePostFavorite();
+  const deleteFavoriteMutation = useDeleteFavorite('myLecueBook');
 
   const convertNoteCount = (noteNum: number) => {
     setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
@@ -48,15 +48,13 @@ function MyLecueBook(props: LecueBookProps) {
     bookId: number,
   ) => {
     event.stopPropagation();
-    if (isFavorite) {
-      FavoriteDeleteMutation.mutate(bookId);
-    } else {
-      FavoritePostMutation.mutate(bookId);
-    }
+    isFavorite
+      ? deleteFavoriteMutation.mutate(bookId)
+      : postFavoriteMutation.mutate(bookId);
   };
 
-  const handleFn = () => {
-    deleteMutation.mutate(bookId);
+  const handleDeleteBookFn = () => {
+    deleteBookMutation.mutate(bookId);
   };
 
   useEffect(() => {
@@ -98,7 +96,7 @@ function MyLecueBook(props: LecueBookProps) {
         <CommonModal
           category="book_delete"
           setModalOn={setModalOn}
-          handleFn={handleFn}
+          handleFn={handleDeleteBookFn}
         />
       )}
     </S.Wrapper>
