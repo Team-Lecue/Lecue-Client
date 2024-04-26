@@ -17,7 +17,7 @@ const usePostFavorite = () => {
       });
     },
   });
-  return mutation;
+  return mutation.mutate;
 };
 
 export default usePostFavorite;

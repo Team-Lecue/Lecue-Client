@@ -48,13 +48,11 @@ function MyLecueBook(props: LecueBookProps) {
     bookId: number,
   ) => {
     event.stopPropagation();
-    isFavorite
-      ? deleteFavoriteMutation.mutate(bookId)
-      : postFavoriteMutation.mutate(bookId);
+    isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);
   };
 
   const handleDeleteBookFn = () => {
-    deleteBookMutation.mutate(bookId);
+    deleteBookMutation(bookId);
   };
 
   useEffect(() => {

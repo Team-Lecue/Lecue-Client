@@ -6,6 +6,7 @@ import deleteFavorite from '../api/deleteFavorite';
 const useDeleteFavorite = (state: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationFn: (bookId: number) => {
       return deleteFavorite(bookId);
@@ -33,7 +34,7 @@ const useDeleteFavorite = (state: string) => {
       }
     },
   });
-  return mutation;
+  return mutation.mutate;
 };
 
 export default useDeleteFavorite;

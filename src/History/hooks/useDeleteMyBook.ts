@@ -17,7 +17,7 @@ const useDeleteMyBook = () => {
       });
     },
   });
-  return mutation;
+  return mutation.mutate;
 };
 
 export default useDeleteMyBook;

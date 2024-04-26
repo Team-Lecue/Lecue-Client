@@ -36,8 +36,8 @@ function LecueBook(props: LecueBookProps) {
     deleteType: deleteType | undefined,
   ) => {
     deleteType === 'home'
-      ? deleteHomeMutation.mutate(bookId)
-      : deleteMypageMutation.mutate(bookId);
+      ? deleteHomeMutation(bookId)
+      : deleteMypageMutation(bookId);
   };
 
   const handleClickBook = (bookUuid: string) => {
