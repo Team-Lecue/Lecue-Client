@@ -1,12 +1,25 @@
 import styled from '@emotion/styled';
 
-export const MyLetterWrapper = styled.article`
+export const MyLetterWrapper = styled.article<{
+  noteTextColor: string;
+  noteBackground: string;
+}>`
   width: 100%;
   height: 16.3rem;
   padding: 1.3rem 1.2rem;
 
   border-radius: 0.4rem;
-  background-color: ${({ theme }) => theme.colors.sub_purple};
+  ${({ noteBackground }) => {
+    if (noteBackground.substring(0, 1) === '#') {
+      return `background-color: ${noteBackground}`;
+    } else {
+      return `background: url(${noteBackground})`;
+    }
+  }};
+  background-size: 100% 16.3rem;
+  color: ${({ noteTextColor }) => {
+    return noteTextColor;
+  }};
 `;
 
 export const MyLetterFavorite = styled.h1`
