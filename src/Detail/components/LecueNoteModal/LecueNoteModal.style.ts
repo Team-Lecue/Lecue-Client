@@ -55,7 +55,7 @@ export const LecueNoteModalContentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden auto;
+  overflow-y: auto;
 
   width: 100%;
   height: 23.4rem;
