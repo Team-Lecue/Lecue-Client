@@ -17,9 +17,7 @@ export const MyLetterWrapper = styled.article<{
     }
   }};
   background-size: 100% 16.3rem;
-  color: ${({ noteTextColor }) => {
-    return noteTextColor;
-  }};
+  color: ${({ noteTextColor }) => noteTextColor};
 `;
 
 export const MyLetterFavorite = styled.h1`
