@@ -21,16 +21,15 @@ function MyLecueBook(props: LecueBookProps) {
   } = props;
   const [noteCount, setNoteCount] = useState('');
   const [modalOn, setModalOn] = useState(false);
-  const [favorite, setFavorite] = useState(isFavorite);
 
   const navigate = useNavigate();
 
-  const deleteMutation = useDeleteMyBook();
-  const FavoritePostMutation = usePostFavorite();
-  const FavoriteDeleteMutation = useDeleteFavorite('mypage');
+  const deleteBookMutation = useDeleteMyBook();
+  const postFavoriteMutation = usePostFavorite();
+  const deleteFavoriteMutation = useDeleteFavorite('myLecueBook');
 
   const convertNoteCount = (noteNum: number) => {
-    setNoteCount(noteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+    setNoteCount(noteNum.toLocaleString());
   };
 
   const handleClickBook = (bookUuid: string) => {
@@ -49,22 +48,16 @@ function MyLecueBook(props: LecueBookProps) {
     bookId: number,
   ) => {
     event.stopPropagation();
-    if (favorite) {
-      FavoriteDeleteMutation.mutate(bookId);
-      setFavorite(false);
-    } else {
-      FavoritePostMutation.mutate(bookId);
-      setFavorite(true);
-    }
+    isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);
   };
 
-  const handleFn = () => {
-    deleteMutation.mutate(bookId);
+  const handleDeleteBookFn = () => {
+    deleteBookMutation(bookId);
   };
 
   useEffect(() => {
     convertNoteCount(noteNum);
-  }, [favorite]);
+  }, []);
 
   return (
     <S.Wrapper>
@@ -81,7 +74,7 @@ function MyLecueBook(props: LecueBookProps) {
               handleClickFavoriteBtn(event, bookId);
             }}
           >
-            {favorite ? <IcStar /> : <IcStarDefault />}
+            {isFavorite ? <IcStar /> : <IcStarDefault />}
           </S.Favorite>
         </S.Header>
         <S.Title>{title}</S.Title>
@@ -101,7 +94,7 @@ function MyLecueBook(props: LecueBookProps) {
         <CommonModal
           category="book_delete"
           setModalOn={setModalOn}
-          handleFn={handleFn}
+          handleFn={handleDeleteBookFn}
         />
       )}
     </S.Wrapper>
