@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const MyLetterWrapper = styled.article<{
@@ -9,13 +10,14 @@ export const MyLetterWrapper = styled.article<{
   padding: 1.3rem 1.2rem;
 
   border-radius: 0.4rem;
-  ${({ noteBackground }) => {
-    if (noteBackground.substring(0, 1) === '#') {
-      return `background-color: ${noteBackground}`;
-    } else {
-      return `background: url(${noteBackground})`;
-    }
-  }};
+  ${({ noteBackground }) =>
+    noteBackground.substring(0, 1) === '#'
+      ? css`
+          background-color: ${noteBackground};
+        `
+      : css`
+          background: url(${noteBackground});
+        `};
   background-size: 100% 16.3rem;
   color: ${({ noteTextColor }) => noteTextColor};
 `;
