@@ -16,7 +16,7 @@ function NameInput({ name, changeName }: NameInputProps) {
       <S.InputContainer isEmpty={name.length === 0}>
         <S.Input
           type="text"
-          placeholder="마음을 전하고 싶은 최애는 누구인가요?"
+          placeholder="마음을 전하고 싶은 분은 누구인가요?"
           value={name}
           onChange={handleChangeInput}
         />
