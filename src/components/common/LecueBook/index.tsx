@@ -28,16 +28,16 @@ function LecueBook(props: LecueBookProps) {
 
   const navigate = useNavigate();
 
-  const MypageDeleteMutation = useDeleteFavorite('mypage');
-  const HomeDeleteMutation = useDeleteFavorite('home');
+  const deleteMypageMutation = useDeleteFavorite('favoriteBook');
+  const deleteHomeMutation = useDeleteFavorite('home');
 
   const handleClickFavoriteBtn = (
     bookId: number,
     deleteType: deleteType | undefined,
   ) => {
     deleteType === 'home'
-      ? HomeDeleteMutation.mutate(bookId)
-      : MypageDeleteMutation.mutate(bookId);
+      ? deleteHomeMutation(bookId)
+      : deleteMypageMutation(bookId);
   };
 
   const handleClickBook = (bookUuid: string) => {

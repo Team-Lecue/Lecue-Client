@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { patchNickname } from '../api/patchNickname';
@@ -12,6 +12,7 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
   const { handleSetIsValid, handleSetIsActive, token, nickname } = props;
 
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: async ({ token, nickname }: patchNicknameProps) => {
@@ -31,6 +32,10 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       }
     },
     onSuccess: () => {
+      queryClient.refetchQueries(['useGetMyNickName'], {
+        exact: true,
+      });
+
       window.localStorage.setItem('token', token);
       window.localStorage.setItem('nickname', nickname);
       navigate('/');

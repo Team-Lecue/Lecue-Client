@@ -30,7 +30,7 @@ export const BigLecueNoteContentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow-y: auto;
 
   width: 100%;
   height: 22.4rem;

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
   padding: 0.2rem 0.1rem 1rem 0.3rem;
 
-  overflow-x: scroll;
+  overflow-x: auto;
 `;
 
 export const Input = styled.input`
