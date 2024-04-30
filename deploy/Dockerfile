@@ -6,7 +6,7 @@ COPY package.json yarn.lock ./
 
 RUN yarn
 
-COPY ..
+COPY . .
 
 ENV NODE_OPTIONS=--max-old-space-size=2048
 
