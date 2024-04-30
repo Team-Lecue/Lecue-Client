@@ -1,15 +1,13 @@
-FROM node:18.17.0-slim
+FROM node:18.17.0-alpine
 
 WORKDIR /app
 
-COPY package.json .
-COPY yarn.lock .
-
-ENV NODE_OPTIONS=--max-old-space-size=2048
+COPY package.json yarn.lock ./
 
 RUN yarn
 
-COPY . .
+COPY ..
 
+ENV NODE_OPTIONS=--max-old-space-size=2048
 
 CMD ["yarn", "start"]
