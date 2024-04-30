@@ -8,11 +8,10 @@ export const MainWrapper = styled.div`
 
 export const IconWrapper = styled.section`
   display: flex;
-  gap: 16rem;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: flex-end;
 
-  width: 100%;
-  margin: 4rem 1.8rem 3.5rem 1.6rem;
+  margin: 4rem 1.6rem 3.4rem;
 `;
 
 export const Button = styled.button`

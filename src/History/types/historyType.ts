@@ -30,6 +30,8 @@ export interface MyLetterProps {
   title: string;
   content: string;
   noteDate: string;
+  noteTextColor: string;
+  noteBackground: string;
 }
 
 export interface HistoryEmptyViewProps {
