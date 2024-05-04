@@ -67,6 +67,10 @@ export const BookInfoHeaderItem = styled.p<{ backgroundColor: string }>`
 `;
 
 export const BookInfoTitle = styled.p<{ backgroundColor: string }>`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
   margin-top: 0.7rem;
 
   color: ${({ theme, backgroundColor }) => {
@@ -95,4 +99,9 @@ export const BookInfoContent = styled.p<{ backgroundColor: string }>`
     }
   }};
   ${({ theme }) => theme.fonts.Body3_R_14};
+`;
+
+export const FavoriteBtn = styled.button`
+  width: 2.2rem;
+  height: 2.2rem;
 `;
