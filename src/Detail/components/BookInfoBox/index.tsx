@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import {
   IcCrown,
   IcDate,
   IcZigzagStarOff,
   IcZigzagStarOn,
 } from '../../../assets';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import usePostFavorite from '../../../libs/hooks/usePostFavorite';
 import * as S from './BookInfoBox.style';
 
 interface BookInfoBoxProps {
@@ -13,6 +17,7 @@ interface BookInfoBoxProps {
   title: string;
   description: string;
   bookBackgroundColor: string;
+  bookId: number;
   isFavorite?: boolean;
 }
 
@@ -24,7 +29,22 @@ function BookInfoBox({
   description,
   bookBackgroundColor,
   isFavorite,
+  bookId,
 }: BookInfoBoxProps) {
+  const token = window.localStorage.getItem('token');
+  const [isLogin, setIsLogin] = useState(false);
+
+  const postFavoriteMutation = usePostFavorite('lecueBookDetail');
+  const deleteFavoriteMutation = useDeleteFavorite('lecueBookDetail');
+
+  const handleFavoriteBtn = () => {
+    isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);
+  };
+
+  useEffect(() => {
+    token ? setIsLogin(true) : setIsLogin(false);
+  }, []);
+
   return (
     <S.BookInfoBoxWrapper backgroundColor={bookBackgroundColor}>
       <S.ProfileImageWrapper>
@@ -47,13 +67,13 @@ function BookInfoBox({
         </S.BookInfoHeader>
         <S.BookInfoTitle backgroundColor={bookBackgroundColor}>
           {title}
-          {isFavorite &&
+          {isLogin &&
             (isFavorite ? (
-              <S.FavoriteBtn type="button">
+              <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
                 <IcZigzagStarOn />
               </S.FavoriteBtn>
             ) : (
-              <S.FavoriteBtn type="button">
+              <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
                 <IcZigzagStarOff />
               </S.FavoriteBtn>
             ))}

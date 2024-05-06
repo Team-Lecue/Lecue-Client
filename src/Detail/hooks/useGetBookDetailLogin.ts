@@ -7,7 +7,7 @@ export default function useGetBookDetailLogin(bookUuid: string) {
   const navigate = useNavigate();
 
   const { data: bookDetail, isLoading } = useQuery(
-    ['useGetBookDetailLogin', bookUuid],
+    ['get-bookDetail-login'],
     () => getBookDetailLogin(bookUuid),
     {
       onError: () => {

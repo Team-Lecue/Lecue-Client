@@ -26,6 +26,12 @@ const useDeleteFavorite = (state: string) => {
           exact: true,
         });
         break;
+
+      case 'lecueBookDetail':
+        queryClient.refetchQueries(['get-bookDetail-login'], {
+          exact: true,
+        });
+        break;
     }
   };
 
