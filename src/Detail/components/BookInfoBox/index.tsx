@@ -19,6 +19,7 @@ interface BookInfoBoxProps {
   bookBackgroundColor: string;
   bookId: number;
   isFavorite?: boolean;
+  bookUuid: string;
 }
 
 function BookInfoBox({
@@ -30,12 +31,13 @@ function BookInfoBox({
   bookBackgroundColor,
   isFavorite,
   bookId,
+  bookUuid,
 }: BookInfoBoxProps) {
   const token = window.localStorage.getItem('token');
   const [isLogin, setIsLogin] = useState(false);
 
-  const postFavoriteMutation = usePostFavorite('lecueBookDetail');
-  const deleteFavoriteMutation = useDeleteFavorite('lecueBookDetail');
+  const postFavoriteMutation = usePostFavorite('lecueBookDetail', bookUuid);
+  const deleteFavoriteMutation = useDeleteFavorite('lecueBookDetail', bookUuid);
 
   const handleFavoriteBtn = () => {
     isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);

@@ -34,7 +34,7 @@ function DetailPage() {
       <S.DetailPageBodyWrapper>
         <SlideBanner name={bookDetail.favoriteName} />
         <S.LecueBookContainer>
-          <BookInfoBox {...bookDetail} />
+          <BookInfoBox {...bookDetail} bookUuid={bookUuid} />
           <LecueNoteListContainer
             bookId={bookDetail.bookId}
             bookUuid={bookUuid}
