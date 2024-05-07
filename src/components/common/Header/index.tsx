@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -37,7 +38,7 @@ function Header({
       </S.HeaderButtonWrapper>
       <S.HeaderTitle isDarkMode={isDarkMode}>{headerTitle}</S.HeaderTitle>
       <S.HeaderButtonWrapper isLeft={false}>
-        {isDetailPage ? <ShareButton /> : <></>}
+        {isDetailPage && <ShareButton />}
       </S.HeaderButtonWrapper>
     </S.HeaderWrapper>
   );
@@ -91,5 +92,4 @@ export function BackButton({ isDarkMode, handleFn }: HeaderButtonProps) {
     </S.HeaderButton>
   );
 }
-
-export default Header;
+export default React.memo(Header);
