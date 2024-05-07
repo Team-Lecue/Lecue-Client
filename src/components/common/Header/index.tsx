@@ -11,7 +11,6 @@ import * as S from './Header.style';
 
 interface HeaderProps {
   headerTitle: string;
-  isDarkMode?: boolean;
   isDetailPage?: boolean;
   handleFn?: () => void;
 }
@@ -21,22 +20,13 @@ interface HeaderButtonProps {
   handleFn?: () => void;
 }
 
-function Header({
-  headerTitle,
-  isDarkMode,
-  isDetailPage,
-  handleFn,
-}: HeaderProps) {
+function Header({ headerTitle, isDetailPage, handleFn }: HeaderProps) {
   return (
-    <S.HeaderWrapper isDarkMode={isDarkMode}>
+    <S.HeaderWrapper>
       <S.HeaderButtonWrapper isLeft={true}>
-        {isDetailPage ? (
-          <HomeButton />
-        ) : (
-          <BackButton isDarkMode={isDarkMode} handleFn={handleFn} />
-        )}
+        {isDetailPage ? <HomeButton /> : <BackButton handleFn={handleFn} />}
       </S.HeaderButtonWrapper>
-      <S.HeaderTitle isDarkMode={isDarkMode}>{headerTitle}</S.HeaderTitle>
+      <S.HeaderTitle>{headerTitle}</S.HeaderTitle>
       <S.HeaderButtonWrapper isLeft={false}>
         {isDetailPage && <ShareButton />}
       </S.HeaderButtonWrapper>
@@ -92,4 +82,5 @@ export function BackButton({ isDarkMode, handleFn }: HeaderButtonProps) {
     </S.HeaderButton>
   );
 }
+
 export default React.memo(Header);

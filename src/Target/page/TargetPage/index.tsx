@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
@@ -68,6 +68,10 @@ function TargetPage() {
     });
   };
 
+  const handleEscapeModal = useCallback(() => {
+    setEscapeModal(true);
+  }, []);
+
   return isLoading ? (
     <LoadingPage />
   ) : (
@@ -79,7 +83,7 @@ function TargetPage() {
           setModalOn={setEscapeModal}
         />
       )}
-      <Header headerTitle="레큐북 제작" handleFn={() => setEscapeModal(true)} />
+      <Header headerTitle="레큐북 제작" handleFn={handleEscapeModal} />
       <S.TargetPageBodyWrapper>
         <S.InputSectionWrapper>
           <S.NameInputWrapper>
