@@ -1,24 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  IcArrowLeftBlack,
-  IcArrowLeftWhite,
-  IcHome,
-  IcSharing,
-} from '../../../assets';
+import { IcArrowLeftBlack, IcHome, IcSharing } from '../../../assets';
 import * as S from './Header.style';
-
-interface HeaderProps {
-  headerTitle: string;
-  isDetailPage?: boolean;
-  handleFn?: () => void;
-}
-
-interface HeaderButtonProps {
-  isDarkMode?: boolean;
-  handleFn?: () => void;
-}
+import { HeaderButtonProps, HeaderProps } from './types/headerType';
 
 function Header({ headerTitle, isDetailPage, handleFn }: HeaderProps) {
   return (
@@ -70,7 +55,7 @@ export function ShareButton() {
   );
 }
 
-export function BackButton({ isDarkMode, handleFn }: HeaderButtonProps) {
+export function BackButton({ handleFn }: HeaderButtonProps) {
   const navigate = useNavigate();
   const handleClickBackButton = () => {
     handleFn ? handleFn() : navigate(-1);
@@ -78,7 +63,7 @@ export function BackButton({ isDarkMode, handleFn }: HeaderButtonProps) {
 
   return (
     <S.HeaderButton onClick={handleClickBackButton}>
-      {isDarkMode ? <IcArrowLeftWhite /> : <IcArrowLeftBlack />}
+      <IcArrowLeftBlack />
     </S.HeaderButton>
   );
 }
