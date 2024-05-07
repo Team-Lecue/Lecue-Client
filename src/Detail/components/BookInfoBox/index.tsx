@@ -67,8 +67,10 @@ function BookInfoBox({
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
         </S.BookInfoHeader>
-        <S.BookInfoTitle backgroundColor={bookBackgroundColor}>
-          {title}
+        <S.BookInfoTitle>
+          <S.BookInfoTitleText backgroundColor={bookBackgroundColor}>
+            {title}
+          </S.BookInfoTitleText>
           {isLogin &&
             (isFavorite ? (
               <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
