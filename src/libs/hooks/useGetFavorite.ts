@@ -8,7 +8,7 @@ const useGetFavorite = () => {
   const navigate = useNavigate();
 
   const { isLoading: isLoadingFavorite, data: favorite } = useQuery({
-    queryKey: [QUERY_KEY.favorite.getHomeFavorite],
+    queryKey: QUERY_KEY.favorite.getHomeFavorite,
     queryFn: () => getFavorite(),
     onError: () => navigate('/error'),
     refetchOnWindowFocus: false,

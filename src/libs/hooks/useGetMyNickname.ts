@@ -7,7 +7,7 @@ import { getMyNickName } from '../api/getMyNickName';
 export default function useGetMyNickName() {
   const navigate = useNavigate();
   const { data: myNickName, isLoading } = useQuery(
-    [QUERY_KEY.nickname.getNickName],
+    QUERY_KEY.nickname.getNickName,
     () => getMyNickName(),
     {
       onError: () => {

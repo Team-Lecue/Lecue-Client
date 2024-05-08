@@ -11,19 +11,19 @@ const useDeleteFavorite = (location: string) => {
   const handleRefetchQueries = (location: string) => {
     switch (location) {
       case 'home':
-        queryClient.refetchQueries([QUERY_KEY.favorite.getHomeFavorite], {
+        queryClient.refetchQueries(QUERY_KEY.favorite.getHomeFavorite, {
           exact: true,
         });
         break;
 
       case 'mypage':
-        queryClient.refetchQueries([QUERY_KEY.favorite.getMypageFavorite], {
+        queryClient.refetchQueries(QUERY_KEY.favorite.getMypageFavorite, {
           exact: true,
         });
         break;
 
       case 'lecueBook':
-        queryClient.refetchQueries([QUERY_KEY.favorite.getLecueBookFavorite], {
+        queryClient.refetchQueries(QUERY_KEY.favorite.getLecueBookFavorite, {
           exact: true,
         });
         break;

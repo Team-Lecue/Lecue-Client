@@ -13,7 +13,7 @@ const usePostFavorite = () => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      queryClient.refetchQueries([QUERY_KEY.favorite.getLecueBookFavorite], {
+      queryClient.refetchQueries(QUERY_KEY.favorite.getLecueBookFavorite, {
         exact: true,
       });
     },
