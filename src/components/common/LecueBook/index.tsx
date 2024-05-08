@@ -28,7 +28,7 @@ function LecueBook(props: LecueBookProps) {
 
   const navigate = useNavigate();
 
-  const deleteMypageMutation = useDeleteFavorite('favoriteBook');
+  const deleteMypageMutation = useDeleteFavorite('mypage');
   const deleteHomeMutation = useDeleteFavorite('home');
 
   const handleClickFavoriteBtn = (
