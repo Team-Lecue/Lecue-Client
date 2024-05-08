@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import { QUERY_KEY } from '../../constants/queryKeys';
 import { deleteMyBook } from '../api/deleteMyBook';
 
 const useDeleteMyBook = () => {
@@ -12,7 +13,7 @@ const useDeleteMyBook = () => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      queryClient.refetchQueries(['get-my-lecueBook'], {
+      queryClient.refetchQueries([QUERY_KEY.favorite.getLecueBookFavorite], {
         exact: true,
       });
     },
