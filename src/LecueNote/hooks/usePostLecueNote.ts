@@ -30,7 +30,7 @@ const usePostLecueNote = () => {
       navigate(`/lecue-book/${bookUuid}`);
     },
   });
-  return mutation;
+  return { postMutation: mutation.mutate, isLoading: mutation.isLoading };
 };
 
 export default usePostLecueNote;
