@@ -33,7 +33,7 @@ function BookInfoBox({
   bookId,
   bookUuid,
 }: BookInfoBoxProps) {
-  const token = window.localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const [isLogin, setIsLogin] = useState(false);
 
   const postFavoriteMutation = usePostFavorite('lecueBookDetail', bookUuid);
@@ -71,16 +71,11 @@ function BookInfoBox({
           <S.BookInfoTitleText backgroundColor={bookBackgroundColor}>
             {title}
           </S.BookInfoTitleText>
-          {isLogin &&
-            (isFavorite ? (
-              <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
-                <IcZigzagStarOn />
-              </S.FavoriteBtn>
-            ) : (
-              <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
-                <IcZigzagStarOff />
-              </S.FavoriteBtn>
-            ))}
+          {isLogin && (
+            <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
+              {isFavorite ? <IcZigzagStarOn /> : <IcZigzagStarOff />}
+            </S.FavoriteBtn>
+          )}
         </S.BookInfoTitle>
         <S.BookInfoContent backgroundColor={bookBackgroundColor}>
           {description}
