@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 export async function getBookDetailLogin(bookUuid: string) {
-  const token = window.localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const data = await api.get(`/api/books/favorite/${bookUuid}`, {
     headers: {
       'Content-Type': 'application/json',
