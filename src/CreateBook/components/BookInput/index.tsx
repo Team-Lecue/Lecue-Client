@@ -7,7 +7,7 @@ interface BookInputProps {
 
 function BookInput({ title, changeTitle }: BookInputProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 15) {
+    if (e.target.value.length <= 10) {
       changeTitle(e.target.value);
     }
   };
@@ -20,7 +20,7 @@ function BookInput({ title, changeTitle }: BookInputProps) {
           value={title}
           onChange={handleChangeInput}
         />
-        <S.WordCount>({title.length}/15)</S.WordCount>
+        <S.WordCount>({title.length}/10)</S.WordCount>
       </S.InputContainer>
     </S.TitleWrapper>
   );

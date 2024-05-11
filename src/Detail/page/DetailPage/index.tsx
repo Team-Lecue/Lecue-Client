@@ -8,13 +8,18 @@ import BookInfoBox from '../../components/BookInfoBox';
 import LecueNoteListContainer from '../../components/LecueNoteListContainer';
 import SlideBanner from '../../components/SlideBanner';
 import useGetBookDetail from '../../hooks/useGetBookDetail';
+import useGetBookDetailLogin from '../../hooks/useGetBookDetailLogin';
 import * as S from './DetailPage.style';
 
 function DetailPage() {
   const [isEditable, setIsEditable] = useState(true);
 
+  const token = window.localStorage.getItem('token');
+
   const { bookUuid } = useParams() as { bookUuid: string };
-  const { bookDetail, isLoading } = useGetBookDetail(bookUuid);
+  const { bookDetail, isLoading } = token
+    ? useGetBookDetailLogin(bookUuid)
+    : useGetBookDetail(bookUuid);
   const postMutation = usePostStickerState(bookUuid);
 
   const setEditableStateFalse = () => {
@@ -29,7 +34,7 @@ function DetailPage() {
       <S.DetailPageBodyWrapper>
         <SlideBanner name={bookDetail.favoriteName} />
         <S.LecueBookContainer>
-          <BookInfoBox {...bookDetail} />
+          <BookInfoBox {...bookDetail} bookUuid={bookUuid} />
           <LecueNoteListContainer
             bookId={bookDetail.bookId}
             bookUuid={bookUuid}

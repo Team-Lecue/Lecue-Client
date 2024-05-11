@@ -1,4 +1,13 @@
-import { IcCrown, IcDate } from '../../../assets';
+import { useEffect, useState } from 'react';
+
+import {
+  IcCrown,
+  IcDate,
+  IcZigzagStarOff,
+  IcZigzagStarOn,
+} from '../../../assets';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import usePostFavorite from '../../../libs/hooks/usePostFavorite';
 import * as S from './BookInfoBox.style';
 
 interface BookInfoBoxProps {
@@ -8,6 +17,9 @@ interface BookInfoBoxProps {
   title: string;
   description: string;
   bookBackgroundColor: string;
+  bookId: number;
+  isFavorite?: boolean;
+  bookUuid: string;
 }
 
 function BookInfoBox({
@@ -17,7 +29,24 @@ function BookInfoBox({
   title,
   description,
   bookBackgroundColor,
+  isFavorite,
+  bookId,
+  bookUuid,
 }: BookInfoBoxProps) {
+  const token = localStorage.getItem('token');
+  const [isLogin, setIsLogin] = useState(false);
+
+  const postFavoriteMutation = usePostFavorite('lecueBookDetail', bookUuid);
+  const deleteFavoriteMutation = useDeleteFavorite('lecueBookDetail', bookUuid);
+
+  const handleFavoriteBtn = () => {
+    isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);
+  };
+
+  useEffect(() => {
+    token ? setIsLogin(true) : setIsLogin(false);
+  }, []);
+
   return (
     <S.BookInfoBoxWrapper backgroundColor={bookBackgroundColor}>
       <S.ProfileImageWrapper>
@@ -38,8 +67,15 @@ function BookInfoBox({
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
         </S.BookInfoHeader>
-        <S.BookInfoTitle backgroundColor={bookBackgroundColor}>
-          {title}
+        <S.BookInfoTitle>
+          <S.BookInfoTitleText backgroundColor={bookBackgroundColor}>
+            {title}
+          </S.BookInfoTitleText>
+          {isLogin && (
+            <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
+              {isFavorite ? <IcZigzagStarOn /> : <IcZigzagStarOff />}
+            </S.FavoriteBtn>
+          )}
         </S.BookInfoTitle>
         <S.BookInfoContent backgroundColor={bookBackgroundColor}>
           {description}

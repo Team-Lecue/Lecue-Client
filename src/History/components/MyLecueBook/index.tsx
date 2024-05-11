@@ -25,7 +25,7 @@ function MyLecueBook(props: LecueBookProps) {
   const navigate = useNavigate();
 
   const deleteBookMutation = useDeleteMyBook();
-  const postFavoriteMutation = usePostFavorite();
+  const postFavoriteMutation = usePostFavorite('mypage');
   const deleteFavoriteMutation = useDeleteFavorite('myLecueBook');
 
   const convertNoteCount = (noteNum: number) => {
