@@ -4,18 +4,33 @@ import { useNavigate } from 'react-router-dom';
 import { QUERY_KEY } from '../../constants/queryKeys';
 import postFavorite from '../api/postFavorite';
 
-const usePostFavorite = () => {
+const usePostFavorite = (state: string, bookUuid?: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+  const handleRefetchQueries = (state: string, bookUuid?: string) => {
+    switch (state) {
+      case 'mypage':
+        queryClient.refetchQueries(['get-my-lecueBook'], {
+          exact: true,
+        });
+        break;
+
+      case 'lecueBookDetail':
+        queryClient.refetchQueries(['get-bookDetail-login', bookUuid], {
+          exact: true,
+        });
+        break;
+    }
+  };
+
   const mutation = useMutation({
     mutationFn: (bookId: number) => {
       return postFavorite(bookId);
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      queryClient.refetchQueries(QUERY_KEY.favorite.getLecueBookFavorite, {
-        exact: true,
-      });
+      handleRefetchQueries(state, bookUuid);
     },
   });
   return mutation.mutate;

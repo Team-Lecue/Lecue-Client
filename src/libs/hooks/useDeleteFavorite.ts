@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { QUERY_KEY } from '../../constants/queryKeys';
 import deleteFavorite from '../api/deleteFavorite';
 
-const useDeleteFavorite = (location: string) => {
+const useDeleteFavorite = (state: string, bookUuid?: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const handleRefetchQueries = (location: string) => {
-    switch (location) {
+  const handleRefetchQueries = (state: string, bookUuid?: string) => {
+    switch (state) {
       case 'home':
         queryClient.refetchQueries(QUERY_KEY.favorite.getHomeFavorite, {
           exact: true,
@@ -27,6 +27,12 @@ const useDeleteFavorite = (location: string) => {
           exact: true,
         });
         break;
+
+      case 'lecueBookDetail':
+        queryClient.refetchQueries(['get-bookDetail-login', bookUuid], {
+          exact: true,
+        });
+        break;
     }
   };
 
@@ -36,7 +42,7 @@ const useDeleteFavorite = (location: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      handleRefetchQueries(location);
+      handleRefetchQueries(location, bookUuid);
     },
   });
   return mutation.mutate;

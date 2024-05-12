@@ -66,8 +66,18 @@ export const BookInfoHeaderItem = styled.p<{ backgroundColor: string }>`
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 `;
 
-export const BookInfoTitle = styled.p<{ backgroundColor: string }>`
+export const BookInfoTitle = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
   margin-top: 0.7rem;
+`;
+
+export const BookInfoTitleText = styled.p<{ backgroundColor: string }>`
+  max-width: 16.3rem;
+
+  overflow: hidden;
 
   color: ${({ theme, backgroundColor }) => {
     backgroundColor;
@@ -78,7 +88,11 @@ export const BookInfoTitle = styled.p<{ backgroundColor: string }>`
         return theme.colors.BG;
     }
   }};
+
   ${({ theme }) => theme.fonts.Head2_SB_18};
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const BookInfoContent = styled.p<{ backgroundColor: string }>`
@@ -95,4 +109,9 @@ export const BookInfoContent = styled.p<{ backgroundColor: string }>`
     }
   }};
   ${({ theme }) => theme.fonts.Body3_R_14};
+`;
+
+export const FavoriteBtn = styled.button`
+  width: 2.2rem;
+  height: 2.2rem;
 `;
