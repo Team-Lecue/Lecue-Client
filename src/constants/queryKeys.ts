@@ -1,8 +1,9 @@
 export const QUERY_KEY = {
   favorite: {
-    getHomeFavorite: ['get-home-favorite'],
-    getMypageFavorite: ['get-mypage-favorite'],
-    getLecueBookFavorite: ['get-lecueBook-favorite'],
+    atHome: ['get-home-favorite'],
+    atMypage: ['get-mypage-favorite'],
+    atLecueBook: ['get-lecueBook-favorite'],
+    atLecueBookDetail: 'get-bookDetail-favorite',
   },
   nickname: {
     getNickName: ['get-nickname'],
