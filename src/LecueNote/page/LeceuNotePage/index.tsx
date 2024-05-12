@@ -21,8 +21,11 @@ function LecueNotePage() {
   const MAX_LENGTH = 1000;
   const navigate = useNavigate();
   const location = useLocation();
-  const putMutation = usePutPresignedUrl();
-  const postMutation = usePostLecueNote();
+  const { putMutation } = usePutPresignedUrl();
+  const { postMutation } = usePostLecueNote();
+  const isMutationLoading =
+    usePutPresignedUrl().isLoading || usePostLecueNote().isLoading;
+
   const noteContents = sessionStorage.getItem('noteContents');
   const { bookId } = location.state || {};
 
@@ -84,14 +87,14 @@ function LecueNotePage() {
   const handleClickCompleteModal = async () => {
     if (lecueNoteState.imgToBinary) {
       if (lecueNoteState.imgToBinary.result && lecueNoteState.file) {
-        putMutation.mutate({
+        putMutation({
           presignedUrl: lecueNoteState.presignedUrl,
           binaryFile: lecueNoteState.imgToBinary.result,
           fileType: lecueNoteState.file.type,
         });
       }
     }
-    postMutation.mutate({
+    postMutation({
       contents: lecueNoteState.contents,
       color: lecueNoteState.textColor,
       fileName: lecueNoteState.filename,
@@ -103,7 +106,7 @@ function LecueNotePage() {
     sessionStorage.setItem('noteContents', '');
   };
 
-  return putMutation.isLoading || postMutation.isLoading ? (
+  return isMutationLoading ? (
     <LoadingPage />
   ) : (
     <S.Wrapper>

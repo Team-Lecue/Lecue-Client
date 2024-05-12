@@ -1,12 +1,13 @@
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import { QUERY_KEY } from '../../constants/queryKeys';
 import { getMyBookList } from '../api/getMyBookList';
 
 export default function useGetMyBookList() {
   const navigate = useNavigate();
   const { data: myBookList, isLoading } = useQuery(
-    ['get-my-lecueBook'],
+    QUERY_KEY.favorite.getLecueBookFavorite,
     () => getMyBookList(),
     {
       onError: () => {

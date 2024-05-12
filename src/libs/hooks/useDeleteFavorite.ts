@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import { QUERY_KEY } from '../../constants/queryKeys';
 import deleteFavorite from '../api/deleteFavorite';
 
 const useDeleteFavorite = (state: string, bookUuid?: string) => {
@@ -10,19 +11,19 @@ const useDeleteFavorite = (state: string, bookUuid?: string) => {
   const handleRefetchQueries = (state: string, bookUuid?: string) => {
     switch (state) {
       case 'home':
-        queryClient.refetchQueries(['get-favorite'], {
+        queryClient.refetchQueries(QUERY_KEY.favorite.getHomeFavorite, {
           exact: true,
         });
         break;
 
-      case 'favoriteBook':
-        queryClient.refetchQueries(['get-mypage-favorite'], {
+      case 'mypage':
+        queryClient.refetchQueries(QUERY_KEY.favorite.getMypageFavorite, {
           exact: true,
         });
         break;
 
-      case 'myLecueBook':
-        queryClient.refetchQueries(['get-my-lecueBook'], {
+      case 'lecueBook':
+        queryClient.refetchQueries(QUERY_KEY.favorite.getLecueBookFavorite, {
           exact: true,
         });
         break;
@@ -41,7 +42,7 @@ const useDeleteFavorite = (state: string, bookUuid?: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      handleRefetchQueries(state, bookUuid);
+      handleRefetchQueries(location, bookUuid);
     },
   });
   return mutation.mutate;

@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import { QUERY_KEY } from '../../constants/queryKeys';
 import postFavorite from '../api/postFavorite';
 
 const usePostFavorite = (state: string, bookUuid?: string) => {
