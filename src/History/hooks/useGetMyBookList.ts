@@ -7,7 +7,7 @@ import { getMyBookList } from '../api/getMyBookList';
 export default function useGetMyBookList() {
   const navigate = useNavigate();
   const { data: myBookList, isLoading } = useQuery(
-    QUERY_KEY.favorite.getLecueBookFavorite,
+    QUERY_KEY.favorite.atLecueBook,
     () => getMyBookList(),
     {
       onError: () => {
