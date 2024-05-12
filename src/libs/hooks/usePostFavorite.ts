@@ -4,22 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { QUERY_KEY } from '../../constants/queryKeys';
 import postFavorite from '../api/postFavorite';
 
-const usePostFavorite = (state: string, bookUuid?: string) => {
+const usePostFavorite = (location: string, bookUuid?: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const handleRefetchQueries = (state: string, bookUuid?: string) => {
-    switch (state) {
-      case 'mypage':
-        queryClient.refetchQueries(['get-my-lecueBook'], {
+  const handleRefetchQueries = (location: string, bookUuid?: string) => {
+    switch (location) {
+      case 'lecueBook':
+        queryClient.refetchQueries(QUERY_KEY.favorite.atLecueBook, {
           exact: true,
         });
         break;
 
       case 'lecueBookDetail':
-        queryClient.refetchQueries(['get-bookDetail-login', bookUuid], {
-          exact: true,
-        });
+        queryClient.refetchQueries(
+          [QUERY_KEY.favorite.atLecueBookDetail, bookUuid],
+          {
+            exact: true,
+          },
+        );
         break;
     }
   };
@@ -30,7 +33,7 @@ const usePostFavorite = (state: string, bookUuid?: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      handleRefetchQueries(state, bookUuid);
+      handleRefetchQueries(location, bookUuid);
     },
   });
   return mutation.mutate;

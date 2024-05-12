@@ -11,27 +11,30 @@ const useDeleteFavorite = (state: string, bookUuid?: string) => {
   const handleRefetchQueries = (state: string, bookUuid?: string) => {
     switch (state) {
       case 'home':
-        queryClient.refetchQueries(QUERY_KEY.favorite.getHomeFavorite, {
+        queryClient.refetchQueries(QUERY_KEY.favorite.atHome, {
           exact: true,
         });
         break;
 
       case 'mypage':
-        queryClient.refetchQueries(QUERY_KEY.favorite.getMypageFavorite, {
+        queryClient.refetchQueries(QUERY_KEY.favorite.atMypage, {
           exact: true,
         });
         break;
 
       case 'lecueBook':
-        queryClient.refetchQueries(QUERY_KEY.favorite.getLecueBookFavorite, {
+        queryClient.refetchQueries(QUERY_KEY.favorite.atLecueBook, {
           exact: true,
         });
         break;
 
       case 'lecueBookDetail':
-        queryClient.refetchQueries(['get-bookDetail-login', bookUuid], {
-          exact: true,
-        });
+        queryClient.refetchQueries(
+          [QUERY_KEY.favorite.atLecueBookDetail, bookUuid],
+          {
+            exact: true,
+          },
+        );
         break;
     }
   };
@@ -42,7 +45,7 @@ const useDeleteFavorite = (state: string, bookUuid?: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      handleRefetchQueries(location, bookUuid);
+      handleRefetchQueries(state, bookUuid);
     },
   });
   return mutation.mutate;
