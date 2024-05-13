@@ -21,6 +21,7 @@ function WriteNote({
   const split = new GraphemeSplitter();
   const today = new Date();
   const [dateArr, setDateArr] = useState([0, 0, 0]);
+  const [year, month, date] = dateArr;
 
   useEffect(() => {
     setDateArr([today.getFullYear(), today.getMonth() + 1, today.getDate()]);
@@ -43,7 +44,7 @@ function WriteNote({
         />
         <S.BottomContentsWrapper>
           <S.Date>
-            {dateArr[0]}.{dateArr[1]}.{dateArr[2]}
+            {year}.{month}.{date}
           </S.Date>
           <S.Counter>({split.splitGraphemes(contents).length}/1000)</S.Counter>
         </S.BottomContentsWrapper>
