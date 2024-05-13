@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   BG_COLOR_CHART,
   CATEGORY,
@@ -44,12 +42,12 @@ function SelectColor({
       <ShowColorChart
         isIconClicked={isIconClicked}
         colorChart={isTextColor ? TEXT_COLOR_CHART : BG_COLOR_CHART}
-        state={isTextColor ? textColor : background}
+        selectedColor={isTextColor ? textColor : background}
         contents={contents}
         handleTransformImgFile={handleTransformImgFile}
         presignedUrlDispatch={presignedUrlDispatch}
         selectedFile={selectedFile}
-        handleFn={handleColorFn}
+        handleColorFn={handleColorFn}
         handleIconFn={handleIconFn}
         handleIsLoading={handleIsLoading}
       />
@@ -57,4 +55,4 @@ function SelectColor({
   );
 }
 
-export default React.memo(SelectColor);
+export default SelectColor;

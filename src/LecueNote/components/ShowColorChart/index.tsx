@@ -12,12 +12,12 @@ import * as S from './ShowColorChart.style';
 function ShowColorChart({
   isIconClicked,
   colorChart,
-  state,
+  selectedColor,
   contents,
   handleTransformImgFile,
   presignedUrlDispatch,
   selectedFile,
-  handleFn,
+  handleColorFn,
   handleIconFn,
   handleIsLoading,
 }: ShowColorChartProps) {
@@ -94,10 +94,10 @@ function ShowColorChart({
             type="button"
             id={colorCode}
             name={isBgColorChart ? 'background' : 'textColor'}
-            variant={state === colorCode}
+            variant={selectedColor === colorCode}
             $isIconClicked={isBgColorChart ? isIconClicked : false}
             $colorCode={colorCode}
-            onClick={handleFn}
+            onClick={handleColorFn}
           ></S.Color>
         </S.ColorWrapper>
       ))}
