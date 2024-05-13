@@ -22,7 +22,6 @@ export interface getPresignedUrlProps {
 }
 
 interface SelectChartType extends getPresignedUrlProps {
-  isIconClicked: boolean;
   selectedFile: (file: File) => void;
   handleColorFn: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleIconFn: () => void;
@@ -32,6 +31,7 @@ interface SelectChartType extends getPresignedUrlProps {
 
 interface LecueNoteStateType {
   lecueNoteState: {
+    isIconClicked: boolean;
     textColor: string;
     background: string;
     category?: string;
@@ -46,6 +46,7 @@ export interface SelectColorProps extends SelectChartType, LecueNoteStateType {
 }
 
 export interface ShowColorChartProps extends SelectChartType {
+  isIconClicked: boolean;
   colorChart: string[];
   selectedColor: string;
   contents?: string;
@@ -54,7 +55,6 @@ export interface ShowColorChartProps extends SelectChartType {
 export interface WriteNoteProps extends LecueNoteStateType {
   isLoading: boolean;
   imgFile: string;
-  isIconClicked: boolean;
   contents: string;
   handleChangeFn: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleResetPrevImg: () => void;

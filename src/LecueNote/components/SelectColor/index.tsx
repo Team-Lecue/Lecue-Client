@@ -9,7 +9,6 @@ import * as S from './SelectColor.style';
 
 function SelectColor({
   lecueNoteState,
-  isIconClicked,
   presignedUrlDispatch,
   handleTransformImgFile,
   handleCategoryFn,
@@ -18,7 +17,7 @@ function SelectColor({
   selectedFile,
   handleIsLoading,
 }: SelectColorProps) {
-  const { textColor, background, category, contents } = lecueNoteState;
+  const { textColor, background, category, contents, isIconClicked } = lecueNoteState;
   const isTextColor = category === '텍스트색';
 
   return (

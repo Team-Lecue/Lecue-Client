@@ -154,7 +154,6 @@ function LecueNotePage() {
         <WriteNote
           isLoading={isNoteLoading}
           imgFile={imgToStr}
-          isIconClicked={isIconClicked}
           lecueNoteState={lecueNoteState}
           contents={contents}
           handleChangeFn={handleChangeContents}
@@ -162,7 +161,6 @@ function LecueNotePage() {
         />
 
         <SelectColor
-          isIconClicked={isIconClicked}
           lecueNoteState={lecueNoteState}
           presignedUrlDispatch={dispatch}
           handleTransformImgFile={(imgFile) => handleTransformImgFile(imgFile)}
