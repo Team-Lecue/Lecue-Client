@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 import { postLecueNoteProps } from '../type/lecueNoteType';
 
-const postLecueNote = ({
+const postLecueNote = async ({
   contents,
   color,
   fileName,
@@ -11,7 +11,7 @@ const postLecueNote = ({
 }: postLecueNoteProps) => {
   const token = localStorage.getItem('token');
 
-  const response = api.post(
+  const response = await api.post(
     '/api/notes',
     {
       bookId: bookId,

@@ -1,12 +1,12 @@
 import { api } from '../../libs/api';
 import { putPresignedUrlProps } from '../type/lecueNoteType';
 
-const putPresignedUrl = ({
+const putPresignedUrl = async ({
   presignedUrl,
   binaryFile,
   fileType,
 }: putPresignedUrlProps) => {
-  const response = api.put(presignedUrl, binaryFile, {
+  const response = await api.put(presignedUrl, binaryFile, {
     headers: {
       'Content-Type': fileType,
     },
