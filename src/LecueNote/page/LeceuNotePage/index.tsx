@@ -31,7 +31,7 @@ function LecueNotePage() {
 
   const [modalOn, setModalOn] = useState(false);
   const [escapeModal, setEscapeModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isNoteLoading, setIsNoteLoading] = useState(false);
 
   const [lecueNoteState, dispatch] = useReducer(reducer, {
     presignedUrl: '',
@@ -46,8 +46,21 @@ function LecueNotePage() {
     imgToBinary: new FileReader(),
   });
 
-  const handleIsLoading = (booleanStatus: boolean) => {
-    setIsLoading(booleanStatus);
+  const {
+    presignedUrl,
+    filename,
+    contents,
+    category,
+    textColor,
+    background,
+    file,
+    isIconClicked,
+    imgToStr,
+    imgToBinary,
+  } = lecueNoteState;
+
+  const handleIsNoteLoading = (booleanStatus: boolean) => {
+    setIsNoteLoading(booleanStatus);
   };
 
   const handleResetPrevImg = () => {
@@ -68,12 +81,15 @@ function LecueNotePage() {
   const handleClickedColorBtn = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    e.currentTarget.name === 'textColor'
-      ? dispatch({ type: 'CLICKED_TEXT_COLOR', color: e.currentTarget.id })
-      : dispatch({ type: 'CLICKED_BG_COLOR', color: e.currentTarget.id });
+    dispatch({
+      type:
+        e.currentTarget.name === 'textColor'
+          ? 'CLICKED_TEXT_COLOR'
+          : 'CLICKED_BG_COLOR',
+      color: e.currentTarget.id,
+    });
 
-    lecueNoteState.category !== '텍스트색' &&
-      dispatch({ type: 'NOT_CLICKED_IMG_ICON' });
+    category !== '텍스트색' && dispatch({ type: 'NOT_CLICKED_IMG_ICON' });
   };
 
   const handleTransformImgFile = (file: string | FileReader) => {
@@ -85,21 +101,21 @@ function LecueNotePage() {
   };
 
   const handleClickCompleteModal = () => {
-    if (lecueNoteState.imgToBinary) {
-      if (lecueNoteState.imgToBinary.result && lecueNoteState.file) {
+    if (imgToBinary) {
+      if (imgToBinary.result && file) {
         putMutation({
-          presignedUrl: lecueNoteState.presignedUrl,
-          binaryFile: lecueNoteState.imgToBinary.result,
-          fileType: lecueNoteState.file.type,
+          presignedUrl: presignedUrl,
+          binaryFile: imgToBinary.result,
+          fileType: file.type,
         });
       }
     }
     postMutation({
-      contents: lecueNoteState.contents,
-      color: lecueNoteState.textColor,
-      fileName: lecueNoteState.filename,
-      bgColor: lecueNoteState.background,
-      isIconClicked: lecueNoteState.isIconClicked,
+      contents: contents,
+      color: textColor,
+      fileName: filename,
+      bgColor: background,
+      isIconClicked: isIconClicked,
       bookId: bookId,
     });
 
@@ -136,17 +152,17 @@ function LecueNotePage() {
 
       <S.CreateNote>
         <WriteNote
-          isLoading={isLoading}
-          imgFile={lecueNoteState.imgToStr}
-          isIconClicked={lecueNoteState.isIconClicked}
+          isLoading={isNoteLoading}
+          imgFile={imgToStr}
+          isIconClicked={isIconClicked}
           lecueNoteState={lecueNoteState}
-          contents={lecueNoteState.contents}
+          contents={contents}
           handleChangeFn={handleChangeContents}
           handleResetPrevImg={handleResetPrevImg}
         />
 
         <SelectColor
-          isIconClicked={lecueNoteState.isIconClicked}
+          isIconClicked={isIconClicked}
           lecueNoteState={lecueNoteState}
           presignedUrlDispatch={dispatch}
           handleTransformImgFile={(imgFile) => handleTransformImgFile(imgFile)}
@@ -161,7 +177,7 @@ function LecueNotePage() {
           }
           handleColorFn={handleClickedColorBtn}
           handleIconFn={() => dispatch({ type: 'CLICKED_IMG_ICON' })}
-          handleIsLoading={handleIsLoading}
+          handleIsLoading={handleIsNoteLoading}
         />
       </S.CreateNote>
 
