@@ -84,7 +84,7 @@ function LecueNotePage() {
     }
   };
 
-  const handleClickCompleteModal = async () => {
+  const handleClickCompleteModal = () => {
     if (lecueNoteState.imgToBinary) {
       if (lecueNoteState.imgToBinary.result && lecueNoteState.file) {
         putMutation({
@@ -128,6 +128,7 @@ function LecueNotePage() {
           setModalOn={setEscapeModal}
         />
       )}
+
       <Header
         headerTitle="레큐노트 작성"
         handleFn={() => setEscapeModal(true)}
@@ -143,6 +144,7 @@ function LecueNotePage() {
           handleChangeFn={handleChangeContents}
           handleResetPrevImg={handleResetPrevImg}
         />
+
         <SelectColor
           isIconClicked={lecueNoteState.isIconClicked}
           lecueNoteState={lecueNoteState}
