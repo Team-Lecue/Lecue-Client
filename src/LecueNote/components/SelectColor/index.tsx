@@ -21,6 +21,7 @@ function SelectColor({
   handleIsLoading,
 }: SelectColorProps) {
   const { textColor, background, category, contents } = lecueNoteState;
+  const isTextColor = category === '텍스트색';
 
   return (
     <S.Wrapper>
@@ -42,8 +43,8 @@ function SelectColor({
 
       <ShowColorChart
         isIconClicked={isIconClicked}
-        colorChart={category === '텍스트색' ? TEXT_COLOR_CHART : BG_COLOR_CHART}
-        state={category === '텍스트색' ? textColor : background}
+        colorChart={isTextColor ? TEXT_COLOR_CHART : BG_COLOR_CHART}
+        state={isTextColor ? textColor : background}
         contents={contents}
         handleTransformImgFile={handleTransformImgFile}
         presignedUrlDispatch={presignedUrlDispatch}

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
@@ -22,6 +22,7 @@ function ShowColorChart({
   handleIsLoading,
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
+  const isBgColorChart = colorChart === BG_COLOR_CHART;
   useGetPresignedUrl({ presignedUrlDispatch });
 
   const handleChangeContents = () => {
@@ -66,8 +67,8 @@ function ShowColorChart({
 
   return (
     <S.Wrapper>
-      {colorChart === BG_COLOR_CHART && (
-        <>
+      {isBgColorChart && (
+        <React.Fragment>
           <S.Input
             type="file"
             accept="image/*, image/heic"
@@ -85,18 +86,16 @@ function ShowColorChart({
           >
             <IcCameraSmall />
           </S.IconWrapper>
-        </>
+        </React.Fragment>
       )}
       {colorChart.map((colorCode) => (
         <S.ColorWrapper key={colorCode}>
           <S.Color
             type="button"
             id={colorCode}
-            name={colorChart === BG_COLOR_CHART ? 'background' : 'textColor'}
+            name={isBgColorChart ? 'background' : 'textColor'}
             variant={state === colorCode}
-            $isIconClicked={
-              colorChart === BG_COLOR_CHART ? isIconClicked : false
-            }
+            $isIconClicked={isBgColorChart ? isIconClicked : false}
             $colorCode={colorCode}
             onClick={handleFn}
           ></S.Color>
