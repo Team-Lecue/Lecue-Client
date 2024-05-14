@@ -9,13 +9,13 @@ import {
 } from '../types/registerTypes';
 
 const usePatchNickname = (props: usePatchNicknameProps) => {
-  const { handleSetIsValid, handleSetIsActive, token, nickname } = props;
+  const { handleSetIsValid, handleSetIsActive, nickname } = props;
 
   const navigate = useNavigate();
 
   const mutation = useMutation({
-    mutationFn: async ({ token, nickname }: patchNicknameProps) => {
-      return await patchNickname(token, nickname);
+    mutationFn: async ({ nickname }: patchNicknameProps) => {
+      return await patchNickname(nickname);
     },
     onError: (err: AxiosError) => {
       const code = err.response?.status;
@@ -31,13 +31,8 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       }
     },
     onSuccess: () => {
-      window.localStorage.setItem('token', token);
       window.localStorage.setItem('nickname', nickname);
-      if (sessionStorage.getItem('url') === '') {
-        navigate('/', { state: { step: 1 } });
-      } else {
-        navigate(-4);
-      }
+      navigate('/', { state: { step: 1 } });
     },
   });
 

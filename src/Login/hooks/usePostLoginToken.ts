@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,18 +13,14 @@ const usePostLoginToken = () => {
     },
     onSuccess: (data) => {
       const { tokenDto, nickname } = data;
+      axios.defaults.headers.common['Authorization'] =
+        `Bearer ${tokenDto.accessToken}`;
 
       if (nickname === null) {
-        navigate('/register', { state: { token: tokenDto.accessToken } });
+        navigate('/register');
       } else {
-        window.localStorage.setItem('token', tokenDto.accessToken);
         window.localStorage.setItem('nickname', nickname);
-
-        if (sessionStorage.getItem('url') === '') {
-          navigate('/', { state: { step: 1 } });
-        } else {
-          navigate(-4);
-        }
+        navigate('/', { state: { step: 1 } });
       }
     },
     onError: () => {
