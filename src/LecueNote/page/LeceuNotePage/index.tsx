@@ -81,15 +81,13 @@ function LecueNotePage() {
   const handleClickedColorBtn = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
+    const { name, id } = e.currentTarget;
     dispatch({
-      type:
-        e.currentTarget.name === 'textColor'
-          ? 'CLICKED_TEXT_COLOR'
-          : 'CLICKED_BG_COLOR',
-      color: e.currentTarget.id,
+      type: name === 'textColor' ? 'CLICKED_TEXT_COLOR' : 'CLICKED_BG_COLOR',
+      color: id,
     });
 
-    category !== '텍스트색' && dispatch({ type: 'NOT_CLICKED_IMG_ICON' });
+    if (category !== '텍스트색') dispatch({ type: 'NOT_CLICKED_IMG_ICON' });
   };
 
   const handleTransformImgFile = (file: string | FileReader) => {
@@ -101,15 +99,14 @@ function LecueNotePage() {
   };
 
   const handleClickCompleteModal = () => {
-    if (imgToBinary) {
-      if (imgToBinary.result && file) {
-        putMutation({
-          presignedUrl: presignedUrl,
-          binaryFile: imgToBinary.result,
-          fileType: file.type,
-        });
-      }
+    if (imgToBinary && imgToBinary.result && file) {
+      putMutation({
+        presignedUrl: presignedUrl,
+        binaryFile: imgToBinary.result,
+        fileType: file.type,
+      });
     }
+
     postMutation({
       contents: contents,
       color: textColor,
@@ -155,7 +152,6 @@ function LecueNotePage() {
           isLoading={isNoteLoading}
           imgFile={imgToStr}
           lecueNoteState={lecueNoteState}
-          contents={contents}
           handleChangeFn={handleChangeContents}
           handleResetPrevImg={handleResetPrevImg}
         />
@@ -179,7 +175,7 @@ function LecueNotePage() {
         />
       </S.CreateNote>
 
-      <Footer contents={lecueNoteState.contents} setModalOn={setModalOn} />
+      <Footer contents={contents} setModalOn={setModalOn} />
     </S.Wrapper>
   );
 }
