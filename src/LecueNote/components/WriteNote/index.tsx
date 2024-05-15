@@ -9,12 +9,11 @@ function WriteNote({
   isLoading,
   lecueNoteState,
   imgFile,
-  contents,
   handleChangeFn,
   handleResetPrevImg,
 }: WriteNoteProps) {
   const nickname = localStorage.getItem('nickname');
-  const { textColor, background, isIconClicked } = lecueNoteState;
+  const { textColor, background, isIconClicked, contents } = lecueNoteState;
 
   // 이모지 글자 수 세기 관련 라이브러리
   const split = new GraphemeSplitter();
@@ -45,7 +44,9 @@ function WriteNote({
           <S.Date>
             {year}.{month}.{date}
           </S.Date>
-          <S.Counter>({split.splitGraphemes(contents).length}/1000)</S.Counter>
+          <S.Counter>
+            ({contents && split.splitGraphemes(contents).length}/1000)
+          </S.Counter>
         </S.BottomContentsWrapper>
       </S.LecueNote>
       <S.Notice>*욕설/비속어는 자동 필터링됩니다.</S.Notice>
