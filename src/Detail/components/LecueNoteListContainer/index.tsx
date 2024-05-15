@@ -100,7 +100,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     if (isLoggedIn) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
       const path = isSticker ? '/sticker-pack' : '/create-note';
-      navigate(path, { state: { bookId }, replace: true });
+      navigate(path, { state: { bookId } });
     } else {
       setModalOn(true);
     }
