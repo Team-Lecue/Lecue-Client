@@ -1,7 +1,10 @@
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
+import { loginState } from '../../atom';
+import { api } from '../../libs/api';
 import { patchNickname } from '../api/patchNickname';
 import {
   patchNicknameProps,
@@ -10,8 +13,10 @@ import {
 
 const usePatchNickname = (props: usePatchNicknameProps) => {
   const { handleSetIsValid, handleSetIsActive, nickname } = props;
+  const { state } = useLocation();
 
   const navigate = useNavigate();
+  const setLoginState = useSetRecoilState(loginState);
 
   const mutation = useMutation({
     mutationFn: async ({ nickname }: patchNicknameProps) => {
@@ -31,6 +36,8 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       }
     },
     onSuccess: () => {
+      setLoginState(true);
+      api.defaults.headers.common['Authorization'] = `Bearer ${state}`;
       window.localStorage.setItem('nickname', nickname);
       navigate('/', { state: { step: 1 } });
     },
