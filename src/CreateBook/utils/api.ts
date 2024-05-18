@@ -18,19 +18,12 @@ interface PostBookData {
   backgroundColor: string;
 }
 
-const getAuthorizationToken = (): string | null => {
-  return localStorage.getItem('token');
-};
-
 const postBook = async (data: PostBookData): Promise<{ bookUuid: string }> => {
-  const token = getAuthorizationToken();
-
   const response: AxiosResponse<ApiResponse> = await api.post(
     '/api/books',
     data,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     },
