@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { loginState } from '../../atom';
-import { api } from '../../libs/api';
 import { patchNickname } from '../api/patchNickname';
 import {
   patchNicknameProps,
@@ -36,9 +35,9 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       }
     },
     onSuccess: () => {
+      sessionStorage.setItem('token', state);
+      localStorage.setItem('nickname', nickname);
       setLoginState(true);
-      api.defaults.headers.common['Authorization'] = `Bearer ${state}`;
-      window.localStorage.setItem('nickname', nickname);
       navigate('/', { state: { step: 1 } });
     },
   });

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { loginState } from '../../atom';
-import { api } from '../../libs/api';
 import { postLoginToken } from '../api/postLoginToken';
 
 const usePostLoginToken = () => {
@@ -20,10 +19,10 @@ const usePostLoginToken = () => {
       if (nickname === null) {
         navigate('/register', { state: tokenDto.accessToken });
       } else {
-        api.defaults.headers.common['Authorization'] =
-          `Bearer ${tokenDto.accessToken}`;
+        sessionStorage.setItem('token', tokenDto.accessToken);
+        localStorage.setItem('nickname', nickname);
         setLoginState(true);
-        window.localStorage.setItem('nickname', nickname);
+
         navigate('/', { state: { step: 1 } });
       }
     },
