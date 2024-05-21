@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 export const patchNickname = async (nickname: string) => {
-  const response = await api.patch(
+  const response = await api().patch(
     '/api/nickname',
     { nickname: nickname },
     {

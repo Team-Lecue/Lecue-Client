@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 export const postLoginToken = async (token: string) => {
-  const response = await api.post(
+  const response = await api().post(
     '/api/login',
     {
       socialPlatform: 'KAKAO',

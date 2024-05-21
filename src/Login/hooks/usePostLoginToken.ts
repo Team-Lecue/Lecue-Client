@@ -1,13 +1,10 @@
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
 
-import { loginState } from '../../atom';
 import { postLoginToken } from '../api/postLoginToken';
 
 const usePostLoginToken = () => {
   const navigate = useNavigate();
-  const setLoginState = useSetRecoilState(loginState);
 
   const mutation = useMutation({
     mutationFn: async (token: string) => {
@@ -20,8 +17,7 @@ const usePostLoginToken = () => {
         navigate('/register', { state: tokenDto.accessToken });
       } else {
         sessionStorage.setItem('token', tokenDto.accessToken);
-        localStorage.setItem('nickname', nickname);
-        setLoginState(true);
+        sessionStorage.setItem('nickname', nickname);
 
         navigate('/', { state: { step: 1 } });
       }

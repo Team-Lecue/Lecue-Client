@@ -7,7 +7,7 @@ export async function postStickerState({
   positionX,
   positionY,
 }: postedStickerParams) {
-  const data = await api.post(
+  const data = await api().post(
     '/api/stickers',
     {
       bookId: bookId,

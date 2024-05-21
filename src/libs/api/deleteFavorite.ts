@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 const deleteFavorite = async (bookId: number) => {
-  const { data } = await api.delete('/api/favorite', {
+  const { data } = await api().delete('/api/favorite', {
     headers: {
       'Content-Type': 'application/json',
     },

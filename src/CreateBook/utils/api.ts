@@ -19,7 +19,7 @@ interface PostBookData {
 }
 
 const postBook = async (data: PostBookData): Promise<{ bookUuid: string }> => {
-  const response: AxiosResponse<ApiResponse> = await api.post(
+  const response: AxiosResponse<ApiResponse> = await api().post(
     '/api/books',
     data,
     {

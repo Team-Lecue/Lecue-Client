@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 const postFavorite = async (bookId: number) => {
-  const { data } = await api.post(
+  const { data } = await api().post(
     '/api/favorite',
     { bookId: bookId },
     {
