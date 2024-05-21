@@ -14,10 +14,10 @@ import * as S from './DetailPage.style';
 function DetailPage() {
   const [isEditable, setIsEditable] = useState(true);
 
-  const token = window.localStorage.getItem('token');
+  const isLogin = sessionStorage.getItem('token');
 
   const { bookUuid } = useParams() as { bookUuid: string };
-  const { bookDetail, isLoading } = token
+  const { bookDetail, isLoading } = isLogin
     ? useGetBookDetailLogin(bookUuid)
     : useGetBookDetail(bookUuid);
   const postMutation = usePostStickerState(bookUuid);

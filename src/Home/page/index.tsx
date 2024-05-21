@@ -8,8 +8,9 @@ import useGetLecueBook from '../hooks/useGetLecueBook';
 import * as S from './Home.style';
 
 function Home({ handleStep }: StepProps) {
-  const token = localStorage.getItem('token');
   const { isLoading: isLoadingLecueBook } = useGetLecueBook();
+
+  const isLogin = sessionStorage.getItem('token');
 
   useEffect(() => {
     handleStep(1);
@@ -21,7 +22,7 @@ function Home({ handleStep }: StepProps) {
     <S.Wrapper>
       <HomeMainBanner />
 
-      {token && <LecueBookList title="즐겨찾기한 레큐북" />}
+      {isLogin && <LecueBookList title="즐겨찾기한 레큐북" />}
       <LecueBookList title="인기 레큐북 구경하기" />
     </S.Wrapper>
   );

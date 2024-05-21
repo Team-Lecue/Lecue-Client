@@ -8,7 +8,6 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import useAuth from '../../../libs/hooks/useAuth';
 import useScrollPosition from '../../../utils/savedScrollPosition';
 // hooks
 import usePostSticker from '../../hooks/usePostSticker';
@@ -53,7 +52,8 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const { savedScrollPosition } = useScrollPosition();
   const { stickerState, setStickerState, handleDrag } =
     useStickerState(savedScrollPosition);
-  const isLoggedIn = useAuth();
+
+  const isLogin = sessionStorage.getItem('token');
 
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
@@ -97,7 +97,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   });
 
   const handleClickIconButton = (isSticker: boolean) => {
-    if (isLoggedIn) {
+    if (isLogin) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
       const path = isSticker ? '/sticker-pack' : '/create-note';
       navigate(path, { state: { bookId }, replace: true });

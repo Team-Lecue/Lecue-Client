@@ -35,8 +35,8 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
       queryClient.refetchQueries(['useGetMyNickName'], {
         exact: true,
       });
-      window.localStorage.setItem('nickname', nickname);
-      navigate('/');
+      sessionStorage.setItem('nickname', nickname);
+      navigate('/mypage');
     },
   });
 

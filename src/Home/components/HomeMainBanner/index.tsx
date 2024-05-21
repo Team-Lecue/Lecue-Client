@@ -10,14 +10,14 @@ function NavigateLecueBook() {
   const navigate = useNavigate();
   const [modalOn, setModalOn] = useState(false);
 
-  const handleClickIcProfile = () => {
-    const token = localStorage.getItem('token');
+  const isLogin = sessionStorage.getItem('token');
 
-    navigate('/mypage', { state: token });
+  const handleClickIcProfile = () => {
+    navigate('/mypage');
   };
 
   const handleClickNavBtn = () => {
-    if (localStorage.getItem('token')) {
+    if (isLogin) {
       navigate('/target');
     } else {
       setModalOn(true);
