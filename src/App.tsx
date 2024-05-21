@@ -2,7 +2,6 @@ import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { RecoilRoot } from 'recoil';
 
 import Router from './Router';
 import gStyle from './styles/GlobalStyles';
@@ -50,14 +49,12 @@ function App() {
 
   return (
     <Wrapper>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <Global styles={gStyle} />
-            <Router />
-          </ThemeProvider>
-        </QueryClientProvider>
-      </RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Global styles={gStyle} />
+          <Router />
+        </ThemeProvider>
+      </QueryClientProvider>
     </Wrapper>
   );
 }

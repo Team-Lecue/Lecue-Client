@@ -1,9 +1,7 @@
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
 
-import { loginState } from '../../atom';
 import { patchNickname } from '../api/patchNickname';
 import {
   patchNicknameProps,
@@ -15,7 +13,6 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
   const { state } = useLocation();
 
   const navigate = useNavigate();
-  const setLoginState = useSetRecoilState(loginState);
 
   const mutation = useMutation({
     mutationFn: async ({ nickname }: patchNicknameProps) => {
@@ -36,8 +33,7 @@ const usePatchNickname = (props: usePatchNicknameProps) => {
     },
     onSuccess: () => {
       sessionStorage.setItem('token', state);
-      localStorage.setItem('nickname', nickname);
-      setLoginState(true);
+      sessionStorage.setItem('nickname', nickname);
       navigate('/', { state: { step: 1 } });
     },
   });
