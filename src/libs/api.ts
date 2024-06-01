@@ -1,12 +1,16 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
+
+let apiInstance: AxiosInstance;
 
 export const api = () => {
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_APP_BASE_URL,
-  });
-
   const token = sessionStorage.getItem('token');
-  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  return api;
+  if (!apiInstance) {
+    apiInstance = axios.create({
+      baseURL: import.meta.env.VITE_APP_BASE_URL,
+    });
+  }
+  apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+  return apiInstance;
 };
