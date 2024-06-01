@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { IcMypageArrowRight } from '../../assets';
 import Header from '../../components/common/Header';
@@ -9,14 +9,16 @@ import * as S from './Enter.style';
 function Enter() {
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
-  const { state } = useLocation();
-  if (state) {
+
+  const isLogin = sessionStorage.getItem('token');
+
+  if (isLogin) {
     const { myNickName } = useGetMyNickName();
     if (nickname === '' || nickname !== myNickName) setNickname(myNickName);
   }
 
   const handleClickNickname = () => {
-    navigate('edit-nickname', { state: state });
+    navigate('edit-nickname');
   };
   const handleClickHistory = () => {
     navigate('select-history');
@@ -29,7 +31,7 @@ function Enter() {
     const isLogout = confirm('로그아웃하시겠습니까?');
 
     if (isLogout) {
-      window.localStorage.clear();
+      sessionStorage.clear();
       navigate('/', { state: { step: 1 } });
     }
   };
@@ -37,7 +39,7 @@ function Enter() {
   return (
     <React.Fragment>
       <Header headerTitle="마이페이지" />
-      {state ? (
+      {isLogin ? (
         <S.MypageBodyWrapper>
           <S.NicknameWrapper>
             <S.NicknameText>{nickname}님, 안녕하세요</S.NicknameText>

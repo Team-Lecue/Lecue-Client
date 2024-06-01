@@ -1,4 +1,5 @@
-import { api } from '../../libs/api';
+import axios from 'axios';
+
 import { putPresignedUrlProps } from '../type/lecueNoteType';
 
 const putPresignedUrl = ({
@@ -6,7 +7,7 @@ const putPresignedUrl = ({
   binaryFile,
   fileType,
 }: putPresignedUrlProps) => {
-  const response = api.put(presignedUrl, binaryFile, {
+  const response = axios.put(presignedUrl, binaryFile, {
     headers: {
       'Content-Type': fileType,
     },

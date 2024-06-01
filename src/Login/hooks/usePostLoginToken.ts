@@ -14,16 +14,12 @@ const usePostLoginToken = () => {
       const { tokenDto, nickname } = data;
 
       if (nickname === null) {
-        navigate('/register', { state: { token: tokenDto.accessToken } });
+        navigate('/register', { state: tokenDto.accessToken });
       } else {
-        window.localStorage.setItem('token', tokenDto.accessToken);
-        window.localStorage.setItem('nickname', nickname);
+        sessionStorage.setItem('token', tokenDto.accessToken);
+        sessionStorage.setItem('nickname', nickname);
 
-        if (sessionStorage.getItem('url') === '') {
-          navigate('/', { state: { step: 1 } });
-        } else {
-          navigate(-4);
-        }
+        navigate('/', { state: { step: 1 } });
       }
     },
     onError: () => {

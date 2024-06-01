@@ -4,22 +4,19 @@ import { SubmitButtonProps } from '../../types/registerTypes';
 import * as S from './SubmitButton.style';
 
 function SubmitButton(props: SubmitButtonProps) {
-  const { isActive, token, nickname, handleSetIsValid, handleSetIsActive } =
-    props;
+  const { isActive, nickname, handleSetIsValid, handleSetIsActive } = props;
 
   const patchMutation = usePatchNickname({
     handleSetIsValid,
     handleSetIsActive,
-    token,
     nickname,
   });
 
-  const handelClickSubmitBtn = (token: string, nickname: string) => {
+  const handelClickSubmitBtn = (nickname: string) => {
     const patchNickname = nickname.trim();
 
     patchMutation.mutate({
       nickname: patchNickname,
-      token: token,
     });
   };
 
@@ -28,7 +25,7 @@ function SubmitButton(props: SubmitButtonProps) {
       <Button
         variant="complete"
         disabled={!isActive}
-        onClick={() => handelClickSubmitBtn(token, nickname)}
+        onClick={() => handelClickSubmitBtn(nickname)}
       >
         완료
       </Button>
