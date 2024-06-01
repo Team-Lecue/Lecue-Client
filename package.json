@@ -16,22 +16,16 @@
     "@sentry/browser": "^7.93.0",
     "@sentry/react": "^7.93.0",
     "@sentry/vite-plugin": "^2.14.1",
-    "@types/node": "^20.11.30",
     "axios": "^1.6.5",
-    "eslint-plugin-react": "^7.33.2",
     "grapheme-splitter": "^1.0.4",
     "heic2any": "^0.0.4",
     "lottie-react": "^2.4.0",
-    "postcss": "^8.4.33",
-    "postcss-styled-syntax": "^0.6.3",
-    "prettier": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
-    "swiper": "^11.1.1",
-    "vite-plugin-svgr": "^4.2.0"
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
