@@ -11,10 +11,9 @@ export const api = () => {
 
   const token = sessionStorage.getItem('token');
   if (token) {
-    const headerToken =
-      apiInstance.defaults.headers.common.Authorization?.toString();
+    const headerToken = apiInstance.defaults.headers.common.Authorization;
 
-    if (!headerToken || token !== headerToken.split(' ')[1]) {
+    if (!headerToken || token !== headerToken.toString().split(' ')[1]) {
       apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
   }
