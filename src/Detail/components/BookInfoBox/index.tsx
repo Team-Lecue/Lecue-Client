@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import {
   IcCrown,
   IcDate,
@@ -33,8 +31,7 @@ function BookInfoBox({
   bookId,
   bookUuid,
 }: BookInfoBoxProps) {
-  const token = localStorage.getItem('token');
-  const [isLogin, setIsLogin] = useState(false);
+  const isLogin = sessionStorage.getItem('token');
 
   const postFavoriteMutation = usePostFavorite('lecueBookDetail', bookUuid);
   const deleteFavoriteMutation = useDeleteFavorite('lecueBookDetail', bookUuid);
@@ -42,10 +39,6 @@ function BookInfoBox({
   const handleFavoriteBtn = () => {
     isFavorite ? deleteFavoriteMutation(bookId) : postFavoriteMutation(bookId);
   };
-
-  useEffect(() => {
-    token ? setIsLogin(true) : setIsLogin(false);
-  }, []);
 
   return (
     <S.BookInfoBoxWrapper backgroundColor={bookBackgroundColor}>
