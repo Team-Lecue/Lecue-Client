@@ -9,7 +9,7 @@ interface TestType {
 function HealthTest() {
   const [data, setData] = useState<TestType | undefined>();
   const getHealthCheck = async () => {
-    const data = await api.get('/actuator/health');
+    const data = await api().get('/actuator/health');
     setData(data.data);
   };
 
