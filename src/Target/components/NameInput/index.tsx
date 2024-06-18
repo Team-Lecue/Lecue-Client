@@ -1,9 +1,5 @@
+import { NameInputProps } from '../../types/targetTypes';
 import * as S from './NameInput.style';
-
-interface NameInputProps {
-  name: string;
-  changeName: (name: string) => void;
-}
 
 function NameInput({ name, changeName }: NameInputProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {

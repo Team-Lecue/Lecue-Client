@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
+import { FavoriteImageInputProps } from '../../types/targetTypes';
 import * as S from './FavoriteImageInput.style';
-
-interface FavoriteImageInputProps {
-  changeFileData: (file: File) => void;
-}
 
 function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
