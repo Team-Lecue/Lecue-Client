@@ -1,3 +1,4 @@
+import imageCompression from 'browser-image-compression'; // browser-image-compression 라이브러리 추가
 import { useEffect, useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
@@ -9,7 +10,7 @@ interface FavoriteImageInputProps {
 
 function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  const [imgFile, setImgFile] = useState('');
+  const [imgFile, setImgFile] = useState<string>('');
 
   useEffect(() => {
     if (
@@ -29,16 +30,42 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      const base64Reader = new FileReader();
-      base64Reader.readAsDataURL(file);
-      base64Reader.onloadend = () => {
-        if (base64Reader.result !== null) {
-          sessionStorage.setItem('image', base64Reader.result as string);
-          changeFileData(file);
-          setImgFile(base64Reader.result as string);
-        }
+      // 이미지 압축 옵션 설정
+      const options = {
+        maxSizeMB: 1, // 최대 파일 크기 (MB)
+        maxWidthOrHeight: 150, // 이미지의 최대 너비 또는 높이
+        useWebWorker: true, // 웹 워커 사용 여부 (압축을 백그라운드에서 처리)
       };
+
+      try {
+        // 이미지 압축
+        const compressedFile = await imageCompression(file, options);
+
+        // 압축된 이미지를 base64 형식으로 변환
+        const base64Result = await convertBlobToBase64(compressedFile);
+
+        // 세션 스토리지에 압축된 이미지 저장
+        sessionStorage.setItem('image', base64Result);
+
+        // 이미지 변경 콜백 호출 및 UI 업데이트
+        changeFileData(compressedFile);
+        setImgFile(base64Result);
+      } catch (error) {
+        console.error('Error compressing image:', error);
+      }
     }
+  };
+
+  // Blob을 base64 문자열로 변환하는 함수
+  const convertBlobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
   };
 
   return (

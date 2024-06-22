@@ -3,8 +3,9 @@ import styled from '@emotion/styled';
 export const SmallLecueNoteWrapper = styled.div<{
   renderType: number;
   noteTextColor: string;
-  noteBackground: string;
 }>`
+  position: relative;
+
   width: 15.2rem;
   height: 16.6rem;
   padding: 1.4rem 1rem 0.9rem;
@@ -25,15 +26,7 @@ export const SmallLecueNoteWrapper = styled.div<{
     }
   }};
 
-  border-radius: 0.4rem;
-  ${({ noteBackground }) => {
-    if (noteBackground.substring(0, 1) === '#') {
-      return `background-color: ${noteBackground}`;
-    } else {
-      return `background: url(${noteBackground})`;
-    }
-  }};
-  background-size: 15.2rem 16.6rem;
+  /* background-size: 15.2rem 16.6rem; */
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
@@ -93,4 +86,29 @@ export const SmallLecueNoteDate = styled.p`
   ${({ theme }) => theme.fonts.E_Caption_R_12};
 
   text-align: right;
+`;
+
+export const SmallLecueNoteBackgroundImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 0.4rem;
+`;
+
+export const SmallLecueNoteBackground = styled.div<{ noteBackground: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 0.4rem;
+  background-color: ${({ noteBackground }) => noteBackground};
 `;

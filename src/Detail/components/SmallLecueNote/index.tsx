@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 
 import { NoteType } from '../../type/lecueBookType';
-import LecueNoteModal from '../LecueNoteModal';
 import * as S from './SmallLecueNote.style';
+
+const LecueNoteModal = lazy(() => import('../LecueNoteModal'));
 
 interface SmallLecueNoteProps {
   renderType: number;
@@ -40,17 +41,26 @@ function SmallLecueNote({
   return (
     <React.Fragment>
       {modalShow && (
-        <LecueNoteModal
-          selectedNote={getClickedNote()[0]}
-          closeModal={() => setModalShow(false)}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LecueNoteModal
+            selectedNote={getClickedNote()[0]}
+            closeModal={() => setModalShow(false)}
+          />
+        </Suspense>
       )}
       <S.SmallLecueNoteWrapper
         renderType={renderType}
         noteTextColor={noteTextColor}
-        noteBackground={noteBackground}
         onClick={handleClickSmallLecueNote}
       >
+        {noteBackground.substring(0, 1) === '#' ? (
+          <S.SmallLecueNoteBackground noteBackground={noteBackground} />
+        ) : (
+          <S.SmallLecueNoteBackgroundImage
+            src={noteBackground}
+            loading="lazy"
+          />
+        )}
         <S.SmallLecueNoteNickName>{noteNickname}</S.SmallLecueNoteNickName>
         <S.SmallLecueNoteContentWrapper>
           <S.SmallLecueNoteContent>{content}</S.SmallLecueNoteContent>
