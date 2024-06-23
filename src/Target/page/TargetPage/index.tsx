@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
 import LoadingPage from '../../../components/common/LoadingPage';
 import CommonModal from '../../../components/common/Modal/CommonModal';
 import CompleteButton from '../../components/CompleteButton';
-import FavoriteImageInput from '../../components/FavoriteImageInput';
-import NameInput from '../../components/NameInput';
+import FavoriteImageInputSection from '../../components/FavoriteImageInputSection';
+import NameInputSection from '../../components/NameInputSection';
 import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
 import usePutPresignedUrl from '../../hooks/usePutPresignedUrl';
 import * as S from './TargetPage.style';
@@ -46,7 +46,7 @@ function TargetPage() {
     }
   }, [data]);
 
-  const handleClickCompleteButton = async () => {
+  const handleClickCompleteButton = useCallback(async () => {
     if (fileData) {
       const reader = new FileReader();
       reader.readAsArrayBuffer(fileData);
@@ -66,7 +66,15 @@ function TargetPage() {
     navigate('/select-book', {
       state: { presignedFileName: presignedFileName, name: name },
     });
-  };
+  }, []);
+
+  const handleEscapeModal = useCallback(() => {
+    setEscapeModal(true);
+  }, []);
+
+  const changeFileData = useCallback((file: File) => setFileData(file), []);
+
+  const changeName = useCallback((name: string) => setName(name), []);
 
   return isLoading ? (
     <LoadingPage />
@@ -79,18 +87,10 @@ function TargetPage() {
           setModalOn={setEscapeModal}
         />
       )}
-      <Header headerTitle="레큐북 제작" handleFn={() => setEscapeModal(true)} />
+      <Header headerTitle="레큐북 제작" handleFn={handleEscapeModal} />
       <S.TargetPageBodyWrapper>
-        <S.InputSectionWrapper>
-          <S.NameInputWrapper>
-            <S.SectionTitle>이름 입력</S.SectionTitle>
-            <NameInput name={name} changeName={(name) => setName(name)} />
-          </S.NameInputWrapper>
-          <S.FavoriteInputWrapper>
-            <S.SectionTitle>사진 업로드</S.SectionTitle>
-            <FavoriteImageInput changeFileData={(file) => setFileData(file)} />
-          </S.FavoriteInputWrapper>
-        </S.InputSectionWrapper>
+        <NameInputSection name={name} changeName={changeName} />
+        <FavoriteImageInputSection changeFileData={changeFileData} />
         <CompleteButton
           isActive={
             (fileData !== null || sessionStorage.getItem('image') !== null) &&
