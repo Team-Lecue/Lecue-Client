@@ -37,9 +37,9 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
       };
 
       try {
-        const compressedFile = await imageCompression(file, options);
+        const base64Result = await convertBlobToBase64(file);
 
-        const base64Result = await convertBlobToBase64(compressedFile);
+        const compressedFile = await imageCompression(file, options);
 
         sessionStorage.setItem('image', base64Result);
 
