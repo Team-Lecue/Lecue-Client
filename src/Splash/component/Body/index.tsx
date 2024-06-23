@@ -5,46 +5,13 @@ import * as S from './Body.style';
 
 const Lottie = lazy(() => import('lottie-react'));
 
-interface LottieMeta {
-  g: string;
-  a: string;
-  k: string;
-  d: string;
-  tc: string;
-}
-
-interface LottieAsset {
-  id: string;
-  w: number;
-  h: number;
-  u: string;
-  p: string;
-  e: number;
-}
-
-interface LottieAnimationData {
-  v: string;
-  meta: LottieMeta;
-  fr: number;
-  ip: number;
-  op: number;
-  w: number;
-  h: number;
-  nm: string;
-  ddd: number;
-  assets: LottieAsset[];
-}
-
 function Body() {
   const { data } = useGetNoteNum();
-  const [lottieData, setLottieData] = useState<LottieAnimationData | null>(
-    null,
-  );
+  const [lottieData, setLottieData] = useState(null);
 
   useEffect(() => {
-    // Lottie 애니메이션 데이터를 동적으로 import
     import('../../../assets/lottie/lottie.json')
-      .then((module) => setLottieData(module.default as LottieAnimationData)) // module.default를 사용하여 JSON 데이터를 가져옴
+      .then((module) => setLottieData(module.default)) // module.default를 사용하여 JSON 데이터를 가져옴
       .catch((err) => console.error('Failed to load Lottie animation', err));
   }, []);
 

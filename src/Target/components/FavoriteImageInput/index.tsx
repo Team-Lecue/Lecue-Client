@@ -30,24 +30,19 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      // 이미지 압축 옵션 설정
       const options = {
-        maxSizeMB: 1, // 최대 파일 크기 (MB)
-        maxWidthOrHeight: 150, // 이미지의 최대 너비 또는 높이
-        useWebWorker: true, // 웹 워커 사용 여부 (압축을 백그라운드에서 처리)
+        maxSizeMB: 1,
+        maxWidthOrHeight: 150,
+        useWebWorker: true,
       };
 
       try {
-        // 이미지 압축
         const compressedFile = await imageCompression(file, options);
 
-        // 압축된 이미지를 base64 형식으로 변환
         const base64Result = await convertBlobToBase64(compressedFile);
 
-        // 세션 스토리지에 압축된 이미지 저장
         sessionStorage.setItem('image', base64Result);
 
-        // 이미지 변경 콜백 호출 및 UI 업데이트
         changeFileData(compressedFile);
         setImgFile(base64Result);
       } catch (error) {
@@ -56,7 +51,6 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
     }
   };
 
-  // Blob을 base64 문자열로 변환하는 함수
   const convertBlobToBase64 = (blob: Blob): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
