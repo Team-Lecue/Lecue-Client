@@ -1,4 +1,3 @@
-import Lottie from 'lottie-react';
 import React, { lazy, Suspense, useState } from 'react';
 
 import animationData from '../../../assets/lottie/spiner 120.json';
@@ -6,6 +5,7 @@ import { NoteType } from '../../type/lecueBookType';
 import * as S from './SmallLecueNote.style';
 
 const LecueNoteModal = lazy(() => import('../LecueNoteModal'));
+const Lottie = lazy(() => import('lottie-react'));
 
 interface SmallLecueNoteProps {
   renderType: number;
