@@ -1,5 +1,6 @@
 import imageCompression from 'browser-image-compression';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { IcCamera, ImgBook } from '../../../assets';
 import * as S from './FavoriteImageInput.style';
@@ -11,6 +12,7 @@ interface FavoriteImageInputProps {
 function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [imgFile, setImgFile] = useState<string>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -46,7 +48,7 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
         changeFileData(compressedFile);
         setImgFile(base64Result);
       } catch (error) {
-        console.error('Error compressing image:', error);
+        navigate('/error');
       }
     }
   };

@@ -1,5 +1,7 @@
+import Lottie from 'lottie-react';
 import React, { lazy, Suspense, useState } from 'react';
 
+import animationData from '../../../assets/lottie/spiner 120.json';
 import { NoteType } from '../../type/lecueBookType';
 import * as S from './SmallLecueNote.style';
 
@@ -41,7 +43,7 @@ function SmallLecueNote({
   return (
     <React.Fragment>
       {modalShow && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Lottie animationData={animationData} />}>
           <LecueNoteModal
             selectedNote={getClickedNote()[0]}
             closeModal={() => setModalShow(false)}
