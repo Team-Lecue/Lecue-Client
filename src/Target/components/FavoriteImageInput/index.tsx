@@ -1,4 +1,4 @@
-import imageCompression from 'browser-image-compression'; // browser-image-compression 라이브러리 추가
+import imageCompression from 'browser-image-compression';
 import { useEffect, useRef, useState } from 'react';
 
 import { IcCamera, ImgBook } from '../../../assets';
