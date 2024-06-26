@@ -1,5 +1,7 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
 
+import LottieImg from '../../../assets/lottie/lottie.json';
+import LoadingImg from '../../../assets/lottie/spiner 120.json';
 import useGetNoteNum from '../../hook/useGetNoteNum';
 import * as S from './Body.style';
 
@@ -7,19 +9,12 @@ const Lottie = lazy(() => import('lottie-react'));
 
 function Body() {
   const { data } = useGetNoteNum();
-  const [lottieData, setLottieData] = useState(null);
-
-  useEffect(() => {
-    import('../../../assets/lottie/lottie.json')
-      .then((module) => setLottieData(module.default)) // module.default를 사용하여 JSON 데이터를 가져옴
-      .catch((err) => console.error('Failed to load Lottie animation', err));
-  }, []);
 
   return (
     <S.BodyWrapper>
       <S.LottieWrapper>
-        <Suspense fallback={<div>로딩</div>}>
-          {lottieData && <Lottie animationData={lottieData} />}
+        <Suspense fallback={<Lottie animationData={LoadingImg} />}>
+          <Lottie animationData={LottieImg} />
         </Suspense>
       </S.LottieWrapper>
 
