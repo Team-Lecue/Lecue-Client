@@ -26,7 +26,6 @@ export const SmallLecueNoteWrapper = styled.div<{
     }
   }};
 
-  /* background-size: 15.2rem 16.6rem; */
   color: ${({ noteTextColor }) => {
     return noteTextColor;
   }};
