@@ -26,15 +26,12 @@ import StickerPack from './StickerPack/page/StickerPack';
 import TargetPage from './Target/page/TargetPage';
 
 function Router() {
-  interface fallbackProps {
+  interface FallbackProps {
     error: Error;
-    componentStack: string;
-    eventId: string;
     resetError: () => void;
   }
 
-  function fallback(fallback: fallbackProps) {
-    const { error, resetError } = fallback;
+  function fallback({ error, resetError }: FallbackProps) {
     if (
       error instanceof AxiosError &&
       (error.response?.status === 401 || error.response?.status === 403)

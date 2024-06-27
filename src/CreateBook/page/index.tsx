@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/common/Header';
 import LoadingPage from '../../components/common/LoadingPage';
 import CommonModal from '../../components/common/Modal/CommonModal';
-import BookInfoTextarea from '../components/BookInfoTextarea';
-import BookInput from '../components/BookInput';
+import BookInfoSection from '../components/BookInfoSection';
+import BookInputSection from '../components/BookInputSection';
 import CompleteButton from '../components/CompleteButton';
 import SelectColor from '../components/SelectColor';
 import usePostBook from '../hooks/usePostBook';
@@ -21,9 +21,9 @@ function CreateBook() {
   const location = useLocation();
   const { presignedFileName, name } = location.state || {};
 
-  const handleClickCompleteButton = async () => {
+  const handleClickCompleteButton = useCallback(async () => {
     setModalOn(true);
-  };
+  }, []);
 
   const postMutation = usePostBook();
 
@@ -36,6 +36,18 @@ function CreateBook() {
       backgroundColor: backgroundColor,
     });
   };
+
+  const handleChangeTitle = useCallback((title: string) => {
+    setTitle(title);
+  }, []);
+
+  const handleChangeDescription = useCallback((description: string) => {
+    setDescription(description);
+  }, []);
+
+  const handleClickBackgroundColor = useCallback((backgroundColor: string) => {
+    setBackgroundColor(backgroundColor);
+  }, []);
 
   return postMutation.isLoading ? (
     <LoadingPage />
@@ -57,29 +69,21 @@ function CreateBook() {
       )}
       <Header headerTitle="레큐북 제작" handleFn={() => setEscapeModal(true)} />
       <S.CreateBookBodyWrapper>
-        <S.InputWrapper>
-          <S.BookInputWrapper>
-            <S.SectionTitle variant={backgroundColor === '#191919'}>
-              레큐북 제목
-            </S.SectionTitle>
-            <BookInput title={title} changeTitle={(title) => setTitle(title)} />
-          </S.BookInputWrapper>
-          <S.BookInfoTextareaWrapper>
-            <S.SectionTitle variant={backgroundColor === '#191919'}>
-              레큐북 소개
-            </S.SectionTitle>
-            <BookInfoTextarea
-              description={description}
-              changeDescription={(description) => setDescription(description)}
-            />
-          </S.BookInfoTextareaWrapper>
-          <SelectColor
-            clickBackgroundColor={(backgroundColor: string) =>
-              setBackgroundColor(backgroundColor)
-            }
-            backgroundColor={backgroundColor}
-          />
-        </S.InputWrapper>
+        <BookInputSection
+          backgroundColor={backgroundColor}
+          title={title}
+          changeTitle={handleChangeTitle}
+        />
+
+        <BookInfoSection
+          backgroundColor={backgroundColor}
+          description={description}
+          changeDescription={handleChangeDescription}
+        />
+        <SelectColor
+          clickBackgroundColor={handleClickBackgroundColor}
+          backgroundColor={backgroundColor}
+        />
         <CompleteButton
           backgroundColor={backgroundColor}
           isActive={title.length !== 0 && description.length !== 0}

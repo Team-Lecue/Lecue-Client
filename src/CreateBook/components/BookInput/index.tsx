@@ -1,9 +1,5 @@
+import { BookInputProps } from '../../type/createBookType';
 import * as S from './BookInput.style';
-
-interface BookInputProps {
-  title: string;
-  changeTitle: (title: string) => void;
-}
 
 function BookInput({ title, changeTitle }: BookInputProps) {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {

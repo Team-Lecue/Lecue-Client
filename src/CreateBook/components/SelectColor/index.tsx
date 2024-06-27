@@ -1,3 +1,5 @@
+import React from 'react';
+
 import ShowColorChart from '../ShowColorChart';
 import * as S from './SelectColor.style';
 
@@ -25,4 +27,4 @@ function SelectColor({
   );
 }
 
-export default SelectColor;
+export default React.memo(SelectColor);

@@ -1,9 +1,5 @@
+import { BookInfoTextareaProps } from '../../type/createBookType';
 import * as S from './BookInfoTextarea.style';
-
-interface BookInfoTextareaProps {
-  description: string;
-  changeDescription: (description: string) => void;
-}
 
 function BookInfoTextarea({
   description,
