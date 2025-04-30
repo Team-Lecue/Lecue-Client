@@ -21,14 +21,19 @@
 [핵심 기능]
 
 - 레큐북 : 레큐노트를 부착할 수 있는 롤링페이퍼 기능
-  <br />
   <img alt="레큐북 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/9a7698ef-8e26-4065-91be-0b2dab43e3c2/image.png" />
+
+  <br/>
+
 - 레큐노트 : 텍스트와 이미지를 업로드할 수 있는 포스트잇 기능
-  <br />
   <img alt="레큐노트 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/b5d0dc9c-937f-40f8-a008-82e341bd619e/image.png" />
+
+  <br/>
+
 - 스티커 : 스티커 이미지로 레큐북을 꾸밀 수 있는 기능
-  <br />
   <img alt="스티커 부착 이미지" width="257" alt="image" src="https://velog.velcdn.com/images/aroo_ming/post/dd433bca-c7de-4815-b5a3-0b6dc779b083/image.png" />
+
+  <br/>
 
 [팬덤 특화 기능]
 
