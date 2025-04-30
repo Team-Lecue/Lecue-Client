@@ -9,7 +9,6 @@ export interface NicknameInputProps {
 }
 
 export interface SubmitButtonProps {
-  token: string;
   nickname: string;
   isActive: boolean;
   isValid: string;
@@ -25,7 +24,6 @@ export interface CheckNicknameProps {
 }
 
 export interface patchNicknameProps {
-  token: string;
   nickname: string;
 }
 

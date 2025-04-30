@@ -1,11 +1,8 @@
-import Button from '../../../components/common/Button';
-import * as S from './CompleteButton.style';
+import React from 'react';
 
-interface CompleteButtonProps {
-  isActive: boolean;
-  onClick: () => void;
-  backgroundColor: string;
-}
+import Button from '../../../components/common/Button';
+import { CompleteButtonProps } from '../../type/createBookType';
+import * as S from './CompleteButton.style';
 
 function CompleteButton({
   isActive,
@@ -14,11 +11,16 @@ function CompleteButton({
 }: CompleteButtonProps) {
   return (
     <S.CompleteButtonWrapper>
-      <Button variant="complete" disabled={!isActive} onClick={onClick} backgroundColor={backgroundColor}>
+      <Button
+        variant="complete"
+        disabled={!isActive}
+        onClick={onClick}
+        backgroundColor={backgroundColor}
+      >
         제작 완료
       </Button>
     </S.CompleteButtonWrapper>
   );
 }
 
-export default CompleteButton;
+export default React.memo(CompleteButton);

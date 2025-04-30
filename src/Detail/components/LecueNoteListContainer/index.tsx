@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -8,7 +8,6 @@ import {
   BtnFloatingWriteOrange,
 } from '../../../assets';
 import CommonModal from '../../../components/common/Modal/CommonModal';
-import useAuth from '../../../libs/hooks/useAuth';
 import useScrollPosition from '../../../utils/savedScrollPosition';
 // hooks
 import usePostSticker from '../../hooks/usePostSticker';
@@ -18,10 +17,11 @@ import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
-import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
 //style
 import * as S from './LecueNoteListContainer.style';
+
+const LinearView = lazy(() => import('../LinearView'));
 
 interface LecueNoteListContainerProps {
   noteNum: number;
@@ -29,7 +29,7 @@ interface LecueNoteListContainerProps {
   noteList: NoteType[];
   postedStickerList: postedStickerType[];
   isEditable: boolean;
-  setEditableStateFalse: () => void;
+  setEditableStateTrue: () => void;
   bookUuid: string;
   bookId: number;
 }
@@ -41,7 +41,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     noteList,
     postedStickerList,
     isEditable,
-    setEditableStateFalse,
+    setEditableStateTrue,
     bookUuid,
     bookId,
   } = props;
@@ -53,7 +53,8 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   const { savedScrollPosition } = useScrollPosition();
   const { stickerState, setStickerState, handleDrag } =
     useStickerState(savedScrollPosition);
-  const isLoggedIn = useAuth();
+
+  const isLogin = sessionStorage.getItem('token');
 
   //state
   const [fullHeight, setFullHeight] = useState<number | null>(null);
@@ -84,8 +85,8 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
         postedStickerId: stickerId,
         stickerImage: stickerImage,
       }));
-    } else {
-      setEditableStateFalse();
+
+      setEditableStateTrue();
     }
   }, [location.state, isEditable]);
 
@@ -97,10 +98,10 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
   });
 
   const handleClickIconButton = (isSticker: boolean) => {
-    if (isLoggedIn) {
+    if (isLogin) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
       const path = isSticker ? '/sticker-pack' : '/create-note';
-      navigate(path, { state: { bookId }, replace: true });
+      navigate(path, { state: { bookId } });
     } else {
       setModalOn(true);
     }
@@ -166,7 +167,9 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
             ref={scrollRef}
           />
         ) : (
-          <LinearView noteList={noteList} />
+          <Suspense fallback={<div>Loading LinearView...</div>}>
+            <LinearView noteList={noteList} />
+          </Suspense>
         )}
         {!isEditable ? (
           <>

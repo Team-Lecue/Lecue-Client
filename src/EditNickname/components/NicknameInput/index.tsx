@@ -10,7 +10,7 @@ function NicknameInput({
   handleSetNickname,
   handleSetIsValid,
 }: NicknameInputProps) {
-  const currentNickname: string = localStorage.getItem('nickname') || '';
+  const currentNickname: string = sessionStorage.getItem('nickname') || '';
   const [wordCnt, setWordCnt] = useState(currentNickname.length);
 
   const handleSetWordCnt = (wordCnt: number) => {

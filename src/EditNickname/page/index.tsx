@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import Header from '../../components/common/Header';
 import EditButton from '../components/EditButton';
@@ -10,11 +9,9 @@ import * as S from './EditNickname.style';
 function EditNickname() {
   const [isActive, setIsActive] = useState(false);
   const [nickname, setNickname] = useState(
-    localStorage.getItem('nickname') || '',
+    sessionStorage.getItem('nickname') || '',
   );
   const [isValid, setIsValid] = useState<isValidState>('enter');
-
-  const { state } = useLocation();
 
   const handleSetNickname = (nickname: string) => {
     setNickname(nickname);
@@ -49,7 +46,6 @@ function EditNickname() {
         <EditButton
           isActive={isActive}
           nickname={nickname}
-          token={state}
           handleSetIsValid={handleSetIsValid}
           isValid={isValid}
           handleSetIsActive={handleSetIsActive}

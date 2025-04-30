@@ -1,30 +1,40 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import { QUERY_KEY } from '../../constants/queryKeys';
 import deleteFavorite from '../api/deleteFavorite';
 
-const useDeleteFavorite = (state: string) => {
+const useDeleteFavorite = (state: string, bookUuid?: string) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const handleRefetchQueries = (state: string) => {
+  const handleRefetchQueries = (state: string, bookUuid?: string) => {
     switch (state) {
       case 'home':
-        queryClient.refetchQueries(['get-favorite'], {
+        queryClient.refetchQueries(QUERY_KEY.favorite.atHome, {
           exact: true,
         });
         break;
 
-      case 'favoriteBook':
-        queryClient.refetchQueries(['get-mypage-favorite'], {
+      case 'mypage':
+        queryClient.refetchQueries(QUERY_KEY.favorite.atMypage, {
           exact: true,
         });
         break;
 
-      case 'myLecueBook':
-        queryClient.refetchQueries(['get-my-lecueBook'], {
+      case 'lecueBook':
+        queryClient.refetchQueries(QUERY_KEY.favorite.atLecueBook, {
           exact: true,
         });
+        break;
+
+      case 'lecueBookDetail':
+        queryClient.refetchQueries(
+          [QUERY_KEY.favorite.atLecueBookDetail, bookUuid],
+          {
+            exact: true,
+          },
+        );
         break;
     }
   };
@@ -35,10 +45,13 @@ const useDeleteFavorite = (state: string) => {
     },
     onError: () => navigate('/error'),
     onSuccess: () => {
-      handleRefetchQueries(state);
+      handleRefetchQueries(state, bookUuid);
     },
   });
-  return mutation.mutate;
+  return {
+    deleteFavoriteMutation: mutation.mutate,
+    isDeleteLoading: mutation.isLoading,
+  };
 };
 
 export default useDeleteFavorite;

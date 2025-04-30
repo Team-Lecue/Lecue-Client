@@ -1,5 +1,22 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-export const api = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
-});
+let apiInstance: AxiosInstance | null;
+
+export const api = () => {
+  if (!apiInstance) {
+    apiInstance = axios.create({
+      baseURL: import.meta.env.VITE_APP_BASE_URL,
+    });
+  }
+
+  const token = sessionStorage.getItem('token');
+  if (token) {
+    const headerToken = apiInstance.defaults.headers.common.Authorization;
+
+    if (!headerToken || token !== headerToken.toString().split(' ')[1]) {
+      apiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+  }
+
+  return apiInstance;
+};

@@ -1,4 +1,6 @@
+import imageCompression from 'browser-image-compression';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { IcCamera, ImgBook } from '../../../assets';
 import * as S from './FavoriteImageInput.style';
@@ -9,7 +11,8 @@ interface FavoriteImageInputProps {
 
 function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
-  const [imgFile, setImgFile] = useState('');
+  const [imgFile, setImgFile] = useState<string>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -29,16 +32,36 @@ function FavoriteImageInput({ changeFileData }: FavoriteImageInputProps) {
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
 
-      const base64Reader = new FileReader();
-      base64Reader.readAsDataURL(file);
-      base64Reader.onloadend = () => {
-        if (base64Reader.result !== null) {
-          sessionStorage.setItem('image', base64Reader.result as string);
-          changeFileData(file);
-          setImgFile(base64Reader.result as string);
-        }
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 150,
+        useWebWorker: true,
       };
+
+      try {
+        const base64Result = await convertBlobToBase64(file);
+
+        const compressedFile = await imageCompression(file, options);
+
+        sessionStorage.setItem('image', base64Result);
+
+        changeFileData(compressedFile);
+        setImgFile(base64Result);
+      } catch (error) {
+        navigate('/error');
+      }
     }
+  };
+
+  const convertBlobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
   };
 
   return (

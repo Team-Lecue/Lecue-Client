@@ -16,7 +16,7 @@ const usePutPresignedUrl = () => {
     },
     onError: () => navigate('/error'),
   });
-  return mutation;
+  return { putMutation: mutation.mutate, isLoading: mutation.isLoading };
 };
 
 export default usePutPresignedUrl;

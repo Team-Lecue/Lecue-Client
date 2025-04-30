@@ -1,4 +1,11 @@
-import { IcCrown, IcDate } from '../../../assets';
+import {
+  IcCrown,
+  IcDate,
+  IcZigzagStarOff,
+  IcZigzagStarOn,
+} from '../../../assets';
+import useDeleteFavorite from '../../../libs/hooks/useDeleteFavorite';
+import usePostFavorite from '../../../libs/hooks/usePostFavorite';
 import * as S from './BookInfoBox.style';
 
 interface BookInfoBoxProps {
@@ -8,6 +15,9 @@ interface BookInfoBoxProps {
   title: string;
   description: string;
   bookBackgroundColor: string;
+  bookId: number;
+  isFavorite?: boolean;
+  bookUuid: string;
 }
 
 function BookInfoBox({
@@ -17,7 +27,30 @@ function BookInfoBox({
   title,
   description,
   bookBackgroundColor,
+  isFavorite,
+  bookId,
+  bookUuid,
 }: BookInfoBoxProps) {
+  const isLogin = sessionStorage.getItem('token');
+
+  const { postFavoriteMutation, isPostLoading } = usePostFavorite(
+    'lecueBookDetail',
+    bookUuid,
+  );
+  const { deleteFavoriteMutation, isDeleteLoading } = useDeleteFavorite(
+    'lecueBookDetail',
+    bookUuid,
+  );
+
+  const isLoading = isPostLoading || isDeleteLoading;
+
+  const handleFavoriteBtn = () => {
+    if (!isLoading)
+      isFavorite
+        ? deleteFavoriteMutation(bookId)
+        : postFavoriteMutation(bookId);
+  };
+
   return (
     <S.BookInfoBoxWrapper backgroundColor={bookBackgroundColor}>
       <S.ProfileImageWrapper>
@@ -38,8 +71,15 @@ function BookInfoBox({
             </S.BookInfoHeaderItem>
           </S.BookInfoHeaderItemWrapper>
         </S.BookInfoHeader>
-        <S.BookInfoTitle backgroundColor={bookBackgroundColor}>
-          {title}
+        <S.BookInfoTitle>
+          <S.BookInfoTitleText backgroundColor={bookBackgroundColor}>
+            {title}
+          </S.BookInfoTitleText>
+          {isLogin && (
+            <S.FavoriteBtn type="button" onClick={handleFavoriteBtn}>
+              {isFavorite ? <IcZigzagStarOn /> : <IcZigzagStarOff />}
+            </S.FavoriteBtn>
+          )}
         </S.BookInfoTitle>
         <S.BookInfoContent backgroundColor={bookBackgroundColor}>
           {description}

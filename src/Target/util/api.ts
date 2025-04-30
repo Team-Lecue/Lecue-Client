@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { api } from '../../libs/api';
 
@@ -14,7 +14,7 @@ const getPresignedUrl = async (): Promise<{
   fileName: string;
 }> => {
   const response: AxiosResponse<PresignedUrlResponse> =
-    await api.get('/api/images/book');
+    await api().get('/api/images/book');
   return {
     url: response.data.data.url,
     fileName: response.data.data.fileName,
@@ -26,7 +26,7 @@ const putPresignedUrl = async (
   data: ArrayBuffer,
   contentType: string,
 ): Promise<void> => {
-  await api.put(url, data, {
+  await axios.put(url, data, {
     headers: {
       'Content-Type': contentType,
     },

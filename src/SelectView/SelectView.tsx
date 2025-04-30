@@ -7,7 +7,8 @@ import SplashPage from '../Splash/page/SplashPage';
 function SelectView() {
   const { state } = useLocation();
   const [step, setStep] = useState(state?.step ? state.step : 0);
-  const token = localStorage.getItem('token');
+
+  const isLogin = sessionStorage.getItem('token');
 
   sessionStorage.removeItem('name');
   sessionStorage.removeItem('image');
@@ -16,7 +17,7 @@ function SelectView() {
     setStep(step);
   };
 
-  return !token && step === 0 ? (
+  return !isLogin && step === 0 ? (
     <SplashPage handleStep={handleStep} />
   ) : (
     <Home handleStep={handleStep} />

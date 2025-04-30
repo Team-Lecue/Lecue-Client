@@ -1,7 +1,9 @@
-import Lottie from 'lottie-react';
+import { lazy } from 'react';
 
 import animationData from '../../../assets/lottie/spiner 120.json';
 import * as S from './LoadingPage.style';
+
+const Lottie = lazy(() => import('lottie-react'));
 
 function LoadingPage() {
   return (

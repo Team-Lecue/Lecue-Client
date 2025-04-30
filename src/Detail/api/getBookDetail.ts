@@ -1,7 +1,7 @@
 import { api } from '../../libs/api';
 
 export async function getBookDetail(bookUuid: string) {
-  const data = await api.get(`/api/books/detail/${bookUuid}`, {
+  const data = await api().get(`/api/books/detail/${bookUuid}`, {
     headers: {
       'Content-Type': 'application/json',
     },

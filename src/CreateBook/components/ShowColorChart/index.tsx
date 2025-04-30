@@ -1,9 +1,5 @@
+import { ShowColorChartProps } from '../../type/createBookType';
 import * as S from './ShowColorChart.style';
-
-interface ShowColorChartProps {
-  backgroundColor: string;
-  handleFn: (backgroundColor: string) => void;
-}
 
 function ShowColorChart({ backgroundColor, handleFn }: ShowColorChartProps) {
   return (

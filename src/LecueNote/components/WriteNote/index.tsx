@@ -14,7 +14,7 @@ function WriteNote({
   handleChangeFn,
   handleResetPrevImg,
 }: WriteNoteProps) {
-  const nickname = localStorage.getItem('nickname');
+  const nickname = sessionStorage.getItem('nickname');
   const { textColor, background } = lecueNoteState;
 
   // 이모지 글자 수 세기 관련 라이브러리

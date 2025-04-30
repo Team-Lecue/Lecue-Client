@@ -5,7 +5,6 @@ import * as S from './EditButton.style';
 
 function EditButton({
   isActive,
-  token,
   nickname,
   handleSetIsValid,
   handleSetIsActive,
@@ -13,16 +12,14 @@ function EditButton({
   const patchMutation = usePatchNickname({
     handleSetIsValid,
     handleSetIsActive,
-    token,
     nickname,
   });
 
-  const handelClickSubmitBtn = (token: string, nickname: string) => {
+  const handelClickSubmitBtn = (nickname: string) => {
     const patchNickname = nickname.trim();
 
     patchMutation.mutate({
       nickname: patchNickname,
-      token: token,
     });
   };
 
@@ -32,7 +29,7 @@ function EditButton({
         type="button"
         variant="complete"
         disabled={!isActive}
-        onClick={() => handelClickSubmitBtn(token, nickname)}
+        onClick={() => handelClickSubmitBtn(nickname)}
       >
         완료
       </Button>

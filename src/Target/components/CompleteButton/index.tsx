@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Button from '../../../components/common/Button';
 import * as S from './CompleteButton.style';
 
@@ -16,4 +18,4 @@ function CompleteButton({ isActive, onClick }: CompleteButtonProps) {
   );
 }
 
-export default CompleteButton;
+export default React.memo(CompleteButton);

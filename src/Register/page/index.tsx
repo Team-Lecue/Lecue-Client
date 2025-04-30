@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import NicknameInput from '../components/NicknameInput';
 import RegisterLogo from '../components/RegisterLogo';
@@ -11,9 +10,6 @@ function Register() {
   const [isActive, setIsActive] = useState(false);
   const [nickname, setNickname] = useState('');
   const [isValid, setIsValid] = useState<isValidState>('valid');
-
-  const location = useLocation();
-  const { token } = location.state && location.state;
 
   const handleSetNickname = (nickname: string) => {
     setNickname(nickname);
@@ -40,7 +36,6 @@ function Register() {
       <SubmitButton
         isActive={isActive}
         nickname={nickname}
-        token={token}
         handleSetIsValid={handleSetIsValid}
         isValid={isValid}
         handleSetIsActive={handleSetIsActive}

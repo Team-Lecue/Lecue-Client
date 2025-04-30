@@ -1,23 +1,26 @@
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Router from './Router';
 import gStyle from './styles/GlobalStyles';
 import theme from './styles/theme';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      suspense: true,
-      useErrorBoundary: true,
-      retry: 0,
-    },
-  },
-});
-
 function App() {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            suspense: true,
+            useErrorBoundary: true,
+            retry: 0,
+          },
+        },
+      }),
+  );
+
   const setScreenSize = () => {
     // vh 관련
     const vh = window.innerHeight * 0.01;

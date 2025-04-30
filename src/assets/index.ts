@@ -30,6 +30,8 @@ import IcStar from './icon/ic_star.svg?react';
 import IcStarDefault from './icon/ic_star_default.svg?react';
 import IcWaste from './icon/ic_waste.svg?react';
 import IcX from './icon/ic_x.svg?react';
+import IcZigzagStarOff from './icon/ic_zigzag_star_off.svg?react';
+import IcZigzagStarOn from './icon/ic_zigzag_star_on.svg?react';
 import ImgBook from './img/img_book.svg?react';
 import ImgBookBackgray from './img/img_book_backgray.svg?react';
 import ImgBookOrange from './img/img_book_orange.svg?react';
@@ -98,6 +100,8 @@ export {
   IcStarDefault,
   IcWaste,
   IcX,
+  IcZigzagStarOff,
+  IcZigzagStarOn,
   ImgBook,
   ImgBookBackgray,
   ImgBookOrange,

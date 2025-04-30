@@ -7,8 +7,7 @@ export async function postStickerState({
   positionX,
   positionY,
 }: postedStickerParams) {
-  const token = localStorage.getItem('token');
-  const data = await api.post(
+  const data = await api().post(
     '/api/stickers',
     {
       bookId: bookId,
@@ -19,7 +18,6 @@ export async function postStickerState({
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
       },
     },
   );
