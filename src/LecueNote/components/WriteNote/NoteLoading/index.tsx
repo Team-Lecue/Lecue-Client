@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
 import animationData from '../../../../../src/assets/lottie/spiner 120.json';
 import * as S from './NoteLoading.style';
@@ -16,7 +16,9 @@ const NoteLoading = ({ handleResetPrevImg }: NoteLoadingProps) => {
   return (
     <S.LoadingWrapper>
       <S.LottieWrapper>
-        <Lottie animationData={animationData} />
+        <Suspense fallback={<div />}>
+          <Lottie animationData={animationData} />
+        </Suspense>
       </S.LottieWrapper>
     </S.LoadingWrapper>
   );

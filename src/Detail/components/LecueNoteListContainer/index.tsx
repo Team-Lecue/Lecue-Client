@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -17,11 +17,10 @@ import { NoteType, postedStickerType } from '../../type/lecueBookType';
 import AlertBanner from '../AlretBanner';
 import EmptyView from '../EmptyView';
 import LecueNoteListHeader from '../LecueNoteLIstHeader';
+import LinearView from '../LinearView';
 import ZigZagView from '../ZigZagView';
 //style
 import * as S from './LecueNoteListContainer.style';
-
-const LinearView = lazy(() => import('../LinearView'));
 
 interface LecueNoteListContainerProps {
   noteNum: number;
@@ -167,9 +166,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
             ref={scrollRef}
           />
         ) : (
-          <Suspense fallback={<div>Loading LinearView...</div>}>
-            <LinearView noteList={noteList} />
-          </Suspense>
+          <LinearView noteList={noteList} />
         )}
         {!isEditable ? (
           <>

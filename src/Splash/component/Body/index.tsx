@@ -1,7 +1,5 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
-import LottieImg from '../../../assets/lottie/lottie.json';
-import LoadingImg from '../../../assets/lottie/spiner 120.json';
 import useGetNoteNum from '../../hook/useGetNoteNum';
 import * as S from './Body.style';
 
@@ -9,12 +7,19 @@ const Lottie = lazy(() => import('lottie-react'));
 
 function Body() {
   const { data } = useGetNoteNum();
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    fetch('/lottie/lottie.json')
+      .then((res) => res.json())
+      .then(setAnimationData);
+  }, []);
 
   return (
     <S.BodyWrapper>
       <S.LottieWrapper>
-        <Suspense fallback={<Lottie animationData={LoadingImg} />}>
-          <Lottie animationData={LottieImg} />
+        <Suspense fallback={<div style={{ width: '100%', height: '100%' }} />}>
+          {animationData && <Lottie animationData={animationData} />}
         </Suspense>
       </S.LottieWrapper>
 

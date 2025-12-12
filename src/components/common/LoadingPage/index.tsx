@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
 import animationData from '../../../assets/lottie/spiner 120.json';
 import * as S from './LoadingPage.style';
@@ -10,7 +10,9 @@ function LoadingPage() {
     <S.LoadingPageWrapper>
       <S.LoadingPageItemContainer>
         <S.LottieWrapper>
-          <Lottie animationData={animationData} />
+          <Suspense fallback={<div />}>
+            <Lottie animationData={animationData} />
+          </Suspense>
         </S.LottieWrapper>
         <S.LoadingPageTextWrapper>
           <S.LoadingText>로딩 중</S.LoadingText>
