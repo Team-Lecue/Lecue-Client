@@ -1,3 +1,5 @@
+import heic2any from 'heic2any';
+
 import handleClickFiletoBinary from './handleClickFiletoBinary';
 import handleClickFiletoString from './handleClickFiletoString';
 
@@ -8,15 +10,13 @@ interface handleClickHeicToJpgProps {
   handleIsLoading: (status: boolean) => void;
 }
 
-const handleClickHeicToJpg = async ({
+const handleClickHeicToJpg = ({
   file,
   handleTransformImgFile,
   handleReaderOnloadend,
   handleIsLoading,
 }: handleClickHeicToJpgProps) => {
   handleIsLoading(true);
-
-  const { default: heic2any } = await import('heic2any');
 
   heic2any({ blob: file, toType: 'image/jpeg' })
     .then(function (resultBlob) {

@@ -1,23 +1,24 @@
 import * as Sentry from '@sentry/react';
 import { AxiosError } from 'axios';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import BoundaryErrorPage from './components/common/BoundaryErrorPage';
 import ClearToken from './components/common/ClearToken/ClearToken';
 import ErrorPage from './components/common/ErrorPage';
+import LoadingPage from './components/common/LoadingPage';
 import CreateBook from './CreateBook/page';
 import DetailPage from './Detail/page/DetailPage';
 import EditNickname from './EditNickname/page';
 import Enter from './Enter/page';
 import HealthTest from './HealthTest';
-import History from './History/page';
 import MyFavoriteBookList from './History/components/MyFavoriteBookList';
 import MyLecueBookList from './History/components/MyLecueBookList';
 import MyLetterList from './History/components/MyLetterList';
+import History from './History/page';
 import HistoryEnter from './HistoryEnter/page';
-import LecueNotePage from './LecueNote/page/LeceuNotePage';
-import Login from './Login/page';
 import LoginCallback from './Login/components/LoginCallback/LoginCallback';
+import Login from './Login/page';
 import Mypage from './Mypage/page';
 import Register from './Register/page';
 import SelectBookPage from './SelectBook/page/SelectBookPage';
@@ -25,6 +26,8 @@ import SelectView from './SelectView/SelectView';
 import StickerAttach from './StickerAttach/page';
 import StickerPack from './StickerPack/page/StickerPack';
 import TargetPage from './Target/page/TargetPage';
+
+const LecueNotePage = lazy(() => import('./LecueNote/page/LeceuNotePage'));
 
 function Router() {
   interface FallbackProps {
@@ -49,7 +52,14 @@ function Router() {
           <Route path="/" element={<SelectView />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/create-note" element={<LecueNotePage />} />
+          <Route
+            path="/create-note"
+            element={
+              <Suspense fallback={<LoadingPage />}>
+                <LecueNotePage />
+              </Suspense>
+            }
+          />
           <Route path="/sticker-pack" element={<StickerPack />} />
           <Route path="/detail" element={<DetailPage />} />
           <Route path="/mypage" element={<Mypage />}>
@@ -66,10 +76,7 @@ function Router() {
           <Route path="/target" element={<TargetPage />} />
           <Route path="/test" element={<HealthTest />} />
           <Route path="/create-book" element={<CreateBook />} />
-          <Route
-            path="/sticker-attach/:bookUuid"
-            element={<StickerAttach />}
-          />
+          <Route path="/sticker-attach/:bookUuid" element={<StickerAttach />} />
           <Route path="/select-book" element={<SelectBookPage />} />
           <Route path="/loading" element={<LoginCallback />} />
           <Route path="/error" element={<ErrorPage />} />

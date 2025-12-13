@@ -96,7 +96,7 @@ function LecueNoteListContainer(props: LecueNoteListContainerProps) {
     bookId,
   });
 
-  const handleClickIconButton = (isSticker: boolean) => {
+const handleClickIconButton = (isSticker: boolean) => {
     if (isLogin) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
       const path = isSticker ? '/sticker-pack' : '/create-note';
