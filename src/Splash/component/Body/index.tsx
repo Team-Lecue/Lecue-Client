@@ -6,21 +6,29 @@ import * as S from './Body.style';
 const Lottie = lazy(() => import('lottie-react'));
 
 function Body() {
-  const { data } = useGetNoteNum();
   const [animationData, setAnimationData] = useState(null);
+  const [isReady, setIsReady] = useState(false);
+  const { data } = useGetNoteNum();
 
   useEffect(() => {
     fetch('/lottie/lottie.json')
       .then((res) => res.json())
-      .then(setAnimationData);
+      .then((data) => {
+        setAnimationData(data);
+        setIsReady(true);
+      });
   }, []);
 
   return (
     <S.BodyWrapper>
       <S.LottieWrapper>
-        <Suspense fallback={<div style={{ width: '100%', height: '100%' }} />}>
-          {animationData && <Lottie animationData={animationData} />}
-        </Suspense>
+        {isReady && animationData ? (
+          <Suspense fallback={<S.LottieSkeleton />}>
+            <Lottie animationData={animationData} />
+          </Suspense>
+        ) : (
+          <S.LottieSkeleton />
+        )}
       </S.LottieWrapper>
 
       <S.TextWrapper>
