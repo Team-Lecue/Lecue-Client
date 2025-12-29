@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Header from '../../../components/common/Header';
@@ -25,16 +25,6 @@ function DetailPage() {
   const setEditableStateTrue = () => {
     setIsEditable(true);
   };
-
-  useEffect(() => {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        import('../../../LecueNote/page/LeceuNotePage');
-      });
-    } else {
-      import('../../../LecueNote/page/LeceuNotePage');
-    }
-  }, []);
 
   return isLoading || postMutation.isLoading ? (
     <LoadingPage />

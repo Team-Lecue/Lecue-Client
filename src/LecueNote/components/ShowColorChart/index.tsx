@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { IcCameraSmall } from '../../../assets';
 import { BG_COLOR_CHART } from '../../constants/colorChart';
@@ -6,7 +6,9 @@ import useGetPresignedUrl from '../../hooks/useGetPresignedUrl';
 import { ShowColorChartProps } from '../../type/lecueNoteType';
 import handleClickFiletoBinary from '../../util/handleClickFiletoBinary';
 import handleClickFiletoString from '../../util/handleClickFiletoString';
-import handleClickHeicToJpg from '../../util/handleClickHeicToJpg';
+import handleClickHeicToJpg, {
+  preloadHeic2any,
+} from '../../util/handleClickHeicToJpg';
 import * as S from './ShowColorChart.style';
 
 function ShowColorChart({
@@ -23,6 +25,10 @@ function ShowColorChart({
 }: ShowColorChartProps) {
   const imgRef = useRef<HTMLInputElement | null>(null);
   useGetPresignedUrl({ presignedUrlDispatch });
+
+  useEffect(() => {
+    preloadHeic2any();
+  }, []);
 
   const handleChangeContents = () => {
     sessionStorage.setItem('noteContents', contents ? contents : '');
