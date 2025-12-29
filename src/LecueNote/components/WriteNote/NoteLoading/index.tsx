@@ -1,9 +1,7 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 
-import animationData from '../../../../../src/assets/lottie/spiner 120.json';
+import LoadingSpinner from '../../../../components/common/LoadingSpinner';
 import * as S from './NoteLoading.style';
-
-const Lottie = lazy(() => import('lottie-react'));
 
 interface NoteLoadingProps {
   handleResetPrevImg: () => void;
@@ -15,11 +13,7 @@ const NoteLoading = ({ handleResetPrevImg }: NoteLoadingProps) => {
 
   return (
     <S.LoadingWrapper>
-      <S.LottieWrapper>
-        <Suspense fallback={<div />}>
-          <Lottie animationData={animationData} />
-        </Suspense>
-      </S.LottieWrapper>
+      <LoadingSpinner />
     </S.LoadingWrapper>
   );
 };

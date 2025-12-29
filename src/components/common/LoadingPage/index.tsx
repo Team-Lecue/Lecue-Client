@@ -1,19 +1,11 @@
-import { lazy, Suspense } from 'react';
-
-import animationData from '../../../assets/lottie/spiner 120.json';
+import LoadingSpinner from '../LoadingSpinner';
 import * as S from './LoadingPage.style';
-
-const Lottie = lazy(() => import('lottie-react'));
 
 function LoadingPage() {
   return (
     <S.LoadingPageWrapper>
       <S.LoadingPageItemContainer>
-        <S.LottieWrapper>
-          <Suspense fallback={<div />}>
-            <Lottie animationData={animationData} />
-          </Suspense>
-        </S.LottieWrapper>
+        <LoadingSpinner />
         <S.LoadingPageTextWrapper>
           <S.LoadingText>로딩 중</S.LoadingText>
           <S.WaitText>잠시만 기다려주세요</S.WaitText>
