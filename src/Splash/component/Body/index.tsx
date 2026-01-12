@@ -3,7 +3,8 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import useGetNoteNum from '../../hook/useGetNoteNum';
 import * as S from './Body.style';
 
-const Lottie = lazy(() => import('lottie-react'));
+const lottiePromise = import('lottie-react');
+const Lottie = lazy(() => lottiePromise);
 
 function Body() {
   const [animationData, setAnimationData] = useState(null);
