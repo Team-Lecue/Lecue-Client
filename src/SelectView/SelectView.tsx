@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import LoadingSpinner from '../components/common/LoadingSpinner';
 import Home from '../Home/page';
-import SplashPage from '../Splash/page/SplashPage';
+
+const SplashPage = lazy(() => import('../Splash/page/SplashPage'));
 
 function SelectView() {
   const { state } = useLocation();
@@ -18,7 +20,9 @@ function SelectView() {
   };
 
   return !isLogin && step === 0 ? (
-    <SplashPage handleStep={handleStep} />
+    <Suspense fallback={<LoadingSpinner />}>
+      <SplashPage handleStep={handleStep} />
+    </Suspense>
   ) : (
     <Home handleStep={handleStep} />
   );
